@@ -1,0 +1,17 @@
+---
+group: transforms
+text: skew
+title: skew
+lead: ""
+meta:
+  description: ""
+tbc: false
+---
+
+import Ec from "snippets/ec.astro";
+
+| Selector  | Style                                                                                                                                                                                      | Variables Required |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------ |
+| `.skew`   | `--tw-skew-x: skewX(var(--skew))`<br />`--tw-skew-y: skewY(var(--skew))`<br />`transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)` | `--skew`           |
+| `.skew-x` | `--tw-skew-x: skewX(var(--skew-x))`<br />`transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)`                                      | `--skew-x`         |
+| `.skew-y` | `--tw-skew-y: skewY(var(--skew-y))`<br />`transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)`                                      | `--skew-y`         |

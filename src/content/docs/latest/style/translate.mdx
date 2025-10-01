@@ -1,0 +1,23 @@
+---
+group: transforms
+text: translate
+title: translate
+lead: ""
+meta:
+  description: ""
+tbc: false
+---
+
+import Ec from "snippets/ec.astro";
+
+| Selector          | Style                                                                                                                                                                                      | Variables Required |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------ |
+| `.translate`      | `--tw-translate-x: calc(var(--spacing) * var(--translate))`<br />`--tw-translate-y: calc(var(--spacing) * var(--translate))`<br />`translate: var(--tw-translate-x) var(--tw-translate-y)` | `--translate`      |
+| `.[translate]`    | `--tw-translate-x: var(--translate)`<br />`--tw-translate-y: var(--translate)`<br />`translate: var(--tw-translate-x) var(--tw-translate-y)`                                               | `--translate`      |
+| `.translate-x`    | `--tw-translate-x: calc(var(--spacing) * var(--translate-x))`<br />`translate: var(--tw-translate-x) var(--tw-translate-y)`                                                                | `--translate-x`    |
+| `.[translate-x]`  | `--tw-translate-x: var(--translate-x)`<br />`translate: var(--tw-translate-x) var(--tw-translate-y)`                                                                                       | `--translate-x`    |
+| `.translate-y`    | `--tw-translate-y: calc(var(--spacing) * var(--translate-y))`<br />`translate: var(--tw-translate-x) var(--tw-translate-y)`                                                                | `--translate-y`    |
+| `.[translate-y]`  | `--tw-translate-y: var(--translate-y)`<br />`translate: var(--tw-translate-x) var(--tw-translate-y)`                                                                                       | `--translate-y`    |
+| `.translate-z`    | `--tw-translate-z: calc(var(--spacing) * var(--translate-z))`<br />`translate: var(--tw-translate-x) var(--tw-translate-y) var(--tw-translate-z)`                                          | `--translate-z`    |
+| `.[translate-z]`  | `--tw-translate-z: var(--translate-z)`<br />`translate: var(--tw-translate-x) var(--tw-translate-y) var(--tw-translate-z)`                                                                 | `--translate-z`    |
+| `.translate-none` | `translate: none`                                                                                                                                                                          | -                  |

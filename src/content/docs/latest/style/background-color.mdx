@@ -1,0 +1,18 @@
+---
+group: backgrounds
+text: background-color
+title: background-color
+lead: ""
+meta:
+  description: ""
+tbc: false
+---
+
+import Ec from "snippets/ec.astro";
+
+| Selector     | Style                                                                                         | Variables Required             |
+| ------------ | --------------------------------------------------------------------------------------------- | ------------------------------ |
+| `.bg`        | `background-color: var(--bg)`                                                                 | `--bg`                         |
+| `.dark:bg`   | `background-color: var(--dark-bg)`                                                            | `--dark-bg`                    |
+| `.bg/o`      | `background-color: color-mix( in oklab, var(--bg) var(--bg-o, 100%), transparent )`           | `--bg`<br />`--bg-o`           |
+| `.dark:bg/o` | `background-color: color-mix( in oklab, var(--dark-bg) var(--dark-bg-o, 100%), transparent )` | `--dark-bg`<br />`--dark-bg-o` |

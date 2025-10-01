@@ -1,0 +1,36 @@
+---
+project: kit
+group: components
+text: Badge
+title: Badge
+lead: Easily create nice looking notification badges.
+meta:
+  description: Displays a badge or a component that looks like a badge.
+---
+import Ec from 'snippets/ec.astro';
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+To create a badge, just add the `.uk-badge` class to an inline element like `<a>` or `<span>` element.
+
+<Ec project="kit" path="badge.1" />
+
+<Snippet project="kit" component="badge.basic" />
+
+## Style modifiers
+
+There are several style modifiers available. Just add one of the following classes to apply a different look.
+
+- `.uk-badge-danger`
+- `.uk-badge-warning`
+- `.uk-badge-success`
+- `.uk-badge-info`
+
+<Snippet project="kit" component="badge.style" />
+
+## Customization
+
+You can use CSS variables to customize this component in any way you prefer.
+
+<Snippet project="kit" component="badge.custom" />

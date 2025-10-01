@@ -1,0 +1,74 @@
+---
+import { readFileSync, existsSync } from "fs";
+import { resolve } from "path";
+
+const { version = "latest", component, project = "style" } = Astro.props;
+
+// const id = `hx-${component.replace(".", "-")}`;
+const route = `/hx/ec/${version}/${project}/${component.replace(".", "/")}`;
+
+let preview = "";
+let lines = 0;
+
+const basePath = resolve(
+  "src",
+  "snippets",
+  version,
+  project,
+  component.replace(".", "/"),
+);
+
+const codePath = resolve(basePath, "code.html");
+const previewPath = resolve(basePath, "code.preview.html");
+
+try {
+  // Always read code.html for line count
+  const codeContent = readFileSync(codePath, "utf-8");
+  lines = codeContent.trim().split("\n").length || 1;
+
+  // Use code.preview.html if it exists, otherwise fall back to code.html content
+  preview = existsSync(previewPath)
+    ? readFileSync(previewPath, "utf-8")
+    : codeContent;
+} catch (error) {
+  const componentPath = component.replace(".", "/");
+  console.error(`Error reading files for ${componentPath}:`, error);
+}
+---
+
+<div class="snippet mt" style="--mt: 10">
+  <ul class="uk-tab" data-uk-tab="swiping: false">
+    <li class="uk-active">
+      <a href="#" style="--uk-tab-item-padding: 0.5rem 1rem 0.75rem 1rem"
+        >Preview</a
+      >
+    </li>
+    <li>
+      <a href="#" style="--uk-tab-item-padding: 0.5rem 1rem 0.75rem 1rem"
+        >Markup</a
+      >
+    </li>
+  </ul>
+
+  <ul
+    class="uk-switcher mt border-b/o border-b-w"
+    style="--mt: 6; --border-b: var(--uk-border); --border-b-o: var(--uk-border-o); --border-b-w: 1px;"
+  >
+    <li class="uk-active">
+      <div class="pt pb" style="--pt: 6; --pb: 10;" set:html={preview} />
+    </li>
+    <li>
+      <div class="ec">
+        <div
+          class="bg/o animate-pulse"
+          hx-trigger="intersect"
+          hx-get={`${route}/markup`}
+          hx-select="figure"
+          hx-swap="outerHTML"
+          style={`--bg: var(--uk-muted); --bg-o: var(--uk-muted-o); height: calc(calc(var(--ec-codeLineHt) * ${lines}) + calc(var(--ec-codePadBlk) * 2) + calc(var(--ec-brdWd) * 2))`}
+        >
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

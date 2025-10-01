@@ -1,0 +1,18 @@
+---
+group: svg
+text: fill
+title: fill
+lead: ""
+meta:
+  description: ""
+tbc: false
+---
+
+import Ec from "snippets/ec.astro";
+
+| Selector       | Style                                                                                 | Variables Required                 |
+| -------------- | ------------------------------------------------------------------------------------- | ---------------------------------- |
+| `.fill`        | `fill: var(--fill)`                                                                   | `--fill`                           |
+| `.dark:fill`   | `fill: var(--dark-fill)`                                                              | `--dark-fill`                      |
+| `.fill/o`      | `fill: color-mix(in oklab, var(--fill) var(--fill-o, 100%), transparent)`             | `--fill`<br />`--fill-o`           |
+| `.dark:fill/o` | `fill: color-mix( in oklab, var(--dark-fill) var(--dark-fill-o, 100%), transparent )` | `--dark-fill`<br />`--dark-fill-o` |

@@ -1,0 +1,18 @@
+---
+group: interactivity
+text: caret-color
+title: caret-color
+lead: ""
+meta:
+  description: ""
+tbc: false
+---
+
+import Ec from "snippets/ec.astro";
+
+| Selector        | Style                                                                                          | Variables Required                   |
+| --------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------ |
+| `.caret`        | `caret-color: var(--caret)`                                                                    | `--caret`                            |
+| `.dark:caret`   | `caret-color: var(--dark-caret)`                                                               | `--dark-caret`                       |
+| `.caret/o`      | `caret-color: color-mix( in oklab, var(--caret) var(--caret-o, 100%), transparent )`           | `--caret`<br />`--caret-o`           |
+| `.dark:caret/o` | `caret-color: color-mix( in oklab, var(--dark-caret) var(--dark-caret-o, 100%), transparent )` | `--dark-caret`<br />`--dark-caret-o` |

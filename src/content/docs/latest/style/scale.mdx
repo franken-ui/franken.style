@@ -1,0 +1,20 @@
+---
+group: transforms
+text: scale
+title: scale
+lead: ""
+meta:
+  description: ""
+tbc: false
+---
+
+import Ec from "snippets/ec.astro";
+
+| Selector      | Style                                                                                                                                              | Variables Required |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| `.scale`      | `--tw-scale-x: var(--scale)`<br />`--tw-scale-y: var(--scale)`<br />`--tw-scale-z: var(--scale)`<br />`scale: var(--tw-scale-x) var(--tw-scale-y)` | `--scale`          |
+| `.scale-x`    | `--tw-scale-x: var(--scale-x)`<br />`scale: var(--tw-scale-x) var(--tw-scale-y)`                                                                   | `--scale-x`        |
+| `.scale-y`    | `--tw-scale-y: var(--scale-y)`<br />`scale: var(--tw-scale-x) var(--tw-scale-y)`                                                                   | `--scale-y`        |
+| `.scale-z`    | `--tw-scale-z: var(--scale-z)`<br />`scale: var(--tw-scale-x) var(--tw-scale-y) var(--tw-scale-z)`                                                 | `--scale-z`        |
+| `.scale-none` | `transform: none`                                                                                                                                  | -                  |
+| `.scale-3d`   | `scale: var(--tw-scale-x) var(--tw-scale-y) var(--tw-scale-z)`                                                                                     | -                  |

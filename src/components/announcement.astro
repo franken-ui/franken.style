@@ -1,0 +1,44 @@
+---
+const { href = "#", headline, subtext } = Astro.props;
+---
+
+<a
+  href={href}
+  class="uk-focus-visible bg color hidden items-center rounded-full px py text-xs font-medium leading xl:display-flex"
+  style="--bg: var(--uk-danger); --color: var(--color-white); --px: 3; --py: 1; --leading: 5;"
+>
+  <strong class="font-semibold">{headline}</strong>
+  {
+    subtext ? (
+      <Fragment>
+        <svg
+          width="2"
+          height="2"
+          fill="currentColor"
+          aria-hidden="true"
+          class="ml-2"
+        >
+          <circle cx="1" cy="1" r="1" />
+        </svg>
+        <span class="ml-2">{subtext}</span>
+        <svg
+          width="3"
+          height="6"
+          class="ml-3 overflow-visible"
+          aria-hidden="true"
+        >
+          <path
+            d="M0 0L3 3L0 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </Fragment>
+    ) : (
+      ""
+    )
+  }
+</a>

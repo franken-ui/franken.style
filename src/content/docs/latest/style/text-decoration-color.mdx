@@ -1,0 +1,21 @@
+---
+group: typography
+text: text-decoration-color
+title: text-decoration-color
+lead: ""
+meta:
+  description: ""
+tbc: false
+---
+
+import Ec from "snippets/ec.astro";
+
+| Selector                  | Style                                                                                                              | Variables Required                             |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------- |
+| `.decoration`             | `text-decoration-color: var(--decoration)`                                                                         | `--decoration`                                 |
+| `.dark:decoration`        | `text-decoration-color: var(--dark-decoration)`                                                                    | `--dark-decoration`                            |
+| `.decoration/o`           | `text-decoration-color: color-mix( in oklab, var(--decoration) var(--decoration-o, 100%), transparent )`           | `--decoration`<br />`--decoration-o`           |
+| `.dark:decoration/o`      | `text-decoration-color: color-mix( in oklab, var(--dark-decoration) var(--dark-decoration-o, 100%), transparent )` | `--dark-decoration`<br />`--dark-decoration-o` |
+| `.decoration-inherit`     | `text-decoration-color: inherit`                                                                                   | -                                              |
+| `.decoration-current`     | `text-decoration-color: currentColor`                                                                              | -                                              |
+| `.decoration-transparent` | `text-decoration-color: transparent`                                                                               | -                                              |

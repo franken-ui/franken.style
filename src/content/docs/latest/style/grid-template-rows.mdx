@@ -1,0 +1,18 @@
+---
+group: flex-and-grid
+text: grid-template-rows
+title: grid-template-rows
+lead: ""
+meta:
+  description: ""
+tbc: false
+---
+
+import Ec from "snippets/ec.astro";
+
+| Selector             | Style                                                          | Variables Required |
+| -------------------- | -------------------------------------------------------------- | ------------------ |
+| `.grid-rows`         | `grid-template-rows: repeat(var(--grid-rows), minmax(0, 1fr))` | `--grid-rows`      |
+| `.[grid-rows]`       | `grid-template-rows: var(--grid-rows)`                         | `--grid-rows`      |
+| `.grid-rows-none`    | `grid-template-rows: none`                                     | -                  |
+| `.grid-rows-subgrid` | `grid-template-rows: subgrid`                                  | -                  |

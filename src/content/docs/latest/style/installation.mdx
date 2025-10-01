@@ -1,0 +1,39 @@
+---
+group: getting-started
+order: 2
+text: Installation
+title: Installation
+lead: Learn how to install and integrate Frankenstyle in your projects.
+meta:
+  description: Learn how to install and integrate Frankenstyle in your projects.
+tbc: false
+---
+import Ec from 'snippets/ec.astro';
+
+Frankenstyle is designed to be straightforward to integrate into any project. There are no build steps, configuration files, or complex setup processes. Simply include the stylesheet and begin using the utilities immediately.
+
+## CSS
+
+The framework is distributed as a single CSS file. The fastest way to include it is via CDN.
+
+<Ec path="style.installation.css" />
+
+This approach is perfect for quick projects, prototypes, or when you want to get started without any additional setup.
+
+## JavaScript Runtime
+
+The core framework works with CSS alone. However, if you want interactive states such as `:hover`, `:focus`, or `:active`, you should include the optional runtime script:
+
+<Ec path="style.installation.js" />
+
+This runtime dynamically generates pseudo-class styles at runtime, keeping the static CSS file small while still supporting interactive patterns.
+
+## Local Installation
+
+If you prefer not to use a CDN, you can download the CSS and JavaScript files and reference them directly in your project:
+
+<Ec path="installation.0" />
+
+This approach is useful for environments where external dependencies are restricted or when you want full control over the assets.
+
+And, that's it! With just a single stylesheet and an optional runtime script, Frankenstyle is ready to use in your project. No build tools, no configuration—simply include it and start styling immediately.

@@ -1,0 +1,39 @@
+---
+import { resolve } from "node:path";
+import { readFileSync } from "node:fs";
+import { Code } from "astro-expressive-code/components";
+
+const tag = import.meta.env.TAG || "latest";
+let version = "1.0";
+
+await (async () => {
+  try {
+    const response = await fetch("https://registry.npmjs.org/frankenstyle");
+    const data = await response.json();
+
+    version = data["dist-tags"][tag];
+  } catch (e) {}
+})();
+
+const { method = "cdn", component = "css" } = Astro.props;
+
+let snippet = "<!-- ... -->";
+let lang = "html";
+
+if (method === "cdn") {
+  snippet = readFileSync(
+    resolve(
+      "src",
+      "snippets",
+      "latest",
+      "style",
+      "installation",
+      "cdn",
+      `${component}.html`,
+    ),
+    "utf-8",
+  ).replaceAll("[VERSION]", version);
+}
+---
+
+<Code frame="none" code={snippet} lang={lang} />

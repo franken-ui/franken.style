@@ -1,0 +1,19 @@
+---
+group: transforms
+text: rotate
+title: rotate
+lead: ""
+meta:
+  description: ""
+tbc: false
+---
+
+import Ec from "snippets/ec.astro";
+
+| Selector       | Style                                                                                                                                                  | Variables Required |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------ |
+| `.rotate`      | `rotate: var(--rotate)`                                                                                                                                | `--rotate`         |
+| `.rotate-x`    | `--tw-rotate-x: rotateX(--rotate-x)`<br />`transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)` | -                  |
+| `.rotate-y`    | `--tw-rotate-y: rotateY(--rotate-y)`<br />`transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)` | -                  |
+| `.rotate-z`    | `--tw-rotate-z: rotateZ(--rotate-z)`<br />`transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)` | -                  |
+| `.rotate-none` | `transform: none`                                                                                                                                      | -                  |

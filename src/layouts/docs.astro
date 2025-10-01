@@ -1,0 +1,634 @@
+---
+import { getCollection, getEntry, render } from "astro:content";
+import Announcement from "components/announcement.astro";
+import Master from "layouts/master.astro";
+import Monster from "src/assets/monster.svg";
+
+type Heading = {
+  depth: number;
+  slug: string;
+  text: string;
+  children?: Heading[];
+};
+
+function transformHeadings(headings: Heading[]): Heading[] {
+  const result: Heading[] = [];
+  const stack: Heading[] = [];
+
+  for (const heading of headings) {
+    const current = { ...heading };
+
+    // Remove all items from stack that have greater or equal depth
+    while (stack.length > 0 && stack[stack.length - 1].depth >= current.depth) {
+      stack.pop();
+    }
+
+    if (stack.length === 0) {
+      // This is a top-level heading
+      result.push(current);
+      stack.push(current);
+    } else {
+      // This is a child heading
+      const parent = stack[stack.length - 1];
+      if (!parent.children) {
+        parent.children = [];
+      }
+      parent.children.push(current);
+      stack.push(current);
+    }
+  }
+
+  return result;
+}
+
+function transformTitles(string: string) {
+  const wordReplacements: Record<string, string> = {
+    and: "&",
+    svg: "SVG",
+  };
+  const words = string.split("-");
+
+  return words
+    .map((word, index) => {
+      const lowerWord = word.toLowerCase();
+
+      // Check if word has a special replacement
+      if (lowerWord in wordReplacements) {
+        // Always capitalize first and last word, even if it's in the dictionary
+        if (index === 0 || index === words.length - 1) {
+          const replacement = wordReplacements[lowerWord];
+          // If replacement is all caps (acronym), keep it; otherwise capitalize first letter
+          return replacement === replacement.toUpperCase()
+            ? replacement
+            : replacement.charAt(0).toUpperCase() + replacement.slice(1);
+        }
+        return wordReplacements[lowerWord];
+      }
+
+      // Default title case
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    })
+    .join(" ");
+}
+
+function titleCase(string: string) {
+  return string
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+function isActive(href: string): boolean {
+  if (entry.data.alias === href) {
+    return true;
+  }
+
+  return entry.id === href;
+}
+
+type Group = {
+  href: string;
+  text: string;
+  keywords: string | undefined;
+  ping: boolean | undefined;
+  submenu:
+    | {
+        href: string;
+        text: string;
+        target?: "_self" | "_blank" | "_parent" | "_top" | undefined;
+      }[]
+    | undefined;
+  order: number | undefined;
+};
+
+const { version = "latest", id, project } = Astro.props;
+
+const docs = (await getCollection("latest")).filter(
+  (a) => a.data.project === project,
+);
+
+type Kit = {
+  "getting-started": Group[];
+  components: Group[];
+};
+
+type Style = {
+  "getting-started": Group[];
+  layout: Group[];
+  "flex-and-grid": Group[];
+  spacing: Group[];
+  sizing: Group[];
+  typography: Group[];
+  backgrounds: Group[];
+  borders: Group[];
+  effects: Group[];
+  filters: Group[];
+  tables: Group[];
+  "transitions-and-animations": Group[];
+  transforms: Group[];
+  interactivity: Group[];
+  svg: Group[];
+  accessibility: Group[];
+};
+
+const groups: {
+  kit: Kit;
+  style: Style;
+} = {
+  kit: {
+    "getting-started": [],
+    components: [],
+  },
+  style: {
+    "getting-started": [],
+    layout: [],
+    "flex-and-grid": [],
+    spacing: [],
+    sizing: [],
+    typography: [],
+    backgrounds: [],
+    borders: [],
+    effects: [],
+    filters: [],
+    tables: [],
+    "transitions-and-animations": [],
+    transforms: [],
+    interactivity: [],
+    svg: [],
+    accessibility: [],
+  },
+};
+
+docs.forEach((a: any) => {
+  if (a.data.hidden !== true) {
+    groups[project as "kit" | "style"][a.data.group as "getting-started"].push({
+      href: a.id,
+      text: a.data.text,
+      keywords: a.data.keywords,
+      ping: a.data.ping,
+      submenu: a.data.submenu,
+      order: a.data.order,
+    });
+  }
+});
+
+const entry = await getEntry(version, id);
+const { Content, headings, remarkPluginFrontmatter } = await render(entry);
+const tbc = transformHeadings(headings);
+---
+
+<Master
+  doc={{
+    title: remarkPluginFrontmatter.title,
+    meta: { ...remarkPluginFrontmatter.meta, "docsearch:version": "latest" },
+  }}
+>
+  <div
+    class="fixed inset-x top z border-b-w border-b/o"
+    style="--inset-x: 0; --top: 0; --z: 10; --border-b-w: 1px; --border-b: var(--uk-border); --border-b-o: var(--uk-border-o)"
+  >
+    <div class="bg color" style="--bg: var(--uk-bg); --color: var(--uk-bg-f)">
+      <div
+        class="display-flex h items-center justify-between gap px sm:px"
+        style="--h: 14; --gap: 8; --px: 4; --sm-px: 6"
+      >
+        <div class="display-flex items-center gap" style="--gap: 4">
+          <a class="uk-focus-visible display-hidden lg:display-block" href="/">
+            <Monster
+              height={48}
+              width={48}
+              class:list="fill stroke"
+              style="--fill: var(--uk-bg-f); --stroke: var(--uk-bg-f)"
+            />
+          </a>
+
+          <div class="display-hidden lg:display-block">
+            <ul class="uk-tab-alt">
+              <li class={project == "kit" ? "uk-active" : ""}>
+                <a href="/docs/latest/kit/introduction">Kit</a>
+              </li>
+              <li class={project == "style" ? "uk-active" : ""}>
+                <a href="/docs/latest/style/introduction">Style</a>
+              </li>
+            </ul>
+          </div>
+
+          <Announcement headline="Public Preview" />
+
+          <button
+            class="uk-button uk-button-secondary uk-button-small lg:display-hidden"
+            data-uk-toggle="#menu"
+          >
+            <uk-icon class="size" style="--size: 4" icon="menu"></uk-icon>
+            <span class="ml" style="--ml: 2">Menu</span>
+          </button>
+        </div>
+        <div class="display-flex items-center gap" style="--gap: 2">
+          <div class="display-flex gap-x" style="--gap-x: 2">
+            <a
+              class="uk-button uk-button-primary uk-button-small display-hidden sm:display-inline-flex"
+              href="https://github.com/franken-ui/style/tree/master/contexts"
+              title="Contexts"
+              target="_blank"
+            >
+              <uk-icon class="size" style="--size: 4" icon="sparkles"></uk-icon>
+              <span class="">Contexts</span>
+            </a>
+            <a
+              class="uk-button uk-button-secondary uk-button-small display-hidden sm:display-inline-flex"
+              href="https://github.com/franken-ui/style"
+              title="Star on Github"
+              target="_blank"
+            >
+              <uk-icon class="size" style="--size: 4" icon="github"></uk-icon>
+              <span class="">Star on Github</span>
+            </a>
+
+            <uk-lsh
+              class="size"
+              style="--size: 8"
+              toggle
+              group="mode"
+              cls="uk-button uk-button-icon uk-button-secondary uk-button-small relative"
+            >
+              <template data-fn="template">
+                <uk-icon
+                  class="dark-slide-icon dark-slide-moon dark:dark-slide-moon"
+                  icon="moon"
+                >
+                </uk-icon>
+                <uk-icon
+                  class="dark-slide-icon dark-slide-sun dark:dark-slide-sun"
+                  icon="sun"
+                >
+                </uk-icon>
+              </template>
+            </uk-lsh>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="root-layout">
+    <aside class="root-sidebar">
+      <div class="absolute inset" style="--inset: 0">
+        <div
+          class="root-sidebar-scrollable-area"
+          x-data
+          x-init='const asideL=document.querySelector(".root-sidebar-scrollable-area");if(asideL){let e=asideL.querySelector("li.uk-parent.uk-open"),i=e.querySelector("li.uk-active"),o={asideL:asideL.getBoundingClientRect(),focused:i.getBoundingClientRect()},t=i.offsetTop-asideL.offsetTop-o.asideL.height/2+o.focused.height/2;asideL.scrollTo({top:t,behavior:"smooth"})}'
+        >
+          <ul
+            id="nav"
+            class="uk-nav uk-nav-default mx mt"
+            style="--mx: -1; --mt: 1"
+            data-uk-nav="collapsible: false"
+          >
+            <li class="uk-nav-header">Documentation</li>
+            {
+              Object.keys(groups[project as "kit" | "style"]).map((a) => (
+                <li
+                  class={`uk-parent ${entry.data.group === a ? "uk-open" : ""}`}
+                >
+                  <a href="#">
+                    {transformTitles(a)} <span data-uk-nav-parent-icon />
+                  </a>
+                  <ul class="uk-nav-sub" hidden={entry.data.group !== a}>
+                    {groups[project as "kit" | "style"][a as "getting-started"]
+                      .sort((z: Group, y: Group) => {
+                        if (["getting-started"].includes(a)) {
+                          return (z.order || 0) - (y.order || 0);
+                        }
+
+                        return z.text.localeCompare(y.text);
+                      })
+                      .map((z: Group, y) => (
+                        <li
+                          id={`test-${y}`}
+                          class={isActive(z.href) ? "uk-active" : ""}
+                        >
+                          <a
+                            class="display-flex items-center justify-between"
+                            href={`/docs/latest/${z.href}`}
+                          >
+                            <span class="flex-1">{z.text}</span>
+                            {z.ping === true ? (
+                              <span
+                                class="relative display-flex size flex-none"
+                                style="--size: 2;"
+                              >
+                                <span
+                                  class="bg/o absolute display-inline-flex h-full w-full animate-ping rounded-full"
+                                  style="--bg: var(--color-primary); --bg-opacity: 75%"
+                                />
+                                <span
+                                  class="bg relative display-inline-flex size rounded-full"
+                                  style="--bg: var(--color-primary); --size: 2"
+                                />
+                              </span>
+                            ) : (
+                              ""
+                            )}
+                          </a>
+                          {z.submenu ? (
+                            <ul>
+                              {z.submenu.map((y) => (
+                                <li>
+                                  <a
+                                    class="display-flex items-center justify-between"
+                                    href={y.href}
+                                    target={y.target || "_self"}
+                                  >
+                                    <span class="flex-1">{y.text}</span>
+                                    {y.href.startsWith("http") ? (
+                                      <uk-icon icon="external-link" />
+                                    ) : (
+                                      ""
+                                    )}
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          ) : (
+                            ""
+                          )}
+                        </li>
+                      ))}
+                  </ul>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </aside>
+    <div class="root-divider-l divider-pattern"></div>
+    <div class="root-main">
+      <div
+        class="isolate mx-auto grid w-full max-w-2xl grid-cols gap pt md:pb xl:max-w-5xl"
+        style="--grid-cols: 1; --gap: 10; --pt: 10; --md-pb: 24"
+      >
+        <div class="px sm:px" style="--px: 4; --sm-px: 6">
+          {
+            entry.data.webc === true ? (
+              <div class="mb" style="--mb: 5">
+                <span
+                  class="bg color display-inline-flex items-center justify-between rounded-full px py pr text-sm"
+                  style="--bg: var(--uk-accent); --color: var(--uk-accent-f); --px: 1; --py: 1; --pr: 4"
+                >
+                  <span
+                    class="bg color mr rounded-full px py text-xs"
+                    style="--bg: var(--uk-primary); --color: var(--uk-primary-f); --mr: 3; --px: 3; --py: 1.5"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M11.7 4H6.6L2 12l4.6 8h5.1l-4.76-8z" class="b" />
+                      <path
+                        d="m12.56 19.49.31.51h4.28l2.21-3.74h-8.72zM14.26 15.57h5.44l1.87-3.23h-5.44zM19.36 7.74 17.15 4h-4.28l-.31.51-1.92 3.23zM14.26 8.43l1.87 3.23h5.44L19.7 8.43z"
+                        class="b"
+                      />
+                    </svg>
+                  </span>
+                  <span class="text-sm font-medium">Web Component</span>
+                </span>
+              </div>
+            ) : (
+              ""
+            )
+          }
+
+          <h1 class="uk-h1">
+            {entry.data.title}
+          </h1>
+
+          {
+            entry.data.lead ? (
+              <p class="uk-text-lead mt" style="--mt: 2">
+                {entry.data.lead}
+              </p>
+            ) : (
+              ""
+            )
+          }
+
+          {
+            entry.data.wip === true ? (
+              <div class="uk-alert-warning uk-alert mt" style="--mt: 6">
+                This documentation is a work in progress.
+              </div>
+            ) : (
+              ""
+            )
+          }
+
+          {
+            entry.data.tbc === false ? (
+              ""
+            ) : tbc.length > 0 ? (
+              <Fragment>
+                <h2
+                  class="uk-h2 mt"
+                  style="--mt: 10"
+                  id="docs-table-of-contents"
+                >
+                  Table of contents
+                </h2>
+
+                <ul
+                  class="uk-nav uk-nav-default ml mt"
+                  style="--uk-nav-sub-width: 0; --uk-nav-item-display: inline-flex; --ml: -2; --mt: 6"
+                >
+                  {tbc.map((a) => (
+                    <li>
+                      <a href={`#${a.slug}`} data-uk-scroll="offset: 40">
+                        <uk-icon
+                          class="color mr size"
+                          style="--color: var(--uk-danger); --mr: 2; --size: 4"
+                          icon="hash"
+                        />
+                        {a.text}
+                      </a>
+                      {a.children ? (
+                        <ul class="uk-nav-sub">
+                          {a.children.map((b) => (
+                            <li>
+                              <a
+                                href={`#${b.slug}`}
+                                data-uk-scroll="offset: 40"
+                              >
+                                <uk-icon
+                                  class="color mr size"
+                                  style="--color: var(--uk-danger); --mr: 2; --size: 4"
+                                  icon="hash"
+                                />
+                                {b.text}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        ""
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </Fragment>
+            ) : (
+              ""
+            )
+          }
+
+          <Content />
+        </div>
+      </div>
+    </div>
+    <div class="root-divider-r divider-pattern"></div>
+  </div>
+
+  <uk-command id="cmd" key="/" toggle="search">
+    <select data-fn="data-source" hidden>
+      {
+        Object.keys(groups[project as "kit" | "style"]).map((a) => (
+          <optgroup label={titleCase(a)}>
+            {groups[project as "kit" | "style"][a as "getting-started"].map(
+              (z: Group) => (
+                <option
+                  data-icon="circle-dashed"
+                  data-keywords={z.keywords}
+                  value={`/docs/latest/${z.href}`}
+                >
+                  {z.text}
+                </option>
+              ),
+            )}
+          </optgroup>
+        ))
+      }
+    </select>
+  </uk-command>
+
+  <div
+    class="uk-offcanvas"
+    data-uk-offcanvas="overlay: true"
+    id="menu"
+    style="--uk-offcanvas-bar-width: 320px; --uk-offcanvas-bar-width-i: -320px;"
+  >
+    <div class="uk-offcanvas-bar p" style="--p: 4">
+      <div class="mb display-flex justify-center" style="--mb: 4">
+        <button
+          class="uk-button uk-button-secondary uk-button-xs uk-offcanvas-close"
+        >
+          <uk-icon icon="arrow-left"></uk-icon>
+          <span class="ml" style="--ml: 2">Close</span>
+        </button>
+      </div>
+
+      <ul
+        id="nav"
+        class="uk-nav uk-nav-default mx mt"
+        style="--mx: -1; --mt: 1"
+        data-uk-nav="collapsible: false"
+      >
+        <li class="uk-nav-header">Documentation</li>
+        {
+          Object.keys(groups[project as "kit" | "style"]).map((a) => (
+            <li class={`uk-parent ${entry.data.group === a ? "uk-open" : ""}`}>
+              <a href="#">
+                {titleCase(a)} <span data-uk-nav-parent-icon />
+              </a>
+              <ul class="uk-nav-sub" hidden={entry.data.group !== a}>
+                {groups[project as "kit" | "style"][a as "getting-started"]
+                  .sort((z: Group, y: Group) => {
+                    if (["getting-started"].includes(a)) {
+                      return (z.order || 0) - (y.order || 0);
+                    }
+
+                    return z.text.localeCompare(y.text);
+                  })
+                  .map((z: Group, y) => (
+                    <li
+                      id={`test-${y}`}
+                      class={isActive(z.href) ? "uk-active" : ""}
+                    >
+                      <a
+                        class="display-flex items-center justify-between"
+                        href={`/docs/latest/${z.href}`}
+                      >
+                        <span class="flex-1">{z.text}</span>
+                        {z.ping === true ? (
+                          <span
+                            class="relative display-flex size flex-none"
+                            style="--size: 2"
+                          >
+                            <span
+                              class="bg/o absolute display-inline-flex h-full w-full animate-ping rounded-full"
+                              style="--bg: var(--color-primary); --bg-opacity: 75%"
+                            />
+                            <span
+                              class="bg relative display-inline-flex size rounded-full"
+                              style="--bg: var(--color-primary); --size: 2"
+                            />
+                          </span>
+                        ) : (
+                          ""
+                        )}
+                      </a>
+                      {z.submenu ? (
+                        <ul>
+                          {z.submenu.map((y) => (
+                            <li>
+                              <a
+                                class="display-flex items-center justify-between"
+                                href={y.href}
+                                target={y.target || "_self"}
+                              >
+                                <span class="flex-1">{y.text}</span>
+                                {y.href.startsWith("http") ? (
+                                  <uk-icon icon="external-link" />
+                                ) : (
+                                  ""
+                                )}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        ""
+                      )}
+                    </li>
+                  ))}
+              </ul>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  <script is:inline>
+    const observer = new MutationObserver(() => {
+      if (htmlElement.classList.contains("dark")) {
+        document.documentElement.dataset.theme = "github-dark";
+      } else {
+        document.documentElement.dataset.theme = "github-light";
+      }
+    });
+
+    observer.observe(htmlElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    const cmd = document.getElementById("cmd");
+
+    cmd &&
+      cmd.addEventListener("uk-command:click", (e) => {
+        location.href = e.detail.value.value;
+      });
+  </script>
+</Master>

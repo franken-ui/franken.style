@@ -1,0 +1,59 @@
+---
+import { resolve } from "path";
+import { readFileSync } from "fs";
+
+const { path, version = "latest", project = "style" } = Astro.props;
+
+const route = `/hx/ec/${version}/${project}/${path.replace(/^(kit\.|style\.)/, "").replace(".", "/")}`;
+
+let lines = 0;
+
+const safelist: any = {
+  "style.installation.css": 4,
+  "style.installation.js": 4,
+};
+
+if (Object.keys(safelist).includes(path)) {
+  lines = safelist[path];
+} else {
+  const file = resolve(
+    "src",
+    "pages",
+    "hx",
+    "ec",
+    version,
+    project,
+    `${path.replace(".", "/")}.mdx`,
+  );
+
+  try {
+    const fileContent = readFileSync(file, "utf-8").trim();
+
+    const codeBlockRegex = /```([\w]+(?:\s+\w+={?[\w-]+}?)*?)\n([\s\S]*?)```/g;
+    let match;
+    let totalLines = 0;
+
+    while ((match = codeBlockRegex.exec(fileContent)) !== null) {
+      const codeBlock = match[2];
+      const lines = codeBlock.split("\n").length;
+      totalLines += lines;
+    }
+
+    lines = totalLines - 1;
+  } catch (error) {
+    console.error(`Error reading file from ${path}:`, error);
+  }
+}
+---
+
+<div class="ec mt" style="--mt: 6">
+  <div
+    class="bg/o animate-pulse"
+    hx-trigger="intersect"
+    hx-get={route}
+    hx-select="figure"
+    hx-swap="outerHTML"
+    style={`--bg: var(--uk-muted); --bg-o: var(--uk-muted-o); height: calc(calc(var(--ec-codeLineHt) * ${lines}) + calc(var(--ec-codePadBlk) * 2) + calc(var(--ec-brdWd) * 2))`}
+  >
+  </div>
+</div>

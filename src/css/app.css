@@ -1,0 +1,191 @@
+@import "frankenstyle/css/frankenstyle-kit.css";
+@import "./ec.css";
+
+@layer base {
+  ::selection {
+    background-color: oklch(54.6% 0.245 262.881);
+    color: #fff;
+  }
+
+  :root {
+    --divider-pattern: color-mix(
+      in oklab,
+      var(--uk-border) var(--uk-border-o, 100%),
+      transparent
+    );
+    --font-geist-sans:
+      Geist Sans, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+    --font-geist-mono:
+      Geist Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      "Liberation Mono", "Courier New", monospace;
+  }
+
+  .root-layout {
+    display: grid;
+    min-height: 100dvh;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-rows: 1fr 1px auto 1px auto;
+    padding-top: calc(var(--spacing) * 14.25);
+  }
+
+  .root-sidebar {
+    position: relative;
+    grid-column-start: 1;
+    grid-row: 1 / -1;
+    grid-row-start: 1;
+  }
+
+  .root-sidebar-scrollable-area {
+    position: sticky;
+    inset: 0;
+    max-height: 100dvh;
+    width: var(--container-2xs);
+    overflow-y: auto;
+    padding: calc(var(--spacing) * 6);
+    top: calc(var(--spacing) * 14.25);
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    max-height: calc(100dvh - (var(--spacing) * 14.25));
+  }
+
+  .divider-pattern {
+    border-inline-style: var(--tw-border-style);
+    border-inline-width: 1px;
+    border-inline-color: var(--divider-pattern);
+    background-image: repeating-linear-gradient(
+      315deg,
+      var(--divider-pattern) 0,
+      var(--divider-pattern) 1px,
+      transparent 0,
+      transparent 50%
+    );
+    background-size: 10px 10px;
+    background-attachment: fixed;
+  }
+
+  .divider-line {
+    position: relative;
+  }
+
+  .divider-line::before {
+    content: "";
+    opacity: 70%;
+    position: absolute;
+    top: 0;
+    left: -100vw;
+    height: 1px;
+    width: 200vw;
+    background-color: var(--divider-pattern);
+  }
+
+  .divider-line::after {
+    content: "";
+    opacity: 70%;
+    position: absolute;
+    bottom: 0;
+    left: -100vw;
+    height: 1px;
+    width: 200vw;
+    background-color: var(--divider-pattern);
+  }
+
+  .root-divider-l {
+    grid-column-start: 2;
+    grid-row: span 5 / span 5;
+    grid-row-start: 1;
+  }
+
+  .root-divider-r {
+    grid-column-start: 4;
+    grid-row: span 5 / span 5;
+    grid-row-start: 1;
+  }
+
+  @media (width < 64rem) {
+    .root-divider-l {
+      display: none;
+    }
+
+    .root-sidebar {
+      display: none;
+    }
+
+    .root-divider-r {
+      display: none;
+    }
+  }
+
+  .root-main {
+    position: relative;
+    grid-row-start: 1;
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+
+  @media (width >= 64rem) {
+    .root-layout {
+      grid-template-columns: var(--container-2xs) 2.5rem minmax(0, 1fr) 2.5rem;
+      padding-top: calc(var(--spacing) * 14.25);
+    }
+
+    .root-main {
+      grid-column-start: 3;
+    }
+  }
+
+  @media (width >= 80rem) {
+    .root-layout {
+      grid-template-columns: var(--container-2xs) 2.5rem minmax(0, 1fr) 2.5rem;
+    }
+  }
+}
+
+@layer utilities {
+  .dark\:display-hidden:where(.dark, .dark *) {
+    display: none;
+  }
+
+  .dark\:display-inline-block:where(.dark, .dark *) {
+    display: inline-block;
+  }
+
+  .dark-slide-icon {
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .dark-slide-sun {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .dark-slide-moon {
+    transform: translate(-50%, 0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .dark\:dark-slide-moon:where(.dark, .dark *) {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .dark\:dark-slide-sun:where(.dark, .dark *) {
+    transform: translate(-50%, 0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
