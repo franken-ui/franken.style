@@ -1,0 +1,20 @@
+---
+group: spacing
+text: space
+title: space
+lead: ""
+meta:
+  description: ""
+tbc: false
+---
+
+import Ec from "snippets/ec.astro";
+
+| Selector                         | Style                                                                                                                                                                                          | Variables Required |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| `.space-x > :not(:last-child)`   | `margin-inline-start: calc( var(--spacing) * var(--space-x) * var(--tw-space-x-reverse) )`<br />`margin-inline-end: calc( var(--spacing) * var(--space-x) * (1 - var(--tw-space-x-reverse)) )` | `--space-x`        |
+| `.[space-x] > :not(:last-child)` | `margin-inline-start: calc(var(--space-x) * var(--tw-space-x-reverse))`<br />`margin-inline-end: calc(var(--space-x) * (1 - var(--tw-space-x-reverse)))`                                       | `--space-x`        |
+| `.space-y > :not(:last-child)`   | `margin-block-start: calc( var(--spacing) * var(--space-y) * var(--tw-space-y-reverse) )`<br />`margin-block-end: calc( var(--spacing) * var(--space-y) * (1 - var(--tw-space-y-reverse)) )`   | `--space-y`        |
+| `.[space-y] > :not(:last-child)` | `margin-block-start: calc(var(--space-y) * var(--tw-space-y-reverse))`<br />`margin-block-end: calc(var(--space-y) * (1 - var(--tw-space-y-reverse)))`                                         | `--space-y`        |
+| `.space-x-reverse`               | `--tw-space-x-reverse: 1`                                                                                                                                                                      | -                  |
+| `.space-y-reverse`               | `--tw-space-y-reverse: 1`                                                                                                                                                                      | -                  |

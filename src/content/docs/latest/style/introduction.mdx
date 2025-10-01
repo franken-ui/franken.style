@@ -1,0 +1,112 @@
+---
+group: getting-started
+order: 1
+text: Introduction
+title: Introduction
+lead: Frankenstyle is a No-build, value-driven, fully responsive, utility-first CSS framework.
+meta:
+  description: Frankenstyle is a No-build, value-driven, fully responsive, utility-first CSS framework.
+tbc: false
+---
+import Ec from 'snippets/ec.astro';
+
+## Overview
+
+Frankenstyle is a **no-build, value-driven, utility-first CSS framework**.
+
+It takes inspiration from Tailwind CSS but simplifies setup by **removing the need for a build pipeline**. No PostCSS, no config files, no `vite.config.js`. Just drop in the CSS via CDN and start styling.
+
+At its core, Frankenstyle provides:
+
+* **Utility-first syntax** (similar to Tailwind CSS)
+* **Lightweight, value-driven styling** (utilities paired with CSS variables you define)
+* **Runtime state generation** (`:hover`, `:active`, etc.)
+* **Responsive and theme-aware design**
+
+## Philosophy
+
+Frankenstyle is built around a few guiding principles:
+
+### 1. No build process
+
+Everything is pre-compiled and can be consumed via CDN. No bundler, no file watchers, no CLI, no config.
+
+### 2. Value-driven utilities
+
+Instead of bundling hundreds of pre-defined classes (`m-2`, `m-4`, `p-6`), Frankenstyle uses **generic utility names** (`m`, `p`, `bg`) paired with **CSS custom properties** that you define.
+
+| Usage              | Purpose             |
+|--------------------|---------------------|
+| `class="p"`        | Apply padding       |
+| `style="--p: 4"`   | Define its value    |
+
+You don't need to memorize odd variable names. Just drop special characters from the class:
+
+| Class Name         | Variable Name        |
+|--------------------|----------------------|
+| `sm:m`             | `--sm-m`             |
+| `dark:sm:bg:hover` | `--dark-sm-bg-hover` |
+
+### 3. Explicit, intentional styling
+
+Utility classes and their values should always go together. This prevents accidental styling and enforces intentional design.
+
+### 4. Runtime state generation
+
+Hover, focus, and other states aren't shipped in a large CSS bundle. Frankenstyle **generates state CSS at runtime**, when and where it's needed.
+
+### 5. Familiar but simplified
+
+The syntax feels like Tailwind (`sm:`, `md:`, `dark:`), but values are fully customizable and declarative.
+
+## Core Concepts
+
+### 1. Value-driven utilities
+
+Frankenstyle provides the utility class, and you provide the value:
+
+<Ec path="introduction.0" />
+
+* Base spacing is multiplied by `var(--spacing)` to keep values consistent.
+* Arbitrary values are supported using bracket syntax:
+
+<Ec path="introduction.1" />
+
+### 2. State management (`:hover`, `:active`)
+
+Frankenstyle generates states dynamically at runtime. Enable this by adding the `data-fs-interactive` attribute:
+
+<Ec path="introduction.2" />
+
+| Class Name       | Purpose                   |
+|------------------|---------------------------|
+| `bg:hover`       | Hover background          |
+| `dark:bg:hover`  | Dark mode hover background |
+
+Works with any color utilities (`color`, `border`, `fill`, etc.).
+
+### 3. Responsive design
+
+Frankenstyle follows Tailwind's responsive prefixes:
+
+| Prefix  | Breakpoint       |
+|---------|------------------|
+| `sm:`   | Small            |
+| `md:`   | Medium           |
+| `lg:`   | Large            |
+| `xl:`   | Extra large      |
+| `2xl:`  | 2x Extra large   |
+
+<Ec path="introduction.3" />
+
+### 4. Opacity handling
+
+Opacity is controlled with the `/o` suffix and requires two variables:
+
+<Ec path="introduction.4" />
+
+This ensures explicit opacity control and avoids inheritance issues.
+
+## Conclusion
+
+Frankenstyle is intentionally simple: a single stylesheet, optional runtime script, and a straightforward utility system designed for clarity and control.

@@ -1,0 +1,27 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import Docs from "layouts/docs.astro";
+
+export const getStaticPaths = (async () => {
+  const latest = await getCollection("latest");
+
+  return latest.map((entry) => {
+    // The entry.id will be in format: "[project]/[slug]"
+    // For example: "style/introduction" or "kit/getting-started"
+    const pathParts = entry.id.split("/");
+    const project = pathParts[0]; // 'style' or 'kit'
+    const slug = pathParts.slice(1).join("/"); // handle nested paths
+
+    return {
+      params: { project, slug },
+      props: { id: entry.id },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const { id } = Astro.props;
+const { project } = Astro.params;
+---
+
+<Docs version="latest" id={id} project={project} />

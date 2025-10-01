@@ -1,0 +1,18 @@
+---
+group: svg
+text: stroke
+title: stroke
+lead: ""
+meta:
+  description: ""
+tbc: false
+---
+
+import Ec from "snippets/ec.astro";
+
+| Selector         | Style                                                                                       | Variables Required                     |
+| ---------------- | ------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `.stroke`        | `stroke: var(--stroke)`                                                                     | `--stroke`                             |
+| `.dark:stroke`   | `stroke: var(--dark-stroke)`                                                                | `--dark-stroke`                        |
+| `.stroke/o`      | `stroke: color-mix( in oklab, var(--stroke) var(--stroke-o, 100%), transparent )`           | `--stroke`<br />`--stroke-o`           |
+| `.dark:stroke/o` | `stroke: color-mix( in oklab, var(--dark-stroke) var(--dark-stroke-o, 100%), transparent )` | `--dark-stroke`<br />`--dark-stroke-o` |

@@ -1,0 +1,27 @@
+---
+group: sizing
+text: size
+title: size
+lead: ""
+meta:
+  description: ""
+tbc: false
+---
+
+import Ec from "snippets/ec.astro";
+
+| Selector     | Style                                                                                         | Variables Required |
+| ------------ | --------------------------------------------------------------------------------------------- | ------------------ |
+| `.size`      | `width: calc(var(--spacing) * var(--size))`<br />`height: calc(var(--spacing) * var(--size))` | `--size`           |
+| `.[size]`    | `width: var(--size)`<br />`height: var(--size)`                                               | `--size`           |
+| `.size-auto` | `width: auto`<br />`height: auto`                                                             | -                  |
+| `.size-full` | `width: 100%`<br />`height: 100%`                                                             | -                  |
+| `.size-dvw`  | `width: 100dvw`<br />`height: 100dvw`                                                         | -                  |
+| `.size-dvh`  | `width: 100dvh`<br />`height: 100dvh`                                                         | -                  |
+| `.size-lvw`  | `width: 100lvw`<br />`height: 100lvw`                                                         | -                  |
+| `.size-lvh`  | `width: 100lvh`<br />`height: 100lvh`                                                         | -                  |
+| `.size-svw`  | `width: 100svw`<br />`height: 100svw`                                                         | -                  |
+| `.size-svh`  | `width: 100svh`<br />`height: 100svh`                                                         | -                  |
+| `.size-min`  | `width: min-content`<br />`height: min-content`                                               | -                  |
+| `.size-max`  | `width: max-content`<br />`height: max-content`                                               | -                  |
+| `.size-fit`  | `width: fit-content`<br />`height: fit-content`                                               | -                  |
