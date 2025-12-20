@@ -1,6 +1,7 @@
 ---
 import { getCollection, getEntry, render } from "astro:content";
 import Announcement from "components/announcement.astro";
+import WebComponent from "components/partials/web-component.astro";
 import Master from "layouts/master.astro";
 import Monster from "src/assets/monster.svg";
 
@@ -109,6 +110,7 @@ const docs = (await getCollection("latest")).filter(
 
 type Kit = {
   "getting-started": Group[];
+  forms: Group[];
   components: Group[];
 };
 
@@ -137,6 +139,7 @@ const groups: {
 } = {
   kit: {
     "getting-started": [],
+    forms: [],
     components: [],
   },
   style: {
@@ -359,6 +362,47 @@ const tbc = transformHeadings(headings);
               ))
             }
           </ul>
+
+          <div
+            class="mt p border-w border-dashed border/o"
+            style="--mt: 4; --p: 2; --border-w: 1px; --border: var(--uk-border); --border-o: var(--uk-border-o)"
+          >
+            <img
+              class="w-full aspect-square"
+              src="/images/octocat-1766197044937.png"
+            />
+
+            <div class="text-lg font-bold">Support the Project</div>
+            <p class="mt color" style="--mt: 2; --color: var(--uk-muted-f)">
+              Your sponsorship helps keep it sustainable, supports new features,
+              and ensures it remains free, and accessible for everyone.
+            </p>
+
+            <div
+              class="mt display-flex flex-col gap"
+              style="--mt: 2; --gap: 1.5"
+            >
+              <a
+                class="uk-button uk-button-primary w-full"
+                href="https://github.com/sponsors/sveltecult"
+                target="_blank"
+              >
+                <uk-icon class="size" style="--size: 4;" icon="github"
+                ></uk-icon>
+                GitHub Sponsors
+              </a>
+
+              <a
+                class="uk-button w-full"
+                href="https://ko-fi.com/sveltecult"
+                target="_blank"
+              >
+                <uk-icon class="size" style="--size: 4;" icon="coffee"
+                ></uk-icon>
+                Ko-Fi
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </aside>
@@ -372,30 +416,7 @@ const tbc = transformHeadings(headings);
           {
             entry.data.webc === true ? (
               <div class="mb" style="--mb: 5">
-                <span
-                  class="bg color display-inline-flex items-center justify-between rounded-full px py pr text-sm"
-                  style="--bg: var(--uk-accent); --color: var(--uk-accent-f); --px: 1; --py: 1; --pr: 4"
-                >
-                  <span
-                    class="bg color mr rounded-full px py text-xs"
-                    style="--bg: var(--uk-primary); --color: var(--uk-primary-f); --mr: 3; --px: 3; --py: 1.5"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M11.7 4H6.6L2 12l4.6 8h5.1l-4.76-8z" class="b" />
-                      <path
-                        d="m12.56 19.49.31.51h4.28l2.21-3.74h-8.72zM14.26 15.57h5.44l1.87-3.23h-5.44zM19.36 7.74 17.15 4h-4.28l-.31.51-1.92 3.23zM14.26 8.43l1.87 3.23h5.44L19.7 8.43z"
-                        class="b"
-                      />
-                    </svg>
-                  </span>
-                  <span class="text-sm font-medium">Web Component</span>
-                </span>
+                <WebComponent />
               </div>
             ) : (
               ""
