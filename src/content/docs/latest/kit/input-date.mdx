@@ -100,39 +100,168 @@ When loading Web Components, there may be a brief delay before the content is fu
 
 ## Internationalization
 
-Because this component uses [Calendar](/docs/2.1/calendar#internationalization) and [Input Time](/docs/2.1/input-time#internationalization) under the hood, you can use and merge their `i18n` attributes. Please refer to their documentation for available options.
+The Input Date component supports internationalization through multiple methods with the following priority order (highest to lowest):
+
+- **Component-level i18n** (via `i18n` attribute or script tag)
+- **Global component-specific namespace** (via `<script id="uk-i18n">`)
+- **Default values**
+
+Since this component uses Calendar and Input Time internally, you can provide i18n values for both components within a single configuration.
+
+### Using the i18n attribute
+
+<Snippet project="kit" component="input_date.i18n" />
+
+### Using a configuration script
+
+<Snippet project="kit" component="input_date.i18n_config" />
+
+### Using global i18n
+
+Place this in your document `<head>` or before any input-date components:
+
+<Ec project="kit" path="input_date.5" />
+
+### Available i18n options
+
+**Input Date specific:**
+
+| Key                     | Default                | Description                                      |
+| ----------------------- | ---------------------- | ------------------------------------------------ |
+| `button-label`          | Select date            | Aria-label for the date picker button            |
+| `dialog-label`          | Date picker            | Aria-label for the dropdown dialog               |
+| `selected`              | selected               | Text added to button label when date is selected |
+| `placeholder`           | Select a date          | Placeholder text when no date is selected        |
+| `placeholder-with-time` | Select a date and time | Placeholder text when with-time is enabled       |
+
+**Calendar specific (inherited):**
+
+| Key            | Default        | Description                                         |
+| -------------- | -------------- | --------------------------------------------------- |
+| `prev-month`   | Previous month | Aria-label for the previous month navigation button |
+| `next-month`   | Next month     | Aria-label for the next month navigation button     |
+| `prev-year`    | Previous year  | Aria-label for the previous year navigation button  |
+| `next-year`    | Next year      | Aria-label for the next year navigation button      |
+| `select-month` | Select month   | Aria-label for the month dropdown selector          |
+| `select-year`  | Select year    | Aria-label for the year input field                 |
+
+**Input Time specific (when `with-time` is enabled):**
+
+| Key                  | Default | Description                        |
+| -------------------- | ------- | ---------------------------------- |
+| `am`                 | AM      | Text for AM period                 |
+| `pm`                 | PM      | Text for PM period                 |
+| `hour-label`         | Hour    | Aria-label for hour input          |
+| `minute-label`       | Minute  | Aria-label for minute input        |
+| `meridiem-label`     | AM/PM   | Aria-label for AM/PM toggle button |
+| `time-label`         | Time    | Aria-label for time input group    |
+| `hour-placeholder`   | HH      | Placeholder for hour input         |
+| `minute-placeholder` | MM      | Placeholder for minute input       |
+
+## Custom classes
+
+The Input Date component supports custom CSS classes through the `cls` attribute. This allows you to style specific elements within the date picker without modifying the component's internal structure.
+
+### Using simple string format
+
+Apply a class to the default element (button):
+
+<Ec project="kit" path="input_date.6" />
+
+### Using JSON object format
+
+Target specific elements within the input date:
+
+<Ec project="kit" path="input_date.7" />
+
+### Using configuration script
+
+<Ec project="kit" path="input_date.8" />
+
+### Available cls targets
+
+| Target         | Description                                              |
+| -------------- | -------------------------------------------------------- |
+| `container`    | The main wrapper container for the entire component      |
+| `button`       | The clickable button that opens the date picker          |
+| `button-text`  | The text span inside the button showing selected date    |
+| `icon`         | The icon element inside the button                       |
+| `dropdown`     | The dropdown container holding calendar and time inputs  |
+| `calendar`     | The calendar component within the dropdown               |
+| `time-wrapper` | The wrapper for time input (when `with-time` is enabled) |
+| `time`         | The time input component (when `with-time` is enabled)   |
+
+## Custom inline styles
+
+The Input Date component supports custom inline styles through the `stl` attribute. This allows you to apply specific CSS styles to individual elements within the date picker.
+
+### Using simple string format
+
+Apply styles to the default element (button):
+
+<Ec project="kit" path="input_date.9" />
+
+### Using JSON object format
+
+<Ec project="kit" path="input_date.10" />
+
+Target specific elements with custom styles:
+
+### Using configuration script
+
+<Ec project="kit" path="input_date.11" />
+
+### Available stl targets
+
+The `stl` attribute supports the same targets as the `cls` attribute. See the [Available cls targets](#available-cls-targets) table above for a complete list of targetable elements.
+
+## Custom icons
+
+The Input Date component allows you to customize the calendar icon through the template system:
+
+<Snippet project="kit" component="input_date.custom_icons" />
+
+### Available icon keys
+
+| Key        | Description                           |
+| ---------- | ------------------------------------- |
+| `calendar` | Calendar icon displayed in the button |
 
 ## Attributes
 
 The following attributes are available for this component:
 
-| Name                     | Type    | Default    | Description                                                                                                               |
-| ------------------------ | ------- | ---------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `force-prevent-rerender` | Boolean | false      | Forcefully prevents component rerendering.                                                                                |
-| `weekday-abbr-length`    | String  | 3          | Customize the length of weekday abbreviations (e.g., Monday → Mon).                                                       |
-| `today`                  | Boolean | false      | Automatically sets today as the active date.                                                                              |
-| `jumpable`               | Boolean | false      | Allows user to select a month and type a year for the calendar to "jump" to a specific date.                              |
-| `starts-with`            | String  | 0 (Sunday) | Sets the starting day of the week. Either "0" (Sunday) or "1" (Monday).                                                   |
-| `disabled-dates`         | String  |            | A comma-separated list of dates to disable. Dates must be in the format YYYY-MM-DD.                                       |
-| `marked-dates`           | String  |            | A comma-separated list of dates to add an indicator. Dates must be in the format YYYY-MM-DD.                              |
-| `view-date`              | String  |            | Sets the initial view date of the calendar. Dates must be in the format YYYY-MM-DD.                                       |
-| `min`                    | String  |            | Sets the minimum date that can be selected. Date must be in the format YYYY-MM-DD.                                        |
-| `max`                    | String  |            | Sets the maximum date that can be selected. Date must be in the format YYYY-MM-DD.                                        |
-| `cls`                    | String  |            | Allows you to add custom CSS classes.                                                                                     |
-| `disabled`               | Boolean | false      | Disables all input fields, making the entire component read-only.                                                         |
-| `name`                   | String  |            | Defines the name of the input, allowing you to capture its value on your server.                                          |
-| `value`                  | String  |            | A valid date time in `YYYY-MM-DD` or `YYYY-MM-DDTHH:MM` format that will be prepopulated in the input field.              |
-| `i18n`                   | String  |            | Enables internationalization. Please see [Internationalization](#internationalization) for available options.             |
-| `icon`                   | String  |            | Sets a customized icon. If no icon is passed, it will default to a calendar icon.                                         |
-| `drop`                   | String  |            | Customize the dropping option for the dropdown. See [Drop](/docs/2.1/drop) component for more options.                    |
-| `with-time`              | Boolean | false      | Allows inputting of time.                                                                                                 |
-| `require-time`           | Boolean | false      | Requires time input. If user leaves it blank, it will prepopulate the current time.                                       |
-| `display-format`         | String  |            | Customize the display format of the date. See [Customize display format](#customize-display-format) for available tokens. |
+| Name                     | Type    | Default                                               | Description                                                                                                           |
+| ------------------------ | ------- | ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `today`                  | Boolean | false                                                 | Automatically sets today as the initial selected date.                                                                |
+| `jumpable`               | Boolean | false                                                 | Enables month dropdown and year input for quick date navigation in the calendar.                                      |
+| `starts-with`            | Number  | 0 (Sunday)                                            | Sets the starting day of the week. 0 for Sunday, 1 for Monday.                                                        |
+| `disabled-dates`         | String  |                                                       | Comma-separated list of dates to disable. Dates must be in format YYYY-MM-DD.                                         |
+| `marked-dates`           | String  |                                                       | Comma-separated list of dates to mark with indicator. Dates must be in format YYYY-MM-DD.                             |
+| `view-date`              | String  | Current date                                          | Sets the initial view date of the calendar. Must be in format YYYY-MM-DD.                                             |
+| `min`                    | String  |                                                       | Sets the minimum selectable date (inclusive). Must be in format YYYY-MM-DD.                                           |
+| `max`                    | String  |                                                       | Sets the maximum selectable date (exclusive). Must be in format YYYY-MM-DD.                                           |
+| `weekday-format`         | String  | short                                                 | Format for weekday labels: `long`, `short`, or `narrow`.                                                              |
+| `lang`                   | String  | en-us                                                 | Locale string for date formatting (e.g., "en-US", "fr-FR", "de-DE").                                                  |
+| `display-format`         | String  | MMMM DD, YYYY                                         | Display format for the selected date. See [Customize display format](#customize-display-format) for available tokens. |
+| `with-time`              | Boolean | false                                                 | Enables time selection alongside date selection.                                                                      |
+| `clock`                  | String  | 12h                                                   | Clock format for time input: `12h` or `24h`. Only used when `with-time` is enabled.                                   |
+| `require-time`           | Boolean | false                                                 | Makes time input required when `with-time` is enabled.                                                                |
+| `drop`                   | String  | mode: click; animation: uk-animation-slide-top-small; | Dropdown options. See [Drop](/docs/2.1/drop) component for more options.                                              |
+| `name`                   | String  |                                                       | Name attribute for the hidden input field, enabling form submission.                                                  |
+| `disabled`               | Boolean | false                                                 | Disables the entire component, preventing user interaction.                                                           |
+| `required`               | Boolean | false                                                 | Marks the input as required for form validation.                                                                      |
+| `placeholder`            | String  |                                                       | Custom placeholder text. Overrides default i18n placeholder.                                                          |
+| `value`                  | String  |                                                       | Pre-populated value in YYYY-MM-DD or YYYY-MM-DDTHH:MM format.                                                         |
+| `cls`                    | String  |                                                       | Custom CSS classes. Can be a simple string or JSON object for targeting specific elements.                            |
+| `stl`                    | String  |                                                       | Custom inline styles. Can be a simple string or JSON object for targeting specific elements.                          |
+| `i18n`                   | String  |                                                       | Internationalization strings as JSON object or via configuration script.                                              |
+| `force-prevent-rerender` | Boolean | false                                                 | Prevents component rerendering (useful for HTMX or SPA scenarios).                                                    |
 
 ## Events
 
-The Input Date component triggers the following events on elements with this component attached:
+The Input Date component triggers the following event:
 
-| Name                  | Description                                                                           |
-| --------------------- | ------------------------------------------------------------------------------------- |
-| `uk-input-date:input` | Fired after the value has changed, providing an opportunity to respond to user input. |
+| Name                   | Description                                                                         |
+| ---------------------- | ----------------------------------------------------------------------------------- |
+| `uk-input-date:change` | Fired when the date or time value changes. Event detail contains `{value: string}`. |

@@ -63,24 +63,122 @@ When loading Web Components, there may be a brief delay before the content is fu
 
 <Ec project="kit" path="input_time.3" />
 
+## Internationalization
+
+The Input Time component supports internationalization through multiple methods with the following priority order (highest to lowest):
+
+- **Component-level i18n** (via `i18n` attribute or script tag)
+- **Global component-specific namespace** (via `<script id="uk-i18n">`)
+- **Default values**
+
+### Using the i18n attribute
+
+<Snippet project="kit" component="input_time.i18n" />
+
+### Using a configuration script
+
+<Snippet project="kit" component="input_time.i18n_config" />
+
+### Using global i18n
+
+Place this in your document `<head>` or before any input-time components:
+
+<Ec project="kit" path="input_time.4" />
+
+### Available i18n options
+
+| Key                  | Default             | Description                             |
+| -------------------- | ------------------- | --------------------------------------- |
+| `am`                 | AM                  | Text for AM period (12-hour clock only) |
+| `pm`                 | PM                  | Text for PM period (12-hour clock only) |
+| `hour-label`         | Hour                | Aria-label for hour input field         |
+| `minute-label`       | Minute              | Aria-label for minute input field       |
+| `meridiem-label`     | AM/PM               | Aria-label for AM/PM toggle button      |
+| `time-label`         | Time                | Aria-label for the time input group     |
+| `hour-placeholder`   | HH                  | Placeholder text for hour input         |
+| `minute-placeholder` | MM                  | Placeholder text for minute input       |
+| `invalid-time`       | Invalid time format | Error message for invalid time format   |
+
+## Custom classes
+
+The Input Time component supports custom CSS classes through the `cls` attribute. This allows you to style specific elements within the time input without modifying the component's internal structure.
+
+### Using simple string format
+
+Apply a class to the default element (container):
+
+<Ec project="kit" path="input_time.5" />
+
+### Using JSON object format
+
+Target specific elements within the input time:
+
+<Ec project="kit" path="input_time.6" />
+
+### Using configuration script
+
+<Ec project="kit" path="input_time.7" />
+
+### Available cls targets
+
+| Target            | Description                                                 |
+| ----------------- | ----------------------------------------------------------- |
+| `container`       | The main wrapper container for the entire component         |
+| `input`           | Base class applied to both hour and minute inputs           |
+| `hour-input`      | The hour input field (overrides `input` for hour field)     |
+| `minute-input`    | The minute input field (overrides `input` for minute field) |
+| `separator`       | The colon separator between hour and minute                 |
+| `meridiem-button` | The AM/PM toggle button (12-hour clock only)                |
+| `button`          | Base button class (fallback for meridiem-button)            |
+
+## Custom inline styles
+
+The Input Time component supports custom inline styles through the `stl` attribute. This allows you to apply specific CSS styles to individual elements within the time input.
+
+### Using simple string format
+
+Apply styles to the default element (container):
+
+<Ec project="kit" path="input_time.8" />
+
+### Using JSON object format
+
+Target specific elements with custom styles:
+
+<Ec project="kit" path="input_time.9" />
+
+### Using configuration script
+
+<Ec project="kit" path="input_time.10" />
+
+### Available stl targets
+
+The `stl` attribute supports the same targets as the `cls` attribute. See the [Available cls targets](#available-cls-targets) table above for a complete list of targetable elements.
+
 ## Attributes
 
 The following attributes are available for this component:
 
-| Name                     | Type    | Default | Description                                                                      |
-| ------------------------ | ------- | ------- | -------------------------------------------------------------------------------- |
-| `force-prevent-rerender` | Boolean | false   | Forcefully prevents component rerendering.                                       |
-| `autofocus`              | Boolean | false   | Automatically focuses on the first input field when the component is rendered.   |
-| `cls`                    | String  |         | Allows you to add custom CSS classes.                                            |
-| `disabled`               | Boolean | false   | Disables all input fields, making the entire component read-only.                |
-| `name`                   | String  |         | Defines the name of the input, allowing you to capture its value on your server. |
-| `now`                    | Boolean | false   | Automatically set the current time as the default value.                         |
-| `value`                  | String  |         | A time in 24-hour format that will be prepopulated in the input field.           |
+| Name                     | Type    | Default | Description                                                                                  |
+| ------------------------ | ------- | ------- | -------------------------------------------------------------------------------------------- |
+| `autofocus`              | Boolean | false   | Automatically focuses on the hour input field when the component is rendered.                |
+| `now`                    | Boolean | false   | Automatically sets the current time as the default value.                                    |
+| `clock`                  | String  | 12h     | Clock format: `12h` (with AM/PM) or `24h` (without AM/PM).                                   |
+| `min`                    | String  |         | Minimum allowed time in HH:MM format.                                                        |
+| `max`                    | String  |         | Maximum allowed time in HH:MM format.                                                        |
+| `name`                   | String  |         | Name attribute for the hidden input field, enabling form submission.                         |
+| `disabled`               | Boolean | false   | Disables all input fields, making the entire component read-only.                            |
+| `required`               | Boolean | false   | Marks the time input as required for form validation.                                        |
+| `value`                  | String  |         | Pre-populated time value in 24-hour format (HH:MM).                                          |
+| `cls`                    | String  |         | Custom CSS classes. Can be a simple string or JSON object for targeting specific elements.   |
+| `stl`                    | String  |         | Custom inline styles. Can be a simple string or JSON object for targeting specific elements. |
+| `i18n`                   | String  |         | Internationalization strings as JSON object or via configuration script.                     |
+| `force-prevent-rerender` | Boolean | false   | Prevents component rerendering (useful for HTMX or SPA scenarios).                           |
 
 ## Events
 
-The Input Time component triggers the following events on elements with this component attached:
+The Input Time component triggers the following event:
 
-| Name                  | Description                                                                           |
-| --------------------- | ------------------------------------------------------------------------------------- |
-| `uk-input-time:input` | Fired after the value has changed, providing an opportunity to respond to user input. |
+| Name                  | Description                                                                                   |
+| --------------------- | --------------------------------------------------------------------------------------------- |
+| `uk-input-time:input` | Fired when the time value changes. Event detail contains `{value: string}` in 24-hour format. |
