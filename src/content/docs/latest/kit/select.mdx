@@ -15,7 +15,7 @@ import Snippet from "snippets/component.astro";
 
 ## Usage
 
-The custom select component is a web component built from scratch to enhance the native `<select>` tag. To get started, simply use the `<uk-select>` markup in your HTML code with one `<select data-nf="data-source" hidden></select>` tag as options reference.
+The custom select component is a web component built from scratch to enhance the native `<select>` tag. To get started, simply use the `<uk-select>` markup in your HTML code with one `<select data-fn="data-source" hidden></select>` tag as options reference.
 
 <Snippet project="kit" component="select.basic" />
 
@@ -89,11 +89,11 @@ Similar to the native `<select>` tag, you can disable specific options in the cu
 
 ## Reactivity
 
-By default, the component is not reactive. This is a deliberate design choice, as using [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) can be computationally expensive. As a result, changes to the referenced `<select data-nf="data-source" hidden>` element will not trigger an update.
+By default, the component is not reactive. This is a deliberate design choice, as using [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) can be computationally expensive. As a result, changes to the referenced `<select data-fn="data-source" hidden>` element will not trigger an update.
 
 To enable reactivity, simply add the `data-reactive` attribute to the `<select data-fn="data-source" hidden>` tag. This will use [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) under the hood to monitor the element for changes.
 
-This feature is particularly useful when using libraries like HTMX, where you may need to dynamically update the options in the `<select data-nf="data-source" hidden>` element based on user interactions, such as searching for data or fetching new options from the server.
+This feature is particularly useful when using libraries like HTMX, where you may need to dynamically update the options in the `<select data-fn="data-source" hidden>` element based on user interactions, such as searching for data or fetching new options from the server.
 
 <Ec project="kit" path="select.1" />
 
