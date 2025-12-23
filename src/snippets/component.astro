@@ -36,7 +36,7 @@ try {
 }
 ---
 
-<div class="snippet mt" style="--mt: 10">
+<div class="snippet mt relative" style="--mt: 10">
   <ul class="uk-tab" data-uk-tab="swiping: false">
     <li class="uk-active">
       <a href="#" style="--uk-tab-item-padding: 0.5rem 1rem 0.75rem 1rem"
@@ -71,4 +71,27 @@ try {
       </div>
     </li>
   </ul>
+
+  <div
+    class="uk-button-group absolute [top] right display-hidden md:display-flex"
+    style="--top: 9px; --right: 0"
+  >
+    <button
+      class="uk-button uk-button-default uk-button-xsmall"
+      data-uk-tooltip="Copy Frankenstyle"
+      x-data
+      x-on:click={`copyPreview('${route}/clipboard')`}
+    >
+      <uk-icon class="size" style="--size: 4" icon="copy"></uk-icon>
+      FS
+    </button>
+    <button
+      class="uk-button uk-button-default uk-button-xsmall"
+      data-uk-tooltip="Copy Tailwind CSS"
+      disabled
+    >
+      <uk-icon class="size" style="--size: 4" icon="copy"></uk-icon>
+      TW
+    </button>
+  </div>
 </div>

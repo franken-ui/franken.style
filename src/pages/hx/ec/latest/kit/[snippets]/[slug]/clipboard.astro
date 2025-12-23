@@ -1,0 +1,15 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getSnippetPaths } from "data/snippets/base";
+
+export const partial = true;
+export const getStaticPaths = (async () =>
+  getSnippetPaths({
+    version: "latest",
+    project: "kit",
+  })) satisfies GetStaticPaths;
+
+const { content } = Astro.props;
+---
+
+<Fragment set:html={content} />
