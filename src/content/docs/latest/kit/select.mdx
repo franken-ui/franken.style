@@ -71,6 +71,14 @@ There are two ways to prepopulate values from the `<uk-select>` component. The s
 
 <Snippet project="kit" component="select.prepopulated" />
 
+In multiple mode:
+
+- Clicking an option toggles selection (doesn't close dropdown)
+- Selected options show checkmarks
+- Button text shows "{'{n}'} options selected" when 2+ options are selected
+- Hidden inputs are created with `name[]` for form submission
+- Options have `aria-multiselectable="true"`
+
 ### Manually setting value
 
 Alternatively, if setting `selected` on individual `<option>` elements is not feasible, you can use the `value` attribute on the `<uk-select>` tag to prepopulate it with default values. This attribute accepts a comma-separated list of values, allowing you to set multiple defaults, such as `value="Mercedes-Benz,Bentley,Porsche,Lamborghini"`.
@@ -103,6 +111,14 @@ To add a search box, simply add the `searchable` attribute. This will add an inp
 
 <Snippet project="kit" component="select.searchable" />
 
+Search features:
+
+- Case-insensitive filtering
+- Real-time results as you type
+- Searches through option keywords (automatically generated from text)
+- Emits `uk-select:search` event on search term change
+- Supports keyboard navigation through filtered results
+
 ### Custom keywords
 
 Sometimes, there are items that have related keywords that may be slightly off or awkward when included as anchor tags. For these use cases, we can leverage the `data-keywords` attribute.
@@ -119,13 +135,116 @@ To prevent user input, add the `disabled` attribute to the `<uk-select>` element
 
 ## Icon
 
-[Todo]
+This component allows you to customize icons through the template system:
+
+<Snippet project="kit" component="select.icon" />
 
 ## Options icon
 
 To add icon to options, just add `data-icon` attribute with the name of the icon to your `<option>` tags.
 
 <Snippet project="kit" component="select.options_icon" />
+
+## Internationalization
+
+The Select component supports internationalization through multiple methods with the following priority order (highest to lowest):
+
+- **Component-level i18n** (via `i18n` attribute or script tag)
+- **Global component-specific namespace** (via `<script id="uk-i18n">`)
+- **Default values**
+
+### Using the i18n attribute
+
+<Snippet project="kit" component="select.i18n" />
+
+### Using a configuration script
+
+<Snippet project="kit" component="select.i18n_config" />
+
+### Using global i18n
+
+Place this in your document `<head>` or before any select components:
+
+<Ec project="kit" path="select.3" />
+
+### Available i18n options
+
+| Key                  | Default                  | Description                                                                  |
+| -------------------- | ------------------------ | ---------------------------------------------------------------------------- |
+| `search-placeholder` | Search                   | Placeholder text for search input field                                      |
+| `selection-count`    | {'{n}'} options selected | Text shown when multiple options are selected (supports {'{n}'} placeholder) |
+| `insert`             | Insert                   | Button text for inserting custom options                                     |
+| `list-label`         | Options                  | ARIA label for the listbox                                                   |
+| `button-label`       | Select an option         | ARIA label and default text for the select button                            |
+
+## Custom classes
+
+The Select component supports custom CSS classes through the `cls` attribute. This allows you to style specific elements within the select without modifying the component's internal structure.
+
+### Using simple string format
+
+Apply a class to the default element (button):
+
+<Ec project="kit" path="select.4" />
+
+### Using JSON object format
+
+Target specific elements within the select:
+
+<Ec project="kit" path="select.5" />
+
+### Using configuration script
+
+<Ec project="kit" path="select.6" />
+
+### Available cls targets
+
+| Target          | Description                                                     |
+| --------------- | --------------------------------------------------------------- |
+| `host-inner`    | The main wrapper container for the entire component             |
+| `button`        | The clickable button that opens the dropdown                    |
+| `button-text`   | The text span inside the button showing selected option(s)      |
+| `icon`          | The icon element inside the button (when icon attribute is set) |
+| `dropdown`      | The dropdown container holding the list and search              |
+| `list`          | The listbox (ul) containing all options                         |
+| `item`          | Individual list item (li) wrapper                               |
+| `item-active`   | The active list item (li)                                       |
+| `item-disabled` | Class for disabled list item (li)                               |
+| `item-header`   | Group header for grouped options                                |
+| `item-link`     | The clickable button/link inside each item                      |
+| `item-wrapper`  | Wrapper for item content (icon + text)                          |
+| `item-icon`     | Icon element for options with data-icon                         |
+| `item-text`     | Text label for the option                                       |
+| `item-check`    | Checkmark indicator for selected options                        |
+| `item-subtitle` | Description/subtitle text for options with data-description     |
+| `search`        | Search input wrapper (when searchable is enabled)               |
+| `search-input`  | The actual search input field                                   |
+| `search-icon`   | Icon displayed in search input                                  |
+| `divider`       | Class for the divider element                                   |
+
+## Custom inline styles
+
+The Select component supports custom inline styles through the `stl` attribute. This allows you to apply specific CSS styles to individual elements within the select.
+
+### Using simple string format
+
+Apply styles to the default element (button):
+
+<Ec project="kit" path="select.7" />
+
+### Using JSON object format
+
+Target specific elements with custom styles:
+
+<Ec project="kit" path="select.8" />
+
+### Using configuration script
+
+<Ec project="kit" path="select.9" />
+
+### Available stl targets
+
+The `stl` attribute supports the same targets as the `cls` attribute. See the [Available cls targets](#available-cls-targets) table above for a complete list of targetable elements.
 
 ## Error state
 
@@ -139,4 +258,35 @@ When loading Web Components, a brief delay may cause a flash of unstyled content
 
 <Ec project="kit" path="select.2" />
 
+## Attributes
 
+The following attributes are available for this component:
+
+| Name                     | Type    | Default                                       | Description                                                                      |
+| ------------------------ | ------- | --------------------------------------------- | -------------------------------------------------------------------------------- |
+| `drop`                   | String  | mode: click; animation: uk-anmt-slide-top-sm; | Dropdown positioning options (UIkit Drop configuration)                          |
+| `searchable`             | Boolean | false                                         | Enables search functionality to filter options                                   |
+| `insertable`             | Boolean | false                                         | Allows inserting custom options (auto-enables searchable)                        |
+| `send-headers`           | String  |                                               | JSON object of HTTP headers for server validation requests                       |
+| `send-url`               | String  |                                               | Server endpoint URL for validating inserted options                              |
+| `send-method`            | String  | POST                                          | HTTP method for server requests                                                  |
+| `multiple`               | Boolean | false                                         | Enables multi-select mode                                                        |
+| `icon`                   | String  |                                               | Custom icon/text displayed in the button                                         |
+| `name`                   | String  |                                               | Name attribute for hidden input(s), enabling form submission                     |
+| `disabled`               | Boolean | false                                         | Disables the entire component, preventing user interaction                       |
+| `required`               | Boolean | false                                         | Marks the select as required for form validation                                 |
+| `placeholder`            | String  |                                               | Custom placeholder text when no option is selected                               |
+| `value`                  | String  |                                               | Pre-selected value(s). Use comma-separated for multiple selections               |
+| `cls`                    | String  |                                               | Custom CSS classes. Can be simple string or JSON object for targeting elements   |
+| `stl`                    | String  |                                               | Custom inline styles. Can be simple string or JSON object for targeting elements |
+| `i18n`                   | String  |                                               | Internationalization strings as JSON object or via configuration script          |
+| `force-prevent-rerender` | Boolean | false                                         | Prevents component rerendering (useful for HTMX or SPA scenarios)                |
+
+## Events
+
+The Select component triggers the following events:
+
+| Name               | Description                                                                                               |
+| ------------------ | --------------------------------------------------------------------------------------------------------- |
+| `uk-select:input`  | Fired when the selected value(s) change. Event detail contains `{value: string \| string[]}`.             |
+| `uk-select:search` | Fired when the search term changes (when searchable is enabled). Event detail contains `{value: string}`. |

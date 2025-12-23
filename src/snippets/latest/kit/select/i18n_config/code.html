@@ -1,0 +1,23 @@
+<div class="h" style="--h: 10">
+  <uk-select
+    cls="button: uk-input-fake justify-between w-full; dropdown: w-full"
+    searchable
+    multiple
+  >
+    <script type="application/json" data-fn="config" hidden>
+      {
+        "i18n": {
+          "search-placeholder": "Rechercher",
+          "selection-count": "{n} options sélectionnées",
+          "insert": "Insérer",
+          "list-label": "Options",
+          "button-label": "Sélectionner une option"
+        }
+      }
+    </script>
+    <select data-fn="data-source" hidden>
+      <option value="apple">Pomme</option>
+      <option value="banana">Banane</option>
+    </select>
+  </uk-select>
+</div>

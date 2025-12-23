@@ -1,17 +1,12 @@
-<div class="h-10">
+<div class="h" style="--h: 10">
   <uk-select
     cls="button: uk-input-fake justify-between w-full; dropdown: w-full"
-    i18n="search-placeholder: 検索; selection-count: :n: つのオプションが選択されました"
-    multiple
-    placeholder="オプションを選択"
     searchable
+    i18n="search-placeholder: Buscar; selection-count: {n} opciones seleccionadas; insert: Insertar; list-label: Opciones; button-label: Seleccionar una opción"
   >
     <select data-fn="data-source" hidden>
-      <option value="option1">オプション 1</option>
-      <option value="option2">オプション 2</option>
-      <option value="option3">オプション 3</option>
-      <option value="option4">オプション 4</option>
-      <option value="option5">オプション 5</option>
+      <option value="apple">Manzana</option>
+      <option value="banana">Plátano</option>
     </select>
   </uk-select>
 </div>
