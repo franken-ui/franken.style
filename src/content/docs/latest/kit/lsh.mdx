@@ -1,0 +1,156 @@
+---
+group: components
+project: kit
+text: LSH
+title: Local Storage Head (Theme Switcher)
+lead: Persist theme and style preferences to localStorage and sync with document classes.
+meta:
+  description: A theme switcher component that persists selections to localStorage and syncs with document element classes.
+webc: true
+---
+
+import Ec from "snippets/ec.astro";
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+The LSH (Local Storage Head) component provides an easy way to manage theme switching and style preferences. It stores selections in localStorage under the key `__FRANKEN__` and applies them as classes to the `<html>` element. Multiple instances automatically stay in sync.
+
+To implement LSH, you'll need to make some modifications to your HTML code to allow users to change their preferences.
+
+**1.** Start by setting a default theme and mode in the `<head>` tag of your HTML by checking the user's preference:
+
+<Ec project="kit" path="lsh.1" />
+
+This will first check if a user previously set the theme color preference manually using local storage, and as a fallback, it will either set dark or light mode based on the browser's color scheme preference.
+
+<span class="uk-label uk-label-primary">Note</span> You can replace
+`uk-[group]-[value]` with any of anything you want as the default.
+
+**2\.** If you are using [Frankenstyle](/docs/latest/style/introduction), ensure that your `<body>` tag includes the classes `bg` and `color` to apply the proper background and text colors that automatically adapt to the currently set theme.
+
+<Ec project="kit" path="lsh.2" />
+
+<span class="uk-label uk-label-primary">Note</span> If you are using a different
+CSS framework, such as Tailwind CSS, ensure that you implement your own
+background and foreground colors.
+
+**3\.** You can now use any instance of `<uk-lsh>` component anywhere in your HTML.
+
+## Theme toggle
+
+Enable toggle mode to create a button that switches between light and dark modes:
+
+<Snippet project="kit" component="lsh.toggle" />
+
+When `toggle` is enabled with `group="mode"`, the button automatically switches between light and dark modes, ignoring the `value` attribute.
+
+## Configuration groups
+
+The component supports multiple configuration groups beyond just light/dark mode:
+
+### Mode group (special behavior)
+
+The `mode` group has special handling:
+
+- `value="light"` removes the `dark` class from `<html>`
+- `value="dark"` adds the `dark` class to `<html>`
+
+<Ec project="kit" path="lsh.3" />
+
+### Custom groups
+
+Other groups apply class names directly to the `<html>` element:
+
+<Ec project="kit" path="lsh.4" />
+
+When switching within a group, the component automatically removes the previous class with **the same** prefix.
+
+## Prevent auto-update
+
+By default, all instances sync when one changes. Use `prevent-autoupdate` to create standalone buttons:
+
+<Ec project="kit" path="lsh.5" />
+
+## Programmatic control
+
+Listen to events to respond to theme changes:
+
+<Ec project="kit" path="lsh.6" />
+
+## Local storage structure
+
+The component stores configuration in localStorage under the key `__FRANKEN__`:
+
+<Ec project="kit" path="lsh.7" />
+
+## Internationalization
+
+The LSH component supports internationalization through multiple methods with the following priority order (highest to lowest):
+
+- **Component-level i18n** (via `i18n` attribute or script tag)
+- **Global component-specific namespace** (via `<script id="uk-i18n">`)
+- **Default values**
+
+### Using the i18n attribute
+
+<Ec project="kit" path="lsh.8" />
+
+### Using a configuration script
+
+<Ec project="kit" path="lsh.9" />
+
+### Available i18n options
+
+| Key               | Default              | Description                                            |
+| ----------------- | -------------------- | ------------------------------------------------------ |
+| `aria-label`      | Toggle theme         | ARIA label for the button                              |
+| `active-label`    | Active               | Label appended to ARIA when button is active           |
+| `switch-to-dark`  | Switch to dark mode  | ARIA description when switching to dark (toggle mode)  |
+| `switch-to-light` | Switch to light mode | ARIA description when switching to light (toggle mode) |
+
+## Custom classes
+
+The LSH component supports custom CSS classes through the `cls` attribute.
+
+### Using simple string format
+
+<Ec project="kit" path="lsh.10" />
+
+### Using JSON object format
+
+<Ec project="kit" path="lsh.11" />
+
+### Available cls target
+
+| Target   | Description        |
+| -------- | ------------------ |
+| `button` | The button element |
+
+## Custom inline styles
+
+The LSH component supports custom inline styles through the `stl` attribute.
+
+### Example
+
+<Ec project="kit" path="lsh.12" />
+
+## Attributes
+
+| Name                     | Type    | Default | Description                                                             |
+| ------------------------ | ------- | ------- | ----------------------------------------------------------------------- |
+| `value`                  | String  |         | The specific theme value to apply (e.g., "dark", "uk-theme-blue")       |
+| `group`                  | String  |         | Configuration group (e.g., "mode", "color", "font")                     |
+| `toggle`                 | Boolean | false   | Enables toggle behavior for mode switching (ignores value attribute)    |
+| `prevent-autoupdate`     | Boolean | false   | Prevents this instance from syncing with other instances                |
+| `cls`                    | String  |         | Custom CSS classes for the button                                       |
+| `stl`                    | String  |         | Custom inline styles for the button                                     |
+| `i18n`                   | String  |         | Internationalization strings as JSON object or via configuration script |
+| `force-prevent-rerender` | Boolean | false   | Prevents component rerendering (useful for HTMX or SPA scenarios)       |
+
+## Events
+
+| Name                   | Description                                                                                            |
+| ---------------------- | ------------------------------------------------------------------------------------------------------ |
+| `uk-lsh:before-change` | Fired before theme change (cancelable). Event detail contains `{group, value, previousValue, config}`. |
+| `uk-lsh:change`        | Fired after theme change. Event detail contains `{group, value, previousValue, config}`.               |

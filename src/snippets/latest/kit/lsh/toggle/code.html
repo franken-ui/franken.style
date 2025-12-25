@@ -1,0 +1,70 @@
+<style>
+  @layer utilities {
+    .dark\:display-hidden:where(.dark, .dark *) {
+      display: none;
+    }
+
+    .dark\:display-inline-block:where(.dark, .dark *) {
+      display: inline-block;
+    }
+
+    .dark-slide-icon {
+      transition:
+        transform 0.3s ease,
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+      overflow: hidden;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .dark-slide-sun {
+      transform: translate(-50%, -100%);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .dark-slide-moon {
+      transform: translate(-50%, 0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .dark\:dark-slide-moon:where(.dark, .dark *) {
+      transform: translate(-50%, 100%);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .dark\:dark-slide-sun:where(.dark, .dark *) {
+      transform: translate(-50%, 0);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+  }
+</style>
+
+<uk-lsh
+  class="size"
+  style="--size: 8"
+  toggle
+  group="mode"
+  cls="uk-button uk-button-icon uk-button-secondary uk-button-small relative"
+>
+  <template data-fn="template">
+    <uk-icon
+      class="dark-slide-icon dark-slide-moon dark:dark-slide-moon"
+      icon="moon"
+    >
+    </uk-icon>
+    <uk-icon
+      class="dark-slide-icon dark-slide-sun dark:dark-slide-sun"
+      icon="sun"
+    >
+    </uk-icon>
+  </template>
+</uk-lsh>

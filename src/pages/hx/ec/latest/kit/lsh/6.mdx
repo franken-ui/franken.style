@@ -1,0 +1,28 @@
+export const partial = true;
+
+```html
+<uk-lsh id="theme-toggle" toggle group="mode">
+  <template data-fn="template">
+    <!-- -->
+  </template>
+</uk-lsh>
+
+<script>
+  const toggle = document.getElementById("theme-toggle");
+
+  // Before change (cancelable)
+  toggle.addEventListener("uk-lsh:before-change", (e) => {
+    console.log("About to change:", e.detail);
+    // e.preventDefault(); // Cancel the change
+  });
+
+  // After change
+  toggle.addEventListener("uk-lsh:change", (e) => {
+    console.log("Changed:", e.detail);
+    // e.detail.group - The configuration group
+    // e.detail.value - The new value
+    // e.detail.previousValue - The old value
+    // e.detail.config - Complete configuration object
+  });
+</script>
+```
