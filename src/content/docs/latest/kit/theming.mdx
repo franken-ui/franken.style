@@ -1,0 +1,52 @@
+---
+group: getting-started
+project: kit
+order: 5
+text: Theming
+title: Theming
+meta:
+  description: Using CSS Variables or Tailwind CSS for theming.
+---
+import Ec from 'snippets/ec.astro';
+
+FrankenstyleKit uses a simple background and foreground convention for colors. Take a look at the following CSS variables:
+
+<Ec project="kit" path="theming.1" />
+
+The background color of the following component will be `oklch(27.4% 0.006 286.033)` and the foreground color will be `oklch(98.5% 0 0)`.
+
+<Ec project="kit" path="theming.2" />
+
+## List of variables
+
+Here's the list of variables available for customization:
+
+<Ec project="kit" path="theming.3" />
+
+## Adding new colors
+
+To add new colors, simply add them to your main CSS file.
+
+<Ec project="kit" path="theming.22" />
+
+You can now use it via utility class in your components.
+
+<Ec project="kit" path="theming.16" />
+
+## Custom palette
+
+**1\.** Start by going to [https://tailwindcss.com/docs/colors](https://tailwindcss.com/docs/colors) and pick your desired color. Use that color to assign values to the `--uk-primary`, `--uk-primary-f`, and `--uk-focus` tokens. These tokens represent your main theme color, its contrasting foreground color, and the focus color. 
+
+**2\.** Use the CSS snippet below as your starting point and replace the * with your theme name (e.g. indigo, cyan, fuchsia, etc.). You only need to update the values for `--uk-primary`, `--uk-primary-f`, and `--uk-focus` for both light and dark modes, but you're free to customize everything else if needed.
+
+<Ec project="kit" path="theming.23" />
+
+## Setting the default palette
+
+To set your newly added palette as the default, simply update the script in your `<head>` tag to reference the new theme name, like so:
+
+<Ec project="kit" path="theming.21" />
+
+## Adding to LSH
+
+To register your newly added palette with the [LSH](/docs/latest/kit/lsh#custom-groups) component, please refer to the corresponding documentation or guide for step-by-step instructions on how to integrate it.
