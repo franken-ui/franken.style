@@ -11,8 +11,15 @@ export const partial = true;
   --uk-custom-f: oklch(0.99 0.02 95);
 }
 
-@theme {
+/* For Frankenstyle or vanilla CSS */
+@layer theme {
+  --color-custom: var(--uk-custom);
+  --color-custom-f: var(--uk-custom-f);
+}
+
+/* If you are using Tailwind CSS, use this instead */
+/* @theme {
   --color-custom: var(--uk-custom);
   --color-custom-foreground: var(--uk-custom-f);
-}
+} */
 ```

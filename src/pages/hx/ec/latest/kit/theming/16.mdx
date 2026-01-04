@@ -1,9 +1,12 @@
 export const partial = true;
 
 ```html
-<!-- Frankenstyle -->
+<!-- Frankenstyle (direct) -->
 <div class="bg color" style="--bg: var(--uk-custom); --color: var(--uk-custom-f);"></div>
 
+<!-- Frankenstyle (proxy) -->
+<div class="bg color" style="--bg: var(--color-custom); --color: var(--color-custom-f);"></div>
+
 <!-- Tailwind CSS -->
- <div class="bg-custom text-custom-f"></div>
+<div class="bg-custom text-custom-f"></div>
 ```
