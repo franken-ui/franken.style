@@ -14,7 +14,7 @@ import Snippet from "snippets/component.astro";
 
 ## Usage
 
-The LSH (Local Storage Head) component provides an easy way to manage theme switching and style preferences. It stores selections in localStorage under the key `__FRANKEN__` and applies them as classes to the `<html>` element. Multiple instances automatically stay in sync.
+The LSH (Local Storage Head) component provides an easy way to manage theme switching and style preferences. It stores selections in `localStorage` under the key `__FRANKEN__` and applies them as classes to the `<html>` element. Multiple instances automatically stay in sync.
 
 To implement LSH, you'll need to make some modifications to your HTML code to allow users to change their preferences.
 
@@ -22,7 +22,7 @@ To implement LSH, you'll need to make some modifications to your HTML code to al
 
 <Ec project="kit" path="lsh.1" />
 
-This will first check if a user previously set the theme color preference manually using local storage, and as a fallback, it will either set dark or light mode based on the browser's color scheme preference.
+This will first check if a user previously set the theme color preference manually using `localStorage`, and as a fallback, it will either set dark or light mode based on the browser's color scheme preference.
 
 <span class="uk-label uk-label-primary">Note</span> You can replace `uk-[group]-[value]` with anything you want as the default.
 

@@ -1,0 +1,64 @@
+---
+group: components
+project: kit
+text: Avatar
+title: Avatar
+lead: Easily create avatar to show a visual representation of a user profile using an image element or SVG object based on multiple styles and sizes.
+meta:
+  description: Easily create avatar to show a visual representation of a user profile using an image element or SVG object based on multiple styles and sizes.
+---
+
+import Ec from "snippets/ec.astro";
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+To get started with the Avatar component, simply wrap your image directly inside the `.uk-avatar` class or `.uk-avatar-text` if it's just a text or initials.
+
+<Snippet project="kit" component="avatar.basic" />
+
+## Bordered
+
+To add a border around your avatar, include the `.uk-avatar-bordered` class along with any other modifiers you like.
+
+<Snippet project="kit" component="avatar.bordered" />
+
+## Dot indicator
+
+To indicate status or notifications, you can add a small dot using the `.uk-avatar-dot` class. Or, choose one of the following classes to reposition the dot indicator:
+
+- `.uk-avatar-dot-top`
+- `.uk-avatar-dot-top-left`
+- `.uk-avatar-dot-top-right`
+- `.uk-avatar-dot-right`
+- `.uk-avatar-dot-bottom`
+- `.uk-avatar-dot-bottom-left`
+- `.uk-avatar-dot-bottom-right`
+- `.uk-avatar-dot-left`
+
+<Snippet project="kit" component="avatar.dot_indicator" />
+
+### Style modifiers
+
+There are several style modifiers available. Just add one of the following classes to apply a different look.
+
+- `.uk-avatar-dot-danger`
+- `.uk-avatar-dot-warning`
+- `.uk-avatar-dot-success`
+- `.uk-avatar-dot-info`
+- `.uk-avatar-dot-muted`
+
+
+<Snippet project="kit" component="avatar.style" />
+
+### Customizing indicator size
+
+You can also customize the size of indicator if you want.
+
+<Snippet project="kit" component="avatar.dot_size" />
+
+## Stacked
+
+Stack multiple avatars together to represent a group or team. Use flex utilities and negative spacing to achieve the overlapping effect.
+
+<Snippet project="kit" component="avatar.stacked" />

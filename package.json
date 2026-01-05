@@ -12,7 +12,7 @@
     "@astrojs/mdx": "^4.3.12",
     "astro": "^5.16.3",
     "astro-expressive-code": "^0.41.3",
-    "frankenstyle": "^0.1.0-next.10",
+    "frankenstyle": "^0.1.0-next.12",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "unist-util-visit": "^5.0.0"
