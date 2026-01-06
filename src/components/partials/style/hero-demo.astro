@@ -1,0 +1,234 @@
+<style>
+  @keyframes blink {
+    0%,
+    50% {
+      opacity: 1;
+    }
+    51%,
+    100% {
+      opacity: 0;
+    }
+  }
+</style>
+
+<div class="flex-1" aria-hidden="true" tabindex="-1">
+  <div
+    class="bg border/o border-w rounded [box-shadow] dark:[box-shadow] overflow-hidden"
+    style="
+            --bg: var(--uk-card);
+            --border: var(--uk-border);
+            --border-o: var(--uk-border-o);
+            --border-w: 1px;
+            --rounded: 16px;
+            --box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.08);
+            --dark-box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.4);
+            "
+  >
+    <div
+      class="display-flex items-center gap-x border-b/o border-b-w px py"
+      style="--gap-x: 2; --border-b: var(--uk-border); --border-b-o: var(--uk-border-o); --border-b-w: 1px; --px: 4; --py: 3.5"
+    >
+      <div class="display-flex gap-x" style="--gap-x: 1.5">
+        <span
+          class="w h rounded-full bg"
+          style="--w: 2; --h: 2; --bg: var(--uk-danger)"></span>
+        <span
+          class="w h rounded-full bg"
+          style="--w: 2; --h: 2; --bg: var(--uk-warning)"></span>
+        <span
+          class="w h rounded-full bg"
+          style="--w: 2; --h: 2; --bg: var(--uk-success)"></span>
+      </div>
+      <span
+        class="flex-1 text-center text-sm color"
+        style="--color: var(--uk-muted-f)"
+      >
+        index.html
+      </span>
+    </div>
+    <div
+      class="p font-family text-sm"
+      id="hero-demo-animation"
+      data-fs-ignore
+      style="--p: 5; --font-family: var(--font-geist-mono)"
+    >
+      <div class="color invisible" style="--color: var(--color-gray-400)">
+        &lt;!-- Value-driven utilities --&gt;
+      </div>
+
+      <div class="color invisible" style="--color: var(--color-purple-500)">
+        &lt;div
+      </div>
+
+      <div class="">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="color" style="--color: var(--uk-info)">class</span><span
+          >=</span
+        ><span class="color" style="--color: var(--uk-success)"
+          >&quot;p sm:p md:p&quot;</span
+        >
+      </div>
+
+      <div class="">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="color" style="--color: var(--uk-info)">style</span><span
+          >=</span
+        ><span class="color" style="--color: var(--uk-success)"
+          >&quot;--p: 4; --sm-p: 6; --md-p: 8&quot;</span
+        >
+      </div>
+      <div class="color invisible" style="--color: var(--color-purple-500)">
+        &gt;
+      </div>
+
+      <div class="">&nbsp;&nbsp;&nbsp;&nbsp;Fully responsive padding</div>
+      <div class="color invisible" style="--color: var(--color-purple-500)">
+        &lt;/div&gt;
+      </div>
+
+      <div class="mt color" style="--mt: 12; --color: var(--color-gray-400)">
+        &lt;!-- Add hover and focus states with the data-fs attribute --&gt;
+      </div>
+
+      <div class="color invisible" style="--color: var(--color-purple-500)">
+        &lt;button
+      </div>
+
+      <div class="">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="color" style="--color: var(--uk-info)">class</span><span
+          >=</span
+        ><span class="color" style="--color: var(--uk-success)"
+          >&quot;bg bg:hover px py rounded-md&quot;</span
+        >
+      </div>
+
+      <div class="">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="color" style="--color: var(--uk-info)">style</span><span
+          >=</span
+        ><span class="color" style="--color: var(--uk-success)">&quot;</span>
+      </div>
+      <div class="">
+        <span class="color" style="--color: var(--uk-success)"
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--bg:
+          var(--uk-primary);</span
+        >
+      </div>
+      <div class="">
+        <span class="color" style="--color: var(--uk-success)"
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--bg-hover:
+          oklch(50% 0.245 262.881);</span
+        >
+      </div>
+      <div class="">
+        <span class="color" style="--color: var(--uk-success)"
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--px:
+          5;</span
+        >
+      </div>
+      <div class="">
+        <span class="color" style="--color: var(--uk-success)"
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--py:
+          2.5;</span
+        >
+      </div>
+      <div class="">
+        <span class="color" style="--color: var(--uk-success)"
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;</span
+        >
+      </div>
+      <div class="">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="color" style="--color: var(--uk-info)"> data-fs </span>
+      </div>
+
+      <div class="color invisible" style="--color: var(--color-purple-500)">
+        &gt;
+      </div>
+
+      <div class="">&nbsp;&nbsp;&nbsp;&nbsp;Hover me</div>
+      <div class="color invisible" style="--color: var(--color-purple-500)">
+        &lt;/button&gt;
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  const codeContainer = document.getElementById("hero-demo-animation");
+  const lines = Array.from(codeContainer.children);
+
+  // Remove invisible class and hide with opacity
+  lines.forEach((line) => {
+    line.classList.remove("invisible");
+    line.style.opacity = "0";
+  });
+
+  let currentLine = 0;
+
+  // Add a blinking cursor element
+  const cursor = document.createElement("span");
+  cursor.style.cssText = `
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: var(--uk-primary, #8b5cf6);
+    margin-left: 2px;
+    animation: blink 0.7s infinite;
+    vertical-align: text-bottom;
+  `;
+
+  function typeNextLine() {
+    if (currentLine >= lines.length) {
+      cursor.remove();
+      return;
+    }
+
+    const line = lines[currentLine];
+    const originalHTML = line.innerHTML;
+    const text = line.textContent;
+
+    // Preserve height before clearing content
+    const height = line.offsetHeight;
+    line.style.minHeight = height + "px";
+
+    let charIndex = 0;
+
+    line.style.opacity = "1";
+    line.textContent = "";
+    line.appendChild(cursor);
+
+    // Random typing speed for more human feel
+    function getTypingSpeed() {
+      return Math.random() * 20 + 20; // 20-40ms
+    }
+
+    function typeChar() {
+      if (charIndex < text.length) {
+        const char = text[charIndex];
+        line.insertBefore(document.createTextNode(char), cursor);
+        charIndex++;
+
+        // Occasional longer pause for punctuation
+        const isPunctuation = /[<>{}();,]/.test(char);
+        const delay = isPunctuation ? getTypingSpeed() * 2 : getTypingSpeed();
+
+        setTimeout(typeChar, delay);
+      } else {
+        // Restore original HTML to keep colors intact
+        line.innerHTML = originalHTML;
+        line.classList.remove("typing-line");
+        line.style.minHeight = "";
+        currentLine++;
+
+        // Brief pause between lines
+        setTimeout(typeNextLine, 150);
+      }
+    }
+
+    typeChar();
+  }
+
+  setTimeout(typeNextLine, 500);
+</script>

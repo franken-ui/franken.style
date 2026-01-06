@@ -1,0 +1,308 @@
+---
+import Master from "layouts/master.astro";
+import Monster from "src/assets/monster.svg";
+import Announcement from "components/announcement.astro";
+import HeroDemo from "components/partials/style/hero-demo.astro";
+import FeatureCard from "components/partials/style/feature-card.astro";
+import InstallationGrid from "components/partials/style/installation-grid.astro";
+---
+
+<Master
+  doc={{
+    title: "Frankenstyle — No-build, Value-driven CSS Framework",
+    meta: {
+      description:
+        "A modern CSS framework that requires no build process. Just drop in the CDN and start styling with value-driven utilities.",
+    },
+  }}
+>
+  <div
+    class="fixed inset-x top z border-b-w border-b/o"
+    style="--inset-x: 0; --top: 0; --z: 10; --border-b-w: 1px; --border-b: var(--uk-border); --border-b-o: var(--uk-border-o)"
+  >
+    <div class="bg color" style="--bg: var(--uk-bg); --color: var(--uk-bg-f)">
+      <div
+        class="display-flex h items-center justify-between gap px sm:px"
+        style="--h: 14; --gap: 8; --px: 4; --sm-px: 6"
+      >
+        <div class="display-flex items-center gap" style="--gap: 4">
+          <a class="uk-focus-visible display-hidden lg:display-block" href="/">
+            <Monster
+              height={48}
+              width={48}
+              class:list="fill stroke"
+              style="--fill: var(--uk-bg-f); --stroke: var(--uk-bg-f)"
+            />
+          </a>
+
+          <Announcement headline="Public Preview" />
+        </div>
+        <div class="display-flex items-center gap" style="--gap: 2">
+          <div class="display-flex gap-x" style="--gap-x: 2">
+            <a
+              class="uk-button uk-button-primary uk-button-small display-hidden sm:display-inline-flex"
+              href="https://github.com/franken-ui/style/tree/master/contexts"
+              title="Contexts"
+              target="_blank"
+            >
+              <uk-icon class="size" style="--size: 4" icon="sparkles"></uk-icon>
+              <span class="">Contexts</span>
+            </a>
+            <a
+              class="uk-button uk-button-secondary uk-button-small display-hidden sm:display-inline-flex"
+              href="https://github.com/franken-ui/style"
+              title="Star on Github"
+              target="_blank"
+            >
+              <uk-icon class="size" style="--size: 4" icon="github"></uk-icon>
+              <span class="">Star on Github</span>
+            </a>
+
+            <uk-lsh
+              class="size"
+              style="--size: 8"
+              toggle
+              group="mode"
+              cls="uk-button uk-button-icon uk-button-secondary uk-button-small relative"
+            >
+              <template data-fn="template">
+                <uk-icon
+                  class="dark-slide-icon dark-slide-moon dark:dark-slide-moon"
+                  icon="moon"
+                >
+                </uk-icon>
+                <uk-icon
+                  class="dark-slide-icon dark-slide-sun dark:dark-slide-sun"
+                  icon="sun"
+                >
+                </uk-icon>
+              </template>
+            </uk-lsh>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt" style="--mt: 40">
+    <div class="uk-container uk-container-xlarge">
+      <div
+        class="display-grid md:grid-cols gap-x lg:grid-cols"
+        style="--lg-grid-cols: 2; --gap-x: 10"
+      >
+        <div class="display-flex items-center">
+          <div class="flex-1">
+            <h1
+              class="text-6xl md:text-7xl font-bold [leading] tracking mb"
+              style="--leading: 1.05; --tracking: -0.035em; --mb: 6;"
+            >
+              <div class="">Stop wrestling with</div>
+              <div class="relative">
+                <span class="relative display-inline-block">
+                  build tools.
+                  <span
+                    class="absolute [bottom] inset-x [h] opacity linear linear-to-r from via to"
+                    style="
+                          --bottom: 0.1em;
+                          --inset-x: 0;
+                          --h: 0.15em;
+                          --opacity: 0.6;
+                          --from: #22c55e;
+                          --via: #3b82f6;
+                          --to: #8b5cf6;
+                      "
+                  ></span>
+                </span>
+              </div>
+            </h1>
+
+            <p
+              class="text-2xl color max-w-xl"
+              style="--color: var(--uk-muted-f)"
+            >
+              Frankenstyle is a no-build, value-driven CSS framework. Drop in
+              one stylesheet and get back to building what matters.
+            </p>
+
+            <div class="display-flex gap-x mt" style="--gap-x: 2; --mt: 10">
+              <a
+                class="uk-button uk-button-large uk-button-primary gap-x"
+                style="--gap-x: 2"
+                href="/docs/latest/style/introduction"
+              >
+                <span>Learn more</span>
+                <uk-icon class="size" style="--size: 4" icon="arrow-right"
+                ></uk-icon>
+              </a>
+              <a
+                class="uk-button uk-button-large uk-button-default gap-x display-hidden sm:display-flex"
+                style="--gap-x: 2"
+                href="https://github.com/franken-ui/style"
+                target="_blank"
+              >
+                <span>Star on Github</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="display-hidden lg:display-flex items-center">
+          <HeroDemo />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt" style="--mt: 40">
+    <div class="uk-container uk-container-xlarge">
+      <div class="max-w-6xl mx-auto">
+        <div class="display-flex justify-center">
+          <span
+            class="px py bg/o color border-w border/o rounded-full uppercase font-medium text-sm tracking-wide"
+            style="--px: 4; --py: 1.25; --bg: var(--uk-info); --bg-o: 10%; --color: var(--uk-info-f); --border-w: 1px; --border: var(--uk-info); --border-o: 32%;"
+          >
+            Features
+          </span>
+        </div>
+
+        <div class="text-5xl font-bold text-center my" style="--my: 4">
+          Why Frankenstyle?
+        </div>
+        <div
+          class="color text-center text-xl"
+          style="--color: var(--uk-muted-f)"
+        >
+          Built around simple, powerful principles for modern web development.
+        </div>
+
+        <div
+          class="display-grid md:grid-cols lg:grid-cols mt gap"
+          style="--mt: 16; --md-grid-cols: 2; --lg-grid-cols: 3; --gap: 6"
+        >
+          {
+            [
+              {
+                icon: "code",
+                title: "No Build Process",
+                description:
+                  "Everything is pre-compiled and ready to use via CDN. No bundler, no watchers, no config files.",
+              },
+              {
+                icon: "atom",
+                title: "Value-driven",
+                description:
+                  "Generic utility names paired with CSS variables you define. No memorizing arbitrary scales.",
+              },
+              {
+                icon: "codepen",
+                title: "Runtime State",
+                description:
+                  "Hover, focus, and other states are generated at runtime, keeping your CSS bundle small.",
+              },
+              {
+                icon: "monitor-smartphone",
+                title: "Responsive Design",
+                description:
+                  "Familiar breakpoint prefixes for building responsive interfaces.",
+              },
+              {
+                icon: "sun",
+                title: "Theme-aware",
+                description: "Built-in dark mode support for painless theming.",
+              },
+              {
+                icon: "cog",
+                title: "Explicit Control",
+                description:
+                  "Intentional styling with utilities and values that always go together.",
+              },
+            ].map((a) => (
+              <FeatureCard
+                icon={a.icon}
+                title={a.title}
+                description={a.description}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="mt bg/o py"
+    style="--mt: 40; --bg: var(--uk-muted); --bg-o: var(--uk-muted-o); --py: 20"
+  >
+    <div class="uk-container uk-container-large">
+      <div class="display-flex justify-center">
+        <span
+          class="px py bg/o color border-w border/o rounded-full uppercase font-medium text-sm tracking-wide"
+          style="--px: 4; --py: 1.25; --bg: var(--uk-info); --bg-o: 10%; --color: var(--uk-info-f); --border-w: 1px; --border: var(--uk-info); --border-o: 32%;"
+        >
+          Getting Started
+        </span>
+      </div>
+
+      <div class="text-5xl font-bold text-center my" style="--my: 4">
+        Installation
+      </div>
+      <div class="color text-center text-xl" style="--color: var(--uk-muted-f)">
+        Get started in seconds with CDN or bundler.
+      </div>
+
+      <div class="max-w-6xl mx-auto mt" style="--mt: 16">
+        <InstallationGrid />
+      </div>
+    </div>
+  </div>
+
+  <div class="mt" style="--mt: 40;">
+    <div class="uk-container uk-container-large">
+      <div
+        class="max-w-6xl mx-auto linear linear-to-r from to px py rounded-2xl color border-w border/o"
+        style="
+        --from: var(--color-zinc-800);
+        --to: var(--color-zinc-950);
+        --px: 8;
+        --py: 16;
+        --color: var(--color-white);
+        --border-w: 1px;
+        --border: var(--uk-border);
+        --border-o: var(--uk-border-o);
+        "
+      >
+        <div class="text-3xl font-bold text-center">Ready to get started?</div>
+        <p class="mt text-lg text-center max-w-md mx-auto" style="--mt: 4">
+          Frankenstyle is intentionally simple: a single stylesheet, optional
+          runtime script, and a straightforward utility system.
+        </p>
+
+        <div
+          class="display-flex justify-center gap-x mt"
+          style="--gap-x: 2; --mt: 10"
+        >
+          <a
+            class="uk-button uk-button uk-button-info gap-x"
+            style="--gap-x: 2"
+            href="/docs/latest/style/introduction"
+          >
+            <span>Learn more</span>
+            <uk-icon class="size" style="--size: 4" icon="arrow-right"
+            ></uk-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer
+    class="mt border-t-w border-t/o py"
+    style="--mt: 40; --border-t-w: 1px; --border-t: var(--uk-border); --border-t-o: var(--uk-border-o); --py: 12"
+  >
+    <div class="uk-container uk-container-large">
+      <p class="text-center color" style="--color: var(--uk-muted-f)">
+        &copy; 2026 Frankenstyle. Licensed under MIT.
+      </p>
+    </div>
+  </footer>
+</Master>

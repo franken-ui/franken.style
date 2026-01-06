@@ -4,6 +4,7 @@ import core from "frankenstyle/js/hwc-core.iife?url";
 import components from "frankenstyle/js/hwc-components.iife?url";
 import icon from "frankenstyle/js/hwc-icon.iife?url";
 import chart from "frankenstyle/js/hwc-chart.iife?url";
+import runtime from "frankenstyle/js/frankenstyle.iife?url";
 
 const { doc } = Astro.props;
 ---
@@ -80,6 +81,7 @@ const { doc } = Astro.props;
     <script is:inline src={icon} type="module"></script>
     <script is:inline src={chart} type="module"></script>
     <script is:inline src={components} type="module"></script>
+    <script is:inline src={runtime} type="module"></script>
     <script is:inline src="/js/htmx@2.0.6/htmx.min.js"></script>
     <script is:inline src="/js/alpinejs@3.14.9/alpinejs.min.js"></script>
   </body>

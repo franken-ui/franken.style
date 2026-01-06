@@ -1,0 +1,103 @@
+---
+const tag = import.meta.env.TAG || "latest";
+let version = "1.0";
+
+await (async () => {
+  try {
+    const response = await fetch("https://registry.npmjs.org/frankenstyle");
+    const data = await response.json();
+
+    version = data["dist-tags"][tag];
+  } catch (e) {}
+})();
+
+const installations = [
+  "https://cdn.jsdelivr.net/npm/frankenstyle@[VERSION]/dist/css/frankenstyle-kit.min.css",
+  "npm i frankenstyle@[TAG]",
+  "https://cdn.jsdelivr.net/npm/frankenstyle@[VERSION]/dist/js/frankenstyle.min.js",
+].map((a) => a.replace("[VERSION]", version).replace("[TAG]", tag));
+---
+
+<div
+  class="display-grid grid-cols md:grid-cols gap"
+  style="--grid-cols: 1; --md-grid-cols: 2; --gap: 6"
+>
+  <div
+    class="bg border-w border/o p rounded-xl relative"
+    style="--bg: var(--uk-bg); --border-w: 1px; --border: var(--uk-border); --border-o: var(--uk-border-o); --p: 8"
+  >
+    <div class="display-flex absolute top justify-center" style="--top: -4">
+      <span
+        class="display-inline-flex items-center px py bg color border-w border/o rounded-full uppercase font-medium text-sm tracking-wide gap-x"
+        style="--px: 4; --py: 1.25; --bg: var(--uk-info); --bg-o: 10%; --color: var(--color-white); --border-w: 1px; --border: var(--uk-info); --border-o: 32%; --gap-x: 2"
+      >
+        <uk-icon class="size" style="--size: 4" icon="badge-check"></uk-icon>
+        <span>Recommended</span>
+      </span>
+    </div>
+
+    <div class="mt text-xl font-bold" style="--mt: 4">CDN Installation</div>
+    <p class="mt color" style="--mt: 2; --color: var(--uk-muted-f)">
+      Perfect for beginners. Just add the following code to your HTML:
+    </p>
+
+    <div
+      class="mt bg/o border-w border/o p rounded-xl font-family text-sm overflow-x-auto select-all"
+      style="--mt: 6; --bg: var(--uk-muted); --bg-o: var(--uk-muted-o); --border-w: 1px; --border: var(--uk-border); --border-o: var(--uk-border-o); --p: 4; --font-family: var(--font-geist-mono)"
+    >
+      &lt;link rel=&quot;stylesheet&quot; href=&quot;{installations[0]}&quot;
+      /&gt;
+    </div>
+
+    <p class="mt color" style="--mt: 3; --color: var(--uk-muted-f)">
+      Optional runtime:
+    </p>
+
+    <div
+      class="mt bg/o border-w border/o p rounded-xl font-family text-sm overflow-x-auto select-all"
+      style="--mt: 4; --bg: var(--uk-muted); --bg-o: var(--uk-muted-o); --border-w: 1px; --border: var(--uk-border); --border-o: var(--uk-border-o); --p: 4; --font-family: var(--font-geist-mono)"
+    >
+      &lt;script src=&quot;{installations[2]}&quot;
+      type=&quot;module&quot;&gt;&lt;/script&gt;
+    </div>
+  </div>
+
+  <div
+    class="bg border-w border/o p rounded-xl"
+    style="--bg: var(--uk-bg); --border-w: 1px; --border: var(--uk-border); --border-o: var(--uk-border-o); --p: 8"
+  >
+    <div class="mt text-xl font-bold" style="--mt: 4">Bundler</div>
+    <p class="mt color" style="--mt: 2; --color: var(--uk-muted-f)">
+      Install via npm for integration with build tools:
+    </p>
+
+    <div
+      class="mt bg/o border-w border/o p rounded-xl font-family text-sm overflow-x-auto select-all"
+      style="--mt: 6; --bg: var(--uk-muted); --bg-o: var(--uk-muted-o); --border-w: 1px; --border: var(--uk-border); --border-o: var(--uk-border-o); --p: 4; --font-family: var(--font-geist-mono)"
+    >
+      {installations[1]}
+    </div>
+
+    <p class="mt color" style="--mt: 3; --color: var(--uk-muted-f)">
+      Then just import in your CSS:
+    </p>
+
+    <div
+      class="mt bg/o border-w border/o p rounded-xl font-family text-sm overflow-x-auto select-all"
+      style="--mt: 4; --bg: var(--uk-muted); --bg-o: var(--uk-muted-o); --border-w: 1px; --border: var(--uk-border); --border-o: var(--uk-border-o); --p: 4; --font-family: var(--font-geist-mono)"
+    >
+      @import 'frankenstyle/dist/css/frankenstyle.css';
+    </div>
+
+    <p class="mt color" style="--mt: 3; --color: var(--uk-muted-f)">
+      Optional runtime:
+    </p>
+
+    <div
+      class="mt bg/o border-w border/o p rounded-xl font-family text-sm overflow-x-auto select-all"
+      style="--mt: 4; --bg: var(--uk-muted); --bg-o: var(--uk-muted-o); --border-w: 1px; --border: var(--uk-border); --border-o: var(--uk-border-o); --p: 4; --font-family: var(--font-geist-mono)"
+    >
+      import "frankenstyle/js/frankenstyle.iife";
+    </div>
+  </div>
+</div>
