@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en" class="uk-theme-neutral uk-radii-md uk-shadows-sm uk-font-sm">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frankenstyle — No-build, value-driven CSS framework</title>
+    <meta name="description"
+        content="A modern CSS framework that requires no build process. Just drop in the CDN and start styling with value-driven utilities.">
+
+    <!-- Frankenstyle CSS -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/frankenstyle@0.1.0-next.11/dist/css/frankenstyle-kit.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --uk-primary: #18181b;
+            --uk-primary-f: #fafafa;
+            --uk-secondary: #3f3f46;
+            --uk-secondary-f: #fafafa;
+            --uk-bg: #ffffff;
+            --uk-bg-f: #09090b;
+            --uk-card: #fafafa;
+            --uk-card-f: #09090b;
+            --uk-muted: #71717a;
+            --uk-muted-f: #71717a;
+            --uk-muted-o: 4%;
+            --uk-border: #e4e4e7;
+            --uk-border-o: 100%;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+        }
+
+        .dark {
+            --uk-primary: #fafafa;
+            --uk-primary-f: #09090b;
+            --uk-bg: #09090b;
+            --uk-bg-f: #fafafa;
+            --uk-card: #18181b;
+            --uk-card-f: #fafafa;
+            --uk-border: #27272a;
+            --uk-secondary: #27272a;
+            --uk-secondary-f: #fafafa;
+            --uk-muted-f: #a1a1aa;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            background-color: #18181b;
+            color: #fff;
+        }
+
+        .dark ::selection {
+            background-color: #fafafa;
+            color: #09090b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--uk-bg);
+            color: var(--uk-bg-f);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Divider Pattern - like the reference */
+        .divider-pattern {
+            border-left: 1px solid var(--uk-border);
+            border-right: 1px solid var(--uk-border);
+            background-image: repeating-linear-gradient(315deg,
+                    var(--uk-border) 0,
+                    var(--uk-border) 1px,
+                    transparent 0,
+                    transparent 50%);
+            background-size: 10px 10px;
+            background-attachment: fixed;
+        }
+
+        .divider-line {
+            position: relative;
+        }
+
+        .divider-line::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100vw;
+            height: 1px;
+            width: 200vw;
+            background-color: var(--uk-border);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: var(--uk-bg);
+            border-bottom: 1px solid var(--uk-border);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 3.5rem;
+            padding: 0 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 640px) {
+            .nav-inner {
+                padding: 0 1.5rem;
+            }
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav-logo svg {
+            height: 40px;
+            width: 40px;
+            transition: transform 0.2s ease;
+        }
+
+        .nav-logo:hover svg {
+            transform: scale(1.05);
+        }
+
+        .dark .nav-logo svg,
+        .dark .nav-logo svg .cls-1,
+        .dark .nav-logo svg .cls-2 {
+            fill: #fafafa;
+            stroke: #fafafa;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.25rem 0.625rem;
+            background: var(--uk-card);
+            border: 1px solid var(--uk-border);
+            border-radius: 100px;
+            font-size: 0.6875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--uk-muted-f);
+        }
+
+        .badge-dot {
+            width: 5px;
+            height: 5px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.375rem 0.75rem;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 0.375rem;
+            transition: all 0.15s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-btn-primary {
+            background: var(--uk-bg-f);
+            color: var(--uk-bg);
+        }
+
+        .nav-btn-primary:hover {
+            opacity: 0.85;
+        }
+
+        .nav-btn-secondary {
+            background: var(--uk-card);
+            color: var(--uk-bg-f);
+            border: 1px solid var(--uk-border);
+        }
+
+        .nav-btn-secondary:hover {
+            background: var(--uk-border);
+        }
+
+        .nav-btn-icon {
+            padding: 0.375rem;
+            background: transparent;
+            color: var(--uk-muted-f);
+        }
+
+        .nav-btn-icon:hover {
+            color: var(--uk-bg-f);
+            background: var(--uk-card);
+        }
+
+        .nav-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .dark .sun-icon {
+            display: block;
+        }
+
+        .dark .moon-icon {
+            display: none;
+        }
+
+        .sun-icon {
+            display: none;
+        }
+
+        .moon-icon {
+            display: block;
+        }
+
+        .hide-mobile {
+            display: none;
+        }
+
+        @media (min-width: 640px) {
+            .hide-mobile {
+                display: inline-flex;
+            }
+        }
+
+        /* Main Layout */
+        .main-layout {
+            display: grid;
+            min-height: 100dvh;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr auto;
+            padding-top: 3.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .main-layout {
+                grid-template-columns: 2.5rem 1fr 2.5rem;
+            }
+        }
+
+        .side-pattern {
+            display: none;
+            grid-row: 1 / -1;
+        }
+
+        @media (min-width: 768px) {
+            .side-pattern {
+                display: block;
+            }
+
+            .side-pattern-left {
+                grid-column: 1;
+            }
+
+            .side-pattern-right {
+                grid-column: 3;
+            }
+        }
+
+        .content {
+            grid-column: 1;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .content {
+                grid-column: 2;
+                padding: 0;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0 6rem;
+        }
+
+        @media (min-width: 640px) {
+            .hero {
+                padding: 6rem 0 8rem;
+            }
+        }
+
+        .code-hint {
+            display: flex;
+            align-items: flex-end;
+            height: 4rem;
+            padding: 0 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.6875rem;
+            line-height: 1.5rem;
+            color: var(--uk-muted-f);
+            opacity: 0.4;
+            gap: 1px;
+            overflow: hidden;
+        }
+
+        @media (min-width: 640px) {
+            .code-hint {
+                height: 6rem;
+                font-size: 0.75rem;
+            }
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 7vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin: 0;
+            padding: 0.25rem 0.5rem;
+            text-wrap: balance;
+        }
+
+        .hero-subtitle-hint {
+            display: flex;
+            align-items: flex-end;
+            height: 1.5rem;
+            padding: 0 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.6875rem;
+            line-height: 1.5rem;
+            color: var(--uk-muted-f);
+            opacity: 0.4;
+        }
+
+        @media (min-width: 640px) {
+            .hero-subtitle-hint {
+                height: 2.5rem;
+                font-size: 0.75rem;
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--uk-bg-f);
+            margin: 0;
+            padding: 0 0.5rem;
+            max-width: 42rem;
+            line-height: 1.7;
+        }
+
+        @media (min-width: 640px) {
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0 0.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .hero-actions {
+                flex-direction: row;
+                margin-top: 2.5rem;
+            }
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 0.375rem;
+            transition: all 0.15s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--uk-bg-f);
+            color: var(--uk-bg);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.85;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--uk-muted-f);
+            border: 1px solid var(--uk-border);
+        }
+
+        .btn-ghost:hover {
+            background: var(--uk-card);
+            color: var(--uk-bg-f);
+        }
+
+        .btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Features Section */
+        .section {
+            padding: 4rem 0;
+        }
+
+        @media (min-width: 640px) {
+            .section {
+                padding: 6rem 0;
+            }
+        }
+
+        .section-header {
+            padding: 0 0.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--uk-muted-f);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.02em;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            border-top: 1px solid var(--uk-border);
+        }
+
+        @media (min-width: 640px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .feature {
+            padding: 2rem 0.5rem;
+            border-bottom: 1px solid var(--uk-border);
+        }
+
+        @media (min-width: 640px) {
+            .feature {
+                padding: 2rem 1.5rem;
+            }
+
+            .feature:nth-child(odd) {
+                border-right: 1px solid var(--uk-border);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .feature:nth-child(odd) {
+                border-right: none;
+            }
+
+            .feature:not(:nth-child(3n)) {
+                border-right: 1px solid var(--uk-border);
+            }
+        }
+
+        .feature-number {
+            font-family: var(--font-mono);
+            font-size: 0.6875rem;
+            color: var(--uk-muted-f);
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .feature-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0 0 0.5rem;
+        }
+
+        .feature-desc {
+            font-size: 0.875rem;
+            color: var(--uk-muted-f);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Code Example Section */
+        .code-section {
+            background: var(--uk-card);
+            border: 1px solid var(--uk-border);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            margin: 0 0.5rem;
+        }
+
+        .code-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--uk-border);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--uk-muted-f);
+        }
+
+        .code-dots {
+            display: flex;
+            gap: 0.375rem;
+        }
+
+        .code-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--uk-border);
+        }
+
+        pre {
+            margin: 0;
+            padding: 1.25rem 1rem;
+            overflow-x: auto;
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            line-height: 1.7;
+        }
+
+        .code-comment {
+            color: var(--uk-muted-f);
+            opacity: 0.6;
+        }
+
+        .code-tag {
+            color: var(--uk-bg-f);
+        }
+
+        .code-attr {
+            color: var(--uk-muted-f);
+        }
+
+        .code-string {
+            color: var(--uk-bg-f);
+            font-weight: 500;
+        }
+
+        /* Installation Section */
+        .install-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            padding: 0 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .install-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .install-card {
+            padding: 1.5rem;
+            border: 1px solid var(--uk-border);
+            border-radius: 0.5rem;
+        }
+
+        .install-badge {
+            display: inline-block;
+            padding: 0.125rem 0.5rem;
+            background: var(--uk-bg-f);
+            color: var(--uk-bg);
+            font-size: 0.625rem;
+            font-weight: 600;
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        .install-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0 0 0.5rem;
+        }
+
+        .install-desc {
+            font-size: 0.8125rem;
+            color: var(--uk-muted-f);
+            margin: 0 0 1rem;
+        }
+
+        .install-code {
+            background: var(--uk-bg);
+            border: 1px solid var(--uk-border);
+            border-radius: 0.375rem;
+            padding: 0.625rem 0.75rem;
+            font-family: var(--font-mono);
+            font-size: 0.6875rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        /* CTA Section */
+        .cta {
+            border: 1px solid var(--uk-border);
+            border-radius: 0.5rem;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            margin: 0 0.5rem;
+        }
+
+        .cta-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 0.75rem;
+        }
+
+        .cta-desc {
+            font-size: 0.9375rem;
+            color: var(--uk-muted-f);
+            max-width: 28rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 2rem 0.5rem;
+            border-top: 1px solid var(--uk-border);
+            margin-top: 4rem;
+        }
+
+        .footer-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        @media (min-width: 640px) {
+            .footer-inner {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+        }
+
+        .footer-text {
+            font-size: 0.8125rem;
+            color: var(--uk-muted-f);
+            margin: 0;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-link {
+            font-size: 0.8125rem;
+            color: var(--uk-muted-f);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--uk-bg-f);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <div class="nav-left">
+                <a href="/" class="nav-logo" aria-label="Frankenstyle">
+                    <svg viewBox="0 0 741.81 674.55" fill="#09090b">
+                        <defs>
+                            <style>
+                                .cls-1,
+                                .cls-2 {
+                                    fill: none;
+                                    stroke: #09090b;
+                                    stroke-miterlimit: 10;
+                                }
+
+                                .cls-1 {
+                                    stroke-width: 20px;
+                                }
+
+                                .cls-2 {
+                                    stroke-width: 10px;
+                                }
+                            </style>
+                        </defs>
+                        <g>
+                            <path class="cls-1"
+                                d="M660.09,615.35c-186.9,69.52-378.32,61.56-572.86,0l42.42-494.76H602.21Z" />
+                            <path
+                                d="M81.43,65.83l19.29,266.6,67.5-174,75.23,90.66,20-117.66,24.32,77.15,52.08-69.43,46.29,82.94,17.36-82.94,44.37,108,36.64-113.8V237.5l50.15-63.65L636.09,326.79,660.09,60S368.84-78.83,81.43,65.83Z" />
+                            <path
+                                d="M229.66,555.77c94.7,18,190.15,12.63,272.69-41,5.47-3.52,11.7-7.7,17-11.52,5.63-4,11.08-8.2,16.71-12.37a181.94,181.94,0,0,1-13,16.5c-48.34,55.71-124.83,81-197.37,74.77-33.21-2.86-66.55-10.64-96-26.4Z" />
+                            <circle class="cls-2" cx="252.26" cy="402.01" r="74.41" />
+                            <circle class="cls-2" cx="483.82" cy="394.41" r="74.41" />
+                            <path
+                                d="M105.53,259.91c170-1.58,342.36,2.31,512.15,11.71-170,1.63-342.37-2.36-512.15-11.71Z" />
+                            <circle cx="273.91" cy="416.96" r="35.11" />
+                            <circle cx="475.85" cy="417.34" r="35.11" />
+                        </g>
+                    </svg>
+                </a>
+                <span class="badge hide-mobile">
+                    <span class="badge-dot"></span>
+                    Public Preview
+                </span>
+            </div>
+            <div class="nav-right">
+                <a class="nav-btn nav-btn-primary hide-mobile"
+                    href="https://github.com/franken-ui/style/tree/master/contexts" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+                    </svg>
+                    Contexts
+                </a>
+                <a class="nav-btn nav-btn-secondary hide-mobile" href="https://github.com/franken-ui/style"
+                    target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                        <path d="M9 18c-4.51 2-5-2-7-2" />
+                    </svg>
+                    GitHub
+                </a>
+                <button class="nav-btn nav-btn-icon" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4" />
+                        <path
+                            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+        <div class="side-pattern side-pattern-left divider-pattern"></div>
+
+        <div class="content">
+            <!-- Hero -->
+            <section class="hero">
+                <div class="code-hint">
+                    <span>&lt;div class="m" style="--m: 2;"&gt;</span>
+                </div>
+
+                <div class="divider-line">
+                    <h1 class="hero-title">Great web development shouldn't be complicated.</h1>
+                </div>
+
+                <div class="hero-subtitle-hint">
+                    <span>&lt;span class="text-lg font-medium"&gt;</span>
+                </div>
+
+                <div class="divider-line">
+                    <p class="hero-subtitle">
+                        Frankenstyle is a no-build, value-driven, utility-first CSS framework. Drop in the CDN and start
+                        building—no bundler, no config, no complexity.
+                    </p>
+                </div>
+
+                <div class="divider-line hero-actions">
+                    <a href="https://franken.style/docs/latest/kit/introduction" class="btn btn-primary">
+                        Get Started
+                    </a>
+                    <a href="#install" class="btn btn-ghost">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" x2="12" y1="15" y2="3" />
+                        </svg>
+                        Download
+                    </a>
+                </div>
+            </section>
+
+            <!-- Features -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-tag">// principles</div>
+                    <h2 class="section-title">Built different.</h2>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-number">01</div>
+                        <h3 class="feature-title">No Build Process</h3>
+                        <p class="feature-desc">Everything is pre-compiled and ready. Just include the stylesheet and
+                            start building. No bundlers, no watchers, no waiting.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-number">02</div>
+                        <h3 class="feature-title">Value-Driven</h3>
+                        <p class="feature-desc">Generic utility names paired with CSS variables you define. Write
+                            <code>class="m"</code> and <code>style="--m: 4"</code>. No arbitrary scales.
+                        </p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-number">03</div>
+                        <h3 class="feature-title">Runtime States</h3>
+                        <p class="feature-desc">Hover, focus, and other interactive states are generated at
+                            runtime—keeping your CSS bundle lean and performant.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-number">04</div>
+                        <h3 class="feature-title">Responsive</h3>
+                        <p class="feature-desc">Familiar breakpoint prefixes like sm:, md:, and lg: for building
+                            interfaces that work on any screen size.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-number">05</div>
+                        <h3 class="feature-title">Theme-Aware</h3>
+                        <p class="feature-desc">Built-in dark mode support with the dark: prefix. Seamless theming
+                            without configuration overhead.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-number">06</div>
+                        <h3 class="feature-title">Explicit Control</h3>
+                        <p class="feature-desc">No magic. Utilities and values always go together intentionally. You
+                            know exactly what each class does.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Start -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-tag">// quick start</div>
+                    <h2 class="section-title">See how it works.</h2>
+                </div>
+
+                <div class="code-section">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <span class="code-dot"></span>
+                            <span class="code-dot"></span>
+                            <span class="code-dot"></span>
+                        </div>
+                        <span>example.html</span>
+                    </div>
+                    <pre><code><span class="code-comment">&lt;!-- Value-driven utilities --&gt;</span>
+<span class="code-tag">&lt;div</span>
+  <span class="code-attr">class=</span><span class="code-string">"m sm:m md:m"</span>
+  <span class="code-attr">style=</span><span class="code-string">"--m: 4; --sm-m: 8; --md-m: 16"</span>
+<span class="code-tag">&gt;</span>
+  Responsive margins
+<span class="code-tag">&lt;/div&gt;</span>
+
+<span class="code-comment">&lt;!-- Interactive states --&gt;</span>
+<span class="code-tag">&lt;button</span>
+  <span class="code-attr">class=</span><span class="code-string">"bg bg:hover px py"</span>
+  <span class="code-attr">style=</span><span class="code-string">"--bg: var(--uk-primary); --bg-hover: #27272a; --px: 5; --py: 2.5"</span>
+  <span class="code-attr">data-uk</span>
+<span class="code-tag">&gt;</span>
+  Hover me
+<span class="code-tag">&lt;/button&gt;</span></code></pre>
+                </div>
+            </section>
+
+            <!-- Installation -->
+            <section id="install" class="section">
+                <div class="section-header">
+                    <div class="section-tag">// installation</div>
+                    <h2 class="section-title">Get started in seconds.</h2>
+                </div>
+
+                <div class="install-grid">
+                    <div class="install-card">
+                        <span class="install-badge">Recommended</span>
+                        <h3 class="install-title">CDN</h3>
+                        <p class="install-desc">Drop this into your HTML head:</p>
+                        <div class="install-code">
+                            &lt;link rel="stylesheet"
+                            href="https://cdn.jsdelivr.net/npm/frankenstyle@0.1.0-next.11/dist/css/frankenstyle-kit.min.css"&gt;
+                        </div>
+                    </div>
+                    <div class="install-card">
+                        <h3 class="install-title">npm</h3>
+                        <p class="install-desc">Install with your package manager:</p>
+                        <div class="install-code">
+                            npm install frankenstyle
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section class="section">
+                <div class="cta">
+                    <h2 class="cta-title">Ready to build?</h2>
+                    <p class="cta-desc">Frankenstyle is intentionally simple—a single stylesheet and a straightforward
+                        utility system designed for clarity.</p>
+                    <div class="cta-buttons">
+                        <a href="https://franken.style/docs/latest/kit/introduction" class="btn btn-primary"
+                            target="_blank">
+                            Read the Docs
+                        </a>
+                        <a href="https://github.com/franken-ui/style" class="btn btn-ghost" target="_blank">
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-inner">
+                    <p class="footer-text">© 2025 Frankenstyle. MIT License.</p>
+                    <div class="footer-links">
+                        <a href="https://github.com/franken-ui/style" class="footer-link" target="_blank">GitHub</a>
+                        <a href="https://github.com/sponsors/sveltecult" class="footer-link" target="_blank">Sponsor</a>
+                        <a href="https://ko-fi.com/sveltecult" class="footer-link" target="_blank">Ko-fi</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <div class="side-pattern side-pattern-right divider-pattern"></div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('__FRANKEN_THEME__', isDark ? 'dark' : 'light');
+        }
+
+        (function () {
+            const savedTheme = localStorage.getItem('__FRANKEN_THEME__');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
