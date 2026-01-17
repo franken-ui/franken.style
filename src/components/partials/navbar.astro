@@ -1,0 +1,183 @@
+---
+import Monster from "src/assets/monster.svg";
+import Announcement from "components/announcement.astro";
+import { stl } from "helpers/common";
+
+const {
+  project = "style",
+  projectSwitcher = true,
+  menu = true,
+  announcement = null,
+} = Astro.props;
+---
+
+<div
+  class="fixed inset-x top z border-b-w border-b/o"
+  style={stl({
+    "--inset-x": "0",
+    "--top": "0",
+    "--z": "10",
+    "--border-b-w": "1px",
+    "--border-b": "var(--uk-border)",
+    "--border-b-o": "var(--uk-border-o)",
+  })}
+>
+  <div
+    class="bg color"
+    style={stl({
+      "--bg": "var(--uk-bg)",
+      "--color": "var(--uk-bg-f)",
+    })}
+  >
+    <div
+      class="display-flex h items-center justify-between gap px sm:px md:px"
+      style={stl({
+        "--h": "14",
+        "--gap": "8",
+        "--px": "4",
+        "--sm-px": "2",
+        "--md-px": "6",
+      })}
+    >
+      <div
+        class="display-flex items-center gap"
+        style={stl({
+          "--gap": "4",
+        })}
+      >
+        <a class="uk-focus-visible display-hidden lg:display-block" href="/">
+          <Monster
+            height={48}
+            width={48}
+            class:list="fill stroke"
+            style={stl({
+              "--fill": "var(--uk-bg-f)",
+              "--stroke": "var(--uk-bg-f)",
+            })}
+          />
+        </a>
+
+        {
+          projectSwitcher ? (
+            <div class="display-hidden lg:display-block">
+              <ul class="uk-tab-alt">
+                <li class={project == "kit" ? "uk-active" : ""}>
+                  <a href="/docs/latest/kit/installation">Kit</a>
+                </li>
+                <li class={project == "style" ? "uk-active" : ""}>
+                  <a href="/docs/latest/style/introduction">Style</a>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            ""
+          )
+        }
+
+        {
+          menu ? (
+            <button
+              class="uk-button uk-button-secondary uk-button-small lg:display-hidden"
+              data-uk-toggle="#menu"
+            >
+              <uk-icon
+                class="size"
+                style={stl({
+                  "--size": "4",
+                })}
+                icon="menu"
+              />
+              <span
+                class="ml"
+                style={stl({
+                  "--ml": "2",
+                })}
+              >
+                Menu
+              </span>
+            </button>
+          ) : (
+            ""
+          )
+        }
+
+        {
+          announcement ? (
+            <Announcement
+              headline={announcement.headline}
+              subtext={announcement.subtext}
+              stl={announcement.stl}
+            />
+          ) : (
+            ""
+          )
+        }
+      </div>
+      <div
+        class="display-flex items-center gap"
+        style={stl({
+          "--gap": "2",
+        })}
+      >
+        <div
+          class="display-flex gap-x"
+          style={stl({
+            "--gap-x": "2",
+          })}
+        >
+          <a
+            class="uk-button uk-button-primary uk-button-small display-hidden sm:display-inline-flex"
+            href="https://codeberg.org/FRNKN/style/src/branch/master/contexts"
+            title="Contexts"
+            target="_blank"
+          >
+            <uk-icon
+              class="size"
+              style={stl({
+                "--size": "4",
+              })}
+              icon="sparkles"></uk-icon>
+            <span class="">Contexts</span>
+          </a>
+          <a
+            class="uk-button uk-button-secondary uk-button-small display-hidden sm:display-inline-flex"
+            href="https://codeberg.org/FRNKN/style"
+            title="Source"
+            target="_blank"
+          >
+            <uk-icon
+              class="size"
+              style={stl({
+                "--size": "4",
+              })}
+              icon="square-code"></uk-icon>
+            <span class="">Source</span>
+          </a>
+
+          <uk-lsh
+            class="size"
+            style={stl({
+              "--size": "8",
+            })}
+            toggle
+            group="mode"
+            cls="uk-button uk-button-icon uk-button-secondary uk-button-small relative"
+          >
+            <template data-fn="template">
+              <uk-icon
+                class="dark-slide-icon dark-slide-moon dark:dark-slide-moon"
+                icon="moon"
+              >
+              </uk-icon>
+              <uk-icon
+                class="dark-slide-icon dark-slide-sun dark:dark-slide-sun"
+                icon="sun"
+              >
+              </uk-icon>
+            </template>
+          </uk-lsh>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

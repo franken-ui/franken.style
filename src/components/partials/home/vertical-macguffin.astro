@@ -1,0 +1,33 @@
+---
+import { stl } from "helpers/common";
+
+const brightColors = [
+  { light: "var(--color-emerald-500)", dark: "var(--color-emerald-400)" },
+  { light: "var(--color-cyan-500)", dark: "var(--color-cyan-400)" },
+  { light: "var(--color-lime-500)", dark: "var(--color-lime-400)" },
+  { light: "var(--color-fuchsia-500)", dark: "var(--color-fuchsia-400)" },
+  { light: "var(--color-pink-500)", dark: "var(--color-pink-400)" },
+  { light: "var(--color-violet-500)", dark: "var(--color-violet-400)" },
+  { light: "var(--color-indigo-500)", dark: "var(--color-indigo-400)" },
+  { light: "var(--color-teal-500)", dark: "var(--color-teal-400)" },
+];
+
+const randomColor =
+  brightColors[Math.floor(Math.random() * brightColors.length)];
+---
+
+<div
+  class="absolute top left color dark:color font-family uppercase font-semibold tracking-widest transform hidden xl:display-block"
+  style={stl({
+    "--top": "6",
+    "--left": "-16",
+    "--color": randomColor.light,
+    "--dark-color": randomColor.dark,
+    "--font-family": "var(--font-geist-mono)",
+    "--transform": "rotate(180deg)",
+    "writing-mode": "vertical-lr",
+  })}
+  aria-hidden="true"
+>
+  <slot />
+</div>

@@ -1,0 +1,27 @@
+---
+import { stl } from "helpers/common";
+
+const { title, content } = Astro.props;
+---
+
+<div
+  class="display-flex flex-col md:flex-row gap-x md:gap-x p md:p"
+  style={stl({
+    "--gap-x": "6",
+    "--md-gap-x": "8",
+    "--p": "6",
+    "--md-p": "8",
+  })}
+>
+  <div
+    class="display-flex h w shrink-0 items-center justify-center"
+    style={stl({ "--h": "18", "--w": "28" })}
+  >
+  </div>
+  <div>
+    <span class="uk-h3">{title}</span>
+    <p class="mt max-w-xl" style={stl({ "--mt": "2" })}>
+      {content}
+    </p>
+  </div>
+</div>

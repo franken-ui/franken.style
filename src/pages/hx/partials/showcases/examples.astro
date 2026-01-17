@@ -1,0 +1,137 @@
+---
+import { Image } from "astro:assets";
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/examples/*.{jpeg,jpg,png,gif}",
+);
+
+// Pre-load image metadata to get heights
+const imageData = await Promise.all(
+  [
+    "authentication",
+    "cards",
+    "dashboard",
+    "example-01",
+    "example-03",
+    "mail",
+    "music",
+    "task",
+  ].map(async (name) => {
+    const lightImage = await images[`/src/assets/examples/${name}-light.png`]();
+    const darkImage = await images[`/src/assets/examples/${name}-dark.png`]();
+
+    return {
+      name,
+      lightImage: lightImage.default,
+      darkImage: darkImage.default,
+    };
+  }),
+);
+
+export const partial = true;
+---
+
+<div
+  id="examples"
+  class="uk-animation-scale-down slideshow-container"
+  data-fs-ignore
+>
+  <div class="slideshow-wrapper">
+    {
+      imageData.map((data, index) => (
+        <div
+          class={`slide ${index === 0 ? "active" : ""}`}
+          data-width={data.lightImage.width}
+          data-height={data.lightImage.height}
+        >
+          <Image src={data.lightImage} class="slide-image light-only" alt="" />
+          <Image src={data.darkImage} class="slide-image dark-only" alt="" />
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    const container = document.getElementById("examples");
+    const slides = container?.querySelectorAll(".slide");
+
+    if (!container || !slides) return;
+
+    let currentIndex = 0;
+    let intervalId = null;
+
+    function updateContainerHeight() {
+      const activeSlide = slides[currentIndex];
+      const width = activeSlide.dataset.width;
+      const height = activeSlide.dataset.height;
+
+      if (width && height) {
+        // Calculate aspect ratio
+        const aspectRatio = parseFloat(height) / parseFloat(width);
+        // Get actual rendered width of the container
+        const actualWidth = container.offsetWidth;
+        // Calculate the height based on aspect ratio
+        const calculatedHeight = actualWidth * aspectRatio;
+
+        container.style.height = calculatedHeight + "px";
+      }
+    }
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+      });
+
+      updateContainerHeight();
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
+
+    function startSlideshow() {
+      if (!intervalId) {
+        intervalId = setInterval(nextSlide, 5000);
+      }
+    }
+
+    function stopSlideshow() {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+    }
+
+    // Set initial height
+    updateContainerHeight();
+
+    // Handle dark mode changes
+    const observer = new MutationObserver(updateContainerHeight);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    // Handle window resize
+    window.addEventListener("resize", updateContainerHeight);
+
+    // Use Intersection Observer to pause/resume based on visibility
+    const intersectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            startSlideshow();
+          } else {
+            stopSlideshow();
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+
+    intersectionObserver.observe(container);
+  })();
+</script>

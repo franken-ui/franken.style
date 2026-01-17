@@ -1,5 +1,6 @@
 ---
 import { readFileSync, existsSync } from "fs";
+import { stl } from "helpers/common";
 import { resolve } from "path";
 
 const { version = "latest", component, project = "style" } = Astro.props;
@@ -53,7 +54,7 @@ try {
 ---
 
 <div class="snippet mt relative" style="--mt: 10">
-  <ul class="uk-tab" data-uk-tab="swiping: false">
+  <ul class="uk-tab" data-uk-tab="swiping: false; animation: uk-animation-fade">
     <li class="uk-active">
       <a href="#" style="--uk-tab-item-padding: 0.5rem 1rem 0.75rem 1rem"
         >Preview</a
@@ -74,14 +75,26 @@ try {
       <div class="pt pb" style="--pt: 6; --pb: 10;" set:html={preview} />
     </li>
     <li>
-      <div class="mt ec" style="--mt: 6">
+      <div
+        class="ec mt bg uk-shadow uk-rounded border-w border"
+        style={stl({
+          "--mt": "6",
+          "--bg": "#17191e",
+          "--border-w": "1px",
+          "--border": "#858b9833",
+        })}
+      >
         <div
           class="bg/o animate-pulse"
           hx-trigger="intersect"
           hx-get={`${route}/markup`}
-          hx-select="figure"
+          hx-select="pre"
           hx-swap="outerHTML"
-          style={`--bg: var(--uk-muted); --bg-o: var(--uk-muted-o); height: calc(calc(var(--ec-codeLineHt) * ${lines}) + calc(var(--ec-codePadBlk) * 2) + calc(var(--ec-brdWd) * 2))`}
+          style={stl({
+            "--bg": "var(--uk-muted)",
+            "--bg-o": "var(--uk-muted-o)",
+            height: `calc((${lines} * var(--uk-global-line-height)) + (var(--highlighter-padding) * 2))`,
+          })}
         >
         </div>
       </div>
@@ -90,7 +103,7 @@ try {
 
   <div
     class="uk-button-group absolute [top] right display-hidden md:display-flex"
-    style="--top: 9px; --right: 0"
+    style="--top: 0; --right: 0"
   >
     <!-- Frankenstyle button (always present) -->
     <button
@@ -123,7 +136,7 @@ try {
     <a
       class="uk-button uk-button-default uk-button-xsmall"
       data-uk-tooltip="Report an issue or submit a PR"
-      href={`https://github.com/franken-ui/franken.style/tree/master/src/snippets/latest/${project}/${component.replace(".", "/")}`}
+      href={`https://codeberg.org/FRNKN/franken.style/src/branch/master/src/snippets/${version}/${project}/${component.replace(".", "/")}`}
       target="_blank"
     >
       <uk-icon class="size" style="--size: 4" icon="bug-off"></uk-icon>

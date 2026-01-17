@@ -1,0 +1,99 @@
+---
+import { resolve } from "node:path";
+import { readFileSync } from "node:fs";
+import { stl } from "helpers/common";
+import crypto from "node:crypto";
+
+const {
+  title = "index.html",
+  path,
+  version = "latest",
+  type = false,
+} = Astro.props;
+
+const id = `ec-${crypto.randomUUID()}`;
+const filename = path;
+const route = `/hx/ec/${version}/highlighter/${filename}`;
+
+let lines = 0;
+
+try {
+  const file = resolve("src", "snippets", version, "highlighter", filename);
+  const content = readFileSync(file, "utf-8")
+    .replace(/\r\n/g, "\n")
+    .replace(/\n+$/, "");
+  lines = content ? content.split("\n").length : 0;
+} catch {}
+
+export const partial = true;
+---
+
+<div aria-hidden={type ? "true" : "false"} tabindex="-1">
+  <div
+    class="bg border/o border-w uk-shadow uk-rounded"
+    style={stl({
+      "--bg": "var(--uk-card)",
+      "--border": "var(--uk-border)",
+      "--border-o": "var(--uk-border-o)",
+      "--border-w": "1px",
+    })}
+  >
+    <div
+      class="display-flex items-center gap-x border-b/o border-b-w px py"
+      style={stl({
+        "--gap-x": "2",
+        "--border-b": "var(--uk-border)",
+        "--border-b-o": "var(--uk-border-o)",
+        "--border-b-w": "1px",
+        "--px": "4",
+        "--py": "3.5",
+      })}
+    >
+      <div class="display-flex gap-x" style="--gap-x: 1.5">
+        {
+          Array.from({ length: 3 }).map(() => (
+            <span
+              class="w h rounded-full bg/o"
+              style={stl({
+                "--w": "2",
+                "--h": "2",
+                "--bg": "var(--uk-muted)",
+                "--bg-o": "var(--uk-muted-o)",
+              })}
+            />
+          ))
+        }
+      </div>
+
+      <span
+        class="flex-1 text-center text-sm color"
+        style={stl({ "--color": "var(--uk-muted-f)" })}
+      >
+        {title}
+      </span>
+    </div>
+
+    <div
+      id={id}
+      class="ec bg p"
+      style={stl({
+        "--bg": "#17191e",
+      })}
+      data-fs-ignore
+      data-type={type ? "true" : "false"}
+    >
+      <div class={type ? "invisible" : ""}>
+        <div
+          hx-trigger="intersect"
+          hx-get={route}
+          hx-select="pre"
+          hx-swap="outerHTML"
+          style={stl({
+            height: `calc((${lines} * var(--uk-global-line-height)) + (var(--highlighter-padding) * 2))`,
+          })}
+        >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

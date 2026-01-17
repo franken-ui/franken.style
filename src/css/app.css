@@ -1,6 +1,5 @@
 @import "frankenstyle/css/frankenstyle-kit.css";
 @import "frankenstyle/css/chart.css";
-@import "./ec.css";
 
 @layer base {
   ::selection {
@@ -20,6 +19,163 @@
     --font-geist-mono:
       Geist Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
       "Liberation Mono", "Courier New", monospace;
+
+    --highlighter-padding: 1rem;
+
+    --showcase-filters-max-width: 100;
+    --showcase-filters-offset: 12;
+    --showcase-filters-size: 50;
+  }
+
+  .showcase-gradients-bar {
+    width: 0 !important;
+    transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .showcase-gradients-bar.animate {
+    width: var(--w) !important;
+  }
+
+  @media (min-width: 40rem) {
+    :root {
+      --showcase-filters-max-width: 200;
+      --showcase-filters-offset: 12;
+      --showcase-filters-size: 100;
+    }
+  }
+
+  /* dark */
+  .image-comparison {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .comparison-container {
+    position: relative;
+    width: 100%;
+    user-select: none;
+    line-height: 0;
+  }
+
+  /* Default image styles */
+  .comparison-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    pointer-events: none;
+  }
+
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%; /* Initial position */
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  /* --- THE FIX IS HERE --- */
+  /* This specific rule prevents the overlay image from shrinking */
+  .comparison-image.overlay-source {
+    width: auto; /* Allow width to be calculated by aspect ratio */
+    height: 100%; /* Match the height of the container */
+    max-width: none; /* Override Astro's default responsive max-width */
+    object-fit: cover; /* Ensure it covers the space */
+  }
+
+  .slider {
+    position: absolute;
+    top: 0;
+    left: 50%; /* Initial position */
+    width: 2px;
+    height: 100%;
+    background: white;
+    transform: translateX(-50%);
+    cursor: ew-resize;
+    z-index: 10;
+  }
+
+  /* Expand hit area for easier grabbing */
+  .slider::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 100%;
+  }
+
+  .slider-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    z-index: 11;
+  }
+
+  .slider-button svg {
+    width: 16px;
+    height: 16px;
+    color: #333;
+  }
+
+  /* examples */
+
+  .slideshow-container {
+    position: relative;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out;
+  }
+
+  .slideshow-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+  }
+
+  .slide.active {
+    position: relative;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .slide-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* default: light mode */
+  .dark-only {
+    display: none;
+  }
+
+  html.dark .light-only {
+    display: none;
+  }
+
+  html.dark .dark-only {
+    display: block;
   }
 
   .root-layout {
@@ -176,6 +332,74 @@
       var(--default-transition-timing-function)
     );
     transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+
+  /* Code block */
+  .ec pre {
+    overflow-x: auto;
+  }
+
+  /* Code element */
+  .ec pre > code {
+    display: block;
+    padding-block: var(--highlighter-padding);
+    color: var(--ec-codeFg, #e1e4e8);
+    font-family:
+      Geist Mono,
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      "Liberation Mono",
+      "Courier New",
+      monospace;
+  }
+
+  /* Inline code container */
+  .ec .ec-line .code {
+    white-space: pre;
+    padding-inline: var(--highlighter-padding);
+  }
+
+  /* Token coloring (THIS is the important part) */
+  .ec .ec-line :where(span[style^="--"]:not([class])) {
+    color: var(--0, inherit);
+    font-style: var(--0fs, inherit);
+    font-weight: var(--0fw, inherit);
+    text-decoration: var(--0td, inherit);
+  }
+
+  @keyframes blink {
+    0%,
+    50% {
+      opacity: 1;
+    }
+    51%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .color-cell {
+    transition: opacity 0.3s ease;
+    opacity: 1;
+  }
+
+  #fs-colors.animating .color-cell {
+    opacity: 0.5;
+  }
+
+  #fs-colors.animating .color-cell.highlight {
+    opacity: 1;
+  }
+
+  #fs-colors.user-selecting .color-cell {
+    opacity: 0.5;
+  }
+
+  #fs-colors.user-selecting .color-cell:hover {
+    opacity: 1;
   }
 }
 

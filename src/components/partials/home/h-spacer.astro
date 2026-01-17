@@ -1,0 +1,13 @@
+---
+import { stl } from "helpers/common";
+---
+
+<div
+  class="px sm:px"
+  style={stl({
+    "--px": "4",
+    "--sm-px": "2",
+  })}
+>
+  <slot />
+</div>

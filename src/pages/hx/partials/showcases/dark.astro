@@ -1,0 +1,106 @@
+---
+import light from "src/assets/examples/task-light.png";
+import dark from "src/assets/examples/task-dark.png";
+import { Image } from "astro:assets";
+
+export const partial = true;
+---
+
+<div class="image-comparison" data-image-comparison-container>
+  <div class="comparison-container">
+    <Image src={dark} alt="Dark mode" class="comparison-image" />
+
+    <div class="image-overlay">
+      <Image
+        src={light}
+        alt="Light mode"
+        class="comparison-image overlay-source"
+      />
+    </div>
+
+    <div class="slider">
+      <div class="slider-button">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M15 18l-6-6 6-6"></path>
+        </svg>
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M9 18l6-6-6-6"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  // Use a closure to avoid polluting global scope
+  const initComparisons = () => {
+    const containers = document.querySelectorAll(
+      "[data-image-comparison-container]",
+    );
+
+    containers.forEach((component) => {
+      const container = component.querySelector(".comparison-container");
+      const overlay = component.querySelector(".image-overlay");
+      const slider = component.querySelector(".slider");
+
+      let isDragging = false;
+
+      const move = (e) => {
+        if (!isDragging) return;
+
+        // Support mouse and touch
+        const pageX = e.touches ? e.touches[0].pageX : e.pageX;
+
+        const rect = container.getBoundingClientRect();
+        let position = ((pageX - rect.left) / rect.width) * 100;
+
+        // Clamp between 0 and 100
+        position = Math.max(0, Math.min(100, position));
+
+        overlay.style.width = `${position}%`;
+        slider.style.left = `${position}%`;
+      };
+
+      const start = (e) => {
+        isDragging = true;
+        move(e); // Update immediately on click
+      };
+
+      const end = () => {
+        isDragging = false;
+      };
+
+      // Events attached to the slider for starting drag
+      slider.addEventListener("mousedown", start);
+      slider.addEventListener("touchstart", start, { passive: true });
+
+      // Events attached to container for "jump to here" clicks
+      container.addEventListener("mousedown", start);
+      container.addEventListener("touchstart", start, { passive: true });
+
+      // Window events for dragging and stopping (smoother experience)
+      window.addEventListener("mousemove", move);
+      window.addEventListener("mouseup", end);
+      window.addEventListener("touchmove", move);
+      window.addEventListener("touchend", end);
+    });
+  };
+
+  // Run on load and View Transitions (if enabled in Astro)
+  initComparisons();
+  document.addEventListener("astro:after-swap", initComparisons);
+</script>

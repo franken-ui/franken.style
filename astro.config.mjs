@@ -76,6 +76,7 @@ export default defineConfig({
       frames: {
         showCopyToClipboardButton: false,
       },
+      themes: ["houston"],
     }),
     mdx(),
   ],

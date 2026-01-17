@@ -1,16 +1,19 @@
 <div class="space-y" style="--space-y: 2">
   <label
     class="uk-form-label color display-block"
-    style="--color: var(--uk-danger-foreground)"
+    style="--color: var(--uk-danger-f)"
   >
     Time
   </label>
-  <div class="uk-form-controls h" style="--h: 10">
+  <div
+    class="uk-form-controls [h]"
+    style="--h: calc(var(--uk-global-font-size) * 2.5)"
+  >
     <uk-input-time
       cls="host-inner: uk-input-time; input: uk-input uk-form-danger; meridiem-button: uk-input-fake uk-form-danger"
     ></uk-input-time>
   </div>
-  <p class="uk-form-help color" style="--color: var(--uk-danger-foreground)">
+  <p class="uk-form-help color" style="--color: var(--uk-danger-f)">
     This field is required.
   </p>
 </div>

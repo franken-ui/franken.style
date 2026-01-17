@@ -1,0 +1,35 @@
+---
+group: components
+project: kit
+text: Spinner
+title: Spinner
+lead: Create an animated loading spinner.
+meta:
+  description: Create an animated loading spinner.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+To create a spinner, add the `data-uk-spinner` attribute to a block element.
+
+<Ec project="kit" path="spinner.1" />
+
+<Snippet project="kit" component="spinner.basic" />
+
+## Ratio
+
+Add the `ratio: 3` parameter to the `data-uk-spinner` attribute to triple its size – or any other number, depending on how big you want the spinner to be.
+
+<Ec project="kit" path="spinner.2" />
+
+<Snippet project="kit" component="spinner.ratio" />
+
+## Accessibility
+
+The Spinner component automatically sets the appropriate WAI-ARIA roles, states and properties.
+
+- The _spinner_ has the `status` role.

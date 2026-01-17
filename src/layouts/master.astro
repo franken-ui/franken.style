@@ -5,6 +5,7 @@ import components from "frankenstyle/js/hwc-components.iife?url";
 import icon from "frankenstyle/js/hwc-icon.iife?url";
 import chart from "frankenstyle/js/hwc-chart.iife?url";
 import runtime from "frankenstyle/js/frankenstyle.iife?url";
+import { stl } from "helpers/common";
 
 const { doc } = Astro.props;
 ---
@@ -52,11 +53,7 @@ const { doc } = Astro.props;
         htmlElement.dataset.theme = "github-light";
       }
 
-      htmlElement.classList.add(__FRANKEN__.theme || "uk-theme-neutral");
-      htmlElement.classList.add(__FRANKEN__.radii || "uk-radii-md");
-      htmlElement.classList.add(__FRANKEN__.shadows || "uk-shadows-sm");
-      htmlElement.classList.add(__FRANKEN__.font || "uk-font-sm");
-      htmlElement.classList.add(__FRANKEN__.chart || "uk-chart-default");
+      // htmlElement.classList.add(__FRANKEN__.layout || "uk-layout-small");
     </script>
 
     {
@@ -84,5 +81,145 @@ const { doc } = Astro.props;
     <script is:inline src={runtime} type="module"></script>
     <script is:inline src="/js/htmx@2.0.6/htmx.min.js"></script>
     <script is:inline src="/js/alpinejs@3.14.9/alpinejs.min.js"></script>
+
+    <script
+      define:vars={{
+        cursorStl: stl({
+          display: "inline-block",
+          width: "2px",
+          height: "1em",
+          background: "#fff",
+          marginLeft: "2px",
+          animation: "blink 0.7s infinite",
+          verticalAlign: "text-bottom",
+        }),
+      }}
+      is:inline
+    >
+      if (!window.ecTypingAnimationInit) {
+        window.ecTypingAnimationInit = true;
+
+        function initTypingAnimation(rootId) {
+          const root = document.getElementById(rootId);
+
+          if (!root || root.dataset.type !== "true") {
+            return;
+          }
+
+          function checkAndAnimate() {
+            const pre = root.querySelector("pre");
+
+            if (pre) {
+              // Remove invisible class from swap target when pre is found
+              const swapTarget = root.querySelector(".invisible");
+
+              if (swapTarget) {
+                swapTarget.classList.remove("invisible");
+              }
+
+              const lines = Array.from(pre.querySelectorAll("div.ec-line"));
+              if (!lines.length) {
+                return;
+              }
+
+              const preClone = pre.cloneNode(true);
+
+              lines.forEach((line, idx) => {
+                line.style.opacity = "0";
+                // Preserve line height to prevent jumping
+                const computedHeight = window.getComputedStyle(line).height;
+                line.style.minHeight = computedHeight;
+              });
+
+              // Make pre visible after setting up lines
+              pre.style.opacity = "1";
+
+              let currentLine = 0;
+
+              const cursor = document.createElement("span");
+              cursor.style.cssText = cursorStl;
+
+              function typeLine() {
+                if (currentLine >= lines.length) {
+                  cursor.remove();
+                  pre.replaceWith(preClone);
+
+                  return;
+                }
+
+                const line = lines[currentLine];
+                const originalHTML = line.innerHTML;
+                const codeElement = line.querySelector(".code");
+
+                line.style.opacity = "1";
+
+                let textToType = "";
+
+                if (codeElement) {
+                  textToType = codeElement.textContent || "";
+
+                  // If empty or just whitespace, skip typing animation
+                  if (textToType.trim() === "") {
+                    line.innerHTML = originalHTML;
+                    line.style.minHeight = "";
+                    currentLine++;
+                    setTimeout(typeLine, 120);
+                    return;
+                  }
+
+                  codeElement.textContent = "";
+                  codeElement.appendChild(cursor);
+                } else {
+                  textToType = line.textContent || "";
+                  line.innerHTML = "";
+                  line.appendChild(cursor);
+                }
+
+                let charIndex = 0;
+
+                function typeChar() {
+                  if (charIndex < textToType.length) {
+                    const ch = textToType[charIndex++];
+                    const textNode = document.createTextNode(ch);
+
+                    if (codeElement) {
+                      codeElement.insertBefore(textNode, cursor);
+                    } else {
+                      line.insertBefore(textNode, cursor);
+                    }
+
+                    const delay = /[<>{}();,]/.test(ch) ? 60 : 30;
+                    setTimeout(typeChar, delay);
+                  } else {
+                    line.innerHTML = originalHTML;
+                    line.style.minHeight = "";
+                    currentLine++;
+                    setTimeout(typeLine, 120);
+                  }
+                }
+
+                typeChar();
+              }
+
+              setTimeout(typeLine, 300);
+            } else {
+              setTimeout(checkAndAnimate, 100);
+            }
+          }
+
+          setTimeout(checkAndAnimate, 1500);
+        }
+
+        // Auto-init on page load
+        document.addEventListener("DOMContentLoaded", () => {
+          document.querySelectorAll('.ec[data-type="true"]').forEach((el) => {
+            initTypingAnimation(el.id);
+          });
+        });
+
+        // Export for manual initialization
+        window.initEcTyping = initTypingAnimation;
+      }
+    </script>
   </body>
 </html>

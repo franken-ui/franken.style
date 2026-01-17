@@ -1,0 +1,61 @@
+---
+import Master from "layouts/master.astro";
+import Navbar from "components/partials/navbar.astro";
+import { stl } from "helpers/common";
+
+const { doc } = Astro.props;
+---
+
+<Master doc={doc}>
+  <div class="max-w-screen overflow-x-hidden">
+    <Navbar
+      menu={false}
+      announcement={{
+        headline: "Public preview",
+      }}
+      projectSwitcher={false}
+    />
+
+    <div
+      class="display-grid min-h-dvh grid-cols [grid-rows] justify-center pt md:mx md:[grid-cols] lg:mx"
+      style={stl({
+        "--grid-cols": "1",
+        "--grid-rows": "1fr 1px auto 1px auto",
+        "--pt": "14.25",
+        "--md-mx": "-4",
+        "--md-grid-cols": "2.5rem minmax(0, var(--breakpoint-2xl)) 2.5rem",
+        "--lg-mx": "0",
+      })}
+    >
+      <div
+        class="divider-pattern col-start row-span-full row-start display-hidden md:display-block w"
+        style={stl({
+          "--col-start": "1",
+          "--row-start": "1",
+        })}
+      >
+      </div>
+
+      <div
+        class="pb color sm:gap dark:color"
+        style={stl({
+          "--pb": "24",
+          "--color": "var(--color-gray-950)",
+          "--sm-gap": "40",
+          "--dark-color": "white",
+        })}
+      >
+        <slot />
+      </div>
+
+      <div
+        class="divider-pattern row-span-full row-start display-hidden md:col-start md:display-block w"
+        style={stl({
+          "--row-start": "1",
+          "--md-col-start": "3",
+        })}
+      >
+      </div>
+    </div>
+  </div>
+</Master>

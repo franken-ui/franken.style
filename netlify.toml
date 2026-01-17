@@ -1,0 +1,4 @@
+[[redirects]]
+from = "/style"
+to = "/"
+status = 301

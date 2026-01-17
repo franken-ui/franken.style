@@ -1,0 +1,9 @@
+---
+const { cls = "mt", stl = "--mt: 40;" } = Astro.props;
+---
+
+<div class={cls} style={stl}>
+  <div class="uk-container uk-container-xlarge">
+    <slot />
+  </div>
+</div>

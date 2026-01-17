@@ -1,0 +1,387 @@
+---
+import Home from "layouts/home.astro";
+import Highlighter from "components/highlighter.astro";
+import Macguffin from "components/partials/home/macguffin.astro";
+import VerticalMacguffin from "components/partials/home/vertical-macguffin.astro";
+import HSpacer from "components/partials/home/h-spacer.astro";
+import Feature from "components/partials/home/feature.astro";
+import { stl } from "helpers/common";
+---
+
+<Home
+  doc={{
+    title: "The Frankenstyle Project - A painless frontend system.",
+  }}
+>
+  <Macguffin>
+    <HSpacer>
+      <span class="sm:display-hidden">
+        &lt;div class=&quot;m&quot; style=&quot;--m: 2;&quot;&gt;
+      </span>
+      <span class="display-hidden sm:display-inline">
+        &lt;div class=&quot;color&quot; style=&quot;--color:
+        var(--color-sky-500);&quot;&gt;
+      </span>
+    </HSpacer>
+  </Macguffin>
+
+  <div class="">
+    <h1
+      class="divider-line py uk-hero-medium max-w-3xl"
+      style={stl({
+        "--py": "1",
+      })}
+    >
+      <HSpacer>Great web development shouldn't be complicated.</HSpacer>
+    </h1>
+  </div>
+
+  <Macguffin>
+    <HSpacer>
+      <span>&lt;span class=&quot;text-lg font-medium&quot;&gt;</span>
+    </HSpacer>
+  </Macguffin>
+
+  <div class="divider-line">
+    <div class="uk-text-medium max-w-3xl font-medium">
+      <HSpacer>
+        <div>
+          Built on proven foundations. No overengineering. Extending, not
+          replacing.
+        </div>
+        <div>
+          <span
+            class="color"
+            style={stl({
+              "--color": "var(--color-lime-500)",
+            })}>Frankenstyle</span
+          > is a full-fledged frontend system. Zero setup, no npm, no builds, no
+          watchers.
+        </div>
+      </HSpacer>
+    </div>
+  </div>
+
+  <div
+    class="divider-line mt sm:mt display-flex flex-col sm:flex-row gap"
+    style={stl({
+      "--mt": "4",
+      "--sm-mt": "10",
+      "--gap": "2",
+    })}
+  >
+    <HSpacer>
+      <a
+        class="uk-button uk-button-primary uk-button-large w-full sm:w-auto"
+        href="/docs/latest/kit/installation"
+      >
+        Get Started
+      </a>
+    </HSpacer>
+  </div>
+
+  <div class="relative mt" style={stl({ "--mt": "24" })}>
+    <VerticalMacguffin>Why Frankenstyle?</VerticalMacguffin>
+
+    <Macguffin>
+      <HSpacer>
+        <span class="sm:display-hidden">
+          &lt;div class=&quot;shadow-lg&quot;&gt;
+        </span>
+        <span class="display-hidden sm:display-inline">
+          &lt;div class=&quot;rounded&quot; style=&quot;--rounded:6px&quot;&gt;
+        </span>
+      </HSpacer>
+    </Macguffin>
+
+    <div class="divider-line">
+      <h2 class="uk-h2">
+        <HSpacer>Built for the modern web.</HSpacer>
+      </h2>
+    </div>
+
+    <Macguffin>
+      <HSpacer>
+        <span class="sm:display-hidden">
+          &lt;div class=&quot;text-sm truncate&quot;&gt;
+        </span>
+        <span class="display-hidden sm:display-inline">
+          &lt;div class=&quot;columns&quot; style=&quot;--columns:3&quot;&gt;
+        </span>
+      </HSpacer>
+    </Macguffin>
+
+    <div
+      class="uk-text-medium divider-line [max-w] color"
+      style={stl({
+        "--max-w": "var(--breakpoint-md)",
+        "--color": "var(--uk-muted-f)",
+      })}
+    >
+      <HSpacer>
+        Built for the modern web means embracing what already works.
+        Frankenstyle embraces modern CSS features to deliver a powerful,
+        straightforward frontend system with zero setup.
+      </HSpacer>
+    </div>
+
+    <div class="divider-line mt" style={stl({ "--mt": "16" })}>
+      <Feature
+        title="Modern Color Palette"
+        content="Frankenstyle uses Tailwind CSS’s color palette to deliver rich, vibrant colors out of the box."
+      />
+
+      <div
+        class="bg/o animate-pulse [h] sm:[h]"
+        style={stl({
+          "--bg": "var(--uk-muted)",
+          "--bg-o": "var(--uk-muted-o)",
+          "--h": "434px",
+          "--sm-h": "522px",
+        })}
+        hx-get="/hx/partials/showcases/colors"
+        hx-swap="outerHTML"
+        hx-trigger="intersect"
+      >
+      </div>
+
+      <div
+        class="display-grid grid-cols xl:grid-cols border-t-w border-t/o"
+        style={stl({
+          "--grid-cols": "1",
+          "--xl-grid-cols": "2",
+          "--border-t-w": "1px",
+          "--border-t": "var(--uk-border)",
+          "--border-t-o": "var(--uk-border-o)",
+        })}
+      >
+        <div
+          class="border-b-w xl:border-b-w border/o overflow-hidden"
+          style={stl({
+            "--border-b-w": "1px",
+            "--xl-border-b-w": "0px",
+            "--border": "var(--uk-border)",
+            "--border-o": "var(--uk-border-o)",
+          })}
+        >
+          <Feature
+            title="Filters"
+            content="Modern CSS filters, including backdrop blur, sepia, grayscale, and more, with zero configuration."
+          />
+
+          <div class="py xl:py" style={stl({ "--py": "4", "--xl-py": "0" })}>
+            <div
+              class="bg/o animate-pulse [h] sm:[h]"
+              style={stl({
+                "--bg": "var(--uk-muted)",
+                "--bg-o": "var(--uk-muted-o)",
+                "--h": "282px",
+                "--sm-h": "482px",
+              })}
+              hx-get="/hx/partials/showcases/filters"
+              hx-swap="outerHTML"
+              hx-trigger="intersect"
+            >
+            </div>
+          </div>
+        </div>
+        <div
+          class="xl:border-l-w border/o"
+          style={stl({
+            "--xl-border-l-w": "1px",
+            "--border": "var(--uk-border)",
+            "--border-o": "var(--uk-border-o)",
+          })}
+        >
+          <Feature
+            title="Gradients"
+            content="Gradient utilities that let you create smooth gradients without complex syntax."
+          />
+          <div
+            class="bg/o animate-pulse [h] sm:[h]"
+            style={stl({
+              "--bg": "var(--uk-muted)",
+              "--bg-o": "var(--uk-muted-o)",
+              "--h": "644px",
+              "--sm-h": "540px",
+            })}
+            hx-get="/hx/partials/showcases/gradients"
+            hx-swap="outerHTML"
+            hx-trigger="intersect"
+          >
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="border-y-w border-y/o"
+        style={stl({
+          "--border-y-w": "1px",
+          "--border-y": "var(--uk-border)",
+          "--border-y-o": "var(--uk-border-o)",
+        })}
+      >
+        <Feature
+          title="Dark mode"
+          content="Dark mode is standard for modern websites and included out of the box. Prefix any color utilities with dark: to apply it in dark mode."
+        />
+      </div>
+
+      <div
+        class="w-full aspect bg/o animate-pulse"
+        style={stl({
+          "--bg": "var(--uk-muted)",
+          "--bg-o": "var(--uk-muted-o)",
+          "--aspect": "1920 / 981",
+        })}
+        hx-get="/hx/partials/showcases/dark"
+        hx-swap="outerHTML"
+        hx-trigger="intersect"
+      >
+      </div>
+    </div>
+  </div>
+
+  <div class="relative mt" style={stl({ "--mt": "24" })}>
+    <VerticalMacguffin>The Basics</VerticalMacguffin>
+
+    <Macguffin>
+      <HSpacer>
+        <span class="sm:display-hidden">
+          &lt;div class=&quot;absolute [top]&quot; style=&quot;--top:
+          1px&quot;&gt;
+        </span>
+        <span class="display-hidden sm:display-inline">
+          &lt;div class=&quot;rotate&quot; style=&quot;--rotate:2deg&quot;&gt;
+        </span>
+      </HSpacer>
+    </Macguffin>
+
+    <div class="divider-line">
+      <h2 class="uk-h2">
+        <HSpacer>How it works?</HSpacer>
+      </h2>
+    </div>
+
+    <Macguffin>
+      <HSpacer>
+        <span class="sm:display-hidden">
+          &lt;div class=&quot;display-hidden sm:display-flex&quot;&gt;
+        </span>
+        <span class="display-hidden sm:display-inline">
+          &lt;div class=&quot;border-w border&quot; style=&quot;--border-w: 1px;
+          --border: var(--color-cyan-500);&quot;&gt;
+        </span>
+      </HSpacer>
+    </Macguffin>
+
+    <div
+      class="uk-text-medium divider-line [max-w] color"
+      style={stl({
+        "--max-w": "var(--breakpoint-md)",
+        "--color": "var(--uk-muted-f)",
+      })}
+    >
+      <HSpacer>
+        Frankenstyle is a no-build, value-driven CSS framework. Drop in a single
+        stylesheet and start building immediately.
+      </HSpacer>
+    </div>
+
+    <div
+      class="divider-line mt py sm:py"
+      style={stl({ "--mt": "16", "--py": "4", "--sm-py": "2" })}
+    >
+      <HSpacer>
+        <div data-uk-scrollspy="cls: uk-animation-fade">
+          <Highlighter path="how-it-works-demo.html" type={true} />
+        </div>
+      </HSpacer>
+    </div>
+  </div>
+
+  <div class="relative mt" style={stl({ "--mt": "24" })}>
+    <VerticalMacguffin>Get the Kit</VerticalMacguffin>
+
+    <Macguffin>
+      <HSpacer>
+        <span class="sm:display-hidden">
+          &lt;div class=&quot;uk-text-small&quot;&gt;
+        </span>
+        <span class="display-hidden sm:display-inline">
+          &lt;div class=&quot;uk-input uk-form-danger [max-w]&quot;
+          style=&quot;--max-w: var(--breakpoint-md);&quot;&gt;
+        </span>
+      </HSpacer>
+    </Macguffin>
+
+    <div class="divider-line">
+      <h2 class="uk-h2">
+        <HSpacer>
+          Do more with <span class="sm:display-hidden">the Kit</span>
+          <span class="display-hidden sm:display-inline">FrankenstyleKit</span>.
+        </HSpacer>
+      </h2>
+    </div>
+
+    <Macguffin>
+      <HSpacer>
+        <span class="sm:display-hidden">
+          &lt;div class=&quot;uk-button uk-button-primary&quot;&gt;
+        </span>
+        <span class="display-hidden sm:display-inline">
+          &lt;div class=&quot;opacity&quot; style=&quot;--opacity:.75&quot;&gt;
+        </span>
+      </HSpacer>
+    </Macguffin>
+
+    <div
+      class="uk-text-medium divider-line [max-w] color"
+      style={stl({
+        "--max-w": "var(--breakpoint-md)",
+        "--color": "var(--uk-muted-f)",
+      })}
+    >
+      <HSpacer>
+        FrankenstyleKit is an HTML-first UI component library built on UIkit 3
+        and extended with LitElement, inspired by coss ui.
+      </HSpacer>
+    </div>
+
+    <div class="divider-line mt" style={stl({ "--mt": "16" })}>
+      <div
+        class="w-full aspect bg/o animate-pulse"
+        style={stl({
+          "--bg": "var(--uk-muted)",
+          "--bg-o": "var(--uk-muted-o)",
+          "--aspect": "1920 / 913",
+        })}
+        hx-get="/hx/partials/showcases/examples"
+        hx-swap="outerHTML"
+        hx-trigger="intersect"
+      >
+      </div>
+    </div>
+  </div>
+
+  <div class="relative mt px" style={stl({ "--mt": "24", "--px": "2" })}>
+    <p
+      class="[max-w] uk-text-small color"
+      style={stl({
+        "--max-w": "var(--breakpoint-md)",
+        "--color": "var(--uk-muted-f)",
+      })}
+    >
+      <span class="font-bold">Disclaimer:</span> The Tailwind CSS website was deliberately
+      cloned to test whether complex designs can be built using only vanilla CSS.
+      Recreating an existing design is the most direct way to evaluate that premise.
+      This project is for <strong
+        class="underline font-bold color"
+        style={stl({
+          "--color": "var(--uk-danger)",
+        })}>educational, non-commercial purposes only</strong
+      > and is <strong class="underline font-bold">not</strong> intended to infringe
+      on any rights or imply affiliation.
+    </p>
+  </div>
+</Home>

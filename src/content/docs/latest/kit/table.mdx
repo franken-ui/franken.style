@@ -1,0 +1,119 @@
+---
+group: components
+project: kit
+text: Table
+title: Table
+lead: Easily create nice looking tables, which come in different styles.
+meta:
+  description: Easily create nice looking tables, which come in different styles.
+---
+
+import Ec from "snippets/ec.astro";
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+To apply this component, add the `.uk-table` class to a `<table>` element.
+
+<Ec project="kit" path="table.1" />
+
+<Snippet project="kit" component="table.basic" />
+
+## Divider modifier
+
+Add the `.uk-table-divider` class to display a divider between table rows.
+
+<Ec project="kit" path="table.2" />
+
+<Snippet project="kit" component="table.divider" />
+
+## Striped modifier
+
+Add zebra-striping to a table by adding the `.uk-table-striped` class.
+
+<Ec project="kit" path="table.3" />
+
+<Snippet project="kit" component="table.striped" />
+
+## Hover modifier
+
+Add the `.uk-table-hover` class to display a hover state on table rows.
+
+<Ec project="kit" path="table.4" />
+
+<Snippet project="kit" component="table.hover" />
+
+## Size modifiers
+
+Add the `.uk-table-small` or `.uk-table-large` class to a table to make it smaller or larger.
+
+<Ec project="kit" path="table.5" />
+
+<Snippet project="kit" component="table.size" />
+
+## Justify modifier
+
+To remove the outer padding of the first and last columns so that they are flush with the table, add the `.uk-table-justify` class.
+
+<Ec project="kit" path="table.6" />
+
+<Snippet project="kit" component="table.justify" />
+
+## Alignment modifier
+
+To vertically center table content, just add the `.uk-table-middle` class. You can also apply the class to `<tr>` or `<td>` elements for a more specific selection.
+
+<Ec project="kit" path="table.7" />
+
+<Snippet project="kit" component="table.alignment" />
+
+## Responsive table
+
+If your table happens to be wider than its container element or would eventually get too big on a specific viewport width, just wrap it inside a `<div>` element and add the `.uk-overflow-auto` class. This creates a container that provides a horizontal scrollbar whenever the elements inside it are wider than the container itself.
+
+<Ec project="kit" path="table.8" />
+
+<Snippet project="kit" component="table.responsive" />
+
+### Stack on small viewports
+
+If you want table columns to stack on small screens, add the `.uk-table-responsive` class.
+
+<Ec project="kit" path="table.9" />
+
+<Snippet project="kit" component="table.stack" />
+
+Please resize the browser window to see the columns stack.
+
+<span class="uk-label uk-label-primary">Note</span> To improve mobile readability, add `data-label="Your Label"` to table cells to show header info next to each data value. For full details, see [PR #95](https://github.com/franken-ui/ui/pull/95).
+
+
+## Column width modifier
+
+To modify the column width or content, you can use one of the following classes. You just need to add this class to one of the column cells. It's recommended on the header cell.
+
+| Class               | Description                                                                                                                |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `.uk-table-shrink ` | Add this class to a `<th>` or `<td>` element to reduce the column width to fit its content.                                |
+| `.uk-table-expand`  | Add this class to a `<th>` or `<td>` element to expand the column width to fill the remaining space and apply a min-width. |
+| `.w-*`              | Add one of the width utility classes from Tailwind CSS to a `<th>` or `<td>` element to modify the column width.           |
+
+<Ec project="kit" path="table.10" />
+
+<Snippet project="kit" component="table.column_width" />
+
+## Utilities
+
+To optimize the display of table cells and their specific content, you can add one of the following classes.
+
+| Class                 | Description                                                                                                                                                                                                                                   |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.uk-table-link`      | To link an entire cell, add this class to a `<th>`or `<td>` element and insert an `<a>` element. Add the `.uk-link-reset`class from the [Link component](/docs/2.1/link) to reset the default link styling.                                   |
+| `.uk-preserve-width ` | Since images are responsive by default in UIkit, using an image inside a table cell with the `.uk-table-shrink` class would reduce the image width to 0. To prevent this behavior, add the `.uk-preserve-width` class to the `<img>` element. |
+| `.uk-text-truncate`   | When applying a fixed width to a table cell, you might want to add this class to the `<td>` element to truncate the text.                                                                                                                     |
+| `.text-nowrap`        | Add this class from the Tailwind CSS to keep text from wrapping, for example when using the `.uk-table-shrink` class.                                                                                                                         |
+
+<Ec project="kit" path="table.11" />
+
+<Snippet project="kit" component="table.utilities" />

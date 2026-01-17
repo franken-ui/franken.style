@@ -1,0 +1,40 @@
+---
+import type { GetStaticPaths } from "astro";
+import { Code } from "astro-expressive-code/components";
+import fs from "node:fs/promises";
+import path from "node:path";
+
+export const partial = true;
+
+export const getStaticPaths = (async () => {
+  const STUBS_DIR = path.resolve("src/snippets/latest/highlighter");
+
+  const entries = await fs.readdir(STUBS_DIR, { withFileTypes: true });
+
+  return Promise.all(
+    entries
+      .filter((e) => e.isFile())
+      .map(async (entry) => {
+        const file = entry.name;
+        const fullPath = path.join(STUBS_DIR, file);
+
+        const content = await fs.readFile(fullPath, "utf-8");
+        const lang = path.extname(file).slice(1) || "text";
+
+        return {
+          params: {
+            slug: file, // includes extension → /example.sh
+          },
+          props: {
+            content,
+            lang,
+          },
+        };
+      }),
+  );
+}) satisfies GetStaticPaths;
+
+const { content, lang } = Astro.props;
+---
+
+<Code code={content} lang={lang} frame="none" />

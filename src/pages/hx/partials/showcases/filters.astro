@@ -1,0 +1,153 @@
+---
+import { Image } from "astro:assets";
+import { stl } from "helpers/common";
+import filter from "src/assets/filter_demo.png";
+
+export const partial = true;
+---
+
+<div
+  class="uk-animation-scale-down relative w overflow-hidden mx-auto"
+  style={stl({
+    "--w": "var(--showcase-filters-max-width)",
+  })}
+>
+  <div
+    class="uk-slider"
+    tabindex="-1"
+    data-uk-slider="center: true; autoplay: true; autoplay-interval: 1500; "
+  >
+    <div
+      class="uk-slider-items ml"
+      style={stl({
+        "--ml": "-8",
+      })}
+    >
+      {
+        [
+          {
+            cls: "size bg backdrop-sepia",
+            stl: stl({
+              "--size": "var(--showcase-filters-size)",
+              "--bg": "transparent",
+              "--backdrop-sepia": "100%",
+            }),
+            text: "sepia",
+          },
+          {
+            cls: "size bg backdrop-blur-sm",
+            stl: stl({
+              "--size": "var(--showcase-filters-size)",
+              "--bg": "transparent",
+            }),
+            text: "blur",
+          },
+          {
+            cls: "size bg backdrop-brightness",
+            stl: stl({
+              "--size": "var(--showcase-filters-size)",
+              "--bg": "transparent",
+              "--backdrop-brightness": "150%",
+            }),
+            text: "brightness",
+          },
+          {
+            cls: "size bg backdrop-grayscale",
+            stl: stl({
+              "--size": "var(--showcase-filters-size)",
+              "--bg": "transparent",
+              "--backdrop-grayscale": "100%",
+            }),
+            text: "grayscale",
+          },
+          {
+            cls: "size bg backdrop-contrast",
+            stl: stl({
+              "--size": "var(--showcase-filters-size)",
+              "--bg": "transparent",
+              "--backdrop-contrast": "150%",
+            }),
+            text: "contrast",
+          },
+          {
+            cls: "size bg backdrop-saturate",
+            stl: stl({
+              "--size": "var(--showcase-filters-size)",
+              "--bg": "transparent",
+              "--backdrop-saturate": "200%",
+            }),
+            text: "saturate",
+          },
+        ].map((a) => (
+          <div
+            class="w sm:w pl"
+            style={stl({
+              "--w": "100%",
+              "--sm-w": "33.3333%",
+              "--pl": "8",
+            })}
+          >
+            <div
+              class="border-w border/o"
+              style={stl({
+                "--border-w": "1px",
+                "--border": "var(--uk-border)",
+                "--border-o": "var(--uk-border-o)",
+              })}
+            >
+              <div
+                class="h display-flex justify-center items-center"
+                style={stl({
+                  "--h": "var(--showcase-filters-offset)",
+                })}
+              >
+                <span
+                  class="font-medium font-family color"
+                  style={stl({
+                    "--font-family": "var(--font-geist-mono)",
+                    "--color": "var(--uk-muted-f)",
+                  })}
+                >
+                  {a.text}
+                </span>
+              </div>
+              <div
+                class="p"
+                style={stl({
+                  "--p": "4",
+                })}
+              >
+                <div class={a.cls} style={a.stl} />
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div
+    class="absolute top z w display-flex justify-center"
+    style={stl({
+      "--top": "var(--showcase-filters-offset)",
+      "--z": "-1",
+      "--w": "var(--showcase-filters-max-width)",
+    })}
+  >
+    <div
+      class="size p"
+      style={stl({
+        "--size": "var(--showcase-filters-size)",
+        "--p": "4",
+      })}
+    >
+      <Image
+        class:list="w-full h-full object-cover"
+        width={400}
+        height={400}
+        src={filter}
+        alt=""
+      />
+    </div>
+  </div>
+</div>

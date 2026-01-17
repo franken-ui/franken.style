@@ -1,6 +1,7 @@
 ---
 import { resolve } from "path";
 import { readFileSync } from "fs";
+import { stl } from "helpers/common";
 
 const { path, version = "latest", project = "style" } = Astro.props;
 
@@ -50,14 +51,23 @@ if (Object.keys(safelist).includes(`${project}.${path}`)) {
 }
 ---
 
-<div class="ec mt" style="--mt: 6">
+<div
+  class="ec mt bg uk-shadow uk-rounded border-w border"
+  style={stl({
+    "--mt": "6",
+    "--bg": "#17191e",
+    "--border-w": "1px",
+    "--border": "#858b9833",
+  })}
+>
   <div
-    class="bg/o animate-pulse"
     hx-trigger="intersect"
     hx-get={route}
-    hx-select="figure"
+    hx-select="pre"
     hx-swap="outerHTML"
-    style={`--bg: var(--uk-muted); --bg-o: var(--uk-muted-o); height: calc(calc(var(--ec-codeLineHt) * ${lines}) + calc(var(--ec-codePadBlk) * 2) + calc(var(--ec-brdWd) * 2))`}
+    style={stl({
+      height: `calc((${lines} * var(--uk-global-line-height)) + (var(--highlighter-padding) * 2))`,
+    })}
   >
   </div>
 </div>

@@ -1,0 +1,90 @@
+---
+group: components
+project: kit
+text: Button
+title: Button
+lead: Easily create nice looking buttons, which come in different styles.
+meta:
+  description: Easily create nice looking buttons, which come in different styles.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+To apply this component, add the `.uk-button` class and a modifier such as `.uk-button-default` to an `<a>` or `<button>` element. Add the `disabled` attribute to a `<button>` element to disable the button.
+
+<Ec project="kit" path="button.1" />
+
+<Snippet project="kit" component="button.basic" />
+
+## Style modifiers
+
+There are several style modifiers available. Just add one of the following classes to apply a different look.
+
+- `.uk-button-default`
+- `.uk-button-ghost`
+- `.uk-button-primary`
+- `.uk-button-secondary`
+- `.uk-button-success`
+- `.uk-button-warning`
+- `.uk-button-info`
+- `.uk-button-danger`
+- `.uk-button-text`
+
+<Ec project="kit" path="button.2" />
+
+<Snippet project="kit" component="button.style" />
+
+## Customization
+
+You can use CSS variables to customize this component in any way you prefer.
+
+<Snippet project="kit" component="button.custom" />
+
+## Size modifiers
+
+There are several size modifiers available. Just add one of the following classes to make the button smaller or larger.
+
+| Class        | Description               |
+| ------------ | ------------------------- |
+| `.uk-button-xsmall` | Applies extra small size. |
+| `.uk-button-small` | Applies small size.       |
+| `.uk-button-medium` | Applies medium size.      |
+| `.uk-button-large` | Applies large size.       |
+
+<Snippet project="kit" component="button.size" />
+
+## Width modifiers
+
+You can use Tailwind CSS utility classes alongside button classes and the it will follow its width.
+
+<Snippet project="kit" component="button.width" />
+
+## Icon
+
+Use `.uk-button-icon` class to create an icon button, which can be used for social icons or toolbars.
+
+<Snippet project="kit" component="button.icon" />
+
+## Group
+
+To create a button group, add the `.uk-button-group` class to a `<div>` element around the buttons. That's it! No further markup is needed.
+
+<Snippet project="kit" component="button.group" />
+
+## Button with dropdowns
+
+A button can be used to trigger a dropdown menu from the [Dropdown component](/docs/latest/kit/dropdown).
+
+<Ec project="kit" path="button.3" />
+
+<Snippet project="kit" component="button.dropdown" />
+
+## Loading
+
+You can use Frankenstyle utilities or the [Spinner component](/docs/latest/kit/spinner) to add a loading state.
+
+<Snippet project="kit" component="button.loading" />

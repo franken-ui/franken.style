@@ -1,0 +1,212 @@
+---
+import { stl } from "helpers/common";
+
+export const partial = true;
+---
+
+<div
+  class="uk-animation-scale-down px py md:px dark:bg"
+  style="--px: 6; --py: 16; --md-px: 16; --dark-bg: var(--color-gray-950)"
+>
+  <div class="display-flex flex-col gap" style="--gap: 2;">
+    <span
+      class="font-size leading font-medium color/o dark:color/o"
+      style="
+            --font-size: var(--font-size-sm);
+            --leading: 7;
+            --color: var(--color-gray-950);
+            --color-o: 75%;
+            --dark-color: var(--white);
+            --dark-color-o: 75%;
+        "
+    >
+      Power Meets Precision
+    </span>
+
+    <h3
+      class="font-size leading font-semibold color dark:color"
+      style="
+            --font-size: var(--font-size-4xl);
+            --leading: 12;
+            --color: var(--color-gray-950);
+            --dark-color: var(--color-white);
+        "
+    >
+      Redefining real-time performance
+    </h3>
+
+    <p
+      class="font-size leading text-lg/7 font-medium color/o dark:color/o"
+      style="
+            --font-size: var(--font-size-lg);
+            --leading: 7;
+            --color: var(--color-gray-950);
+            --color-o: 75%;
+            --dark-color: var(--white);
+            --dark-color-o: 75%;
+        "
+    >
+      Our next-generation rendering engine delivers unmatched speed and
+      efficiency, empowering creators to push boundaries like never before.
+    </p>
+  </div>
+  <div class="mt display-flex flex-col gap" style="--mt: 10; --gap: 10;">
+    {
+      [
+        {
+          label: "Render time performance",
+          value: "6.4x",
+          numericValue: 6.4,
+          bar: {
+            cls: "h [w] rounded-full linear linear-to-r from to dark:from dark:to inset-ring-w inset-ring/o dark:inset-ring/o showcase-gradients-bar",
+            stl: {
+              "--h": "2.5",
+              "--w": "100%",
+              "--from": "var(--color-emerald-500)",
+              "--to": "var(--color-sky-400)",
+              "--dark-from": "var(--color-emerald-400)",
+              "--dark-to": "var(--color-sky-400)",
+              "--inset-ring-w": "1px",
+              "--inset-ring": "var(--color-gray-950)",
+              "--inset-ring-o": "10%",
+              "--dark-inset-ring": "var(--color-white)",
+              "--dark-inset-ring-o": "10%",
+            },
+          },
+        },
+        {
+          label: "Real-time frame rate",
+          value: "4.2x",
+          numericValue: 4.2,
+          bar: {
+            cls: "h [w] rounded-full linear linear-to-r from to dark:from dark:to inset-ring-w inset-ring/o dark:inset-ring/o showcase-gradients-bar",
+            stl: {
+              "--h": "2.5",
+              "--w": "75%",
+              "--from": "var(--color-pink-600)",
+              "--to": "var(--color-amber-300)",
+              "--dark-from": "var(--color-pink-500)",
+              "--dark-to": "var(--color-amber-200)",
+              "--inset-ring-w": "1px",
+              "--inset-ring": "var(--color-gray-950)",
+              "--inset-ring-o": "10%",
+              "--dark-inset-ring": "var(--color-white)",
+              "--dark-inset-ring-o": "10%",
+            },
+          },
+        },
+        {
+          label: "Multi-platform build time",
+          value: "2.7x",
+          numericValue: 2.7,
+          bar: {
+            cls: "h [w] rounded-full linear linear-to-r from to dark:from dark:to inset-ring-w inset-ring/o dark:inset-ring/o showcase-gradients-bar",
+            stl: {
+              "--h": "2.5",
+              "--w": "50%",
+              "--from": "var(--color-purple-600)",
+              "--to": "var(--color-cyan-300)",
+              "--dark-from": "var(--color-purple-600)",
+              "--dark-to": "var(--color-cyan-300)",
+              "--inset-ring-w": "1px",
+              "--inset-ring": "var(--color-gray-950)",
+              "--inset-ring-o": "10%",
+              "--dark-inset-ring": "var(--color-white)",
+              "--dark-inset-ring-o": "10%",
+            },
+          },
+        },
+      ].map((a, index) => (
+        <div class="display-flex gap" style="--gap: 6">
+          <div class="display-flex flex-1 flex-col gap" style="--gap: 2.5">
+            <span
+              class="leading font-medium color dark:color"
+              style="
+                --leading: 7;
+                --color: var(--color-gray-950);
+                --dark-color: var(--color-white);
+            "
+            >
+              {a.label}
+            </span>
+            <div
+              class={a.bar.cls}
+              style={stl(a.bar.stl)}
+              data-delay={index * 200}
+            />
+          </div>
+          <div class="w display-flex justify-end" style={stl({ "--w": "20" })}>
+            <span
+              class="font-size leading font-semibold color dark:color counter-value"
+              style="
+                --font-size: var(--font-size-3xl);
+                --leading: 12;
+                --color: var(--color-gray-950);
+                --dark-color: var(--color-white);
+            "
+              data-target={a.numericValue}
+              data-delay={index * 200}
+            >
+              0.0x
+            </span>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<script is:inline>
+  // Animate bars on load
+  function animateBars() {
+    const bars = document.querySelectorAll(".showcase-gradients-bar");
+
+    bars.forEach((bar) => {
+      const delay = parseInt(bar.dataset.delay || "0");
+
+      setTimeout(() => {
+        bar.classList.add("animate");
+      }, delay);
+    });
+  }
+
+  // Counter animation
+  function animateCounters() {
+    const counters = document.querySelectorAll(".counter-value");
+
+    counters.forEach((counter) => {
+      const target = parseFloat(counter.dataset.target);
+      const delay = parseInt(counter.dataset.delay || "0");
+      const duration = 2000; // 2 seconds
+      const steps = 60;
+      const increment = target / steps;
+      let current = 0;
+      let step = 0;
+
+      setTimeout(() => {
+        const timer = setInterval(() => {
+          step++;
+          current = Math.min(current + increment, target);
+
+          if (step >= steps || current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+
+          counter.textContent = current.toFixed(1) + "x";
+        }, duration / steps);
+      }, delay);
+    });
+  }
+
+  // Run animations when page loads
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+      animateBars();
+      animateCounters();
+    });
+  } else {
+    animateBars();
+    animateCounters();
+  }
+</script>

@@ -1,0 +1,89 @@
+---
+group: components
+project: kit
+text: Typography
+title: Typography
+lead: Documentation and examples for FrankenstyleKit typography, including headings, body text, lists, and more.
+meta:
+  description: Documentation and examples for FrankenstyleKit typography, including headings, body text, lists, and more.
+keywords: article,heading,hero,text
+---
+
+import Ec from "snippets/ec.astro";
+
+import Snippet from "snippets/component.astro";
+
+<Snippet project="kit" component="typography.basic" />
+
+## Headings
+
+Add one of the following classes to modify the size and style of headings. Usually, these classes would be used on heading elements, but they work also with any other element like a `div` element.
+
+| Class    | Description                            |
+| -------- | -------------------------------------- |
+| `.uk-h1` | Add this class to apply an h1 heading. |
+| `.uk-h2` | Add this class to apply an h2 heading. |
+| `.uk-h3` | Add this class to apply an h3 heading. |
+| `.uk-h4` | Add this class to apply an h4 heading. |
+| `.uk-h5` | Add this class to apply an h5 heading. |
+| `.uk-h6` | Add this class to apply an h6 heading. |
+
+<Snippet project="kit" component="typography.headings" />
+
+## Hero
+
+Add one of the following classes to apply hero headings. These classes are typically used to add a prominent message with a very large font size.
+
+| Class              | Description                                      |
+| ------------------ | ------------------------------------------------ |
+| `.uk-hero-small`   | Add this class to apply a small-sized heading.   |
+| `.uk-hero-medium`  | Add this class to apply a medium-sized heading.  |
+| `.uk-hero-large`   | Add this class to apply a large-sized heading.   |
+| `.uk-hero-xlarge`  | Add this class to apply a xlarge-sized heading.  |
+| `.uk-hero-2xlarge` | Add this class to apply a 2xlarge-sized heading. |
+| `.uk-hero-3xlarge` | Add this class to apply a 3xlarge-sized heading. |
+
+<Snippet project="kit" component="typography.hero" />
+
+## Heading Styles
+
+Add one of the following classes to modify the size and style of headings.
+
+| Class                 | Description                                                      |
+| --------------------- | ---------------------------------------------------------------- |
+| `.uk-heading-divider` | Add this class to apply a divider to a heading.                  |
+| `.uk-heading-line`    | Add this class to apply a vertically centered line to a heading. |
+| `.uk-heading-bullet`  | Add this class to apply a bullet to a heading.                   |
+
+<Snippet project="kit" component="typography.heading_styles" />
+
+## Paragraph
+
+<Snippet project="kit" component="typography.paragraph" />
+
+## Blockquote
+
+<Snippet project="kit" component="typography.blockquote" />
+
+## Inline code
+
+<Snippet project="kit" component="typography.codespan" />
+
+## Text
+
+FrankenstyleKit offers various text utilities to style your text.
+
+| Class               | Description                                                                                                          |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `.uk-text-lead`     | <span class="uk-text-lead">Add this class to highlight text, for example in article subtitles.</span>                |
+| `.uk-text-meta`     | <span class="uk-text-meta">Add this class to a paragraph that contains meta text about an article or similar.</span> |
+| `.uk-text-truncate` | Prevents text from wrapping into multiple lines, truncating it and displaying an ellipsis instead.                   |
+| `.uk-text-break`    | Breaks strings, if their length exceeds the width of their container.                                                |
+
+### Background
+
+To apply a gradient or background image to text, add the `.uk-text-background` class to a `<span>` element inside the text element. Styles that don't define a `background-image`, will apply the primary color.
+
+<Ec project="kit" path="typography.1" />
+
+<Snippet project="kit" component="typography.text_background" />

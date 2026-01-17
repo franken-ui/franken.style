@@ -1,26 +1,32 @@
 ---
-const { href = "#", headline, subtext } = Astro.props;
+import { stl as stl2 } from "helpers/common";
+
+const { href = "#", headline, subtext, stl } = Astro.props;
 ---
 
 <a
   href={href}
-  class="uk-focus-visible bg color items-center rounded-full px py text-xs font-medium leading display-flex"
-  style="--bg: var(--uk-danger); --color: var(--color-white); --px: 3; --py: 1; --leading: 5;"
+  class="uk-focus-visible bg color items-center rounded-full px py font-medium display-flex uk-text-xsmall h flex"
+  style={stl2({
+    "--bg": "var(--uk-danger)",
+    "--color": "var(--color-white)",
+    "--px": "3",
+    "--py": "1",
+    "--h": "7",
+    ...stl,
+  })}
 >
   <strong class="font-semibold">{headline}</strong>
   {
     subtext ? (
-      <Fragment>
-        <svg
-          width="2"
-          height="2"
-          fill="currentColor"
-          aria-hidden="true"
-          class="ml-2"
-        >
+      <span
+        class="display-inline-flex items-center gap-x ml"
+        style={stl2({ "--gap-x": "2", "--ml": "2" })}
+      >
+        <svg width="2" height="2" fill="currentColor" aria-hidden="true">
           <circle cx="1" cy="1" r="1" />
         </svg>
-        <span class="ml-2">{subtext}</span>
+        <span>{subtext}</span>
         <svg
           width="3"
           height="6"
@@ -36,7 +42,7 @@ const { href = "#", headline, subtext } = Astro.props;
             stroke-linejoin="round"
           />
         </svg>
-      </Fragment>
+      </span>
     ) : (
       ""
     )
