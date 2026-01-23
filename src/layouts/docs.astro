@@ -113,6 +113,11 @@ type Kit = {
   components: Group[];
 };
 
+type Ft = {
+  "getting-started": Group[];
+  components: Group[];
+};
+
 type Style = {
   "getting-started": Group[];
   layout: Group[];
@@ -134,11 +139,16 @@ type Style = {
 
 const groups: {
   kit: Kit;
+  ft: Ft;
   style: Style;
 } = {
   kit: {
     "getting-started": [],
     forms: [],
+    components: [],
+  },
+  ft: {
+    "getting-started": [],
     components: [],
   },
   style: {
@@ -181,7 +191,7 @@ const tbc = transformHeadings(headings);
 
 <Master
   doc={{
-    title: `${remarkPluginFrontmatter.title} - ${project === "kit" ? "FrankenstyleKit" : "Frankenstyle"}`,
+    title: `${remarkPluginFrontmatter.title}`,
     meta: { ...remarkPluginFrontmatter.meta, "docsearch:version": "latest" },
   }}
 >

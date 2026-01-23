@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+
+const components = (await getCollection("latest")).filter(
+  (a) => a.data.project === "ft",
+);
+---
+
+<ul class="mt uk-list uk-list-hyphen" style="--mt: 6">
+  {
+    components
+      .filter((a) => a.data.group === "components")
+      .map((a) => (
+        <li>
+          <a class="uk-link" href={`/docs/latest/${a.id}`}>
+            <span class="flex-1">{a.data.text}</span>
+          </a>
+        </li>
+      ))
+  }
+</ul>

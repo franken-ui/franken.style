@@ -2,6 +2,7 @@
 import Monster from "src/assets/monster.svg";
 import Announcement from "components/announcement.astro";
 import { stl } from "helpers/common";
+import ProjectSwitcher from "./project-switcher.astro";
 
 const {
   project = "style",
@@ -57,22 +58,7 @@ const {
           />
         </a>
 
-        {
-          projectSwitcher ? (
-            <div class="display-hidden lg:display-block">
-              <ul class="uk-tab-alt">
-                <li class={project == "kit" ? "uk-active" : ""}>
-                  <a href="/docs/latest/kit/installation">Kit</a>
-                </li>
-                <li class={project == "style" ? "uk-active" : ""}>
-                  <a href="/docs/latest/style/introduction">Style</a>
-                </li>
-              </ul>
-            </div>
-          ) : (
-            ""
-          )
-        }
+        {projectSwitcher ? <ProjectSwitcher project={project} /> : ""}
 
         {
           menu ? (

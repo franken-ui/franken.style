@@ -1,0 +1,23 @@
+---
+const { project = "style " } = Astro.props;
+---
+
+<div class="display-hidden lg:display-block">
+  <ul class="uk-tab-alt">
+    <li class={project == "kit" ? "uk-active" : ""}>
+      <a href="/docs/latest/kit/installation" data-uk-tooltip="FrankenstyleKit">
+        Kit
+      </a>
+    </li>
+    <li class={project == "ft" ? "uk-active" : ""}>
+      <a href="/docs/latest/ft/introduction" data-uk-tooltip="Frankternity">
+        Ft
+      </a>
+    </li>
+    <li class={project == "style" ? "uk-active" : ""}>
+      <a href="/docs/latest/style/introduction" data-uk-tooltip="Frankenstyle">
+        Stl
+      </a>
+    </li>
+  </ul>
+</div>

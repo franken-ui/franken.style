@@ -1,0 +1,117 @@
+---
+group: components
+project: ft
+text: Animated Testimonials
+title: Animated Testimonials
+lead: Minimal testimonials sections with image and quote.
+meta:
+  description: Minimal testimonials sections with image and quote.
+---
+
+import Snippet from "snippets/component.astro";
+import Ec from 'snippets/ec.astro';
+import Installation from "components/partials/ft/installation-mdx.astro";
+import ftCore from "frankenstyle/js/ft-core.iife?url";
+import ftAnimatedTestimonials from "frankenstyle/js/ft/animated-testimonials.iife?url";
+
+<Snippet project="ft" component="animated_testimonials.basic" />
+
+## Installation
+
+<Installation uid="animated-testimonials" />
+
+## CSS variables
+
+All CSS variables prefixed with `--ft-*` can be used to customize layout, spacing, colors, and sizing of this component.
+
+### Container
+
+| Variable | Default | Description |
+|--------|---------|-------------|
+| `--ft-container-px` | `4` | Horizontal padding on the container |
+| `--ft-container-py` | `20` | Vertical padding on the container |
+| `--ft-container-md-px` | `8` | Horizontal padding on medium screens |
+| `--ft-container-lg-px` | `12` | Horizontal padding on large screens |
+
+### Grid layout
+
+| Variable | Default | Description |
+|--------|---------|-------------|
+| `--ft-grid-gap` | `20` | Gap between grid items |
+| `--ft-grid-cols` | `1` | Number of grid columns on small screens |
+| `--ft-grid-cols-md` | `2` | Number of grid columns on medium screens |
+
+### Image
+
+| Variable | Default | Description |
+|--------|---------|-------------|
+| `--ft-image-height` | `80` | Height of the testimonial image container |
+
+### Content spacing
+
+| Variable | Default | Description |
+|--------|---------|-------------|
+| `--ft-content-py` | `4` | Vertical padding for the content section |
+| `--ft-quote-mt` | `8` | Top margin above the quote text |
+
+### Text colors
+
+| Variable | Default | Description |
+|--------|---------|-------------|
+| `--ft-designation-color` | `var(--color-gray-500)` | Color of the designation text |
+| `--ft-designation-color-dark` | `var(--color-neutral-500)` | Designation color in dark mode |
+| `--ft-quote-color` | `var(--color-gray-500)` | Quote text color |
+| `--ft-quote-color-dark` | `var(--color-neutral-300)` | Quote text color in dark mode |
+
+### Buttons layout
+
+| Variable | Default | Description |
+|--------|---------|-------------|
+| `--ft-button-gap` | `4` | Gap between navigation buttons |
+| `--ft-button-pt` | `12` | Top padding above buttons |
+| `--ft-button-md-pt` | `0` | Top padding above buttons on medium screens |
+
+### Buttons styling
+
+| Variable | Default | Description |
+|--------|---------|-------------|
+| `--ft-button-size` | `7` | Width and height of navigation buttons |
+| `--ft-button-bg` | `var(--color-gray-100)` | Button background color |
+| `--ft-button-bg-dark` | `var(--color-neutral-800)` | Button background color in dark mode |
+
+### Button icons
+
+| Variable | Default | Description |
+|--------|---------|-------------|
+| `--ft-button-icon-size` | `5` | Width and height of button icons |
+| `--ft-button-icon-color` | `var(--color-black)` | Button icon color |
+| `--ft-button-icon-color-dark` | `var(--color-neutral-400)` | Button icon color in dark mode |
+| `--ft-button-transition-duration` | `300` | Transition duration for button hover animations (ms) |
+
+
+## Props
+
+To pass props, include them as JSON inside a `<script>` tag with the `data-fn="props"` attribute.
+
+<Ec project="ft" path="etc.props" />
+
+<span class="uk-label uk-label-primary">Note</span> The `data-ft-*` attribute determines which Frankternity component is mounted and should be replaced with the component name.
+
+| Prop Name      | Type                                                                       | Required | Default | Description                                                                                       |
+| -------------- | -------------------------------------------------------------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------- |
+| `testimonials` | `Array<{ quote: string; name: string; designation: string; src: string }>` | Yes      | `-`     | Array of testimonial objects containing the quote, author name, designation, and image source URL |
+| `autoplay`     | `boolean`                                                                  | No       | `false` | Whether to automatically cycle through testimonials every 5 seconds                               |
+
+### Testimonial object shape
+
+Each object in the `testimonials` array should have the following properties:
+
+| Property      | Type     | Description                                   |
+| ------------- | -------- | --------------------------------------------- |
+| `quote`       | `string` | The testimonial text                          |
+| `name`        | `string` | The name of the person giving the testimonial |
+| `designation` | `string` | The title or role of the person               |
+| `src`         | `string` | The URL of the person's image                 |
+
+<script src={ftCore}></script>
+<script src={ftAnimatedTestimonials}></script>

@@ -1,0 +1,35 @@
+---
+import Installation from "./installation.astro";
+
+const { uid } = Astro.props;
+---
+
+<p class="uk-paragraph">
+  To install, just include the following JavaScript somewhere on your page:
+</p>
+
+<Installation uid={uid} />
+
+<h3 class="uk-h3 mt" style="--mt:10" id="important-notes">Important notes</h3>
+
+<ul class="uk-list uk-list-hyphen mt" style="--mt:6">
+  <li>
+    Make sure your project is using either <a
+      href="/docs/latest/style/introduction"
+      class="uk-link">Frankenstyle</a
+    > or <a href="/docs/latest/kit/installation" class="uk-link"
+      >FrankenstyleKit</a
+    >.
+  </li>
+  <li>
+    The order of JavaScript loading is important. The <code class="uk-codespan"
+      >ft-core.iife.js</code
+    > file must be loaded before any other components.
+  </li>
+  <li>
+    When using multiple Frankternity components, the core file only needs to be
+    loaded <span class="color underline" style="--color: var(--uk-danger-f)"
+      >once</span
+    >.
+  </li>
+</ul>

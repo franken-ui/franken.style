@@ -3,7 +3,7 @@ import { join, resolve } from "path";
 
 export function getSnippetPaths(config: {
   version: string;
-  project: "kit" | "style";
+  project: "kit" | "style" | "ft";
   file?: string;
 }) {
   const { version, project, file = "code.html" } = config;

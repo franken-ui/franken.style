@@ -1,0 +1,33 @@
+---
+group: components
+project: ft
+text: Background Boxes
+title: Background Boxes
+lead: A full width background box container that highlights on hover
+meta:
+  description: A full width background box container that highlights on hover
+---
+
+import Snippet from "snippets/component.astro";
+import Installation from "components/partials/ft/installation-mdx.astro";
+import ftCore from "frankenstyle/js/ft-core.iife?url";
+import ftBgBoxes from "frankenstyle/js/ft/bg-boxes.iife?url";
+
+<Snippet project="ft" component="bg_boxes.basic" />
+
+## Installation
+
+<Installation uid="bg-boxes" />
+
+## CSS variables
+
+All CSS variables prefixed with `--ft-*` can be used to customize layout, spacing, colors, and sizing of this component.
+
+### Container
+
+| Variable            | Default                  | Description              |
+| ------------------- | ------------------------ | ------------------------ |
+| `--ft-border-color` | `var(--color-slate-700)` | Border color of the grid |
+
+<script src={ftCore}></script>
+<script src={ftBgBoxes}></script>

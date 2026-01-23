@@ -1,0 +1,44 @@
+---
+group: components
+project: ft
+text: Sparkles
+title: Sparkles
+lead: A configurable sparkles component that can be used as a background or as a standalone component.
+meta:
+  description: A configurable sparkles component that can be used as a background or as a standalone component.
+---
+
+import Snippet from "snippets/component.astro";
+import Ec from 'snippets/ec.astro';
+import Installation from "components/partials/ft/installation-mdx.astro";
+import ftCore from "frankenstyle/js/ft-core.iife?url";
+import ftSparkles from "frankenstyle/js/ft/sparkles.iife?url";
+
+<Snippet project="ft" component="sparkles.basic" />
+
+## Installation
+
+<Installation uid="sparkles" />
+
+## Props
+
+To pass props, include them as JSON inside a `<script>` tag with the `data-fn="props"` attribute.
+
+<Ec project="ft" path="etc.props" />
+
+<span class="uk-label uk-label-primary">Note</span> The `data-ft-*` attribute determines which Frankternity component is mounted and should be replaced with the component name.
+
+| Prop Name         | Type     | Description                                      |
+| ----------------- | -------- | ------------------------------------------------ |
+| `id`              | `string` | The ID of the sparkles component                 |
+| `className`       | `string` | The class name applied to the sparkles component |
+| `background`      | `string` | The background color of the sparkles component   |
+| `particleSize`    | `number` | The size of the particles                        |
+| `minSize`         | `number` | The minimum size of the particles                |
+| `maxSize`         | `number` | The maximum size of the particles                |
+| `speed`           | `number` | The speed of the particles                       |
+| `particleColor`   | `string` | The color of the particles                       |
+| `particleDensity` | `number` | The density of the particles                     |
+
+<script src={ftCore}></script>
+<script src={ftSparkles}></script>

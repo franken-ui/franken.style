@@ -1,0 +1,34 @@
+---
+import { Code } from "astro-expressive-code/components";
+
+const tag = import.meta.env.TAG || "latest";
+let version = "1.0";
+
+await (async () => {
+  try {
+    const response = await fetch("https://registry.npmjs.org/frankenstyle");
+    const data = await response.json();
+
+    version = data["dist-tags"][tag];
+  } catch (e) {}
+})();
+
+const { uid } = Astro.props;
+
+let snippet = `
+<!-- Load the core file first -->
+<script
+  src="https://cdn.jsdelivr.net/npm/frankenstyle@[VERSION]/dist/js/ft-core.iife.js"
+></script>
+
+<!-- Load the component -->
+<script
+  src="https://cdn.jsdelivr.net/npm/frankenstyle@[VERSION]/dist/js/ft/${uid}.iife.js"
+></script>
+`.replaceAll("[VERSION]", version);
+let lang = "html";
+---
+
+<div class="mt" style="--mt: 6">
+  <Code frame="none" code={snippet} lang={lang} />
+</div>

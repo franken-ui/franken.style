@@ -2,7 +2,7 @@ import { z, defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 
 const docs = {
-  project: z.enum(["kit", "style"]).default("style"),
+  project: z.enum(["kit", "style", "ft"]).default("style"),
   group: z.string(),
   order: z.number().optional(),
   text: z.string(),

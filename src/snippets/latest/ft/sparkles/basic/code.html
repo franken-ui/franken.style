@@ -1,0 +1,77 @@
+<div
+  class="[h] bg display-flex w-full flex-col items-center justify-center overflow-hidden"
+  style="--h: 40rem; --bg: var(--color-black)"
+>
+  <h1
+    class="color z relative text-center text-3xl font-bold md:text-7xl lg:text-9xl"
+    style="--color: var(--color-white); --z: 20"
+  >
+    Frankternity
+  </h1>
+  <div class="[w] h relative overflow-hidden" style="--w: 40rem; --h: 40">
+    <!-- Gradients -->
+    <div
+      class="inset-x top linear linear-to-r from via to [h] [w] absolute blur-sm"
+      style="
+        --inset-x: 20;
+        --top: 0;
+        --from: transparent;
+        --via: var(--color-indigo-500);
+        --to: transparent;
+        --h: 2px;
+        --w: 75%;
+      "
+    ></div>
+
+    <div
+      class="inset-x top linear linear-to-r from via to [h] [w] absolute"
+      style="
+        --inset-x: 20;
+        --top: 0;
+        --from: transparent;
+        --via: var(--color-indigo-500);
+        --to: transparent;
+        --h: 1px;
+        --w: 75%;
+      "
+    ></div>
+    <div
+      class="inset-x top linear linear-to-r from via to [h] [w] absolute blur-sm"
+      style="
+        --inset-x: 60;
+        --top: 0;
+        --from: transparent;
+        --via: var(--color-sky-500);
+        --to: transparent;
+        --h: 5px;
+        --w: 25%;
+      "
+    ></div>
+
+    <div
+      class="inset-x top linear linear-to-r from via to [h] [w] absolute"
+      style="
+        --inset-x: 60;
+        --top: 0;
+        --from: transparent;
+        --via: var(--color-sky-500);
+        --to: transparent;
+        --h: 1px;
+        --w: 25%;
+      "
+    ></div>
+
+    <!-- Core component -->
+    <div data-ft-sparkles></div>
+
+    <!-- Radial Gradient to prevent sharp edges -->
+    <div
+      class="inset bg absolute h-full w-full"
+      style="
+        --inset: 0;
+        --bg: var(--color-black);
+        mask-image: radial-gradient(350px 200px at top, #0000 20%, #fff);
+      "
+    ></div>
+  </div>
+</div>
