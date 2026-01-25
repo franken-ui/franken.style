@@ -6,17 +6,17 @@ const { href = "#", headline, subtext, stl } = Astro.props;
 
 <a
   href={href}
-  class="uk-focus-visible bg color items-center rounded-full px py font-medium display-flex uk-text-xsmall h flex"
+  class="uk-focus-visible bg color items-center rounded-full px py display-flex uk-text-small h flex"
   style={stl2({
     "--bg": "var(--uk-danger)",
     "--color": "var(--color-white)",
     "--px": "3",
     "--py": "1",
-    "--h": "7",
+    "--h": "6",
     ...stl,
   })}
 >
-  <strong class="font-semibold">{headline}</strong>
+  <span class="font-medium">{headline}</span>
   {
     subtext ? (
       <span
