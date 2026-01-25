@@ -1,0 +1,87 @@
+---
+project: kit
+group: components
+text: Sortable
+title: Sortable
+lead: Create sortable grids and lists to rearrange the order of its elements.
+meta:
+  description: Create sortable grids and lists to rearrange the order of its elements.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+Drag and drop an element to a new location within the sortable grid, while the other items adjust to fit. This is great, if you want to sort items like gallery or menu items, for example.
+
+## Usage
+
+To apply this component, add the `data-uk-sortable` attribute to a container and create child elements.
+
+<Ec project="kit" path="sortable.1" />
+
+<Snippet project="kit" component="sortable.basic" />
+
+## Handle
+
+By default, the entire sortable element can be used for drag and drop sorting. To create a handle which will be used instead, just add the `handle: SELECTOR` option to the attribute and add the handle class to the element that you want to use as a handle.
+
+<Ec project="kit" path="sortable.2" />
+
+<Snippet project="kit" component="sortable.handle" />
+
+## Group
+
+To be able to sort items from one list to another, you can group them by adding the `group: GROUP-NAME` option to the `data-uk-sortable` attribute on each list.
+
+<Ec project="kit" path="sortable.3" />
+
+<Snippet project="kit" component="sortable.group" />
+
+## Custom class
+
+You can also apply one or more custom classes to items when they are being dragged. To do so, add the `cls-custom: MY-CLASS` option to the attribute.
+
+<Ec project="kit" path="sortable.4" />
+
+<Snippet project="kit" component="sortable.custom_class" />
+
+## Component options
+
+Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/2.1/javascript#component-configuration)
+
+| Option            | Value           | Default                   | Description                                   |
+| ----------------- | --------------- | ------------------------- | --------------------------------------------- |
+| `group`           | String          |                           | The group                                     |
+| `animation`       | String, Boolean | `slide`                   | Animation mode (`slide`, `false`).            |
+| `duration`        | Number          | `250`                     | Animation duration in milliseconds.           |
+| `threshold`       | Number          | `5`                       | Mouse move threshold before dragging starts.  |
+| `cls-item`        | String          | `uk-sortable-item`        | The item class.                               |
+| `cls-placeholder` | String          | `uk-sortable-placeholder` | The placeholder class.                        |
+| `cls-drag`        | String          | `uk-sortable-drag`        | The ghost class.                              |
+| `cls-drag-state`  | String          | `uk-drag`                 | The body's dragging class.                    |
+| `cls-base`        | String          | `uk-sortable`             | The list's class.                             |
+| `cls-no-drag`     | String          | `uk-sortable-nodrag`      | Disable dragging on elements with this class. |
+| `cls-empty`       | String          | `uk-sortable-empty`       | The empty list class.                         |
+| `cls-custom`      | String          |                           | The ghost's custom class.                     |
+| `handle`          | String          | `false`                   | The handle selector.                          |
+
+## JavaScript
+
+Learn more about [JavaScript components](/docs/2.1/javascript#programmatic-use).
+
+### Initialization
+
+<Ec project="kit" path="sortable.5" />
+
+### Events
+
+The following events will be triggered on elements with this component attached:
+
+| Name      | Description                              |
+| --------- | ---------------------------------------- |
+| `start`   | Fires after dragging starts.             |
+| `stop`    | Fires after dragging stops.              |
+| `moved`   | Fires after an element has been moved.   |
+| `added`   | Fires after an element has been added.   |
+| `removed` | Fires after an element has been removed. |
