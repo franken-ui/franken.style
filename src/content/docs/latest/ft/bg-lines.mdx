@@ -1,0 +1,40 @@
+---
+group: components
+project: ft
+text: Background Lines
+title: Background Lines
+lead: A set of svg paths that animate in a wave pattern. Good for hero sections background, as seen on height.app
+meta:
+  description: A set of svg paths that animate in a wave pattern. Good for hero sections background, as seen on height.app
+---
+
+import Snippet from "snippets/component.astro";
+import Ec from "snippets/ec.astro";
+import Installation from "components/partials/ft/installation-mdx.astro";
+import ftCore from "frankenstyle/js/ft-core.iife?url";
+import ftBgLines from "frankenstyle/js/ft/bg-lines.iife?url";
+
+<Snippet project="ft" component="bg_lines.basic" />
+
+## Installation
+
+<Installation uid="bg-lines" />
+
+## Props
+
+To pass props, include them as JSON inside a `<script>` tag with the `data-fn="props"` attribute.
+
+<Ec project="ft" path="etc.props" />
+
+<span class="uk-label uk-label-primary">Note</span> The `data-ft-*` attribute
+determines which Frankternity component is mounted and should be replaced with
+the component name.
+
+| Prop Name  | Type   | Default                                                     | Description                                                    |
+| ---------- | ------ | ----------------------------------------------------------- | -------------------------------------------------------------- |
+| className  | string |                                                             | Additional CSS classes to be applied to the outer container.   |
+| stl        | object |                                                             | Additional inline styles to be applied to the outer container. |
+| svgOptions | object | <code class="uk-codespan">&#123; duration: 10 &#125;</code> | Options for customizing the SVG animation.                     |
+
+<script src={ftCore}></script>
+<script src={ftBgLines}></script>
