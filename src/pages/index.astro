@@ -72,11 +72,23 @@ import { stl } from "helpers/common";
   >
     <HSpacer>
       <a
-        class="uk-button uk-button-primary uk-button-large w-full sm:w-auto"
+        class="uk-button uk-button-primary uk-button-large w-full sm:w-auto gap-x"
+        style="--gap-x: 2"
         href="/docs/latest/kit/installation"
       >
         Get Started
+        <uk-icon class="size" style="--size: 4" icon="arrow-right"></uk-icon>
       </a>
+
+      <button
+        class="uk-button uk-button-default uk-button-large display-hidden lg:display-inline-flex gap-x"
+        style="--gap-x: 2"
+        x-data
+        x-on:click={`copyPreview('/hx/boilerplate')`}
+      >
+        <uk-icon class="size" style="--size: 4" icon="copy"></uk-icon>
+        Grab Starter Template
+      </button>
     </HSpacer>
   </div>
 

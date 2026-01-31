@@ -574,32 +574,6 @@ const tbc = transformHeadings(headings);
       attributeFilter: ["class"],
     });
 
-    window.copyPreview = async function (route) {
-      try {
-        const response = await fetch(route);
-
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-
-        const text = await response.text();
-
-        await navigator.clipboard.writeText(text);
-
-        window.UIkit.notification({
-          message: "Copied to clipboard.",
-          status: "info",
-          pos: "bottom-right",
-        });
-      } catch (err) {
-        window.UIkit.notification({
-          message: "Network error. Please try again.",
-          status: "danger",
-          pos: "bottom-right",
-        });
-      }
-    };
-
     const cmd = document.getElementById("cmd");
 
     cmd &&

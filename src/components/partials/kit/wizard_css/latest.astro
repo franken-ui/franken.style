@@ -15,6 +15,37 @@ import Ec from "snippets/ec.astro";
       </p>
 
       <Ec project="kit" path="installation.cdn" />
+
+      <p class="uk-paragraph">
+        Once you're done, you may now proceed <a
+          class="uk-link"
+          href="/docs/latest/kit/javascript">adding JavaScript</a
+        >.
+      </p>
+
+      <div class="display-hidden lg:display-block">
+        <h2 class="uk-h2 mt" style="--mt:10" id="list-of-variables">
+          Starter template
+        </h2>
+
+        <p class="uk-paragraph">
+          To speed up your development, you can grab a copy of our official
+          boilerplate by clicking the button below. You're free to remove any
+          optional components you don't need.
+        </p>
+
+        <div class="mt display-flex justify-center" style="--mt: 6">
+          <button
+            class="uk-button uk-button-default uk-button-large gap-x"
+            style="--gap-x: 2"
+            x-data
+            x-on:click={`copyPreview('/hx/boilerplate')`}
+          >
+            <uk-icon class="size" style="--size: 4" icon="copy"></uk-icon>
+            Grab Starter Template
+          </button>
+        </div>
+      </div>
     </li>
     <li>
       <div class="mt" style="--mt: 10"></div>
@@ -71,13 +102,15 @@ import Ec from "snippets/ec.astro";
         >, <code class="uk-codespan">bg-muted</code>, and other custom utility
         classes within your project.
       </p>
+
+      <p class="uk-paragraph">
+        Once you're done, you may now proceed <a
+          class="uk-link"
+          href="/docs/latest/kit/javascript">adding JavaScript</a
+        >.
+      </p>
     </li>
   </ul>
 
-  <p class="uk-paragraph">
-    Once you're done, you may now proceed <a
-      class="uk-link"
-      href="/docs/latest/kit/javascript">adding JavaScript</a
-    >.
-  </p>
+  <p class="uk-paragraph"></p>
 </div>
