@@ -1,0 +1,140 @@
+---
+project: kit
+group: forms
+text: Basic
+title: Form
+lead: Easily create nice looking forms with different styles and layouts.
+meta:
+  description: Easily create nice looking forms with different styles and layouts.
+keywords: "input,select,textarea,radio,checkbox,range,toggle switch,range"
+---
+
+import Ec from "snippets/ec.astro";
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+Add one of the following classes to form controls inside a `<form>` element to define them.
+
+| Class               | Description                                                                     |
+| ------------------- | ------------------------------------------------------------------------------- |
+| `.uk-input`         | Add this class to `<input>` elements.                                           |
+| `.uk-select`        | Add this class to `<select>` elements.                                          |
+| `.uk-textarea`      | Add this class to `<textarea>` elements.                                        |
+| `.uk-radio`         | Add this class to `<input type="radio">` elements to create radio buttons.      |
+| `.uk-checkbox`      | Add this class to `<input type="checkbox">` elements to create checkboxes.      |
+| `.uk-range`         | Add this class to `<input type="range">` elements to create range forms.        |
+| `.uk-toggle-switch` | Add this class to `<input type="checkbox">` elements to create toggle switches. |
+
+<Ec project="kit" path="form.1" />
+
+Add the `.uk-fieldset` class to a `<fieldset>` element and the `.uk-legend` class to a `<legend>` element to define a fieldset and a form legend.
+
+<Snippet project="kit" component="form.basic" />
+
+## Destructive modifier
+
+Add the `.uk-form-danger` class to an `<input>`, `<select>` or `<textarea>` element to notify the user that the value is not validated.
+
+<Snippet project="kit" component="form.danger" />
+
+## Size modifiers
+
+There are several size modifiers available. Just add one of the following classes to make the form smaller or larger.
+
+| Class             | Description               |
+| ----------------- | ------------------------- |
+| `.uk-form-xsmall` | Applies extra small size. |
+| `.uk-form-small`  | Applies small size.       |
+| `.uk-form-medium` | Applies medium size.      |
+| `.uk-form-large`  | Applies large size.       |
+
+<Snippet project="kit" component="form.size" />
+
+## Width modifiers
+
+You can use Tailwind CSS utility classes alongside form classes and the it will follow its width.
+
+<Snippet project="kit" component="form.width" />
+
+## Blank modifier
+
+Add the `.uk-form-blank` class to minimize the styling of form controls.
+
+<Snippet project="kit" component="form.blank" />
+
+## Layout
+
+Define labels and controls and apply a stacked layout to form elements. Layout modifiers can be added to any parent element like the `<fieldset>` element.
+
+| Class                     | Description                                                     |
+| ------------------------- | --------------------------------------------------------------- |
+| `.uk-form-stacked`        | Add this class to display labels on top of controls.            |
+| `.uk-form-label`          | Add this class to define form labels.                           |
+| `.uk-form-label-required` | Add this class to automatically add an asterisk to form labels. |
+| `.uk-form-controls`       | Add this class to define form controls.                         |
+
+<Ec project="kit" path="form.2" />
+
+<Snippet project="kit" component="form.layout" />
+
+## Form and icons
+
+You use an icon from the [Icon component](/docs/2.1/icon) inside a form. Add the `.uk-form-icon` class to a `<span>` element. Group it with an `<input>` element by adding the `.uk-inline` class to a container element around both. The icon has to come first in the markup. By default, the icon will be placed on the left side of the form. To change the alignment, add the `.uk-form-icon-flip` class.
+
+<Ec project="kit" path="form.4" />
+
+<Snippet project="kit" component="form.icon" />
+
+### Clickable icons
+
+To enable an action, for example opening a modal to pick an image or link, use an `<a>` or `<button>` element to create the icon.
+
+<Ec project="kit" path="form.5" />
+
+<Snippet project="kit" component="form.clickable_icon" />
+
+## Custom controls
+
+To replace a file input or select forms with your own HTML content, like a button or text, add the `data-uk-form-custom` attribute to a container element.
+
+### File
+
+Use a button or text as a file input.
+
+<Ec project="kit" path="form.6" />
+
+<Snippet project="kit" component="form.custom_controls_file" />
+
+<span class="uk-label uk-label-primary">Note</span> The hover and focus state
+for `uk-form-custom` are not styled by default, but you could use the adjacent
+sibling selector to do so.
+
+### Select
+
+Use a button, text or a link as a select form. Just add the `target: SELECTOR` option to the `uk-form-custom` attribute to select where the option value should be displayed. `target: true` will select the adjacent element in the markup.
+
+<Ec project="kit" path="form.7" />
+
+<Snippet project="kit" component="form.custom_controls_select" />
+
+## Help block
+
+Form text can be created using `.uk-form-help` and should be explicitly associated with the form control it relates to using the `aria-describedby` attribute. This will ensure that assistive technologies—such as screen readers—will announce this form text when the user focuses or enters the control.
+
+<Snippet project="kit" component="form.help_block" />
+
+## Toggle Switch
+
+Use the following toggle switch component to ask for a yes or no type of input from your users without the use of JavaScript. You can also add the the `.uk-toggle-switch-danger` modifier to apply a danger style.
+
+<Snippet project="kit" component="form.toggle_switch" />
+
+## Accessibility
+
+Set the appropriate WAI-ARIA roles, states and properties to the Form component.
+
+- If no `<label>` element is associated with the form control, set the `aria-label` property to the form control to describe its meaning.
+
+<Ec project="kit" path="form.8" />

@@ -1,0 +1,48 @@
+<form>
+  <div class="">
+    <div data-uk-form-custom="target: true">
+      <select aria-label="Custom controls">
+        <option value="1">Option 01</option>
+        <option value="2">Option 02</option>
+        <option value="3">Option 03</option>
+        <option value="4">Option 04</option>
+      </select>
+      <span></span>
+    </div>
+  </div>
+
+  <div class="mt" style="--mt: 4">
+    <div data-uk-form-custom="target: > * > span:last-child">
+      <select aria-label="Custom controls">
+        <option value="1">Option 01</option>
+        <option value="2">Option 02</option>
+        <option value="3">Option 03</option>
+        <option value="4">Option 04</option>
+      </select>
+      <span class="display-flex items-center uk-link">
+        <span class="mr" style="--mr: 2">
+          <uk-icon icon="pencil-line"></uk-icon>
+        </span>
+        <span></span>
+      </span>
+    </div>
+  </div>
+
+  <div class="mt" style="--mt: 4">
+    <div data-uk-form-custom="target: > * > span:first-child">
+      <select aria-label="Custom controls">
+        <option value="">Please select...</option>
+        <option value="1">Option 01</option>
+        <option value="2">Option 02</option>
+        <option value="3">Option 03</option>
+        <option value="4">Option 04</option>
+      </select>
+      <button class="uk-button uk-button-default" type="button" tabindex="-1">
+        <span></span>
+        <span class="ml-2">
+          <uk-icon icon="chevron-down"></uk-icon>
+        </span>
+      </button>
+    </div>
+  </div>
+</form>
