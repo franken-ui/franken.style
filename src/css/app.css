@@ -25,6 +25,10 @@
     --showcase-filters-max-width: 100;
     --showcase-filters-offset: 12;
     --showcase-filters-size: 50;
+    --showcase-filters-image-padding: 1rem;
+    --showcase-filters-filter-size: calc(
+      100% - (var(--showcase-filters-image-padding) * 2)
+    );
   }
 
   .showcase-gradients-bar {
@@ -41,6 +45,7 @@
       --showcase-filters-max-width: 200;
       --showcase-filters-offset: 12;
       --showcase-filters-size: 100;
+      --showcase-filters-image-padding: 2rem;
     }
   }
 
