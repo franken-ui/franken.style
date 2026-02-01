@@ -223,7 +223,7 @@ const { doc } = Astro.props;
     </script>
 
     <script is:inline>
-      window.copyPreview = async function (route) {
+      window.copyPreview = async function (route, e) {
         try {
           const response = await fetch(route);
 
@@ -232,8 +232,11 @@ const { doc } = Astro.props;
           }
 
           const text = await response.text();
-
           await navigator.clipboard.writeText(text);
+
+          if (window.zaraz) {
+            window.zaraz.track(e);
+          }
 
           window.UIkit.notification({
             message: "Copied to clipboard.",

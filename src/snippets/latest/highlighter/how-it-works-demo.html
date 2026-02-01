@@ -5,14 +5,20 @@
 
 <!-- Add hover and focus states with the data-fs attribute -->
 <button
-  class="bg bg:hover px py rounded-md"
+  type="button"
+  class="color linear linear-to-br from to linear-to-bl:hover ring-w:focus outline-none:focus ring:focus dark:ring:focus font-medium rounded-full text-sm px py text-center leading"
   style="
-    --bg: var(--uk-primary);
-    --bg-hover: oklch(50% 0.245 262.881);
-    --px: 5;
+    --color: var(--color-white);
+    --from: var(--color-purple-600);
+    --to: var(--color-blue-500);
+    --ring-w-focus: 4px;
+    --ring-focus: var(--color-blue-300);
+    --dark-ring-focus: var(--color-blue-800);
+    --px: 4;
     --py: 2.5;
+    --leading: 5;
   "
   data-fs
 >
-  Hover me
+  Purple to Blue
 </button>

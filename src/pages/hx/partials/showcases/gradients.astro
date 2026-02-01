@@ -5,52 +5,57 @@ export const partial = true;
 ---
 
 <div
-  class="uk-animation-scale-down px py md:px dark:bg"
-  style="--px: 6; --py: 16; --md-px: 16; --dark-bg: var(--color-gray-950)"
+  class="uk-animation-fade px py md:px"
+  style={stl({
+    "--px": "6",
+    "--py": "16",
+    "--md-px": "16",
+  })}
 >
-  <div class="display-flex flex-col gap" style="--gap: 2;">
+  <div
+    class="display-flex flex-col gap"
+    style={stl({
+      "--gap": "2",
+    })}
+  >
     <span
-      class="font-size leading font-medium color/o dark:color/o"
-      style="
-            --font-size: var(--font-size-sm);
-            --leading: 7;
-            --color: var(--color-gray-950);
-            --color-o: 75%;
-            --dark-color: var(--white);
-            --dark-color-o: 75%;
-        "
+      class="font-size leading font-medium"
+      style={stl({
+        "--font-size": "var(--font-size-sm)",
+        "--leading": "7",
+      })}
     >
       Power Meets Precision
     </span>
 
     <h3
-      class="font-size leading font-semibold color dark:color"
-      style="
-            --font-size: var(--font-size-4xl);
-            --leading: 12;
-            --color: var(--color-gray-950);
-            --dark-color: var(--color-white);
-        "
+      class="font-size leading font-semibold"
+      style={stl({
+        "--font-size": "var(--font-size-4xl)",
+        "--leading": "12",
+      })}
     >
       Redefining real-time performance
     </h3>
 
     <p
-      class="font-size leading text-lg/7 font-medium color/o dark:color/o"
-      style="
-            --font-size: var(--font-size-lg);
-            --leading: 7;
-            --color: var(--color-gray-950);
-            --color-o: 75%;
-            --dark-color: var(--white);
-            --dark-color-o: 75%;
-        "
+      class="font-size leading text-lg/7 font-medium"
+      style={stl({
+        "--font-size": "var(--font-size-lg)",
+        "--leading": "7",
+      })}
     >
       Our next-generation rendering engine delivers unmatched speed and
       efficiency, empowering creators to push boundaries like never before.
     </p>
   </div>
-  <div class="mt display-flex flex-col gap" style="--mt: 10; --gap: 10;">
+  <div
+    class="mt display-flex flex-col gap"
+    style={stl({
+      "--mt": "10",
+      "--gap": "10",
+    })}
+  >
     {
       [
         {
@@ -117,15 +122,23 @@ export const partial = true;
           },
         },
       ].map((a, index) => (
-        <div class="display-flex gap" style="--gap: 6">
-          <div class="display-flex flex-1 flex-col gap" style="--gap: 2.5">
+        <div
+          class="display-flex gap"
+          style={stl({
+            "--gap": "6",
+          })}
+        >
+          <div
+            class="display-flex flex-1 flex-col gap"
+            style={stl({
+              "--gap": "2.5",
+            })}
+          >
             <span
-              class="leading font-medium color dark:color"
-              style="
-                --leading: 7;
-                --color: var(--color-gray-950);
-                --dark-color: var(--color-white);
-            "
+              class="leading font-medium"
+              style={stl({
+                "--leading": "7",
+              })}
             >
               {a.label}
             </span>
@@ -135,15 +148,18 @@ export const partial = true;
               data-delay={index * 200}
             />
           </div>
-          <div class="w display-flex justify-end" style={stl({ "--w": "20" })}>
+          <div
+            class="w display-flex justify-end"
+            style={stl({
+              "--w": "20",
+            })}
+          >
             <span
-              class="font-size leading font-semibold color dark:color counter-value"
-              style="
-                --font-size: var(--font-size-3xl);
-                --leading: 12;
-                --color: var(--color-gray-950);
-                --dark-color: var(--color-white);
-            "
+              class="font-size leading font-semibold counter-value"
+              style={stl({
+                "--font-size": "var(--font-size-3xl)",
+                "--leading": "12",
+              })}
               data-target={a.numericValue}
               data-delay={index * 200}
             >

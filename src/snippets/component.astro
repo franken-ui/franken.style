@@ -6,6 +6,7 @@ import { resolve } from "path";
 const { version = "latest", component, project = "style" } = Astro.props;
 
 const route = `/hx/ec/${version}/${project}/${component.replace(".", "/")}`;
+const e = `copy_${project}_${component.replace(".", "_")}`;
 
 let preview = "";
 let lines = 0;
@@ -111,7 +112,7 @@ try {
       class="uk-button uk-button-default uk-button-xsmall"
       data-uk-tooltip="Copy Frankenstyle"
       x-data
-      x-on:click={`copyPreview('${route}/clipboard')`}
+      x-on:click={`copyPreview('${route}/clipboard', '${e}')`}
     >
       <uk-icon class="size" style="--size: 4" icon="copy"></uk-icon>
       FS
@@ -125,7 +126,7 @@ try {
           class="uk-button uk-button-default uk-button-xsmall"
           data-uk-tooltip={variant.tooltip}
           x-data
-          x-on:click={`copyPreview('${route}/clipboard_${variant.key}')`}
+          x-on:click={`copyPreview('${route}/clipboard_${variant.key}', '${e}')`}
         >
           <uk-icon class="size" style="--size: 4" icon="copy" />
           {variant.label}
