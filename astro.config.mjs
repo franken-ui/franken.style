@@ -70,6 +70,7 @@ function plugin() {
 
 // https://astro.build/config
 export default defineConfig({
+  trailingSlash: "never",
   compressHTML: true,
   integrations: [
     expressiveCode({
