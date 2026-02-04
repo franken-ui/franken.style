@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const components = (await getCollection("latest"))
+    .filter((a) => a.data.project === "ft")
+    .filter((a) => a.data.group !== "getting-started");
+
+  return components.map((a) => ({
+    params: {
+      slug: a.id.replace("ft/", "").replaceAll("-", "_"),
+    },
+    props: {
+      a,
+    },
+  }));
+}
+
+export const partial = true;
+
+const { a } = Astro.props as {
+  a: CollectionEntry<"latest">;
+};
+---
+
+<div>
+  <iframe
+    src={`/hx/ec/latest/ft/${a.id.replace("ft/", "").replaceAll("-", "_")}/basic/preview`}
+    height={a.data.preview?.height}
+    width={a.data.preview?.width}></iframe>
+</div>

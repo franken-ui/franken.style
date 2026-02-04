@@ -3,6 +3,12 @@ import { glob } from "astro/loaders";
 
 const docs = {
   project: z.enum(["kit", "style", "ft"]).default("style"),
+  preview: z.optional(
+    z.object({
+      width: z.string(),
+      height: z.string(),
+    }),
+  ),
   group: z.string(),
   order: z.number().optional(),
   text: z.string(),

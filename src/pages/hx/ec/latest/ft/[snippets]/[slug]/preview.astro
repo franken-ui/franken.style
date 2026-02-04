@@ -1,0 +1,33 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getSnippetPaths } from "data/snippets/base";
+import Ft from "layouts/ft.astro";
+
+import animated_testimonials from "frankenstyle/js/ft/animated-testimonials.iife?url";
+import bg_beams from "frankenstyle/js/ft/bg-beams.iife?url";
+import bg_boxes from "frankenstyle/js/ft/bg-boxes.iife?url";
+import bg_lines from "frankenstyle/js/ft/bg-lines.iife?url";
+import sparkles from "frankenstyle/js/ft/sparkles.iife?url";
+
+export const getStaticPaths = (async () =>
+  getSnippetPaths({
+    version: "latest",
+    project: "ft",
+  })) satisfies GetStaticPaths;
+
+const { content, category } = Astro.props;
+
+const urls: { [key: string]: any } = {
+  animated_testimonials,
+  bg_beams,
+  bg_boxes,
+  bg_lines,
+  sparkles,
+};
+---
+
+<Ft doc={{ title: category }}>
+  <Fragment set:html={content} />
+
+  <script is:inline src={urls[category]}></script>
+</Ft>

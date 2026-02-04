@@ -1,21 +1,67 @@
 ---
 import { getCollection } from "astro:content";
+import { stl } from "helpers/common";
 
 const components = (await getCollection("latest")).filter(
   (a) => a.data.project === "ft",
 );
 ---
 
-<ul class="mt uk-list uk-list-hyphen" style="--mt: 6">
+<div
+  class="mt display-grid grid-cols md:grid-cols border-w border/o"
+  style={stl({
+    "--mt": "6",
+    "--grid-cols": "1",
+    "--md-grid-cols": "2",
+    "--border-w": "1px",
+    "--border": "var(--uk-border)",
+    "--border-o": "var(--uk-border-o)",
+  })}
+  data-uk-grid="masonry: pack"
+>
   {
     components
-      .filter((a) => a.data.group === "components")
+      .filter((a) => a.data.group !== "getting-started")
       .map((a) => (
-        <li>
-          <a class="uk-link" href={`/docs/latest/${a.id}`}>
-            <span class="flex-1">{a.data.text}</span>
-          </a>
-        </li>
+        <div
+          class="p display-grid grid-cols gap-y cursor-pointer "
+          style={stl({
+            "--p": "2",
+            "--grid-cols": "1",
+            "--gap-y": "2",
+          })}
+        >
+          <div
+            class="[h] [w] bg/o animate-pulse border-w border/o border-dashed"
+            style={stl({
+              "--h": a.data.preview?.height as string,
+              "--w": a.data.preview?.width as string,
+              "--bg": "var(--uk-muted)",
+              "--bg-o": "var(--uk-muted-o)",
+              "--border-w": "1px",
+              "--border": "var(--uk-border)",
+              "--border-o": "var(--uk-border-o)",
+            })}
+            hx-get={`/hx/partials/latest/ft/pre_preview/${a.id.replace("ft/", "").replaceAll("-", "_")}`}
+            hx-trigger="click"
+            hx-swap="outerHTML"
+          />
+
+          <div class="relative">
+            <a class="uk-link" href={`/docs/latest/${a.id}`}>
+              {a.data.text}
+              <span class="absolute inset" style="--inset: 0" />
+            </a>
+            <p
+              class="mt"
+              style={stl({
+                "--mt": "2",
+              })}
+            >
+              {a.data.lead}
+            </p>
+          </div>
+        </div>
       ))
   }
-</ul>
+</div>
