@@ -251,6 +251,49 @@ const { doc } = Astro.props;
           });
         }
       };
+
+      async function copyData(data) {
+        try {
+          await navigator.clipboard.writeText(data);
+
+          window.UIkit.notification({
+            message: "Copied to clipboard.",
+            status: "info",
+            pos: "bottom-right",
+          });
+        } catch (e) {}
+      }
+
+      const monster = document.getElementById("monster");
+
+      if (monster) {
+        let e = document.getElementById("left-eye"),
+          t = document.getElementById("right-eye"),
+          n = { x: 273.91, y: 416.96, maxMove: 20 },
+          i = { x: 475.85, y: 417.34, maxMove: 20 },
+          m = monster.getBoundingClientRect(),
+          l = monster.viewBox.baseVal.width / m.width,
+          s = monster.viewBox.baseVal.height / m.height;
+        function a(a) {
+          let d = (a.clientX - m.left) * l,
+            o = (a.clientY - m.top) * s;
+          [e, t].forEach((e, t) => {
+            let m = 0 === t ? n : i,
+              l = d - m.x,
+              s = o - m.y,
+              a = Math.atan2(s, l),
+              c = Math.min(0.1 * Math.sqrt(l * l + s * s), m.maxMove);
+            (e.setAttribute("cx", m.x + Math.cos(a) * c),
+              e.setAttribute("cy", m.y + Math.sin(a) * c));
+          });
+        }
+        let d;
+        function o(e) {
+          (d && cancelAnimationFrame(d),
+            (d = requestAnimationFrame(() => a(e))));
+        }
+        document.addEventListener("mousemove", o);
+      }
     </script>
   </body>
 </html>

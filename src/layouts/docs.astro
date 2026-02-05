@@ -1,6 +1,7 @@
 ---
 import { getCollection, getEntry, render } from "astro:content";
 import Navbar from "components/partials/navbar.astro";
+import ProjectSwitcher from "components/partials/project-switcher.astro";
 import WebComponent from "components/partials/web-component.astro";
 import Master from "layouts/master.astro";
 
@@ -561,6 +562,10 @@ const tbc = transformHeadings(headings);
           ))
         }
       </ul>
+
+      <div class="mt" style="--mt: 4"></div>
+
+      <ProjectSwitcher forceShow={true} project={project} />
     </div>
   </div>
 

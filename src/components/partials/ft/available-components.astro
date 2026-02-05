@@ -24,31 +24,46 @@ const components = (await getCollection("latest")).filter(
       .filter((a) => a.data.group !== "getting-started")
       .map((a) => (
         <div
-          class="p display-grid grid-cols gap-y cursor-pointer "
+          class="p display-grid grid-cols gap-y"
           style={stl({
             "--p": "2",
             "--grid-cols": "1",
             "--gap-y": "2",
           })}
         >
-          <div
-            class="[h] [w] bg/o animate-pulse border-w border/o border-dashed"
-            style={stl({
-              "--h": a.data.preview?.height as string,
-              "--w": a.data.preview?.width as string,
-              "--bg": "var(--uk-muted)",
-              "--bg-o": "var(--uk-muted-o)",
-              "--border-w": "1px",
-              "--border": "var(--uk-border)",
-              "--border-o": "var(--uk-border-o)",
-            })}
-            hx-get={`/hx/partials/latest/ft/pre_preview/${a.id.replace("ft/", "").replaceAll("-", "_")}`}
-            hx-trigger="click"
-            hx-swap="outerHTML"
-          />
+          {a.data.preview?.show ? (
+            <div
+              class="[h] [w] bg/o animate-pulse border-w border/o border-dashed cursor-pointer"
+              style={stl({
+                "--h": a.data.preview?.height as string,
+                "--w": a.data.preview?.width as string,
+                "--bg": "var(--uk-muted)",
+                "--bg-o": "var(--uk-muted-o)",
+                "--border-w": "1px",
+                "--border": "var(--uk-border)",
+                "--border-o": "var(--uk-border-o)",
+              })}
+              hx-get={`/hx/partials/latest/ft/pre_preview/${a.id.replace("ft/", "").replaceAll("-", "_")}`}
+              hx-trigger="click"
+              hx-swap="outerHTML"
+            />
+          ) : (
+            <div
+              class="border-w border/o border-dashed p color text-center"
+              style={stl({
+                "--border-w": "1px",
+                "--border": "var(--uk-border)",
+                "--border-o": "var(--uk-border-o)",
+                "--p": "4",
+                "--color": "var(--uk-warning-f)",
+              })}
+            >
+              Live preview is not available.
+            </div>
+          )}
 
           <div class="relative">
-            <a class="uk-link" href={`/docs/latest/${a.id}`}>
+            <a class="font-bold uk-link" href={`/docs/latest/${a.id}`}>
               {a.data.text}
               <span class="absolute inset" style="--inset: 0" />
             </a>

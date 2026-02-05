@@ -1,0 +1,69 @@
+---
+preview:
+  width: "100%"
+  height: "160px"
+group: texts
+project: ft
+text: Hover Effect
+title: Hover Effect
+lead: A text hover effect that animates and outlines gradient on hover, as seen on x.ai.
+meta:
+  description: A text hover effect that animates and outlines gradient on hover, as seen on x.ai.
+---
+
+import Snippet from "snippets/component.astro";
+import Ec from "snippets/ec.astro";
+import Installation from "components/partials/ft/installation-mdx.astro";
+import ftCore from "frankenstyle/js/ft-core.iife?url";
+import ftTextEncrypted from "frankenstyle/js/ft/text-hover-effect.iife?url";
+
+<Snippet project="ft" component="text_hover_effect.basic" />
+
+## Installation
+
+<Installation uid="text_hover_effect" />
+
+## CSS variables
+
+All CSS variables prefixed with `--ft-*` can be used to customize layout, spacing, colors, and sizing of this component.
+
+### Text appearance
+
+| Variable           | Default                    | Description                                                    |
+| ------------------ | -------------------------- | -------------------------------------------------------------- |
+| `--ft-fill`        | `transparent`              | Controls the fill color of the text. Used for all text layers. |
+| `--ft-stroke`      | `var(--color-neutral-200)` | Stroke color of the text in light mode.                        |
+| `--ft-dark-stroke` | `var(--color-neutral-800)` | Stroke color of the text when the `dark` variant is active.    |
+| `--ft-font-size`   | `4.5rem`                   | Font size of the text rendered inside the SVG.                 |
+| `--ft-leading`     | `1`                        | Line height of the text.                                       |
+
+### Gradient colors
+
+| Variable               | Default   | Description                                 |
+| ---------------------- | --------- | ------------------------------------------- |
+| `--ft-gradient-stop-1` | `#eab308` | First gradient color stop, located at 0%.   |
+| `--ft-gradient-stop-2` | `#ef4444` | Second gradient color stop, located at 25%. |
+| `--ft-gradient-stop-3` | `#3b82f6` | Third gradient color stop, located at 50%.  |
+| `--ft-gradient-stop-4` | `#06b6d4` | Fourth gradient color stop, located at 75%. |
+| `--ft-gradient-stop-5` | `#8b5cf6` | Final gradient color stop, located at 100%. |
+
+These gradient variables control the animated stroke gradient that appears on hover and is revealed through the radial mask.
+
+## Props
+
+To pass props, include them as JSON inside a `<script>` tag with the `data-fn="props"` attribute.
+
+<Ec project="ft" path="etc.props" />
+
+<span class="uk-label uk-label-primary">Note</span> The `data-ft-*` attribute
+determines which Frankternity component is mounted and should be replaced with
+the component name.
+
+| Prop       | Type     | Default | Description                                              |
+| ---------- | -------- | ------- | -------------------------------------------------------- |
+| `text`     | `string` | -       | The text to be displayed with the hover effect           |
+| `duration` | `number` | `0`     | The duration of the mask transition animation in seconds |
+
+<script src={ftCore}></script>
+
+<script src={ftTextEncrypted}></script>

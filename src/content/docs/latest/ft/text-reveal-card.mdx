@@ -1,0 +1,96 @@
+---
+preview:
+  show: false
+  width: "100%"
+  height: "320px"
+group: texts
+project: ft
+text: Reveal Card
+title: Reveal Card
+lead: Mousemove effect to reveal text content at the bottom of the card.
+meta:
+  description: Mousemove effect to reveal text content at the bottom of the card.
+---
+
+import Snippet from "snippets/component.astro";
+import Ec from "snippets/ec.astro";
+import Installation from "components/partials/ft/installation-mdx.astro";
+import ftCore from "frankenstyle/js/ft-core.iife?url";
+import ftTextEncrypted from "frankenstyle/js/ft/text-reveal-card.iife?url";
+
+<Snippet project="ft" component="text_reveal_card.basic" />
+
+## Installation
+
+<Installation uid="text_reveal_card" />
+
+## CSS variables
+
+All CSS variables prefixed with `--ft-*` can be used to customize layout, spacing, colors, and sizing of this component.
+
+### Container
+
+| Variable              | Default              | Description                               |
+| --------------------- | -------------------- | ----------------------------------------- |
+| `--ft-width`          | `40rem`              | Width of the card container.              |
+| `--ft-border-width`   | `1px`                | Border thickness of the card.             |
+| `--ft-border-color`   | `var(--color-white)` | Border color of the card.                 |
+| `--ft-border-opacity` | `0.08`               | Opacity applied to the card border color. |
+| `--ft-background`     | `#1d1c20`            | Background color of the card container.   |
+| `--ft-padding`        | `8`                  | Inner padding of the card container.      |
+
+### Text sizing and spacing
+
+| Variable                | Default | Description                                        |
+| ----------------------- | ------- | -------------------------------------------------- |
+| `--ft-font-size`        | `1rem`  | Base font size for both primary and revealed text. |
+| `--ft-font-size-sm`     | `3rem`  | Font size used at the small breakpoint and above.  |
+| `--ft-vertical-padding` | `10`    | Vertical padding applied to text blocks.           |
+
+### Primary text (base layer)
+
+| Variable              | Default       | Description                                           |
+| --------------------- | ------------- | ----------------------------------------------------- |
+| `--ft-alt-background` | `#323238`     | Background color behind the base (non-revealed) text. |
+| `--ft-text-color`     | `transparent` | Text color of the base text layer.                    |
+
+### Reveal text (hover layer)
+
+| Variable                 | Default                    | Description                                |
+| ------------------------ | -------------------------- | ------------------------------------------ |
+| `--ft-reveal-background` | `#1d1c20`                  | Background color behind the revealed text. |
+| `--ft-reveal-color`      | `var(--color-white)`       | Text color of the revealed text layer.     |
+| `--ft-reveal-from`       | `var(--color-white)`       | Gradient start color for revealed text.    |
+| `--ft-reveal-to`         | `var(--color-neutral-300)` | Gradient end color for revealed text.      |
+
+### Highlight divider
+
+| Variable             | Default                    | Description                                           |
+| -------------------- | -------------------------- | ----------------------------------------------------- |
+| `--ft-highlight-via` | `var(--color-neutral-800)` | Middle color of the vertical highlight line gradient. |
+
+### Stars effect
+
+| Variable          | Default | Description                                             |
+| ----------------- | ------- | ------------------------------------------------------- |
+| `--ft-star-color` | `white` | Color of the animated star particles in the background. |
+
+## Props
+
+To pass props, include them as JSON inside a `<script>` tag with the `data-fn="props"` attribute.
+
+<Ec project="ft" path="etc.props" />
+
+<span class="uk-label uk-label-primary">Note</span> The `data-ft-*` attribute
+determines which Frankternity component is mounted and should be replaced with
+the component name.
+
+| Prop name    | Type     | Description                                            |
+| ------------ | -------- | ------------------------------------------------------ |
+| `className`  | `string` | The class name of the TextReveal component.            |
+| `stl`        | `object` | Additional inline styles for the TextReveal component. |
+| `text`       | `string` | Piece of text that stays on the card.                  |
+| `revealText` | `string` | Text that reveals when hovered over the card.          |
+
+<script src={ftCore}></script>
+<script src={ftTextEncrypted}></script>

@@ -5,6 +5,7 @@ const docs = {
   project: z.enum(["kit", "style", "ft"]).default("style"),
   preview: z.optional(
     z.object({
+      show: z.boolean().default(true),
       width: z.string(),
       height: z.string(),
     }),

@@ -1,0 +1,48 @@
+---
+preview:
+  width: "100%"
+  height: "250px"
+group: texts
+project: ft
+text: Encrypted
+title: Encrypted
+lead: A text component that reveals the text gradually, gibberish effect.
+meta:
+  description: A text component that reveals the text gradually, gibberish effect.
+---
+
+import Snippet from "snippets/component.astro";
+import Ec from "snippets/ec.astro";
+import Installation from "components/partials/ft/installation-mdx.astro";
+import ftCore from "frankenstyle/js/ft-core.iife?url";
+import ftTextEncrypted from "frankenstyle/js/ft/text-encrypted.iife?url";
+
+<Snippet project="ft" component="text_encrypted.basic" />
+
+## Installation
+
+<Installation uid="text_encrypted" />
+
+## Props
+
+To pass props, include them as JSON inside a `<script>` tag with the `data-fn="props"` attribute.
+
+<Ec project="ft" path="etc.props" />
+
+<span class="uk-label uk-label-primary">Note</span> The `data-ft-*` attribute
+determines which Frankternity component is mounted and should be replaced with
+the component name.
+
+| Prop                 | Type     | Default                                                                                                                                     | Description                                                             | Required |
+| -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | -------- |
+| `text`               | `string` | -                                                                                                                                           | The text to be encrypted and revealed.                                  | Yes      |
+| `className`          | `string` | -                                                                                                                                           | Additional CSS classes to apply to the component.                       | No       |
+| `stl`                | `object` | <code class="uk-codespan">&#123;&#125;</code>                                                                                               | Additional inline styles to be applied to the component.                |
+| `revealDelayMs`      | `number` | `50`                                                                                                                                        | Time in milliseconds between revealing each subsequent real character.  | No       |
+| `charset`            | `string` | <code class="uk-codespan break-words">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&\*()\_+-=&#123;&#125;[];:,.&lt;&gt;/?</code> | Custom character set to use for the gibberish effect.                   | No       |
+| `flipDelayMs`        | `number` | `50`                                                                                                                                        | Time in milliseconds between gibberish flips for unrevealed characters. | No       |
+| `encryptedClassName` | `string` | -                                                                                                                                           | CSS class for styling the encrypted/scrambled characters.               | No       |
+| `revealedClassName`  | `string` | -                                                                                                                                           | CSS class for styling the revealed characters.                          | No       |
+
+<script src={ftCore}></script>
+<script src={ftTextEncrypted}></script>

@@ -1,22 +1,25 @@
 ---
-const { project = "style " } = Astro.props;
+const { forceShow = false, project = "style " } = Astro.props;
 ---
 
-<div class="display-hidden lg:display-block">
+<div class={forceShow ? "" : "display-hidden lg:display-block"}>
   <ul class="uk-tab-alt">
     <li class={project == "kit" ? "uk-active" : ""}>
-      <a href="/docs/latest/kit/installation" data-uk-tooltip="FrankenstyleKit">
-        Kit
+      <a href="/docs/latest/kit/installation" data-uk-tooltip="UI components">
+        Fsk
       </a>
     </li>
     <li class={project == "ft" ? "uk-active" : ""}>
-      <a href="/docs/latest/ft/introduction" data-uk-tooltip="Frankternity">
+      <a
+        href="/docs/latest/ft/introduction"
+        data-uk-tooltip="Marketing components"
+      >
         Ft
       </a>
     </li>
     <li class={project == "style" ? "uk-active" : ""}>
-      <a href="/docs/latest/style/introduction" data-uk-tooltip="Frankenstyle">
-        Stl
+      <a href="/docs/latest/style/introduction" data-uk-tooltip="CSS utilities">
+        Fs
       </a>
     </li>
   </ul>

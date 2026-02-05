@@ -360,7 +360,7 @@ export const partial = true;
           </div>
           {colorNames.map((name) => (
             <div
-              class="w h sm:w sm:h bg color-cell border-w border/o"
+              class="w h sm:w sm:h bg color-cell border-w border/o cursor-pointer"
               style={stl({
                 "--w": "10",
                 "--h": "6",
@@ -371,6 +371,11 @@ export const partial = true;
                 "--border": "var(--uk-border)",
                 "--border-o": "var(--uk-border-o)",
               })}
+              data-uk-tooltip={colors[name][intensity]}
+              data-oklch={colors[name][intensity]}
+              data-variable={`var(--color-${name}-${intensity})`}
+              x-data
+              x-on:click="const value = $event.altKey? $el.dataset.variable : $el.dataset.oklch; window.copyData(value);"
             />
           ))}
         </>
