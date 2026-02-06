@@ -1,0 +1,828 @@
+---
+import { stl } from "helpers/common";
+import Frame from "layouts/frame.astro";
+---
+
+<Frame doc={{ title: "example-02" }}>
+  <div class="display-hidden xl:display-block">
+    <div
+      class="border-w border/o uk-shadow-small display-flex h items-center px py"
+      style={stl({
+        "--border-w": "1px",
+        "--border": "var(--uk-border)",
+        "--border-o": "var(--uk-border-o)",
+        "--h": "9",
+        "--px": "2",
+        "--py": "1",
+      })}
+    >
+      <nav
+        class="display-flex space-x text-sm"
+        style={stl({ "--space-x": "1" })}
+      >
+        <a
+          class="px py font-bold"
+          style={stl({ "--px": "3", "--py": "1" })}
+          href="#">Spawtify</a
+        >
+        <div
+          class="uk-drop uk-dropdown min-w"
+          style={stl({ "--min-w": "48" })}
+          data-uk-drop="mode: click; pos: bottom-left"
+        >
+          <ul class="uk-dropdown-nav uk-nav">
+            <li>
+              <a class="uk-drop-close justify-between">About Music</a>
+            </li>
+            <li>
+              <a class="uk-drop-close justify-between">
+                Preferences
+                <span
+                  class="ml-auto text-xs tracking-widest opacity"
+                  style={stl({ "--opacity": "0.6" })}
+                >
+                  ⌘,
+                </span>
+              </a>
+            </li>
+            <li class="uk-nav-divider"></li>
+            <li>
+              <a class="uk-drop-close justify-between">
+                Hide Music
+                <span
+                  class="ml-auto text-xs tracking-widest opacity"
+                  style={stl({ "--opacity": "0.6" })}
+                >
+                  ⌘H
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="uk-drop-close justify-between">
+                Hide Others
+                <span
+                  class="ml-auto text-xs tracking-widest opacity"
+                  style={stl({ "--opacity": "0.6" })}
+                >
+                  ⇧⌘H
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="uk-drop-close justify-between">
+                Quit Music
+                <span
+                  class="ml-auto text-xs tracking-widest opacity"
+                  style={stl({ "--opacity": "0.6" })}
+                >
+                  ⌘Q
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <a class="px py" style={stl({ "--px": "3", "--py": "1" })} href="#"
+          >File</a
+        >
+        <div
+          class="uk-drop uk-dropdown min-w"
+          style={stl({ "--min-w": "48" })}
+          data-uk-drop="mode: click; pos: bottom-left"
+        >
+          <ul class="uk-dropdown-nav uk-nav">
+            <li>
+              <a class="uk-drop-close justify-between"> New </a>
+            </li>
+            <li>
+              <a class="uk-drop-close justify-between">
+                Open Stream URL
+                <span
+                  class="ml-auto text-xs tracking-widest opacity"
+                  style={stl({ "--opacity": "0.6" })}
+                >
+                  ⌘U
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="uk-drop-close justify-between">
+                Close Window
+                <span
+                  class="ml-auto text-xs tracking-widest opacity"
+                  style={stl({ "--opacity": "0.6" })}
+                >
+                  ⌘W
+                </span>
+              </a>
+            </li>
+            <li class="uk-nav-divider"></li>
+            <li>
+              <a class="uk-drop-close justify-between"> Library </a>
+            </li>
+            <li>
+              <a class="uk-drop-close justify-between">
+                Import
+                <span
+                  class="ml-auto text-xs tracking-widest opacity"
+                  style={stl({ "--opacity": "0.6" })}
+                >
+                  ⌘O
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="opacity" style={stl({ "--opacity": "0.5" })}>
+                Burn Playlist to Disc
+              </a>
+            </li>
+            <li class="uk-nav-divider"></li>
+            <li>
+              <a class="uk-drop-close justify-between">
+                Show in Finder
+                <span
+                  class="ml-auto text-xs tracking-widest opacity"
+                  style={stl({ "--opacity": "0.6" })}
+                >
+                  ⇧⌘R
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="uk-drop-close justify-between"> Convert </a>
+            </li>
+            <li class="uk-nav-divider"></li>
+            <li>
+              <a class="uk-drop-close justify-between"> Page Setup </a>
+            </li>
+            <li>
+              <a class="opacity" style={stl({ "--opacity": "0.5" })}>Print</a>
+            </li>
+          </ul>
+        </div>
+
+        <a class="px py" style={stl({ "--px": "3", "--py": "1" })} href="#"
+          >Edit</a
+        >
+        <div
+          class="uk-drop uk-dropdown min-w"
+          style={stl({ "--min-w": "48" })}
+          data-uk-drop="mode: click; pos: bottom-left"
+        >
+          <ul class="uk-dropdown-nav uk-nav">
+            <li>
+              <a class="opacity" style={stl({ "--opacity": "0.5" })}>
+                Undo
+                <span
+                  class="ml-auto text-xs tracking-widest opacity"
+                  style={stl({ "--opacity": "0.6" })}
+                >
+                  ⌘Z
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="opacity" style={stl({ "--opacity": "0.5" })}>
+                Redo
+                <span
+                  class="ml-auto text-xs tracking-widest opacity"
+                  style={stl({ "--opacity": "0.6" })}
+                >
+                  ⇧⌘Z
+                </span>
+              </a>
+            </li>
+            <li class="uk-nav-divider"></li>
+            <li>
+              <a class="opacity" style={stl({ "--opacity": "0.5" })}>
+                Cut
+                <span
+                  class="ml-auto text-xs tracking-widest opacity"
+                  style={stl({ "--opacity": "0.6" })}
+                >
+                  ⌘X
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="opacity" style={stl({ "--opacity": "0.5" })}>
+                Copy
+                <span
+                  class="ml-auto text-xs tracking-widest opacity"
+                  style={stl({ "--opacity": "0.6" })}
+                >
+                  ⌘C
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="opacity" style={stl({ "--opacity": "0.5" })}>
+                Paste
+                <span
+                  class="ml-auto text-xs tracking-widest opacity"
+                  style={stl({ "--opacity": "0.6" })}
+                >
+                  ⌘V
+                </span>
+              </a>
+            </li>
+            <li class="uk-nav-divider"></li>
+            <li>
+              <a class="uk-drop-close justify-between">
+                Select All
+                <span
+                  class="ml-auto text-xs tracking-widest opacity"
+                  style={stl({ "--opacity": "0.6" })}
+                >
+                  ⌘A
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="opacity" style={stl({ "--opacity": "0.5" })}>
+                Deselect All
+                <span
+                  class="ml-auto text-xs tracking-widest opacity"
+                  style={stl({ "--opacity": "0.6" })}
+                >
+                  ⇧⌘A
+                </span>
+              </a>
+            </li>
+            <li class="uk-nav-divider"></li>
+            <li>
+              <a class="uk-drop-close justify-between">
+                Smart Dictation
+                <span
+                  class="color ml-auto"
+                  style={stl({ "--color": "var(--uk-muted-f)" })}
+                >
+                  <uk-icon icon="mic-vocal"></uk-icon>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="uk-drop-close justify-between">
+                Emojis & Symbols
+                <span
+                  class="color ml-auto"
+                  style={stl({ "--color": "var(--uk-muted-f)" })}
+                >
+                  <uk-icon icon="globe"></uk-icon>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <a class="px py" style={stl({ "--px": "3", "--py": "1" })} href="#"
+          >View</a
+        >
+        <div
+          class="uk-drop uk-dropdown min-w"
+          style={stl({ "--min-w": "48" })}
+          data-uk-drop="mode: click; pos: bottom-left"
+        >
+          <ul class="uk-dropdown-nav uk-nav">
+            <li>
+              <a class="uk-drop-close">
+                <span class="ml" style={stl({ "--ml": "6" })}
+                  >Show Playing Next</span
+                >
+              </a>
+            </li>
+            <li>
+              <a class="uk-drop-close">
+                <uk-icon class="mr" style={stl({ "--mr": "2" })} icon="check"
+                ></uk-icon>
+                Show Lyrics
+              </a>
+            </li>
+            <li>
+              <a class="opacity" style={stl({ "--opacity": "0.5" })}>
+                <span class="ml" style={stl({ "--ml": "6" })}
+                  >Show Status Bar</span
+                >
+              </a>
+            </li>
+            <li>
+              <a class="uk-drop-close">
+                <span class="ml" style={stl({ "--ml": "6" })}>Hide Sidebar</span
+                >
+              </a>
+            </li>
+            <li>
+              <a class="opacity" style={stl({ "--opacity": "0.5" })}>
+                <span class="ml" style={stl({ "--ml": "6" })}
+                  >Enter Full Screen</span
+                >
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <a class="px py" style={stl({ "--px": "3", "--py": "1" })} href="#"
+          >Account</a
+        >
+        <div
+          class="uk-drop uk-dropdown"
+          data-uk-drop="mode: click; pos: bottom-left"
+        >
+          <ul class="uk-dropdown-nav uk-nav">
+            <li class="uk-nav-header">
+              <span class="ml" style={stl({ "--ml": "6" })}>
+                Switch Account
+              </span>
+            </li>
+            <li class="uk-nav-divider"></li>
+            <li>
+              <a class="uk-drop-close">
+                <span class="ml" style={stl({ "--ml": "6" })}>Andy</span>
+              </a>
+            </li>
+            <li>
+              <a class="uk-drop-close">
+                <uk-icon
+                  class="mr"
+                  style={stl({ "--mr": "2" })}
+                  icon="circle-dot"></uk-icon>
+                Benoit
+              </a>
+            </li>
+            <li>
+              <a class="uk-drop-close">
+                <span class="ml" style={stl({ "--ml": "6" })}>Luis</span>
+              </a>
+            </li>
+            <li class="uk-nav-divider"></li>
+            <li>
+              <a class="uk-drop-close">
+                <span class="ml" style={stl({ "--ml": "6" })}
+                  >Manage Family</span
+                >
+              </a>
+            </li>
+            <li class="uk-nav-divider"></li>
+            <li>
+              <a class="uk-drop-close">
+                <span class="ml" style={stl({ "--ml": "6" })}>Add Account</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="display-grid grid-cols" style={stl({ "--grid-cols": "5" })}>
+      <div
+        class="display-hidden space-y py lg:display-block"
+        style={stl({ "--space-y": "4", "--py": "4" })}
+      >
+        <div class="px py" style={stl({ "--px": "3", "--py": "2" })}>
+          <h2
+            class="mb px text-lg font-semibold tracking-tight"
+            style={stl({ "--mb": "2", "--px": "3" })}
+          >
+            Discover
+          </h2>
+          <ul class="uk-nav uk-nav-alt uk-nav-primary">
+            <li class="uk-active">
+              <a class="font-medium">
+                <span
+                  class="mr size"
+                  style={stl({ "--mr": "2", "--size": "4" })}
+                >
+                  <uk-icon icon="circle-play"></uk-icon>
+                </span>
+                Listen Now
+              </a>
+            </li>
+            <li>
+              <a class="font-medium">
+                <span
+                  class="mr size"
+                  style={stl({ "--mr": "2", "--size": "4" })}
+                >
+                  <uk-icon icon="binoculars"></uk-icon>
+                </span>
+                Browse
+              </a>
+            </li>
+            <li>
+              <a class="font-medium">
+                <span
+                  class="mr size"
+                  style={stl({ "--mr": "2", "--size": "4" })}
+                >
+                  <uk-icon icon="radio"></uk-icon>
+                </span>
+                Radio
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="px py" style={stl({ "--px": "3", "--py": "2" })}>
+          <h2
+            class="mb px text-lg font-semibold tracking-tight"
+            style={stl({ "--mb": "2", "--px": "3" })}
+          >
+            Library
+          </h2>
+          <ul class="uk-nav uk-nav-alt uk-nav-primary">
+            <li>
+              <a class="font-medium">
+                <span
+                  class="mr size"
+                  style={stl({ "--mr": "2", "--size": "4" })}
+                >
+                  <uk-icon icon="list-music"></uk-icon>
+                </span>
+                Playlists
+              </a>
+            </li>
+            <li>
+              <a class="font-medium">
+                <span
+                  class="mr size"
+                  style={stl({ "--mr": "2", "--size": "4" })}
+                >
+                  <uk-icon icon="music-2"></uk-icon>
+                </span>
+                Songs
+              </a>
+            </li>
+            <li>
+              <a class="font-medium">
+                <span
+                  class="mr size"
+                  style={stl({ "--mr": "2", "--size": "4" })}
+                >
+                  <uk-icon icon="user"></uk-icon>
+                </span>
+                Made for You
+              </a>
+            </li>
+            <li>
+              <a class="font-medium">
+                <span
+                  class="mr size"
+                  style={stl({ "--mr": "2", "--size": "4" })}
+                >
+                  <uk-icon icon="mic-vocal"></uk-icon>
+                </span>
+                Artists
+              </a>
+            </li>
+            <li>
+              <a class="font-medium">
+                <span
+                  class="mr size"
+                  style={stl({ "--mr": "2", "--size": "4" })}
+                >
+                  <uk-icon icon="library"></uk-icon>
+                </span>
+                Albums
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="px py" style={stl({ "--px": "3", "--py": "2" })}>
+          <h2
+            class="mb px text-lg font-semibold tracking-tight"
+            style={stl({ "--mb": "2", "--px": "3" })}
+          >
+            Playlists
+          </h2>
+          <div class="max-h overflow-y-auto" style={stl({ "--max-h": "60" })}>
+            <ul class="uk-nav uk-nav-alt uk-nav-primary">
+              {
+                [
+                  "Recently Added",
+                  "Recently Played",
+                  "Top Songs",
+                  "Top Albums",
+                  "Top Artists",
+                  "Logic Discography",
+                  "Bedtime Beats",
+                  "I miss Y2K Pop",
+                ].map((a) => (
+                  <li>
+                    <a class="font-medium">
+                      <span
+                        class="mr size"
+                        style={stl({ "--mr": "2", "--size": "4" })}
+                      >
+                        <uk-icon icon="library" />
+                      </span>
+                      {a}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="border-l-w border-l/o col-span border-l lg:col-span"
+        style={stl({
+          "--border-l-w": "1px",
+          "--border-l": "var(--uk-border)",
+          "--border-l-o": "var(--uk-border-o)",
+          "--col-span": "5",
+          "--lg-col-span": "4",
+        })}
+      >
+        <div class="px py" style={stl({ "--px": "8", "--py": "6" })}>
+          <div class="display-flex items-center justify-between">
+            <div class="max-w-80">
+              <ul
+                class="uk-tab-alt"
+                uk-switcher="connect: #component-nav; animation: uk-animation-slide-left-small"
+              >
+                <li class="uk-active">
+                  <a href="#">Music</a>
+                </li>
+                <li>
+                  <a href="#">Podcasts</a>
+                </li>
+                <li class="uk-disabled">
+                  <a class="opacity" style={stl({ "--opacity": "0.5" })}>Live</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="">
+              <button class="uk-button uk-button-primary">
+                <span
+                  class="mr size"
+                  style={stl({ "--mr": "2", "--size": "4" })}
+                >
+                  <uk-icon icon="circle-plus"></uk-icon>
+                </span>
+                Add music
+              </button>
+            </div>
+          </div>
+
+          <ul id="component-nav" class="uk-switcher mt-6">
+            <li>
+              <div class="space-y" style={stl({ "--space-y": "1" })}>
+                <h2 class="text-2xl font-semibold tracking-tight">
+                  Listen Now
+                </h2>
+                <p
+                  class="color text-sm"
+                  style={stl({ "--color": "var(--uk-muted-f)" })}
+                >
+                  Top picks for you. Updated daily.
+                </p>
+              </div>
+
+              <div
+                class="bg/o my h w-full"
+                style={stl({
+                  "--bg": "var(--uk-border)",
+                  "--bg-o": "var(--uk-border-o)",
+                  "--my": "4",
+                  "--h": "1px",
+                })}
+              >
+              </div>
+
+              <div
+                class="display-grid grid-cols gap-x"
+                style={stl({ "--grid-cols": "5", "--gap-x": "4" })}
+              >
+                {
+                  [
+                    {
+                      title: "Viva La Felina",
+                      artist: "Catplay",
+                      assetUrl: "/ai/videos/01.mp4",
+                    },
+                    {
+                      title: "Feline on a Prayer",
+                      artist: "Cat Jovi",
+                      assetUrl: "/ai/videos/02.mp4",
+                    },
+                    {
+                      title: "Death By a Thousand Cats",
+                      artist: "Tailor Swift",
+                      assetUrl: "/ai/videos/03.mp4",
+                    },
+                    {
+                      title: "Meow-terial Girl",
+                      artist: "Catdonna",
+                      assetUrl: "/ai/videos/04.mp4",
+                    },
+                    {
+                      title: "Oops!... I Pounced Again",
+                      artist: "Britney Spurrs",
+                      assetUrl: "/ai/videos/05.mp4",
+                    },
+                  ].map((a) => (
+                    <div class="space-y" style={stl({ "--space-y": "3" })}>
+                      <div
+                        class="uk-rounded h overflow-hidden"
+                        style={stl({ "--h": "96" })}
+                      >
+                        <video
+                          class="h-full w-full object-cover"
+                          src={a.assetUrl}
+                          data-uk-video
+                          loop
+                          muted
+                        />
+                      </div>
+
+                      <div
+                        class="space-y text-sm"
+                        style={stl({ "--space-y": "1" })}
+                      >
+                        <h3 class="font-medium leading-none">{a.title}</h3>
+                        <p
+                          class="color text-xs"
+                          style={stl({ "--color": "var(--uk-muted-f)" })}
+                        >
+                          {a.artist}
+                        </p>
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+
+              <div
+                class="mt space-y"
+                style={stl({ "--mt": "6", "--space-y": "1" })}
+              >
+                <h2 class="text-2xl font-semibold tracking-tight">
+                  Made for You
+                </h2>
+                <p
+                  class="color text-sm"
+                  style={stl({ "--color": "var(--uk-muted-f)" })}
+                >
+                  Your personal playlists. Updated daily.
+                </p>
+              </div>
+
+              <div
+                class="bg my h w-full"
+                style={stl({
+                  "--bg": "var(--uk-border)",
+                  "--bg-o": "var(--uk-border-o)",
+                  "--my": "4",
+                  "--h": "1px",
+                })}
+              >
+              </div>
+
+              <div
+                class="display-grid grid-cols gap-x"
+                style={stl({ "--grid-cols": "6", "--gap-x": "4" })}
+              >
+                {
+                  [
+                    {
+                      title: "What's Up Dawg?",
+                      artist: "4 Non Cats",
+                      assetUrl: "/ai/images/01.jpeg",
+                    },
+                    {
+                      title: "Pawz on My Mind",
+                      artist: "Meow-Z",
+                      assetUrl: "/ai/images/02.webp",
+                    },
+                    {
+                      title: "Can't Stop the Meowing",
+                      artist: "Justin Timpurrlake",
+                      assetUrl: "/ai/images/03.jpeg",
+                    },
+                    {
+                      title: "Rolling in the Purr",
+                      artist: "Catdelle",
+                      assetUrl: "/ai/images/04.webp",
+                    },
+                    {
+                      title: "Straight Outta Catnip",
+                      artist: "CATWA (Catz With Attitude)",
+                      assetUrl: "/ai/images/05.webp",
+                    },
+                    {
+                      title: "Meow Me Maybe",
+                      artist: "Carly Rae Purrsen",
+                      assetUrl: "/ai/images/06.jpeg",
+                    },
+                  ].map((a, b) => (
+                    <div class="space-y" style={stl({ "--space-y": "3" })}>
+                      <div class="uk-rounded uk-animation-toggle aspect-square w-full overflow-hidden">
+                        <img
+                          class="transition-transform duration scale:hover"
+                          style={stl({
+                            "--duration": "200ms",
+                            "--scale-hover": "105%",
+                          })}
+                          src={a.assetUrl}
+                          alt=""
+                          data-fs
+                        />
+                      </div>
+
+                      <div
+                        class="space-y text-sm"
+                        style={stl({ "--space-y": "1" })}
+                      >
+                        <h3 class="font-medium leading-none">{a.title}</h3>
+                        <p
+                          class="color text-xs"
+                          style={stl({ "--color": "var(--uk-muted-f)" })}
+                        >
+                          {a.artist}
+                        </p>
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+            </li>
+
+            <li>
+              <div class="space-y" style={stl({ "--space-y": "1" })}>
+                <h2 class="text-2xl font-semibold tracking-tight">
+                  New Episodes
+                </h2>
+                <p
+                  class="color text-sm"
+                  style={stl({ "--color": "var(--uk-muted-f)" })}
+                >
+                  Your favorite podcasts. Updated daily.
+                </p>
+              </div>
+
+              <div
+                class="bg my h w-full"
+                style={stl({
+                  "--bg": "var(--uk-border)",
+                  "--bg-o": "var(--uk-border-o)",
+                  "--my": "4",
+                  "--h": "1px",
+                })}
+              >
+              </div>
+
+              <div
+                class="uk-placeholder display-flex [h] items-center justify-center rounded-md"
+                style={stl({ "--h": "450px" })}
+              >
+                <div
+                  class="mx-auto display-flex [max-w] flex-col items-center justify-center text-center"
+                  style={stl({ "--max-w": "420px" })}
+                >
+                  <uk-icon size="40" icon="podcast"></uk-icon>
+                  <h3
+                    class="mt text-lg font-semibold"
+                    style={stl({ "--mt": "4" })}
+                  >
+                    No episodes added
+                  </h3>
+
+                  <p
+                    class="color mb mt text-sm"
+                    style={stl({
+                      "--color": "var(--uk-muted-f)",
+                      "--mb": "4",
+                      "--mt": "2",
+                    })}
+                  >
+                    You have not added any podcasts. Add one below.
+                  </p>
+
+                  <button class="uk-button uk-button-primary">
+                    Add Podcast
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- <script is:inline>
+      document.addEventListener("uikit:init", () => {
+        window.UIkit.notification({
+          message: "Contains AI generated images and videos.",
+          pos: "bottom-left",
+          timeout: 0,
+          status: "danger",
+        });
+      });
+    </script> -->
+  </div>
+</Frame>

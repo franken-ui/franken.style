@@ -1,15 +1,9 @@
 ---
 import Monster from "src/assets/monster.svg";
-import Announcement from "components/announcement.astro";
 import { stl } from "helpers/common";
 import ProjectSwitcher from "./project-switcher.astro";
 
-const {
-  project = "style",
-  projectSwitcher = true,
-  menu = true,
-  announcement = null,
-} = Astro.props;
+const { project = "style", projectSwitcher = true, menu = true } = Astro.props;
 ---
 
 <div
@@ -17,7 +11,7 @@ const {
   style={stl({
     "--inset-x": "0",
     "--top": "0",
-    "--z": "10",
+    "--z": "20",
     "--border-b-w": "1px",
     "--border-b": "var(--uk-border)",
     "--border-b-o": "var(--uk-border-o)",
@@ -64,7 +58,7 @@ const {
         {
           menu ? (
             <button
-              class="uk-button uk-button-secondary uk-button-small lg:display-hidden"
+              class="uk-button uk-button-secondary uk-button-icon uk-button-xsmall lg:display-hidden"
               data-uk-toggle="#menu"
             >
               <uk-icon
@@ -74,27 +68,7 @@ const {
                 })}
                 icon="menu"
               />
-              <span
-                class="ml"
-                style={stl({
-                  "--ml": "2",
-                })}
-              >
-                Menu
-              </span>
             </button>
-          ) : (
-            ""
-          )
-        }
-
-        {
-          announcement ? (
-            <Announcement
-              headline={announcement.headline}
-              subtext={announcement.subtext}
-              stl={announcement.stl}
-            />
           ) : (
             ""
           )
@@ -112,35 +86,32 @@ const {
             "--gap-x": "2",
           })}
         >
-          <a
-            class="uk-button uk-button-primary uk-button-small display-hidden sm:display-inline-flex"
-            href="https://codeberg.org/FRNKN/style/src/branch/master/contexts"
-            title="Contexts"
-            target="_blank"
+          <button
+            class="uk-button uk-button-primary uk-button-xsmall"
+            data-uk-toggle="#consult"
           >
-            <uk-icon
-              class="size"
-              style={stl({
-                "--size": "4",
-              })}
-              icon="sparkles"></uk-icon>
-            <span class="">Contexts</span>
-          </a>
-          <a
-            class="uk-button uk-button-secondary uk-button-small display-hidden sm:display-inline-flex"
-            href="https://codeberg.org/FRNKN/style"
-            title="Source"
-            target="_blank"
-          >
-            <uk-icon
-              class="size"
-              style={stl({
-                "--size": "4",
-              })}
-              icon="square-code"></uk-icon>
-            <span class="">Source</span>
-          </a>
-
+            <span
+              class="relative display-flex size flex-none"
+              style="--size: 2;"
+            >
+              <span
+                class="bg/o dark:bg/o absolute display-inline-flex h-full w-full animate-ping rounded-full"
+                style={stl({
+                  "--bg": "var(--color-lime-500)",
+                  "--bg-o": "75%",
+                  "--dark-bg": "var(--color-blue-600)",
+                  "--dark-bg-o": "75%",
+                })}></span>
+              <span
+                class="bg dark:bg relative display-inline-flex size rounded-full"
+                style={stl({
+                  "--bg": "var(--color-lime-500)",
+                  "--dark-bg": "var(--color-blue-600)",
+                  "--size": "2",
+                })}></span>
+            </span>
+            <span class="">Consult a Human</span>
+          </button>
           <uk-lsh
             class="size"
             style={stl({
@@ -148,7 +119,7 @@ const {
             })}
             toggle
             group="mode"
-            cls="uk-button uk-button-icon uk-button-secondary uk-button-small relative"
+            cls="uk-button uk-button-icon uk-button-secondary uk-button-xsmall relative"
           >
             <template data-fn="template">
               <uk-icon
@@ -163,8 +134,180 @@ const {
               </uk-icon>
             </template>
           </uk-lsh>
+
+          <div class="uk-inline">
+            <button
+              class="uk-button uk-button-icon uk-button-secondary uk-button-xsmall"
+              type="button"
+            >
+              <uk-icon
+                class="size"
+                style={stl({
+                  "--size": "4",
+                })}
+                icon="settings"
+              >
+              </uk-icon>
+            </button>
+            <div
+              class="uk-drop min-w p bg border-w border/o"
+              style={stl({
+                "--min-w": "80",
+                "--p": "4",
+                "--bg": "var(--uk-drop)",
+                "--border-w": "1px",
+                "--border": "var(--uk-border)",
+                "--border-o": "var(--uk-border-o)",
+              })}
+              data-uk-drop="mode: click; pos: bottom-right; offset: 16px"
+            >
+              <div
+                class="space-y"
+                style={stl({
+                  "--space-y": "6",
+                })}
+              >
+                {
+                  [
+                    {
+                      label: "Choose a layout",
+                      group: "layout",
+                      options: [
+                        { value: "uk-layout-small", text: "Sm" },
+                        { value: "uk-layout-default", text: "Base" },
+                        { value: "uk-layout-medium", text: "Md" },
+                      ],
+                    },
+                    {
+                      label: "Font family",
+                      group: "ff",
+                      options: [
+                        {
+                          value: "uk-ff-a",
+                          text: "Option A",
+                        },
+                        {
+                          value: "uk-ff-b",
+                          text: "Option B",
+                        },
+                      ],
+                    },
+                  ].map((a) => (
+                    <div>
+                      <div class="uk-form-label">{a.label}</div>
+                      <div
+                        class="display-flex gap-x mt"
+                        style={stl({
+                          "--gap-x": "2",
+                          "--mt": "2",
+                        })}
+                      >
+                        {a.options.map((b) => (
+                          <uk-lsh
+                            group={a.group}
+                            value={b.value}
+                            cls="ts uk-button uk-button-default uk-button-xsmall"
+                          >
+                            <template data-fn="template">
+                              <uk-icon
+                                class="ts-icon color"
+                                style={stl({
+                                  "--color": "var(--color-blue-500)",
+                                })}
+                                icon="check"
+                              />
+                              {b.text}
+                            </template>
+                          </uk-lsh>
+                        ))}
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<div class="uk-modal" id="consult" data-uk-modal>
+  <div class="uk-modal-dialog">
+    <div class="uk-modal-body">
+      <button
+        class="uk-modal-close absolute right top"
+        style={stl({ "--right": "4", "--top": "4" })}
+        type="button"
+        data-uk-close></button>
+
+      <p class="font-bold">Human,</p>
+
+      <p class="mt" style={stl({ "--mt": "6" })}>
+        Hello human. Definitely not AI here. You clicked — wow. Proof of life on
+        both sides.
+      </p>
+
+      <p class="mt" style={stl({ "--mt": "2" })}>
+        About the project: everything here is a free buffet. No paid components,
+        no gated features, no “enterprise tier.” Forever.
+      </p>
+
+      <p class="mt" style={stl({ "--mt": "2" })}>
+        That said, codes don't maintain themselves on good intentions alone.
+      </p>
+      <p class="mt" style={stl({ "--mt": "2" })}>
+        This project is funded the old-fashioned way: by hiring the human(s)
+        behind it. We're a very small team of developers breathing real oxygen
+        somewhere in Southeast Asia (most days, it's just one).
+      </p>
+
+      <p class="mt" style={stl({ "--mt": "2" })}>
+        If you want help, advice, migrations, custom components — or just
+        someone who actually knows this code inside out — click the button. It
+        sends us an email. A real one. Read by real humans.
+      </p>
+
+      <p class="mt" style={stl({ "--mt": "2" })}>
+        Or, if consulting isn't your thing, you can donate to the project.
+        You'll find the link in the sidebar (desktop humans only).
+      </p>
+
+      <p class="mt font-bold" style={stl({ "--mt": "6" })}>Regards,</p>
+      <p class="pb" style={stl({ "--pb": "2" })}>
+        Definitely not AI — statistically normal em dash usage.
+      </p>
+    </div>
+    <div class="uk-modal-footer">
+      <a
+        id="get-in-touch"
+        href="mailto:reden@franken-ui.dev"
+        class="uk-button uk-button-primary"
+        type="button"
+      >
+        Consult Now
+      </a>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener("uikit:init", () => {
+    UIkit.util.on("#consult", "shown", function () {
+      if (window.zaraz) {
+        window.zaraz.track("consultation_shown");
+      }
+    });
+  });
+
+  const getInTouch = document.getElementById("get-in-touch");
+
+  if (getInTouch) {
+    getInTouch.addEventListener("click", () => {
+      if (window.zaraz) {
+        window.zaraz.track("docs_get_in_touch_clicked");
+      }
+    });
+  }
+</script>

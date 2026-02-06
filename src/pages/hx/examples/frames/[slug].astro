@@ -1,0 +1,49 @@
+---
+import type { GetStaticPaths } from "astro";
+import data from "data/examples";
+
+const { slug } = Astro.params;
+
+export const getStaticPaths = (async () => {
+  return data.map((a) => {
+    return {
+      params: {
+        slug: a.slug,
+      },
+      props: a,
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const example = Astro.props;
+
+export const partial = true;
+---
+
+<div class="uk-rounded uk-shadow border-border h-full overflow-hidden border">
+  <iframe
+    name={slug}
+    src={`/examples/${slug}`}
+    height={`${example?.height}`}
+    width="100%"></iframe>
+</div>
+
+<script is:inline define:vars={{ slug }}>
+  const iframe = window.frames[slug];
+
+  const observer = new MutationObserver(() => {
+    iframe.postMessage(
+      {
+        className: htmlElement.className,
+        classList: Array.from(htmlElement.classList),
+        ls: localStorage.getItem("__FRANKEN__"),
+      },
+      "*",
+    );
+  });
+
+  observer.observe(htmlElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+</script>

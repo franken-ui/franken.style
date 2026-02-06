@@ -1,0 +1,68 @@
+---
+import { Image } from "astro:assets";
+import data from "data/examples";
+import { stl } from "helpers/common";
+
+const { active } = Astro.props;
+
+const example = data.find((a) => a.slug === active);
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/examples/*.{jpeg,jpg,png,gif}",
+);
+
+const image = (await images[`/src/assets/examples/${active}-light.png`]())
+  .default;
+---
+
+<div id="example">
+  <div
+    class="display-hidden xl:display-block"
+    style={`height: ${example?.height}`}
+  >
+    <div
+      class="bg/o h-full w-full animate-pulse"
+      style={stl({ "--bg": "var(--uk-muted)", "--bg-o": "var(--uk-muted-o)" })}
+      hx-get={`/hx/examples/frames/${active}`}
+      hx-trigger="intersect"
+      hx-swap="outerHTML"
+    >
+    </div>
+  </div>
+
+  <div
+    class="uk-rounded uk-shadow overflow-hidden xl:display-hidden border-w border/o"
+    style={stl({
+      "--border-w": "1px",
+      "--border": "var(--uk-border)",
+      "--border-o": "var(--uk-border-o)",
+    })}
+  >
+    <div class="dark:display-hidden">
+      <Image
+        alt=""
+        sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${image.width}px`}
+        src={images[`/src/assets/examples/${active}-light.png`]()}
+        widths={[240, 540, 720, image.width]}
+      />
+    </div>
+
+    <div class="display-hidden dark:display-block">
+      <Image
+        alt=""
+        sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${image.width}px`}
+        src={images[`/src/assets/examples/${active}-dark.png`]()}
+        widths={[240, 540, 720, image.width]}
+      />
+    </div>
+  </div>
+
+  <div
+    role="alert"
+    class="uk-alert uk-alert-info mt xl:display-hidden"
+    style={stl({ "--mt": "4" })}
+  >
+    <strong>Note:</strong> You are viewing a static image preview. Please switch
+    to a larger screen to experience the real thing.
+  </div>
+</div>

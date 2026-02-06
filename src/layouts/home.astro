@@ -1,6 +1,8 @@
 ---
 import Master from "layouts/master.astro";
-import Navbar from "components/partials/navbar.astro";
+import ftCore from "frankenstyle/js/ft-core.iife?url";
+import ftBgRippleEffect from "frankenstyle/js/ft/bg-ripple-effect.iife?url";
+import ftTextEncrypted from "frankenstyle/js/ft/text-encrypted.iife?url";
 import { stl } from "helpers/common";
 
 const { doc } = Astro.props;
@@ -8,28 +10,21 @@ const { doc } = Astro.props;
 
 <Master doc={doc}>
   <div class="max-w-screen overflow-x-hidden">
-    <Navbar
-      menu={false}
-      announcement={{
-        headline: "Public preview",
-      }}
-      projectSwitcher={false}
-    />
-
     <div
-      class="display-grid min-h-dvh grid-cols [grid-rows] justify-center pt md:mx md:[grid-cols] lg:mx"
+      class="display-grid min-h-dvh grid-cols [grid-rows] justify-center md:mx md:[grid-cols] lg:mx"
       style={stl({
         "--grid-cols": "1",
         "--grid-rows": "1fr 1px auto 1px auto",
-        "--pt": "14.25",
         "--md-mx": "-4",
-        "--md-grid-cols": "2.5rem minmax(0, var(--breakpoint-2xl)) 2.5rem",
+        "--md-grid-cols": "1px minmax(0, var(--breakpoint-2xl)) 1px",
         "--lg-mx": "0",
       })}
     >
       <div
-        class="divider-pattern col-start row-span-full row-start display-hidden md:display-block w"
+        class="bg/o col-start row-span-full row-start display-hidden md:display-block w"
         style={stl({
+          "--bg": "var(--uk-border)",
+          "--bg-o": "var(--uk-border-o)",
           "--col-start": "1",
           "--row-start": "1",
         })}
@@ -49,8 +44,10 @@ const { doc } = Astro.props;
       </div>
 
       <div
-        class="divider-pattern row-span-full row-start display-hidden md:col-start md:display-block w"
+        class="bg/o row-span-full row-start display-hidden md:col-start md:display-block w"
         style={stl({
+          "--bg": "var(--uk-border)",
+          "--bg-o": "var(--uk-border-o)",
           "--row-start": "1",
           "--md-col-start": "3",
         })}
@@ -58,4 +55,8 @@ const { doc } = Astro.props;
       </div>
     </div>
   </div>
+
+  <script is:inline src={ftCore}></script>
+  <script is:inline src={ftBgRippleEffect}></script>
+  <script is:inline src={ftTextEncrypted}></script>
 </Master>

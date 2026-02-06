@@ -19,8 +19,11 @@ const { title, content } = Astro.props;
   >
   </div>
   <div>
-    <span class="uk-h3">{title}</span>
-    <p class="mt max-w-xl" style={stl({ "--mt": "2" })}>
+    <span class="uk-h4">{title}</span>
+    <p
+      class="mt max-w-xl color"
+      style={stl({ "--mt": "2", "--color": "var(--uk-muted-f)" })}
+    >
       {content}
     </p>
   </div>

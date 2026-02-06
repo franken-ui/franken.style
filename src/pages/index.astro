@@ -1,146 +1,195 @@
 ---
 import Home from "layouts/home.astro";
+import Monster from "src/assets/monster.svg";
 import Highlighter from "components/highlighter.astro";
-import Macguffin from "components/partials/home/macguffin.astro";
 import VerticalMacguffin from "components/partials/home/vertical-macguffin.astro";
 import HSpacer from "components/partials/home/h-spacer.astro";
 import Feature from "components/partials/home/feature.astro";
+import Examples from "components/examples.astro";
 import { stl } from "helpers/common";
+import data from "data/examples";
 ---
+
+<style is:inline>
+  :root {
+    --ft-cell-border-color: var(--color-neutral-300);
+    --ft-cell-fill-color: var(--color-neutral-100);
+    --ft-cell-shadow-color: var(--color-neutral-500);
+  }
+
+  .dark {
+    --ft-cell-border-color: var(--color-neutral-700);
+    --ft-cell-fill-color: var(--color-neutral-900);
+    --ft-cell-shadow-color: var(--color-neutral-800);
+  }
+
+  .dark .ft-cell {
+    box-shadow: inset 0px 0px 40px 1px var(--ft-cell-shadow-color);
+  }
+
+  .ft-cell:hover {
+    opacity: 0.8;
+  }
+
+  @keyframes ft-cell-ripple {
+    0% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0.4;
+    }
+  }
+</style>
 
 <Home
   doc={{
     title: "The Frankenstyle Project - A painless frontend system.",
   }}
 >
-  <Macguffin>
-    <HSpacer>
-      <span class="sm:display-hidden">
-        &lt;div class=&quot;m&quot; style=&quot;--m: 2;&quot;&gt;
-      </span>
-      <span class="display-hidden sm:display-inline">
-        &lt;div class=&quot;color&quot; style=&quot;--color:
-        var(--color-sky-500);&quot;&gt;
-      </span>
-    </HSpacer>
-  </Macguffin>
+  <div
+    class="display-flex relative min-h-screen w-full flex-col items-start justify-start overflow-hidden"
+  >
+    <div data-ft-bg-ripple-effect></div>
 
-  <div class="">
-    <h1
-      class="divider-line py uk-hero-medium max-w-3xl"
+    <div
+      class="mt sm:mt md:mt w-full"
       style={stl({
-        "--py": "1",
+        "--mt": "30",
+        "--sm-mt": "40",
+        "--md-mt": "60",
       })}
     >
-      <HSpacer>Great web development shouldn't be complicated.</HSpacer>
-    </h1>
-  </div>
+      <div
+        class="z relative display-flex justify-center"
+        style={stl({ "--z": "10" })}
+      >
+        <Monster
+          id="monster"
+          height={128}
+          width={128}
+          class:list="fill stroke"
+          style={stl({
+            "--fill": "var(--uk-primary)",
+            "--stroke": "var(--uk-primary)",
+          })}
+        />
+      </div>
+      <h2
+        class="z mt relative mx-auto max-w-4xl text-center text-2xl font-bold md:text-3xl lg:text-6xl"
+        style={stl({
+          "--z": "10",
+          "--mt": "4",
+        })}
+      >
+        Great web development shouldn't be complicated.
+      </h2>
 
-  <Macguffin>
-    <HSpacer>
-      <span>&lt;span class=&quot;text-lg font-medium&quot;&gt;</span>
-    </HSpacer>
-  </Macguffin>
-
-  <div class="divider-line">
-    <div class="uk-text-medium max-w-3xl font-medium">
-      <HSpacer>
-        <div>
+      <div
+        class="z mt color dark:color relative mx-auto max-w-xl text-center px sm:px"
+        style={stl({
+          "--z": "10",
+          "--mt": "8",
+          "--color": "var(--uk-muted-f)",
+          "--px": "4",
+          "--sm-px": "0",
+        })}
+      >
+        <div class="">
           Built on proven foundations. No overengineering. Extending, not
           replacing.
         </div>
-        <div>
-          <span
-            class="color"
-            style={stl({
-              "--color": "var(--color-lime-500)",
-            })}>Frankenstyle</span
-          > is a full-fledged frontend system. Zero setup, no npm, no builds, no
-          watchers.
+        <div class="">
+          The Frankenstyle Project is a full-fledged frontend system. Zero
+          setup, no npm, no builds, no watchers.
         </div>
-      </HSpacer>
-    </div>
-  </div>
+      </div>
 
-  <div
-    class="divider-line mt sm:mt display-flex flex-col sm:flex-row gap"
-    style={stl({
-      "--mt": "4",
-      "--sm-mt": "10",
-      "--gap": "2",
-    })}
-  >
-    <HSpacer>
-      <a
-        class="uk-button uk-button-primary uk-button-large w-full sm:w-auto gap-x"
-        style="--gap-x: 2"
-        href="/docs/latest/kit/installation"
+      <div
+        class="z relative display-flex mt gap-x justify-center px sm:px"
+        style={stl({
+          "--z": "10",
+          "--mt": "8",
+          "--gap-x": "2",
+          "--px": "4",
+          "--sm-px": "0",
+        })}
       >
-        Get Started
-        <uk-icon class="size" style="--size: 4" icon="arrow-right"></uk-icon>
-      </a>
+        <a
+          class="uk-button uk-button-primary uk-button-large w-full sm:w-auto gap-x"
+          style="--gap-x: 2"
+          href="/docs/latest/kit/installation"
+        >
+          Get Started
+          <uk-icon class="size" style="--size: 4" icon="arrow-right"></uk-icon>
+        </a>
 
-      <button
-        class="uk-button uk-button-default uk-button-large display-hidden lg:display-inline-flex gap-x"
-        style="--gap-x: 2"
-        x-data
-        x-on:click={`copyPreview('/hx/boilerplate', 'copy_boilerplate')`}
-      >
-        <uk-icon class="size" style="--size: 4" icon="copy"></uk-icon>
-        Grab Starter Template
-      </button>
-    </HSpacer>
-  </div>
-
-  <div class="relative mt" style={stl({ "--mt": "24" })}>
-    <VerticalMacguffin>Why Frankenstyle?</VerticalMacguffin>
-
-    <Macguffin>
-      <HSpacer>
-        <span class="sm:display-hidden">
-          &lt;div class=&quot;shadow-lg&quot;&gt;
-        </span>
-        <span class="display-hidden sm:display-inline">
-          &lt;div class=&quot;rounded&quot; style=&quot;--rounded:6px&quot;&gt;
-        </span>
-      </HSpacer>
-    </Macguffin>
-
-    <div class="divider-line">
-      <h2 class="uk-h2">
-        <HSpacer>Built for the modern web.</HSpacer>
-      </h2>
+        <button
+          class="uk-button uk-button-default uk-button-large display-hidden lg:display-inline-flex gap-x"
+          style="--gap-x: 2"
+          x-data
+          x-on:click={`copyPreview('/hx/boilerplate', 'copy_boilerplate')`}
+        >
+          <uk-icon class="size" style={stl({ "--size": "4" })} icon="copy"
+          ></uk-icon>
+          Grab Starter Template
+        </button>
+      </div>
     </div>
-
-    <Macguffin>
-      <HSpacer>
-        <span class="sm:display-hidden">
-          &lt;div class=&quot;text-sm truncate&quot;&gt;
-        </span>
-        <span class="display-hidden sm:display-inline">
-          &lt;div class=&quot;columns&quot; style=&quot;--columns:3&quot;&gt;
-        </span>
-      </HSpacer>
-    </Macguffin>
 
     <div
-      class="uk-text-medium divider-line [max-w] color"
-      style={stl({
-        "--max-w": "var(--breakpoint-md)",
-        "--color": "var(--uk-muted-f)",
-      })}
+      class="absolute bottom pb display-flex justify-center w-full"
+      style={stl({ "--bottom": "0", "--pb": "8" })}
+      x-data="{ show: true }"
+      x-init="window.addEventListener('scroll', () => { show = window.scrollY < 200 })"
+      x-show="show"
+      x-transition.opacity.duration.300ms
     >
+      <a
+        href="#why-frankenstyle"
+        class="animate-bounce uk-button uk-button-default uk-button-icon rounded-full"
+        data-uk-scroll
+      >
+        <uk-icon icon="chevrons-down"></uk-icon>
+      </a>
+    </div>
+  </div>
+
+  <div id="why-frankenstyle" class="relative mt" style={stl({ "--mt": "16" })}>
+    <VerticalMacguffin>
+      <script is:inline data-fn="props" type="application/json">
+        {
+          "text": "Why the heck?",
+          "revealDelayMs": "150"
+        }
+      </script>
+    </VerticalMacguffin>
+
+    <div class="divider-line">
       <HSpacer>
-        Built for the modern web means embracing what already works.
-        Frankenstyle embraces modern CSS features to deliver a powerful,
-        straightforward frontend system with zero setup.
+        <h2 class="uk-h2">Built for the modern web.</h2>
+
+        <div
+          class="uk-text-medium [max-w] color mt"
+          style={stl({
+            "--max-w": "var(--breakpoint-md)",
+            "--color": "var(--uk-muted-f)",
+            "--mt": "2",
+          })}
+        >
+          Built for the modern web means embracing what already works.
+          Frankenstyle embraces modern CSS features to deliver a powerful,
+          straightforward frontend system with zero setup.
+        </div>
       </HSpacer>
     </div>
 
     <div class="divider-line mt" style={stl({ "--mt": "16" })}>
       <Feature
         title="Modern Color Palette"
-        content="Frankenstyle uses Tailwind CSS’s color palette to deliver rich, vibrant colors out of the box. Hit Alt and click to copy the CSS variable."
+        content="Frankenstyle uses Tailwind CSS's color palette to deliver rich, vibrant colors out of the box. Hit Alt and click to copy the CSS variable."
       />
 
       <div
@@ -254,49 +303,31 @@ import { stl } from "helpers/common";
     </div>
   </div>
 
-  <div class="relative mt" style={stl({ "--mt": "24" })}>
-    <VerticalMacguffin>The Basics</VerticalMacguffin>
-
-    <Macguffin>
-      <HSpacer>
-        <span class="sm:display-hidden">
-          &lt;div class=&quot;absolute [top]&quot; style=&quot;--top:
-          1px&quot;&gt;
-        </span>
-        <span class="display-hidden sm:display-inline">
-          &lt;div class=&quot;rotate&quot; style=&quot;--rotate:2deg&quot;&gt;
-        </span>
-      </HSpacer>
-    </Macguffin>
+  <div id="how-it-works" class="relative mt" style={stl({ "--mt": "24" })}>
+    <VerticalMacguffin>
+      <script is:inline data-fn="props" type="application/json">
+        {
+          "text": "How it works?",
+          "revealDelayMs": "150"
+        }
+      </script>
+    </VerticalMacguffin>
 
     <div class="divider-line">
-      <h2 class="uk-h2">
-        <HSpacer>How it works?</HSpacer>
-      </h2>
-    </div>
-
-    <Macguffin>
       <HSpacer>
-        <span class="sm:display-hidden">
-          &lt;div class=&quot;display-hidden sm:display-flex&quot;&gt;
-        </span>
-        <span class="display-hidden sm:display-inline">
-          &lt;div class=&quot;border-w border&quot; style=&quot;--border-w: 1px;
-          --border: var(--color-cyan-500);&quot;&gt;
-        </span>
-      </HSpacer>
-    </Macguffin>
+        <h2 class="uk-h2">The Basics</h2>
 
-    <div
-      class="uk-text-medium divider-line [max-w] color"
-      style={stl({
-        "--max-w": "var(--breakpoint-md)",
-        "--color": "var(--uk-muted-f)",
-      })}
-    >
-      <HSpacer>
-        Frankenstyle is a no-build, value-driven CSS framework. Drop in a single
-        stylesheet and start building immediately.
+        <div
+          class="uk-text-medium [max-w] color mt"
+          style={stl({
+            "--max-w": "var(--breakpoint-md)",
+            "--color": "var(--uk-muted-f)",
+            "--mt": "2",
+          })}
+        >
+          Frankenstyle is a no-build, value-driven CSS framework. Drop in a
+          single stylesheet and start building immediately.
+        </div>
       </HSpacer>
     </div>
 
@@ -312,88 +343,176 @@ import { stl } from "helpers/common";
     </div>
   </div>
 
-  <div class="relative mt" style={stl({ "--mt": "24" })}>
-    <VerticalMacguffin>Get the Kit</VerticalMacguffin>
-
-    <Macguffin>
-      <HSpacer>
-        <span class="sm:display-hidden">
-          &lt;div class=&quot;uk-text-small&quot;&gt;
-        </span>
-        <span class="display-hidden sm:display-inline">
-          &lt;div class=&quot;uk-input uk-form-danger [max-w]&quot;
-          style=&quot;--max-w: var(--breakpoint-md);&quot;&gt;
-        </span>
-      </HSpacer>
-    </Macguffin>
+  <div id="get-the-kit" class="relative mt" style={stl({ "--mt": "24" })}>
+    <VerticalMacguffin>
+      <script is:inline data-fn="props" type="application/json">
+        {
+          "text": "Get the Kit.",
+          "revealDelayMs": "150"
+        }
+      </script>
+    </VerticalMacguffin>
 
     <div class="divider-line">
-      <h2 class="uk-h2">
-        <HSpacer>
-          Do more with <span class="sm:display-hidden">the Kit</span>
-          <span class="display-hidden sm:display-inline">FrankenstyleKit</span>.
-        </HSpacer>
-      </h2>
-    </div>
-
-    <Macguffin>
       <HSpacer>
-        <span class="sm:display-hidden">
-          &lt;div class=&quot;uk-button uk-button-primary&quot;&gt;
-        </span>
-        <span class="display-hidden sm:display-inline">
-          &lt;div class=&quot;opacity&quot; style=&quot;--opacity:.75&quot;&gt;
-        </span>
-      </HSpacer>
-    </Macguffin>
+        <h2 class="uk-h2">
+          Do more with <span class="sm:display-hidden">the Kit.</span>
+          <span class="display-hidden sm:display-inline">FrankenstyleKit.</span>
+        </h2>
 
-    <div
-      class="uk-text-medium divider-line [max-w] color"
-      style={stl({
-        "--max-w": "var(--breakpoint-md)",
-        "--color": "var(--uk-muted-f)",
-      })}
-    >
-      <HSpacer>
-        FrankenstyleKit is an HTML-first UI component library built on UIkit 3
-        and extended with LitElement, inspired by coss ui.
+        <div
+          class="uk-text-medium [max-w] color mt"
+          style={stl({
+            "--max-w": "var(--breakpoint-md)",
+            "--color": "var(--uk-muted-f)",
+            "--mt": "2",
+          })}
+        >
+          FrankenstyleKit is an HTML-first UI component library built on UIkit 3
+          and extended with LitElement, inspired by coss ui.
+        </div>
       </HSpacer>
     </div>
 
-    <div class="divider-line mt" style={stl({ "--mt": "16" })}>
+    <div class="divider-line mt py" style={stl({ "--mt": "16", "--py": "2" })}>
+      <HSpacer>
+        <ul
+          class="mt mb uk-subnav uk-subnav-primary justify-center"
+          style={stl({
+            "--mt": "2",
+            "--mb": "4",
+          })}
+          data-uk-switcher
+        >
+          {
+            data.map((a, b) => (
+              <li class={b === 1 ? "uk-active" : ""}>
+                <a
+                  class="cursor-pointer"
+                  hx-get={`/hx/examples/${a.slug}`}
+                  hx-target="#example"
+                  hx-swap="outerHTML"
+                >
+                  {a.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <Examples active="example-02" />
+      </HSpacer>
+    </div>
+  </div>
+
+  <div id="how-it-works" class="relative mt" style={stl({ "--mt": "24" })}>
+    <VerticalMacguffin>
+      <script is:inline data-fn="props" type="application/json">
+        {
+          "text": "Hire a Human",
+          "revealDelayMs": "150"
+        }
+      </script>
+    </VerticalMacguffin>
+
+    <div class="divider-line p" style={{ "--p": "2" }}>
       <div
-        class="w-full aspect bg/o animate-pulse"
-        style={stl({
-          "--bg": "var(--uk-muted)",
-          "--bg-o": "var(--uk-muted-o)",
-          "--aspect": "1920 / 913",
-        })}
-        hx-get="/hx/partials/showcases/examples"
-        hx-swap="outerHTML"
-        hx-trigger="intersect"
+        class="display-flex relative min-h w-full flex-col items-start justify-start overflow-hidden"
       >
+        <div data-ft-bg-ripple-effect></div>
+
+        <div
+          class="mt sm:mt md:mt w-full"
+          style={stl({
+            "--min-h": "128",
+            "--mt": "30",
+            "--sm-mt": "40",
+            "--md-mt": "60",
+          })}
+        >
+          <h2
+            class="z relative mx-auto max-w-4xl text-center text-2xl font-bold md:text-3xl lg:text-6xl"
+            style={stl({
+              "--z": "10",
+            })}
+          >
+            <div data-ft-text-encrypted>
+              <script is:inline data-fn="props" type="application/json">
+                {
+                  "text": "Need some help?",
+                  "revealDelayMs": "150"
+                }
+              </script>
+            </div>
+          </h2>
+
+          <div
+            class="z mt color dark:color relative mx-auto max-w-xl text-center px sm:px"
+            style={stl({
+              "--z": "10",
+              "--mt": "8",
+              "--color": "var(--uk-muted-f)",
+              "--px": "4",
+              "--sm-px": "0",
+            })}
+          >
+            <div class="">
+              We built it. We maintain it. We can help you use it.
+            </div>
+            <div class="">
+              Hire the pros behind the project and skip the guesswork.
+            </div>
+          </div>
+
+          <div
+            class="z relative display-flex mt gap-x justify-center px sm:px pb"
+            style={stl({
+              "--z": "10",
+              "--mt": "8",
+              "--gap-x": "2",
+              "--px": "4",
+              "--sm-px": "0",
+              "--pb": "4",
+            })}
+          >
+            <a
+              class="uk-button uk-button-primary uk-button-large w-full sm:w-auto gap-x"
+              style="--gap-x: 2"
+              href="mailto:reden@franken-ui.dev"
+              id="get-in-touch"
+            >
+              Get in Touch
+              <uk-icon class="size" style="--size: 4" icon="mail"></uk-icon>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="relative mt px" style={stl({ "--mt": "24", "--px": "2" })}>
-    <p
-      class="[max-w] uk-text-small color"
-      style={stl({
-        "--max-w": "var(--breakpoint-md)",
-        "--color": "var(--uk-muted-f)",
-      })}
-    >
-      <span class="font-bold">Disclaimer:</span> The Tailwind CSS website was deliberately
-      cloned to test whether complex designs can be built using only vanilla CSS.
-      Recreating an existing design is the most direct way to evaluate that premise.
-      This project is for <strong
-        class="underline font-bold color"
-        style={stl({
-          "--color": "var(--uk-danger)",
-        })}>educational, non-commercial purposes only</strong
-      > and is <strong class="underline font-bold">not</strong> intended to infringe
-      on any rights or imply affiliation.
-    </p>
+  <div
+    class="relative mt px display-flex justify-center"
+    style={stl({ "--mt": "24", "--px": "2" })}
+  >
+    <div class="">
+      <span class="color" style={stl({ "--color": "var(--uk-muted-f)" })}>
+        &copy; 2026
+      </span>
+      <span class="font-bold">FRNKN Creatives</span>
+      <span class="color" style={stl({ "--color": "var(--uk-muted-f)" })}>
+        – keep it simple, seriously.
+      </span>
+    </div>
   </div>
+
+  <script is:inline>
+    const getInTouch = document.getElementById("get-in-touch");
+
+    if (getInTouch) {
+      getInTouch.addEventListener("click", () => {
+        if (window.zaraz) {
+          window.zaraz.track("home_get_in_touch_clicked");
+        }
+      });
+    }
+  </script>
 </Home>

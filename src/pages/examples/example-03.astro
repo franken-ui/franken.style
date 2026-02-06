@@ -1,0 +1,340 @@
+---
+import { stl } from "helpers/common";
+import Frame from "layouts/frame.astro";
+---
+
+<Frame doc={{ title: "example-03" }}>
+  <div class="display-hidden xl:display-block">
+    <div
+      class="border-b-w border-b/o display-flex h items-center justify-between px py"
+      style={stl({
+        "--border-b-w": "1px",
+        "--border-b": "var(--uk-border)",
+        "--border-b-o": "var(--uk-border-o)",
+        "--h": "16",
+        "--px": "8",
+        "--py": "4",
+      })}
+    >
+      <h2 class="text-lg font-semibold">Playground</h2>
+      <div
+        class="display-flex w-full flex-1 items-center justify-end gap-x"
+        style={stl({ "--gap-x": "2" })}
+      >
+        <div
+          class="[h] [w] lg:[w]"
+          style={stl({
+            "--h": "calc(var(--uk-global-font-size) * 2.5)",
+            "--w": "200px",
+            "--lg-w": "300px",
+          })}
+        >
+          <uk-select
+            cls="button: uk-input-fake justify-between w-full; dropdown: w-full"
+            icon="chevrons-up-down"
+            placeholder="Load a preset"
+            searchable
+          >
+            <select data-fn="data-source" hidden>
+              <optgroup label="Examples">
+                {
+                  [
+                    "Grammatical Standard English",
+                    "Summarize for a 2nd grader",
+                    "Text to command",
+                    "Q&A",
+                    "English to other languages",
+                    "Parse unstructured data",
+                    "Classification",
+                    "Natural language to Python",
+                    "Explain code",
+                    "Chat",
+                    "More examples",
+                  ].map((a) => <option>{a}</option>)
+                }
+              </optgroup>
+            </select>
+          </uk-select>
+        </div>
+
+        <button class="uk-button uk-button-secondary" uk-toggle="#save">
+          Save
+        </button>
+        <div class="uk-flex-top uk-modal" id="save" uk-modal>
+          <div class="uk-margin-auto-vertical uk-modal-dialog">
+            <div class="uk-modal-header">
+              <h2 class="uk-modal-title">Save preset</h2>
+              <p
+                class="color mt text-sm"
+                style={stl({ "--color": "var(--uk-muted-f)", "--mt": "1.5" })}
+              >
+                This will save the current playground state as a preset which
+                you can access later or share with others.
+              </p>
+            </div>
+            <div
+              class="uk-modal-body space-y"
+              style={stl({ "--space-y": "4" })}
+            >
+              <div class="space-y-2">
+                <label class="uk-form-label" for="name">Name</label>
+                <input class="uk-input" id="name" type="text" />
+              </div>
+
+              <div class="space-y-2">
+                <label class="uk-form-label" for="description"
+                  >Description</label
+                >
+                <input class="uk-input" id="description" type="text" />
+              </div>
+            </div>
+            <div class="uk-modal-footer text-right">
+              <button class="uk-modal-close uk-button uk-button-primary">
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <button class="uk-button uk-button-secondary" disabled>View Code</button
+        >
+
+        <button class="uk-button uk-button-secondary"> Share </button>
+        <div
+          class="uk-drop uk-dropdown [w] p"
+          style={stl({ "--w": "520px", "--p": "4" })}
+          data-uk-drop="mode: click; pos: bottom-right;"
+        >
+          <h3 class="text-lg font-semibold">Share preset</h3>
+          <p
+            class="color mt text-sm"
+            style={stl({ "--color": "var(--uk-muted-f)", "--mt": "1.5" })}
+          >
+            Anyone who has this link and a Frankenstyle account will be able to
+            view this.
+          </p>
+
+          <div
+            class="display-flex items-center space-x pt"
+            style={stl({ "--space-x": "2", "--pt": "4" })}
+          >
+            <div class="flex-1">
+              <input
+                class="uk-input"
+                readonly
+                type="text"
+                value="https://platform.franken.style/playground/p/7bbKYQvsVkNmVb8NGcdUOLae?model=text-davinci-003"
+              />
+            </div>
+            <div class="flex-none">
+              <button
+                class="uk-drop-close uk-button uk-button-primary uk-button-icon"
+              >
+                <uk-icon icon="copy"></uk-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <button class="uk-button uk-button-secondary uk-button-icon">
+          <span class="size" style={stl({ "--size": "4" })}>
+            <uk-icon icon="ellipsis"></uk-icon>
+          </span>
+        </button>
+        <div
+          class="uk-drop uk-dropdown"
+          uk-drop="mode: click; pos: bottom-right"
+        >
+          <ul class="uk-dropdown-nav uk-nav">
+            <li>
+              <a class="uk-drop-close"> Content filter preferences </a>
+            </li>
+            <li class="uk-nav-divider"></li>
+            <li>
+              <a
+                class="uk-drop-close color"
+                style={stl({ "--color": "var(--uk-danger-f)" })}
+              >
+                Delete preset
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="display-flex [h] gap-x px py"
+      style={stl({
+        "--h": "700px",
+        "--gap-x": "6",
+        "--px": "8",
+        "--py": "6",
+      })}
+    >
+      <div class="flex-1">
+        <textarea
+          class="uk-textarea h-full resize-none p"
+          style={stl({ "--p": "4" })}
+          placeholder="Write a tagline for an ice cream shop"
+          readonly></textarea>
+      </div>
+
+      <div class="[w] flex-none" style={stl({ "--w": "200px" })}>
+        <div class="uk-form-label">Mode</div>
+        <ul class="uk-tab-alt mt h-auto" style={stl({ "--mt": "2" })}>
+          <li class="uk-active">
+            <a>
+              <span class="size" style={stl({ "--size": "4" })}>
+                <uk-icon icon="letter-text"></uk-icon>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <span class="size" style={stl({ "--size": "4" })}>
+                <uk-icon icon="a-arrow-down"></uk-icon>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <span class="size" style={stl({ "--size": "4" })}>
+                <uk-icon icon="whole-word"></uk-icon>
+              </span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="mt space-y" style={stl({ "--mt": "4", "--space-y": "2" })}>
+          <span class="uk-form-label block">Model</span>
+          <div
+            class="[h]"
+            style={stl({
+              "--h": "calc(var(--uk-global-font-size) * 2.5)",
+            })}
+          >
+            <uk-select
+              cls="button: uk-input-fake justify-between w-full; dropdown: w-full"
+              icon="chevrons-up-down"
+              placeholder="Load a preset"
+              searchable
+            >
+              <select data-fn="data-source" hidden>
+                <optgroup label="GPT-3">
+                  {
+                    [
+                      "text-davinci-003",
+                      "text-curie-001",
+                      "text-babbage-001",
+                      "text-ada-001",
+                    ].map((a) => (
+                      <option value={a} selected={a === "text-davinci-003"}>
+                        {a}
+                      </option>
+                    ))
+                  }
+                </optgroup>
+                <optgroup label="Codex">
+                  {
+                    ["code-davinci-002", "code-cushman-001"].map((a) => (
+                      <option value={a}>{a}</option>
+                    ))
+                  }
+                </optgroup>
+              </select>
+            </uk-select>
+          </div>
+        </div>
+
+        <div class="mt space-y" style={stl({ "--mt": "4", "--space-y": "2" })}>
+          <div class="display-flex items-center justify-between">
+            <span class="uk-form-label"> Temperature </span>
+            <span id="label_temperature" class="text-muted-foreground text-sm">
+              0.70
+            </span>
+          </div>
+          <uk-input-range
+            id="control_temperature"
+            value="0.7"
+            min="0"
+            max="1"
+            step="0.1"></uk-input-range>
+          <script is:inline>
+            const temperatureControl = document.getElementById(
+              "control_temperature",
+            );
+            const temperatureLabel =
+              document.getElementById("label_temperature");
+
+            temperatureControl.addEventListener("uk-input-range:input", (e) => {
+              temperatureLabel.textContent = e.target.value;
+            });
+          </script>
+        </div>
+
+        <div class="mt space-y" style={stl({ "--mt": "4", "--space-y": "2" })}>
+          <div class="display-flex items-center justify-between">
+            <span class="uk-form-label">Maximum Length</span>
+            <span id="label_max_length" class="text-muted-foreground text-sm">
+              512
+            </span>
+          </div>
+          <uk-input-range
+            id="control_max_length"
+            value="512"
+            min="0"
+            max="4000"
+            step="100"></uk-input-range>
+          <script is:inline>
+            const maxLengthControl =
+              document.getElementById("control_max_length");
+            const maxLengthLabel = document.getElementById("label_max_length");
+
+            maxLengthControl.addEventListener("uk-input-range:input", (e) => {
+              maxLengthLabel.textContent = e.target.value;
+            });
+          </script>
+        </div>
+
+        <div class="mt space-y" style={stl({ "--mt": "4", "--space-y": "2" })}>
+          <div class="display-flex items-center justify-between">
+            <span class="uk-form-label">Top P</span>
+            <span id="label_top_p" class="text-muted-foreground text-sm">
+              0.90
+            </span>
+          </div>
+          <uk-input-range
+            id="control_top_p"
+            value="0.9"
+            min="0"
+            max="1"
+            step="0.1"></uk-input-range>
+          <script is:inline>
+            const topPControl = document.getElementById("control_top_p");
+            const topPLabel = document.getElementById("label_top_p");
+
+            topPControl.addEventListener("uk-input-range:input", (e) => {
+              topPLabel.textContent = e.target.value;
+            });
+          </script>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="display-flex gap-x px pb"
+      style={stl({ "--gap-x": "2", "--px": "8", "--pb": "6" })}
+    >
+      <button class="uk-button uk-button-primary"> Submit </button>
+      <button
+        class="uk-button uk-button-secondary uk-button-icon"
+        data-uk-tooltip="History"
+      >
+        <span class="size" style={stl({ "--size": "4" })}>
+          <uk-icon icon="history"></uk-icon>
+        </span>
+      </button>
+    </div>
+  </div>
+</Frame>

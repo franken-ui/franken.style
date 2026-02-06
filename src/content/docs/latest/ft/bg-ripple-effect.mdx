@@ -1,0 +1,43 @@
+---
+preview:
+  width: "100%"
+  height: "480px"
+group: backgrounds
+project: ft
+text: Ripple Effect
+title: Ripple Effect
+lead: A grid of cells that ripple when clicked.
+meta:
+  description: A grid of cells that ripple when clicked.
+---
+
+import Snippet from "snippets/component.astro";
+import Ec from "snippets/ec.astro";
+import Installation from "components/partials/ft/installation-mdx.astro";
+import ftCore from "frankenstyle/js/ft-core.iife?url";
+import ftBgRippleEffect from "frankenstyle/js/ft/bg-ripple-effect.iife?url";
+
+<Snippet project="ft" component="bg_ripple_effect.basic" />
+
+## Installation
+
+<Installation uid="bg-ripple-effect" />
+
+## Props
+
+To pass props, include them as JSON inside a `<script>` tag with the `data-fn="props"` attribute.
+
+<Ec project="ft" path="etc.props" />
+
+<span class="uk-label uk-label-primary">Note</span> The `data-ft-*` attribute
+determines which Frankternity component is mounted and should be replaced with
+the component name.
+
+| Prop       | Type     | Default | Description                         | Required |
+| ---------- | -------- | ------- | ----------------------------------- | -------- |
+| `rows`     | `number` | `8`     | Number of rows in the grid.         | No       |
+| `cols`     | `number` | `27`    | Number of columns in the grid.      | No       |
+| `cellSize` | `number` | `56`    | Size of each square cell in pixels. | No       |
+
+<script src={ftCore}></script>
+<script src={ftBgRippleEffect}></script>

@@ -1,0 +1,11 @@
+<script is:inline>
+  window.addEventListener("message", function (event) {
+    if (event.data.className) {
+      htmlElement.className = event.data.className;
+    }
+
+    if (event.data.ls) {
+      localStorage.setItem("__FRANKEN__", event.data.ls);
+    }
+  });
+</script>

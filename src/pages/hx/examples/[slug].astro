@@ -1,0 +1,22 @@
+---
+import type { GetStaticPaths } from "astro";
+import Examples from "components/examples.astro";
+import data from "data/examples";
+
+const { slug } = Astro.params;
+
+export const getStaticPaths = (async () => {
+  return data.map((a) => {
+    return {
+      params: {
+        slug: a.slug,
+      },
+      props: a,
+    };
+  });
+}) satisfies GetStaticPaths;
+
+export const partial = true;
+---
+
+<Examples active={slug} />

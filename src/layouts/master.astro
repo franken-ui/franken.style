@@ -18,6 +18,8 @@ const { doc } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{doc.title}</title>
+
+    <!-- FF (A) -->
     <link
       rel="preload"
       href="/fonts/geist-font/fonts/GeistVariableVF.woff2"
@@ -33,6 +35,24 @@ const { doc } = Astro.props;
       crossorigin
     />
     <link rel="stylesheet" href="/fonts/geist-font/style.css" />
+
+    <!-- FF (B) -->
+    <link
+      rel="preload"
+      href="/fonts/cal-sans-ui/fonts/variable/CalSansUI[MODE,wght].ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/paper-mono/fonts/webfonts/PaperMono-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="/fonts/cal-sans-ui/style.css" />
+    <link rel="stylesheet" href="/fonts/paper-mono/style.css" />
 
     <script is:inline>
       const htmlElement = document.documentElement;
@@ -53,7 +73,8 @@ const { doc } = Astro.props;
         htmlElement.dataset.theme = "github-light";
       }
 
-      // htmlElement.classList.add(__FRANKEN__.layout || "uk-layout-small");
+      htmlElement.classList.add(__FRANKEN__.layout || "uk-layout-small");
+      htmlElement.classList.add(__FRANKEN__.ff || "uk-ff-b");
     </script>
 
     {
@@ -71,7 +92,7 @@ const { doc } = Astro.props;
   </head>
   <body
     class="bg color font-family"
-    style="--bg: var(--uk-bg); --color: var(--uk-bg-f); --font-family: var(--font-geist-sans)"
+    style="--bg: var(--uk-bg); --color: var(--uk-bg-f); --font-family: var(--uk-global-font-family-sans)"
   >
     <slot />
 

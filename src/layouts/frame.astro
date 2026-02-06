@@ -1,0 +1,45 @@
+---
+import { stl } from "helpers/common";
+import Master from "./master.astro";
+import LsScript from "components/partials/ls-script.astro";
+
+const { doc } = Astro.props;
+---
+
+<Master doc={doc}>
+  <div
+    class="display-grid min-h-full place-items-center px py sm:py lg:px xl:display-hidden"
+    style={stl({
+      "--px": "6",
+      "--py": "24",
+      "--sm-py": "32",
+      "--lg-px": "8",
+    })}
+  >
+    <div class="text-center">
+      <p
+        class="color text-base font-semibold"
+        style={stl({ "--color": "var(--uk-secondary)" })}
+      >
+        Oops!
+      </p>
+      <h1
+        class="color mt text-balance text-5xl font-semibold tracking-tight sm:text-7xl"
+        style={stl({ "--color": "var(--uk-secondary)", "--mt": "4" })}
+      >
+        Non-responsive
+      </h1>
+      <p
+        class="color mt-6 text-pretty text-lg font-medium sm:text-xl/8"
+        style={stl({ "--color": "var(--uk-muted-f)", "--mt": "4" })}
+      >
+        This demo isn't available at your current screen size. Please try again
+        on a larger screen.
+      </p>
+    </div>
+  </div>
+
+  <slot />
+
+  <LsScript />
+</Master>

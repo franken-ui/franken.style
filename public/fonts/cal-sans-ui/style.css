@@ -1,0 +1,6 @@
+@font-face {
+  font-family: "Cal Sans UI";
+  src: url("/fonts/cal-sans-ui/fonts/variable/CalSansUI[MODE,wght].ttf")
+    format("truetype");
+  font-display: swap;
+}

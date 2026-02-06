@@ -20,14 +20,16 @@ const randomColor =
   class="absolute top left color dark:color font-family uppercase font-semibold tracking-widest transform hidden xl:display-block"
   style={stl({
     "--top": "6",
-    "--left": "-16",
+    "--left": "-7",
     "--color": randomColor.light,
     "--dark-color": randomColor.dark,
-    "--font-family": "var(--font-geist-mono)",
+    "--font-family": "var(--font-paper-mono)",
     "--transform": "rotate(180deg)",
     "writing-mode": "vertical-lr",
   })}
   aria-hidden="true"
 >
-  <slot />
+  <div data-ft-text-encrypted>
+    <slot />
+  </div>
 </div>
