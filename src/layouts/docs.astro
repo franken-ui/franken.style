@@ -401,6 +401,41 @@ const tbc = transformHeadings(headings);
             }
           </ul>
 
+          <ul
+            class="uk-nav uk-nav-default mx mt"
+            style="--mx: -1; --mt: 4"
+            data-uk-nav="collapsible: false"
+          >
+            <li class="uk-nav-header">Resources</li>
+            <li>
+              <a
+                class="justify-between"
+                href="https://codeberg.org/FRNKN/style"
+                target="_blank"
+              >
+                Source Code <uk-icon icon="external-link"></uk-icon>
+              </a>
+            </li>
+            <li>
+              <a
+                class="justify-between"
+                href="https://codeberg.org/FRNKN/franken.style"
+                target="_blank"
+              >
+                Offline Documentation <uk-icon icon="external-link"></uk-icon>
+              </a>
+            </li>
+            <li>
+              <a
+                class="justify-between"
+                href="https://codeberg.org/FRNKN/style/src/branch/master/contexts/"
+                target="_blank"
+              >
+                LLM Contexts <uk-icon icon="external-link"></uk-icon>
+              </a>
+            </li>
+          </ul>
+
           <div
             class="mt p border-w border-dashed border/o"
             style="--mt: 4; --p: 2; --border-w: 1px; --border: var(--uk-border); --border-o: var(--uk-border-o)"
@@ -482,9 +517,25 @@ const tbc = transformHeadings(headings);
             )
           }
 
-          {
-            entry.data.context ? (
-              <div class="mt" style={stl({ "--mt": "2" })}>
+          <div
+            class="mt display-flex gap-x"
+            style={stl({ "--mt": "2", "--gap-x": "2" })}
+          >
+            <a
+              class="uk-button uk-button-default uk-button-xsmall"
+              href="https://codeberg.org/FRNKN/style/issues"
+              target="_blank"
+            >
+              <uk-icon
+                class="size"
+                style={stl({
+                  "--size": "4",
+                })}
+                icon="badge-alert"></uk-icon>
+              <span class="">Report an Issue</span>
+            </a>
+            {
+              entry.data.context ? (
                 <a
                   class="uk-button uk-button-default uk-button-xsmall"
                   href={entry.data.context}
@@ -499,11 +550,11 @@ const tbc = transformHeadings(headings);
                   />
                   <span class="">Contexts</span>
                 </a>
-              </div>
-            ) : (
-              ""
-            )
-          }
+              ) : (
+                ""
+              )
+            }
+          </div>
 
           {
             entry.data.wip === true ? (
