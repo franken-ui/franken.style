@@ -10,6 +10,7 @@ const docs = {
       height: z.string(),
     }),
   ),
+  skeleton: z.optional(z.string()),
   context: z.optional(z.string()),
   group: z.string(),
   order: z.number().optional(),

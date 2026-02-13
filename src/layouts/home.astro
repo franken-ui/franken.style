@@ -16,15 +16,16 @@ const { doc } = Astro.props;
         "--grid-cols": "1",
         "--grid-rows": "1fr 1px auto 1px auto",
         "--md-mx": "-4",
-        "--md-grid-cols": "1px minmax(0, var(--breakpoint-2xl)) 1px",
+        "--md-grid-cols": "2.5rem minmax(0, var(--breakpoint-2xl)) 2.5rem",
         "--lg-mx": "0",
       })}
     >
       <div
-        class="bg/o col-start row-span-full row-start display-hidden md:display-block w"
+        class="lg:border-r-w lg:border-r/o col-start row-span-full row-start display-hidden md:display-block w"
         style={stl({
-          "--bg": "var(--uk-border)",
-          "--bg-o": "var(--uk-border-o)",
+          "--lg-border-r-w": "1px",
+          "--lg-border-r": "var(--uk-border)",
+          "--lg-border-r-o": "var(--uk-border-o)",
           "--col-start": "1",
           "--row-start": "1",
         })}
@@ -44,10 +45,11 @@ const { doc } = Astro.props;
       </div>
 
       <div
-        class="bg/o row-span-full row-start display-hidden md:col-start md:display-block w"
+        class="lg:border-l-w lg:border-l/o row-span-full row-start display-hidden md:col-start md:display-block w"
         style={stl({
-          "--bg": "var(--uk-border)",
-          "--bg-o": "var(--uk-border-o)",
+          "--lg-border-l-w": "1px",
+          "--lg-border-l": "var(--uk-border)",
+          "--lg-border-l-o": "var(--uk-border-o)",
           "--row-start": "1",
           "--md-col-start": "3",
         })}

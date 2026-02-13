@@ -148,20 +148,21 @@ import data from "data/examples";
       x-transition.opacity.duration.300ms
     >
       <a
-        href="#why-frankenstyle"
-        class="animate-bounce uk-button uk-button-default uk-button-icon rounded-full"
+        href="#fs"
+        class="animate-bounce uk-button uk-button-default uk-button-icon rounded-full display-hidden md:display-inline-flex"
         data-uk-scroll
+        title="Meet Frankenstyle"
       >
         <uk-icon icon="chevrons-down"></uk-icon>
       </a>
     </div>
   </div>
 
-  <div id="why-frankenstyle" class="relative mt" style={stl({ "--mt": "16" })}>
+  <div id="fs" class="relative mt" style={stl({ "--mt": "16" })}>
     <VerticalMacguffin>
       <script is:inline data-fn="props" type="application/json">
         {
-          "text": "Why the heck?",
+          "text": "Tailwind CSS without Tailwind CSS",
           "revealDelayMs": "150"
         }
       </script>
@@ -169,7 +170,9 @@ import data from "data/examples";
 
     <div class="divider-line">
       <HSpacer>
-        <h2 class="uk-h2">Built for the modern web.</h2>
+        <h2 class="uk-h2">
+          <span class="display-hidden sm:display-inline-block">Meet</span> Frankenstyle.
+        </h2>
 
         <div
           class="uk-text-medium [max-w] color mt"
@@ -179,9 +182,8 @@ import data from "data/examples";
             "--mt": "2",
           })}
         >
-          Built for the modern web means embracing what already works.
-          Frankenstyle embraces modern CSS features to deliver a powerful,
-          straightforward frontend system with zero setup.
+          Frankenstyle is a no-build, full-responsive, value-driven,
+          utility-first CSS framework.
         </div>
       </HSpacer>
     </div>
@@ -300,14 +302,32 @@ import data from "data/examples";
         hx-trigger="intersect"
       >
       </div>
+
+      <div
+        class="border-y-w border-y/o"
+        style={stl({
+          "--border-y-w": "1px",
+          "--border-y": "var(--uk-border)",
+          "--border-y-o": "var(--uk-border-o)",
+        })}
+      >
+        <Feature
+          title="How it works?"
+          content="Modern features does not mean wrestling with whatever JS framework is trending this week. Frankenstyle keeps it simple. Just drop in a single stylesheet and start building immediately."
+        />
+      </div>
+
+      <div data-uk-scrollspy="cls: uk-animation-fade">
+        <Highlighter path="how-it-works-demo.html" type={true} />
+      </div>
     </div>
   </div>
 
-  <div id="how-it-works" class="relative mt" style={stl({ "--mt": "24" })}>
+  <div id="ft" class="relative mt" style={stl({ "--mt": "24" })}>
     <VerticalMacguffin>
       <script is:inline data-fn="props" type="application/json">
         {
-          "text": "How it works?",
+          "text": "Hey, want some eye candy?",
           "revealDelayMs": "150"
         }
       </script>
@@ -315,7 +335,9 @@ import data from "data/examples";
 
     <div class="divider-line">
       <HSpacer>
-        <h2 class="uk-h2">The Basics</h2>
+        <h2 class="uk-h2">
+          <span class="display-hidden sm:display-inline-block">Hello,</span> Frankternity.
+        </h2>
 
         <div
           class="uk-text-medium [max-w] color mt"
@@ -325,29 +347,70 @@ import data from "data/examples";
             "--mt": "2",
           })}
         >
-          Frankenstyle is a no-build, value-driven CSS framework. Drop in a
-          single stylesheet and start building immediately.
+          Eye candy for all your marketing needs. Insanity-free,
+          production-ready HTML port of Aceternity UI. Copy, paste, customize —
+          done.
         </div>
       </HSpacer>
     </div>
 
-    <div
-      class="divider-line mt py sm:py"
-      style={stl({ "--mt": "16", "--py": "4", "--sm-py": "2" })}
-    >
+    <div class="divider-line mt py" style={stl({ "--mt": "16", "--py": "2" })}>
       <HSpacer>
-        <div data-uk-scrollspy="cls: uk-animation-fade">
-          <Highlighter path="how-it-works-demo.html" type={true} />
+        <div
+          class="[h] [w] bg/o animate-pulse border-w border/o border-dashed cursor-pointer"
+          style={stl({
+            "--h": "640px",
+            "--w": "100%",
+            "--bg": "var(--uk-muted)",
+            "--bg-o": "var(--uk-muted-o)",
+            "--border-w": "1px",
+            "--border": "var(--uk-border)",
+            "--border-o": "var(--uk-border-o)",
+          })}
+          hx-get="/hx/partials/latest/ft/pre_preview/sparkles"
+          hx-trigger="intersect"
+          hx-swap="outerHTML"
+        >
+        </div>
+
+        <div
+          class="mt display-grid grid-cols md:grid-cols gap"
+          style={stl({
+            "--mt": "2",
+            "--grid-cols": "1",
+            "--md-grid-cols": "2",
+            "--gap": "2",
+          })}
+        >
+          {
+            ["boxes", "lines"].map((a) => (
+              <div
+                class="[h] [w] bg/o animate-pulse border-w border/o border-dashed cursor-pointer"
+                style={stl({
+                  "--h": "384px",
+                  "--w": "100%",
+                  "--bg": "var(--uk-muted)",
+                  "--bg-o": "var(--uk-muted-o)",
+                  "--border-w": "1px",
+                  "--border": "var(--uk-border)",
+                  "--border-o": "var(--uk-border-o)",
+                })}
+                hx-get={`/hx/partials/latest/ft/pre_preview/bg_${a}`}
+                hx-trigger="intersect"
+                hx-swap="outerHTML"
+              />
+            ))
+          }
         </div>
       </HSpacer>
     </div>
   </div>
 
-  <div id="get-the-kit" class="relative mt" style={stl({ "--mt": "24" })}>
+  <div id="fsk" class="relative mt" style={stl({ "--mt": "24" })}>
     <VerticalMacguffin>
       <script is:inline data-fn="props" type="application/json">
         {
-          "text": "Get the Kit.",
+          "text": "Complete it with the kit.",
           "revealDelayMs": "150"
         }
       </script>
@@ -356,8 +419,9 @@ import data from "data/examples";
     <div class="divider-line">
       <HSpacer>
         <h2 class="uk-h2">
-          Do more with <span class="sm:display-hidden">the Kit.</span>
-          <span class="display-hidden sm:display-inline">FrankenstyleKit.</span>
+          <span class="display-hidden sm:display-inline-block"
+            >Complete it with
+          </span> FrankenstyleKit
         </h2>
 
         <div
@@ -404,7 +468,7 @@ import data from "data/examples";
     </div>
   </div>
 
-  <div id="how-it-works" class="relative mt" style={stl({ "--mt": "24" })}>
+  <div id="consultation" class="relative mt" style={stl({ "--mt": "24" })}>
     <VerticalMacguffin>
       <script is:inline data-fn="props" type="application/json">
         {
