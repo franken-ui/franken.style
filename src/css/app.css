@@ -294,16 +294,7 @@
     display: block;
     padding-block: var(--highlighter-padding);
     color: var(--ec-codeFg, #e1e4e8);
-    font-family:
-      Paper Mono,
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      Monaco,
-      Consolas,
-      "Liberation Mono",
-      "Courier New",
-      monospace;
+    font-family: var(--uk-global-font-family-mono);
   }
 
   /* Inline code container */
