@@ -138,24 +138,6 @@ import data from "data/examples";
         </button>
       </div>
     </div>
-
-    <div
-      class="absolute bottom pb display-flex justify-center w-full"
-      style={stl({ "--bottom": "0", "--pb": "8" })}
-      x-data="{ show: true }"
-      x-init="window.addEventListener('scroll', () => { show = window.scrollY < 200 })"
-      x-show="show"
-      x-transition.opacity.duration.300ms
-    >
-      <a
-        href="#fs"
-        class="animate-bounce uk-button uk-button-default uk-button-icon rounded-full display-hidden md:display-inline-flex"
-        data-uk-scroll
-        title="Meet Frankenstyle"
-      >
-        <uk-icon icon="chevrons-down"></uk-icon>
-      </a>
-    </div>
   </div>
 
   <div id="fs" class="relative mt" style={stl({ "--mt": "16" })}>
@@ -182,7 +164,7 @@ import data from "data/examples";
             "--mt": "2",
           })}
         >
-          Frankenstyle is a no-build, full-responsive, value-driven,
+          Frankenstyle is a no-build, fully-responsive, value-driven,
           utility-first CSS framework.
         </div>
       </HSpacer>
@@ -421,7 +403,7 @@ import data from "data/examples";
         <h2 class="uk-h2">
           <span class="display-hidden sm:display-inline-block"
             >Complete it with
-          </span> FrankenstyleKit
+          </span> FrankenstyleKit.
         </h2>
 
         <div
