@@ -1,0 +1,141 @@
+---
+group: components
+project: kit
+text: Filter
+title: Filter
+lead: Filter or sort items in any given layout by metadata.
+meta:
+  description: Filter or sort items in any given layout by metadata.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+The Filter component is often used together with grid component, especially the masonry grid, but it's not bound to it. Any layout can be filtered or sorted no matter how the items are positioned. Items fade and move with smooth transitions between the different filtering and sorting states.
+
+## Usage
+
+To apply this component, you need a container element with the `data-uk-filter="target: SELECTOR"` attribute. Inside this container create a list of filter controls as well as the layout items you want to filter. Use the `target: SELECTOR` option to select the element containing the layout items.
+
+<Ec project="kit" path="filter.1" />
+
+Next, we need to define the metadata for each layout item, for example which category the item belongs to. Use any HTML class or attribute to do so.
+
+To apply a filter control, add the `data-uk-filter-control` attribute. To define the metadata that should be filtered, use the `filter: SELECTOR` option. The selector can be any CSS selector like an HTML class or an attribute you define for the layout items.
+
+<Ec project="kit" path="filter.2" />
+
+If `target` is the only option in the `data-uk-filter` attribute value, you can also use `data-uk-filter="SELECTOR"`. The same applies to the filter control. If `filter` is the only option in the `data-uk-filter-control` attribute value, you can also use `data-uk-filter-control="SELECTOR"`.
+
+<Ec project="kit" path="filter.3" />
+
+<Snippet project="kit" component="filter.basic" />
+
+The Filter component comes unstyled, which allows you to use any of the other UIkit components to create the filter controls and layout items. For example, the [Nav](/docs/2.1/nav), [Subnav](/docs/2.1/subnav) and [Tab](/docs/2.1/tab) components can be used to style the filter controls.
+
+## Animations
+
+By default, the filter uses a `slide` animation for the items between the different filtering states. To apply a different animation, just add the `animation` option to the attribute.
+
+| Animation      | Description                                                |
+| -------------- | ---------------------------------------------------------- |
+| `slide`        | Fade items out and in or slide them to their new position. |
+| `fade`         | Fade all items out and in.                                 |
+| `delayed-fade` | Fade items slightly delayed out and in.                    |
+
+<Ec project="kit" path="filter.4" />
+
+<Snippet project="kit" component="filter.animations" />
+
+## Active state
+
+Add the `.uk-active` class to a filter control, and the filter will be applied initially.
+
+<Ec project="kit" path="filter.5" />
+
+<Snippet project="kit" component="filter.active" />
+
+## Reset filter
+
+To reset the filter and target all items, use the `data-uk-filter-control` attribute without any specified selector.
+
+<Ec project="kit" path="filter.6" />
+
+<Snippet project="kit" component="filter.reset" />
+
+## Metadata
+
+Items can have different metadata for filtering. You just need to define the HTML classes or `data` attributes and create the corresponding CSS selectors for the filter controls. This example uses `data` attributes for the filter instead of HTML classes.
+
+<Ec project="kit" path="filter.7" />
+
+<Snippet project="kit" component="filter.metadata" />
+
+## Multiple Filters
+
+Define different types of metadata and add any number of controls to filter them. The filter controls are exclusive, meaning just one criterion is filtered at a time.
+
+<Ec project="kit" path="filter.8" />
+
+<Snippet project="kit" component="filter.multiple_filters" />
+
+## Groups
+
+To filter items by multiple criteria at the same time, the filter controls need to be grouped. Just add the `group: NAME` option to the `data-uk-filter-control` attribute and define group names for the metadata.
+
+<Ec project="kit" path="filter.9" />
+
+<Snippet project="kit" component="filter.groups" />
+
+## Sorting
+
+To sort items alphanumerically, just add the `sort: ATTRIBUTE` option to the `data-uk-filter-control` attribute and define the metadata attribute by which the items should be sorted. By default, items are sorted in ascending order. Add the `order: desc` to sort items in descending order.
+
+<Ec project="kit" path="filter.10" />
+
+<Snippet project="kit" component="filter.sorting" />
+
+## Masonry Grid
+
+A filter is often applied to a [Masonry Grid](/docs/2.1/masonry-grid). The filter transition works perfectly with any kind of layout no matter how the items are positioned. It even works with the `parallax` option from the Masonry Grid component.
+
+Here is a comprehensive example with a masonry grid:
+
+<Snippet project="kit" component="filter.masonry_grid" />
+
+## Component options
+
+Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/2.1/javascript#component-configuration)
+
+| Option      | Value           | Default | Description                                                  |
+| ----------- | --------------- | ------- | ------------------------------------------------------------ |
+| `target`    | String          |         | The targeted list on which to apply the filter to.           |
+| `selActive` | String, Boolean | `false` | A selector for the initially active filter controls.         |
+| `animation` | String, Boolean | `slide` | Animation mode (`slide`, `fade`, `delayed-fade` or `false`). |
+| `duration`  | Number          | `250`   | Animation duration in milliseconds.                          |
+
+`target` is the _Primary_ option and its key may be omitted, if it's the only option in the attribute value.
+
+## JavaScript
+
+Learn more about [JavaScript components](/docs/2.1/javascript#programmatic-use).
+
+### Initialization
+
+<Ec project="kit" path="filter.11" />
+
+### Events
+
+The following events will be triggered on elements with this component attached:
+
+| Name           | Description                              |
+| -------------- | ---------------------------------------- |
+| `beforeFilter` | Fires before the filter is applied.      |
+| `afterFilter`  | Fires after the filter has been applied. |
+
+## Accessibility
+
+The Filter component automatically sets the appropriate WAI-ARIA roles, states and properties.
+
+- The _filter controls_ have the `aria-selected` state.

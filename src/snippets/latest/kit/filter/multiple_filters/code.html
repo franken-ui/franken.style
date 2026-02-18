@@ -1,0 +1,161 @@
+<div data-uk-filter="target: .js-filter">
+  <div
+    class="display-flex gap-x [divide-x] border/o"
+    style="
+      --gap-x: 4;
+      --divide-x: 1px;
+      --border: var(--uk-border);
+      --border-o: var(--uk-border-o);
+    "
+  >
+    <div>
+      <ul class="uk-subnav uk-subnav-primary" uk-margin>
+        <li class="uk-active" data-uk-filter-control><a href="#">All</a></li>
+      </ul>
+    </div>
+    <div>
+      <ul class="uk-subnav uk-subnav-primary" uk-margin>
+        <li data-uk-filter-control="[data-color='white']">
+          <a href="#">White</a>
+        </li>
+        <li data-uk-filter-control="[data-color='blue']">
+          <a href="#">Blue</a>
+        </li>
+        <li data-uk-filter-control="[data-color='black']">
+          <a href="#">Black</a>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <ul class="uk-subnav uk-subnav-primary" uk-margin>
+        <li data-uk-filter-control="[data-size='small']">
+          <a href="#">Small</a>
+        </li>
+        <li data-uk-filter-control="[data-size='medium']">
+          <a href="#">Medium</a>
+        </li>
+        <li data-uk-filter-control="[data-size='large']">
+          <a href="#">Large</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <ul
+    class="js-filter mt display-grid grid-cols md:grid-cols text-center"
+    data-uk-grid="masonry: true"
+    style="--mt: 4; --grid-cols: 2; --md-grid-cols: 3"
+  >
+    <li class="p" data-color="white" data-size="large" style="--p: 4">
+      <div class="h" style="--h: 96">
+        <div class="uk-position-center">Item</div>
+      </div>
+    </li>
+
+    <li class="p" data-color="blue" data-size="small" style="--p: 4">
+      <div
+        class="h bg color"
+        style="
+          --h: 60;
+          --bg: var(--color-blue-500);
+          --color: var(--color-blue-50);
+        "
+      >
+        <div class="uk-position-center">Item</div>
+      </div>
+    </li>
+
+    <li class="p" data-color="white" data-size="medium" style="--p: 4">
+      <div class="h" style="--h: 80">
+        <div class="uk-position-center">Item</div>
+      </div>
+    </li>
+
+    <li class="p" data-color="white" data-size="small" style="--p: 4">
+      <div class="h" style="--h: 60">
+        <div class="uk-position-center">Item</div>
+      </div>
+    </li>
+
+    <li class="p" data-color="black" data-size="medium" style="--p: 4">
+      <div
+        class="h bg color"
+        style="--h: 80; --bg: var(--color-black); --color: var(--color-white)"
+      >
+        <div class="uk-position-center">Item</div>
+      </div>
+    </li>
+
+    <li class="p" data-color="black" data-size="small" style="--p: 4">
+      <div
+        class="h bg color"
+        style="--h: 60; --bg: var(--color-black); --color: var(--color-white)"
+      >
+        <div class="uk-position-center">Item</div>
+      </div>
+    </li>
+
+    <li class="p" data-color="blue" data-size="medium" style="--p: 4">
+      <div
+        class="h bg color"
+        style="
+          --h: 80;
+          --bg: var(--color-blue-500);
+          --color: var(--color-blue-50);
+        "
+      >
+        <div class="uk-position-center">Item</div>
+      </div>
+    </li>
+
+    <li class="p" data-color="black" data-size="large" style="--p: 4">
+      <div
+        class="h bg color"
+        style="--h: 96; --bg: var(--color-black); --color: var(--color-white)"
+      >
+        <div class="uk-position-center">Item</div>
+      </div>
+    </li>
+
+    <li class="p" data-color="blue" data-size="large" style="--p: 4">
+      <div
+        class="h bg color"
+        style="
+          --h: 96;
+          --bg: var(--color-blue-500);
+          --color: var(--color-blue-50);
+        "
+      >
+        <div class="uk-position-center">Item</div>
+      </div>
+    </li>
+
+    <li class="p" data-color="white" data-size="large" style="--p: 4">
+      <div class="h" style="--h: 96">
+        <div class="uk-position-center">Item</div>
+      </div>
+    </li>
+
+    <li class="p" data-color="blue" data-size="medium" style="--p: 4">
+      <div
+        class="h bg color"
+        style="
+          --h: 80;
+          --bg: var(--color-blue-500);
+          --color: var(--color-blue-50);
+        "
+      >
+        <div class="uk-position-center">Item</div>
+      </div>
+    </li>
+
+    <li class="p" data-color="black" data-size="small" style="--p: 4">
+      <div
+        class="h bg color"
+        style="--h: 60; --bg: var(--color-black); --color: var(--color-white)"
+      >
+        <div class="uk-position-center">Item</div>
+      </div>
+    </li>
+  </ul>
+</div>
