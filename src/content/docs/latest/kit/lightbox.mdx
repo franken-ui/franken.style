@@ -1,0 +1,260 @@
+---
+group: components
+project: kit
+text: Lightbox
+title: Lightbox
+lead: Create a responsive lightbox gallery with images and videos.
+meta:
+  description: Create a responsive lightbox gallery with images and videos.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+The Lightbox component is fully responsive and supports touch and swipe navigation, as well as mouse drag for desktops. When swiping between slides the animation literally sticks at your fingertip or mouse cursor. Clicking fast on the previous and next navigation, will make animations even accelerate to keep up with your pace. All animations are hardware accelerated for a smoother performance.
+
+## Usage
+
+To apply this component, add the `data-uk-lightbox` attribute to a container to turn all anchors inside that container into lightbox links.
+
+<Ec project="kit" path="lightbox.1" />
+
+<Snippet project="kit" component="lightbox.basic" />
+
+## Alt Attribute
+
+To add an `alt` attribute to the image in the lightbox, set the `data-alt` attribute on an anchor.
+
+<Ec project="kit" path="lightbox.2" />
+
+<Snippet project="kit" component="lightbox.alt_attribute" />
+
+## Caption
+
+To display a caption at the bottom of the lightbox, set the `data-caption` attribute on an anchor.
+
+<Ec project="kit" path="lightbox.3" />
+
+<Snippet project="kit" component="lightbox.caption" />
+
+## Animations
+
+By default, the Lightbox gallery uses a slide animation. You can set the `animation` option to use a different one. Possible values are `slide`, `fade` and `scale`.
+
+<Ec project="kit" path="lightbox.4" />
+
+<Snippet project="kit" component="lightbox.animations" />
+
+## Navigations
+
+By default, the lightbox shows a slidenav from the [Slidenav component](/docs/2.1/slidenav). To hide the slidenav, set the `slidenav: false` option. To show an item-based navigation, for example, from the [Thumbnav component](/docs/2.1/thumbnav) or [Dotnav component](/docs/2.1/dotnav), set the `nav` option to `thumbnav` or `dotnav`.
+
+<Ec project="kit" path="lightbox.5" />
+
+<Snippet project="kit" component="lightbox.navigations" />
+
+## Counter
+
+To show a counter with the current item number and the total number of items, add the `counter: true` option.
+
+<Snippet project="kit" component="lightbox.counter" />
+
+## Content sources
+
+A lightbox is not restricted to images. Other media, like videos, can be displayed as well. The video will pause whenever it's not visible and resume once it becomes visible again. To display a poster image for a video, set the `data-poster` attribute.
+
+<Ec project="kit" path="lightbox.6" />
+
+<Snippet project="kit" component="lightbox.content_sources" />
+
+<span class="uk-label uk-label-primary">Note</span> Use `youtube-nocookie.com`
+within the YouTube link and the lightbox will use the domain to embed the
+YouTube video.
+
+### Manual content type
+
+The Lightbox uses the `href` attribute to figure out the type of the linked content. If no filename extension is defined in the path, just add the `data-type` attribute to the `<a>` tag.
+
+**Hint** YouTube and Vimeo Urls will be handled automatically.
+
+| Option               | Description                            |
+| -------------------- | -------------------------------------- |
+| `data-type="image"`  | The content type is an image.          |
+| `data-type="video"`  | The content type is a video.           |
+| `data-type="iframe"` | The content type is a regular website. |
+
+## Delay controls
+
+By default, the controls are hidden after a short time if the mouse doesn't move. Set the `delay-controls: 0` option to always show the controls.
+
+<Ec project="kit" path="lightbox.7" />
+
+<Snippet project="kit" component="lightbox.delay_controls" />
+
+## BG close
+
+By default, the lightbox closes if the background is clicked. To prevent this behavior, set the `bg-close: false` option.
+
+<Ec project="kit" path="lightbox.8" />
+
+<Snippet project="kit" component="lightbox.bg_close" />
+
+## Custom Attributes
+
+You can add custom attributes to lightbox content items by using the `data-attrs` attribute. The attributes are passed like the usual component options, e.g. `data-attrs="width: 1280; height: 720;"`
+
+<Ec project="kit" path="lightbox.9" />
+
+<Snippet project="kit" component="lightbox.custom_attributes" />
+
+## Component options
+
+Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/2.1/javascript#component-configuration)
+
+| Option              | Value           | Default | Description                                                                                                |
+| ------------------- | --------------- | ------- | ---------------------------------------------------------------------------------------------------------- |
+| `animation`         | String          | `slide` | Lightbox animation mode (`slide`, `fade` or `scale`).                                                      |
+| `autoplay`          | Boolean         | `false` | Lightbox autoplays.                                                                                        |
+| `autoplay-interval` | Number          | `7000`  | The delay between switching slides in autoplay mode.                                                       |
+| `pause-on-hover`    | Boolean         | `false` | Pause autoplay mode on hover.                                                                              |
+| `video-autoplay`    | Boolean, String | `false` | Lightbox videos autoplay. A value of `inline` will autoplay the video, make it muted and without controls. |
+| `counter`           | Boolean         | `false` | Lightbox shows counter.                                                                                    |
+| `nav`               | Boolean, String | `false` | Lightbox navigation (`dotnav`, `thumbnav`).                                                                |
+| `slidenav`          | Boolean         | `true`  | Lightbox shows slidenav controls.                                                                          |
+| `index`             | String, Number  | `0`     | Lightbox item to show. 0 based index.                                                                      |
+| `delay-controls`    | Number          | `3000`  | Delay time before controls fade out in ms. Setting `0` will prevent hiding controls.                       |
+| `toggle`            | CSS selector    | `a`     | Toggle selector - opens the Lightbox Panel upon click.                                                     |
+
+## JavaScript
+
+Learn more about [JavaScript components](/docs/2.1/javascript#programmatic-use).
+
+### Initialization
+
+<Ec project="kit" path="lightbox.10" />
+
+### Methods
+
+The following methods are available for the component:
+
+#### Show
+
+<Ec project="kit" path="lightbox.11" />
+
+Shows the Lightbox's Panel and item.
+
+#### Hide
+
+<Ec project="kit" path="lightbox.12" />
+
+Hides the Lightbox's Panel.
+
+### Lightbox Panel Options
+
+If you only want to use the lightbox panel directly through the JS API, you can set the following options.
+
+| Option              | Value           | Default        | Description                                                                                                |
+| ------------------- | --------------- | -------------- | ---------------------------------------------------------------------------------------------------------- |
+| `animation`         | String          | `slide`        | Lightbox animation mode (`slide`, `fade` or `scale`).                                                      |
+| `autoplay`          | Boolean         | `false`        | Lightbox autoplays.                                                                                        |
+| `autoplay-interval` | Number          | `7000`         | The delay between switching slides in autoplay mode.                                                       |
+| `pause-on-hover`    | Boolean         | `false`        | Pause autoplay mode on hover.                                                                              |
+| `video-autoplay`    | Boolean, String | `false`        | Lightbox videos autoplay. A value of `inline` will autoplay the video, make it muted and without controls. |
+| `counter`           | Boolean         | `false`        | Lightbox shows counter.                                                                                    |
+| `nav`               | Boolean, String | `false`        | Lightbox navigation (`dotnav`, `thumbnav`).                                                                |
+| `slidenav`          | Boolean         | `true`         | Lightbox shows slidenav controls.                                                                          |
+| `index`             | Number          | `0`            | The initial item to show. (zero-based)                                                                     |
+| `velocity`          | Number          | `2`            | The animation velocity (pixel/ms).                                                                         |
+| `preload`           | Number          | `1`            | The number of items to preload. (left and right of the currently active item)                              |
+| `items`             | Array           | `[]`           | An array of items to display, e.g. `[{source: 'images/size1.jpg', caption: '900x600'}]`                    |
+| `template`          | String          | Default markup | The template string.                                                                                       |
+| `delay-controls`    | Number          | `3000`         | Delay time before controls fade out in ms. Setting `0` will prevent hiding controls.                       |
+| `container`         | String          | `body`         | Define a target container via a selector to specify where the Lightbox should be appended in the DOM.      |
+
+### Events
+
+The following events will be triggered on elements with this component attached:
+
+| Name             | Description                                              |
+| ---------------- | -------------------------------------------------------- |
+| `beforeshow`     | Fires before the Lightbox is shown.                      |
+| `beforehide`     | Fires before the Lightbox is hidden.                     |
+| `show`           | Fires after the Lightbox is shown.                       |
+| `shown`          | Fires after the Lightbox's show animation has completed. |
+| `hide`           | Fires after the Lightbox's hide animation has started.   |
+| `hidden`         | Fires after the Lightbox is hidden.                      |
+| `itemload`       | Fires when an item loads.                                |
+| `beforeitemshow` | Fires before an item is shown.                           |
+| `itemshow`       | Fires after an item is shown.                            |
+| `itemshown`      | Fires after an item's show animation has completed.      |
+| `beforeitemhide` | Fires before an item is hidden.                          |
+| `itemhide`       | Fires after an item's hide animation has started.        |
+| `itemhidden`     | Fires after an item's hide animation has completed.      |
+
+### Methods
+
+The following methods are available for the component:
+
+#### Show
+
+<Ec project="kit" path="lightbox.13" />
+
+Shows the Lightbox Panel and item.
+
+| Name    | Type           | Default | Description                           |
+| ------- | -------------- | ------- | ------------------------------------- |
+| `index` | String, Number | 0       | Lightbox item to show. 0 based index. |
+
+#### Hide
+
+<Ec project="kit" path="lightbox.14" />
+
+Hides the Lightbox Panel.
+
+#### startAutoplay
+
+<Ec project="kit" path="lightbox.15" />
+
+Starts the Lightbox's autoplay.
+
+#### stopAutoplay
+
+<Ec project="kit" path="lightbox.16" />
+
+Stops the Lightbox's autoplay.
+
+## Accessibility
+
+The Lightbox component adheres to the [Dialog (Modal) WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/) and the [Carousel WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/) and automatically sets the appropriate WAI-ARIA roles, states and properties.
+
+- The _lightbox_ has the `dialog` role, the `aria-modal` property and the `aria-roledescription` property set to `carousel`.
+- The _slide list_ has an ID, the `presentation` role and the `aria-live` property.
+- The _slides_ have an ID, the `group` role, the `aria-roledescription` property set to `slide` and an `aria-label` property.
+
+The previous/next navigation adheres to the [button pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/).
+
+- The _prev/next navigation items_ have the `button` role, the `aria-controls` property set to the ID of the slide list, and an `aria-label` property.
+
+The Close component automatically sets the appropriate WAI-ARIA roles and properties.
+
+- The _close icon_ has the `aria-label` property, and if an `<a>` element is used, the `button` role.
+
+### Keyboard interaction
+
+The lightbox gallery can be accessed through the keyboard using the following keys.
+
+- The <kbd>left/right arrow</kbd> keys navigate through the slides. If the focus is on the last slide, it moves to the first slide.
+- The <kbd>home</kbd> or <kbd>end</kbd> keys move the focus to the first or last slide.
+- The <kbd>esc</kbd> key closes the lightbox.
+
+### Internationalization
+
+The Lightbox component uses the following translation strings. Learn more about [translating components](/docs/2.1/accessibility#internationalization).
+
+| Key          | Default          | Description                             |
+| ------------ | ---------------- | --------------------------------------- |
+| `next`       | `Next Slide`     | `aria-label` for next slide button.     |
+| `previous`   | `Previous Slide` | `aria-label` for previous slide button. |
+| `slideLabel` | `%s of %s`       | `aria-label` for slide.                 |
+| `close`      | `Close`          | `aria-label` for close button.          |
