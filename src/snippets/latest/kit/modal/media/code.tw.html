@@ -1,0 +1,64 @@
+<div class="flex flex-wrap gap-2">
+  <a class="uk-btn uk-btn-default" href="#modal-media-image" data-uk-toggle>
+    Image
+  </a>
+  <a class="uk-btn uk-btn-default" href="#modal-media-video" data-uk-toggle>
+    Video
+  </a>
+  <a class="uk-btn uk-btn-default" href="#modal-media-youtube" data-uk-toggle>
+    YouTube
+  </a>
+  <a class="uk-btn uk-btn-default" href="#modal-media-vimeo" data-uk-toggle>
+    Vimeo
+  </a>
+</div>
+
+<div id="modal-media-image" class="uk-flex-top" data-uk-modal>
+  <div class="uk-modal-dialog uk-margin-auto-vertical w-auto">
+    <button
+      class="uk-modal-close absolute -right-4 -top-4 text-white"
+      type="button"
+      data-uk-close
+    ></button>
+    <img src="/images/photo.jpg" width="1800" height="1200" alt="" />
+  </div>
+</div>
+
+<div id="modal-media-video" class="uk-flex-top" data-uk-modal>
+  <div class="uk-modal-dialog uk-margin-auto-vertical w-auto">
+    <video
+      src="https://yootheme.com/site/images/media/yootheme-pro.mp4"
+      width="1920"
+      height="1080"
+      controls
+      playsinline
+      data-uk-video
+    ></video>
+  </div>
+</div>
+
+<div id="modal-media-youtube" class="uk-flex-top" data-uk-modal>
+  <div class="uk-modal-dialog uk-margin-auto-vertical w-auto">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/c2pz2mlSfXA"
+      width="1920"
+      height="1080"
+      loading="lazy"
+      data-uk-video
+      data-uk-responsive
+    ></iframe>
+  </div>
+</div>
+
+<div id="modal-media-vimeo" class="uk-flex-top" data-uk-modal>
+  <div class="uk-modal-dialog uk-margin-auto-vertical w-auto">
+    <iframe
+      src="https://player.vimeo.com/video/1084537"
+      width="1280"
+      height="720"
+      loading="lazy"
+      data-uk-video
+      data-uk-responsive
+    ></iframe>
+  </div>
+</div>
