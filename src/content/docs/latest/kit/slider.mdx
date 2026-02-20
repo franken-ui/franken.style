@@ -79,9 +79,9 @@ To navigate through your slides, just use the `data-uk-slider-item` attribute. T
 
 <Ec project="kit" path="slider.8" />
 
-The flexibility of the Slideshow component allows you to use any of the other UIkit components to navigate through items. For example the [Slidenav](/docs/2.1/slidenav), [Dotnav](/docs/2.1/dotnav) and [Thumbnav](/docs/2.1/thumbnav) components can be used to style the slideshow navigations.
+The flexibility of the Slideshow component allows you to use any of the other UIkit components to navigate through items. For example the [Slidenav](/docs/latest/kit/slidenav), [Dotnav](/docs/latest/kit/dotnav) and [Thumbnav](/docs/latest/kit/thumbnav) components can be used to style the slideshow navigations.
 
-If there is no item specific content in the navigation items, you can also add the `.uk-slider-nav` class instead of adding navigation items manually. It will generate its items automatically using `<li><a href></a></li>` as markup. This is a useful shortcut when using the [Dotnav](/docs/2.1/dotnav).
+If there is no item specific content in the navigation items, you can also add the `.uk-slider-nav` class instead of adding navigation items manually. It will generate its items automatically using `<li><a href></a></li>` as markup. This is a useful shortcut when using the [Dotnav](/docs/latest/kit/dotnav).
 
 <Ec project="kit" path="slider.9" />
 
@@ -89,7 +89,7 @@ If there is no item specific content in the navigation items, you can also add t
 
 ## Navigation outside
 
-To place a navigation outside of a slider, add the `.uk-position-center-left-out` and the `.uk-position-center-right-out` class from the [Position component](/docs/2.1/position) to the `previous` and `next` navigation. Make sure the `.uk-slider-container` class, which is responsible for the clipping of the slider items, doesn't clip the navigation, too.
+To place a navigation outside of a slider, add the `.uk-position-center-left-out` and the `.uk-position-center-right-out` class from the [Position component](/docs/latest/kit/position) to the `previous` and `next` navigation. Make sure the `.uk-slider-container` class, which is responsible for the clipping of the slider items, doesn't clip the navigation, too.
 
 <Ec project="kit" path="slider.10" />
 
@@ -111,7 +111,7 @@ To adjust the parallax duration, set the `parallax-start` and `parallax-end` opt
 
 ## Card
 
-The slider is not restricted to images. Any content can be used like text, videos, images with text overlays or ken burns effect. Here is an example using the [Card component](/docs/2.1/card).
+The slider is not restricted to images. Any content can be used like text, videos, images with text overlays or ken burns effect. Here is an example using the [Card component](/docs/latest/kit/card).
 
 <Snippet project="kit" component="slider.card" />
 
@@ -123,7 +123,7 @@ true"` mode if your content items have a box shadow.
 
 ## Content overlays
 
-Add content overlays using the [Position component](/docs/2.1/position). It allows you to place the content anywhere inside the slide.
+Add content overlays using the [Position component](/docs/latest/kit/position). It allows you to place the content anywhere inside the slide.
 
 <Ec project="kit" path="slider.13" />
 
@@ -133,7 +133,7 @@ Add content overlays using the [Position component](/docs/2.1/position). It allo
 
 Add the `data-uk-slider-parallax` attribute to any element inside the slides to animate it together with the slider animation. Add an option with the desired animation values for each CSS property you want to animate. Define at least one start and end value. It can be done by passing two values separated by a comma.
 
-This functionality is inherited from the [Parallax component](/docs/2.1/parallax), and it allows animating CSS properties depending on the scroll position of the slider animation. Take a look at the [possible properties](/docs/2.1/parallax#usage) that can be animated.
+This functionality is inherited from the [Parallax component](/docs/latest/kit/parallax), and it allows animating CSS properties depending on the scroll position of the slider animation. Take a look at the [possible properties](/docs/latest/kit/parallax#usage) that can be animated.
 
 <Ec project="kit" path="slider.14" />
 
@@ -149,7 +149,7 @@ The next example defines different in and out animations. The content slides in 
 
 ## Content transitions
 
-Add `clsActivated: uk-transition-active` to the attribute to trigger transition classes from the [Transition component](/docs/2.1/transition) automatically inside slides. Contrary to the parallax effect, transitions are not attached to the slider animation and start playing independently after the slider animation.
+Add `clsActivated: uk-transition-active` to the attribute to trigger transition classes from the [Transition component](/docs/latest/kit/transition) automatically inside slides. Contrary to the parallax effect, transitions are not attached to the slider animation and start playing independently after the slider animation.
 
 <Ec project="kit" path="slider.17" />
 
@@ -157,7 +157,7 @@ Add `clsActivated: uk-transition-active` to the attribute to trigger transition 
 
 ### Toggle on hover
 
-To toggle transitions on hover, use the `.uk-transition-toggle` class from the [Transition component](/docs/2.1/transition) and `tabindex="0"`. This will trigger the transition when the element is hovered or focused.
+To toggle transitions on hover, use the `.uk-transition-toggle` class from the [Transition component](/docs/latest/kit/transition) and `tabindex="0"`. This will trigger the transition when the element is hovered or focused.
 
 <Ec project="kit" path="slider.18" />
 
@@ -165,7 +165,7 @@ To toggle transitions on hover, use the `.uk-transition-toggle` class from the [
 
 ## Component options
 
-Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/2.1/javascript#component-configuration)
+Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/latest/kit/javascript#component-configuration)
 
 | Option              | Value   | Default | Description                                                             |
 | ------------------- | ------- | ------- | ----------------------------------------------------------------------- |
@@ -183,7 +183,7 @@ Any of these options can be applied to the component attribute. Separate multipl
 
 ## JavaScript
 
-Learn more about [JavaScript components](/docs/2.1/javascript#programmatic-use).
+Learn more about [JavaScript components](/docs/latest/kit/javascript#programmatic-use).
 
 ### Initialization
 
@@ -252,7 +252,7 @@ Autoplay stops when any element in the Slider component receives focus. The tab 
 
 ### Internationalization
 
-The Slider component uses the following translation strings. Learn more about [translating components](/docs/2.1/accessibility#internationalization).
+The Slider component uses the following translation strings. Learn more about [translating components](/docs/latest/kit/accessibility#internationalization).
 
 | Key          | Default          | Description                               |
 | ------------ | ---------------- | ----------------------------------------- |

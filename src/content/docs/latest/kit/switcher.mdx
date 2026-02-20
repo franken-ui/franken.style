@@ -22,7 +22,7 @@ Typically, the switcher toggles are styled through other components, some of whi
 
 <Ec project="kit" path="switcher.1" />
 
-In this example we are using the [Subnav component](/docs/2.1/subnav).
+In this example we are using the [Subnav component](/docs/latest/kit/subnav).
 
 <Snippet project="kit" component="switcher.basic" />
 
@@ -46,7 +46,7 @@ It is also possible to connect multiple content containers. Just add the `connec
 
 ## Animations
 
-You can apply all animations from the [Animation component](/docs/2.1/animation) to switcher items. To do so, add the `animation` parameter with the relevant class to the `data-uk-switcher` attribute.
+You can apply all animations from the [Animation component](/docs/latest/kit/animation) to switcher items. To do so, add the `animation` parameter with the relevant class to the `data-uk-switcher` attribute.
 
 <Ec project="kit" path="switcher.4" />
 
@@ -54,7 +54,7 @@ You can apply all animations from the [Animation component](/docs/2.1/animation)
 
 ### Multiple animations
 
-You can also apply multiple animations from the [Animation component](/docs/2.1/animation). That way you can add different in and out animations.
+You can also apply multiple animations from the [Animation component](/docs/latest/kit/animation). That way you can add different in and out animations.
 
 <Ec project="kit" path="switcher.5" />
 
@@ -62,7 +62,7 @@ You can also apply multiple animations from the [Animation component](/docs/2.1/
 
 ## Switcher and subnav
 
-The switcher is easily applied to the [Subnav component](/docs/2.1/subnav).
+The switcher is easily applied to the [Subnav component](/docs/latest/kit/subnav).
 
 <Ec project="kit" path="switcher.6" />
 
@@ -70,7 +70,7 @@ The switcher is easily applied to the [Subnav component](/docs/2.1/subnav).
 
 ## Switcher and tab
 
-As an exception to the rule, add the `data-uk-tab` attribute instead of `data-uk-switcher` to the tabbed navigation to combine the switcher with the [Tab component](/docs/2.1/tab).
+As an exception to the rule, add the `data-uk-tab` attribute instead of `data-uk-switcher` to the tabbed navigation to combine the switcher with the [Tab component](/docs/latest/kit/tab).
 
 <Ec project="kit" path="switcher.7" />
 
@@ -86,7 +86,7 @@ You can use the width and grid utility classes from Tailwind CSS to display cont
 
 ## Switcher and button
 
-The switcher can also be applied to buttons or button groups from the [Button component](/docs/2.1/button). Just add the switcher attribute to a block around a group of buttons or to the element with the `.uk-btn-group` class.
+The switcher can also be applied to buttons or button groups from the [Button component](/docs/latest/kit/button). Just add the switcher attribute to a block around a group of buttons or to the element with the `.uk-btn-group` class.
 
 <Ec project="kit" path="switcher.9" />
 
@@ -98,7 +98,7 @@ content switching has to be changed by using the `toggle` option.
 
 ## Switcher and nav
 
-To apply the switcher to the [Nav component](/docs/2.1/nav), add the `data-uk-switcher` attribute to the nav `<ul>` element.
+To apply the switcher to the [Nav component](/docs/latest/kit/nav), add the `data-uk-switcher` attribute to the nav `<ul>` element.
 
 <Ec project="kit" path="switcher.10" />
 
@@ -106,7 +106,7 @@ To apply the switcher to the [Nav component](/docs/2.1/nav), add the `data-uk-sw
 
 ## Component options
 
-Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/2.1/javascript#component-configuration)
+Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/latest/kit/javascript#component-configuration)
 
 | Option        | Value        | Default              | Description                                                                                              |
 | ------------- | ------------ | -------------------- | -------------------------------------------------------------------------------------------------------- |
@@ -114,7 +114,7 @@ Any of these options can be applied to the component attribute. Separate multipl
 | `toggle `     | CSS selector | `> * > :first-child` | Select the clickable elements which trigger content switching.                                           |
 | `itemNav `    | CSS selector | `false`              | Related nav container. By default, nav items are found in related items container only.                  |
 | `active `     | Number       | `0`                  | Active index on init. Providing a negative number indicates a position starting from the end of the set. |
-| `animation`   | String       | `false`              | Space-separated names of [animations](/docs/2.1/animation). Comma-separated for animation out.               |
+| `animation`   | String       | `false`              | Space-separated names of [animations](/docs/latest/kit/animation). Comma-separated for animation out.               |
 | `duration`    | Number       | `200`                | The animation duration.                                                                                  |
 | `swiping`     | Boolean      | `true`               | Use swiping.                                                                                             |
 | `followFocus` | Boolean      | `false`              | Selection follows focus automatically.                                                                   |
@@ -125,7 +125,7 @@ Any of these options can be applied to the component attribute. Separate multipl
 
 ## JavaScript
 
-Learn more about [JavaScript components](/docs/2.1/javascript#programmatic-use).
+Learn more about [JavaScript components](/docs/latest/kit/javascript#programmatic-use).
 
 ### Initialization
 
@@ -162,7 +162,7 @@ Shows the Switcher item with given index.
 
 The Switcher component adheres to the [Tab WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/) and automatically sets the appropriate WAI-ARIA roles, states and properties.
 
-- The _toggle navigation_ has the `tablist` role, and if it is a [Nav component](/docs/2.1/nav), the `aria-orientation` state set to `vertical`.
+- The _toggle navigation_ has the `tablist` role, and if it is a [Nav component](/docs/latest/kit/nav), the `aria-orientation` state set to `vertical`.
 - The _toggle navigation items_ have the `presentation` role.
 - The _toggle navigation links_ have an ID, the `tab` role, the `aria-selected` state and the `aria-controls` property set to the ID of the respective content item.
 - The _content list_ has the `presentation` role.

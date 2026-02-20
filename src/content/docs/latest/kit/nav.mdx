@@ -1,0 +1,154 @@
+---
+group: components
+project: kit
+text: Nav
+title: Nav
+lead: Defines different styles for list navigations.
+meta:
+  description: Defines different styles for list navigations.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+To apply this component, use the following classes.
+
+| Class         | Description                                                                                                      |
+| ------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `.uk-nav`     | Add this class to a `<ul>` element to define the Nav component. Use `<a>` elements as nav items within the list. |
+| `.uk-active ` | Add this class to a list item to apply an active state to a menu item.                                           |
+
+<Ec project="kit" path="nav.1" />
+
+<Snippet project="kit" component="nav.basic" />
+
+<span class="uk-label uk-label-primary">Note</span> By default, the nav has no
+styling. That's why it is important to add a modifier class. In our example we
+are using the `.uk-nav-default` class.
+
+## Nested navs
+
+Add the `.uk-parent` class to an item to turn it into a parent. Add the `.uk-nav-sub` class to a `<ul>` element inside the item to create the subnav.
+
+<Ec project="kit" path="nav.2" />
+
+<Snippet project="kit" component="nav.nested" />
+
+## Accordion
+
+By default, child menu items are always visible. To apply an accordion effect, just add the `data-uk-nav` attribute to the main `<ul>`.
+
+<span class="uk-label uk-label-primary">Note</span> The attribute automatically
+sets the `.uk-nav` class, so you don't have to apply it manually.
+
+<Ec project="kit" path="nav.3" />
+
+<Snippet project="kit" component="nav.accordion" />
+
+### Parent icon
+
+To create a parent icon, just add the `data-uk-nav-parent-icon` attribute to a `<span>` element.
+
+<Ec project="kit" path="nav.4" />
+
+<Snippet project="kit" component="nav.parent_icon" />
+
+### Multiple open subnavs
+
+When clicking on a parent item, an open one will close, allowing only one open nested list at a time. To allow multiple open subnavs, just add the `multiple: true` option to the attribute.
+
+<Ec project="kit" path="nav.5" />
+
+<Snippet project="kit" component="nav.multiple_open" />
+
+## Header and divider
+
+Add one of the following classes to a list item to create a header or a divider between items.
+
+| Element           | Description                                                                  |
+| ----------------- | ---------------------------------------------------------------------------- |
+| `.uk-nav-header`  | Add this class to a `<li>` element to create a header.                       |
+| `.uk-nav-divider` | Add this class to a `<li>` element to create a divider separating nav items. |
+
+<Ec project="kit" path="nav.6" />
+
+<Snippet project="kit" component="nav.header_divider" />
+
+## Subtitle
+
+Add the `.uk-nav-subtitle` class to a `div` element to create an item subtitled.
+
+<Ec project="kit" path="nav.7" />
+
+<Snippet project="kit" component="nav.subtitle" />
+
+## Default modifier
+
+Add the `.uk-nav-default` class to give the nav its default style. You can place the nav inside cards or anywhere else in your content.
+
+<Ec project="kit" path="nav.8" />
+
+<Snippet project="kit" component="nav.default" />
+
+## Alternative layout
+
+Add `.uk-nav-alt` and `.uk-nav-primary` classes to give the nav a more distinct styling.
+
+<Ec project="kit" path="nav.9" />
+
+<Snippet project="kit" component="nav.primary" />
+
+## Nav in Dropdown
+
+Add the `.uk-dropdown-nav` class to place a nav inside a default dropdown from the [Dropdown component](/docs/latest/kit/dropdown).
+
+<Ec project="kit" path="nav.11" />
+
+<Snippet project="kit" component="nav.nav_in_dropdown" />
+
+## Nav in offcanvas
+
+A nav can be used inside an offcanvas from the [Offcanvas component](/docs/latest/kit/offcanvas). No modifier class needs to be added.
+
+<Snippet project="kit" component="nav.nav_in_offcanvas" />
+
+## Component options
+
+Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/latest/kit/javascript#component-configuration)
+
+| Option        | Value           | Default        | Description                                                                                |
+| ------------- | --------------- | -------------- | ------------------------------------------------------------------------------------------ |
+| `targets`     | CSS selector    | `> .uk-parent` | The element(s) to toggle.                                                                  |
+| `toggle `     | CSS selector    | `> a`          | The toggle element(s).                                                                     |
+| `content`     | CSS selector    | `> ul`         | The content element(s).                                                                    |
+| `collapsible` | Boolean         | `true`         | Allow all items to be closed.                                                              |
+| `multiple`    | Boolean         | `false`        | Allow multiple open items.                                                                 |
+| `transition`  | String          | `ease`         | The transition to use.                                                                     |
+| `animation`   | Boolean, String | `true`         | Space-separated names of [animations](/docs/latest/kit/animation). Comma-separated for animation out. |
+| `duration`    | Number          | `200`          | The animation duration in milliseconds.                                                    |
+
+## JavaScript
+
+Learn more about [JavaScript components](/docs/latest/kit/javascript#programmatic-use).
+
+### Initialization
+
+<Ec project="kit" path="nav.12" />
+
+### Methods
+
+The following methods are available for the component:
+
+#### Toggle
+
+<Ec project="kit" path="nav.13" />
+
+Toggles the content pane.
+
+| Name      | Type                 | Default | Description                                  |
+| --------- | -------------------- | ------- | -------------------------------------------- |
+| `index`   | String, Number, Node | 0       | Nav pane to toggle. 0 based index.           |
+| `animate` | Boolean              | true    | Suppress opening animation by passing false. |
