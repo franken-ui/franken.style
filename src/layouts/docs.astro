@@ -489,8 +489,13 @@ const tbc = transformHeadings(headings);
     </div>
     <div class="root-main">
       <div
-        class="isolate mx-auto grid w-full max-w-2xl grid-cols gap pt md:pb xl:max-w-5xl"
-        style="--grid-cols: 1; --gap: 10; --pt: 10; --md-pb: 24"
+        class="mx-auto grid w-full max-w-2xl grid-cols gap pt md:pb xl:max-w-5xl"
+        style={stl({
+          '--grid-cols': '1',
+          '--gap': '10',
+          '--pt': '10',
+          '--md-pb': '24'
+        })}
       >
         <div class="px sm:px" style="--px: 4; --sm-px: 6">
           {

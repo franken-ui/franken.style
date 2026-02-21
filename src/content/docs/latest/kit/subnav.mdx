@@ -1,0 +1,46 @@
+---
+group: components
+project: kit
+text: Subnav
+title: Subnav
+lead: Defines different styles for a sub navigation.
+meta:
+  description: Defines different styles for a sub navigation.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+To apply this component, use the following classes. To align a subnav, for example to horizontally center it, you can use utility classes from Tailwind CSS.
+
+| Class         | Description                                                                                                         |
+| ------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `.uk-subnav`  | Add this class to a `<ul>` element to define the Subnav component. Use `<a>` elements as nav items within the list. |
+| `.uk-active ` | Add this class to a list item to apply an active state.                                                             |
+
+To add list items without a link, use a `<span>` element instead of an `<a>`. Alternatively, disable an `<a>` element by adding the `.uk-disabled` class to the `<li>` element and remove the `href` attribute from the anchor to make it inaccessible through keyboard navigation.
+
+<Ec project="kit" path="subnav.1" />
+
+<Snippet project="kit" component="subnav.basic" />
+
+## Style modifiers
+
+Add one of the following classes for additional styles.
+
+| Class                    | Description               |
+| ------------------------ | ------------------------- |
+| `.uk-subnav-primary`     | Adds a primary style.     |
+
+<Snippet project="kit" component="subnav.style" />
+
+## Subnav and Dropdown
+
+You can also use a dropdown from the [Dropdown component](/docs/2.1/dropdown) with a subnav.
+
+<Ec project="kit" path="subnav.2" />
+
+<Snippet project="kit" component="subnav.dropdown" />
