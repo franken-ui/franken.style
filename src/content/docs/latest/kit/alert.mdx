@@ -1,0 +1,81 @@
+---
+group: components
+project: kit
+text: Alert
+title: Alert
+lead: Display success, or error messages.
+meta:
+  description: Displays a callout for user attention.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+To apply this component, add the `data-uk-alert` attribute to a block element.
+
+<Ec project="kit" path="alert.1" />
+
+<Snippet project="kit" component="alert.basic" />
+
+## Close button
+
+To create a close button and enable its functionality, add the `.uk-alert-close` class to a `<button>` or `<a>` element inside the alert box. To apply a close icon, add the `data-uk-close` attribute from the [Close component](/docs/2.1/close).
+
+<Ec project="kit" path="alert.2" />
+
+<Snippet project="kit" component="alert.close" />
+
+## Style modifiers
+
+There are several style modifiers available. Just add one of the following classes to apply a different look.
+
+- `.uk-alert-danger`
+- `.uk-alert-warning`
+- `.uk-alert-success`
+- `.uk-alert-info`
+
+<Snippet project="kit" component="alert.style" />
+
+## Component options
+
+Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/2.1/javascript#component-configuration)
+
+| Option      | Value        | Default           | Description                         |
+| ----------- | ------------ | ----------------- | ----------------------------------- |
+| `animation` | Boolean      | `true`            | Fade out or hide directly.          |
+| `duration`  | Number       | `150`             | Animation duration in milliseconds. |
+| `sel-close` | CSS selector | `.uk-alert-close` | The close trigger element.          |
+
+`animation` is the _Primary_ option and its key may be omitted, if it's the only option in the attribute value.
+
+<Ec project="kit" path="alert.3" />
+
+## JavaScript
+
+Learn more about [JavaScript components](/docs/2.1/javascript#programmatic-use).
+
+### Initialization
+
+<Ec project="kit" path="alert.4" />
+
+### Events
+
+The following events will be triggered on elements with this component attached:
+
+| Name         | Description                                                                                    |
+| ------------ | ---------------------------------------------------------------------------------------------- |
+| `beforehide` | Fires before an item is hidden. Can prevent hiding by calling `preventDefault()` on the event. |
+| `hide`       | Fires after an item is hidden.                                                                 |
+
+### Methods
+
+The following methods are available for the component:
+
+#### Close
+
+<Ec project="kit" path="alert.5" />
+
+Closes and removes the Alert.
