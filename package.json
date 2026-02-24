@@ -4,9 +4,10 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && npx prettier --write --ignore-path /dev/null dist/hx/boilerplate/index.html",
+    "build": "astro build && npm run boilerplate",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "boilerplate": "VERSION=$(grep -o '\"frankenstyle\"[[:space:]]*:[[:space:]]*\"[^\"]*\"' package.json | head -1 | sed -E 's/.*\"([^\"]+)\"/\\1/' | sed -E 's/^[^0-9]*//') && cp boilerplate.txt public/boilerplate.txt && sed -i.bak \"s/\\${version}/${VERSION}/g\" public/boilerplate.txt && rm public/boilerplate.txt.bak"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",

@@ -1,17 +1,3 @@
----
-const tag = import.meta.env.TAG || "latest";
-let version = "1.0";
-
-await (async () => {
-  try {
-    const response = await fetch("https://registry.npmjs.org/frankenstyle");
-    const data = await response.json();
-
-    version = data["dist-tags"][tag];
-  } catch (e) {}
-})();
----
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,7 +7,7 @@ await (async () => {
     <link rel="preconnect" href="https://rsms.me/" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 
-    <style is:inline>
+    <style>
       :root {
         font-family: Inter, sans-serif;
         font-feature-settings:
@@ -86,10 +72,10 @@ await (async () => {
 
     <link
       rel="stylesheet"
-      href={`https://cdn.jsdelivr.net/npm/frankenstyle@${version}/dist/css/frankenstyle-kit.min.css`}
+      href="https://cdn.jsdelivr.net/npm/frankenstyle@${version}/dist/css/frankenstyle-kit.min.css"
     />
 
-    <script is:inline>
+    <script>
       const htmlElement = document.documentElement;
 
       const __FRANKEN__ = JSON.parse(
@@ -111,9 +97,9 @@ await (async () => {
 
     <!-- Load the core file in the <head> -->
     <script
-      is:inline
-      src={`https://cdn.jsdelivr.net/npm/frankenstyle@${version}/dist/js/hwc-core.iife.js`}
-      type="module"></script>
+      src="https://cdn.jsdelivr.net/npm/frankenstyle@${version}/dist/js/hwc-core.iife.js"
+      type="module"
+    ></script>
   </head>
   <body class="bg color" style="--bg: var(--uk-bg); --color: var(--uk-bg-f)" ,>
     <!-- START CODING HERE -->
@@ -147,34 +133,37 @@ await (async () => {
     <!-- END -->
 
     <!-- Optional: Suppress errors if you don't plan to use Lucide or ApexCharts -->
-    <script is:inline>
+    <script>
       // window.Lucide = {};
       // window.ApexCharts = {};
     </script>
 
+    <!-- Optional: Runtime -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/frankenstyle@${version}/dist/js/frankenstyle.iife.js"
+      type="module"
+    ></script>
+
     <!-- Optional: Icons -->
     <script
-      is:inline
-      src={`https://cdn.jsdelivr.net/npm/frankenstyle@${version}/dist/js/hwc-icon.iife.js`}
-      type="module"></script>
+      src="https://cdn.jsdelivr.net/npm/frankenstyle@${version}/dist/js/hwc-icon.iife.js"
+      type="module"
+    ></script>
 
     <!-- Optional: Charts -->
     <script
-      is:inline
-      src={`https://cdn.jsdelivr.net/npm/frankenstyle@${version}/dist/js/hwc-chart.iife.js`}
-      type="module"></script>
+      src="https://cdn.jsdelivr.net/npm/frankenstyle@${version}/dist/js/hwc-chart.iife.js"
+      type="module"
+    ></script>
 
     <!-- Load components last -->
     <script
-      is:inline
-      src={`https://cdn.jsdelivr.net/npm/frankenstyle@${version}/dist/js/hwc-components.iife.js`}
-      type="module"></script>
+      src="https://cdn.jsdelivr.net/npm/frankenstyle@${version}/dist/js/hwc-components.iife.js"
+      type="module"
+    ></script>
 
     <!-- Optional: Frankternity core file -->
-    <script
-      is:inline
-      src={`https://cdn.jsdelivr.net/npm/frankenstyle@${version}/dist/js/ft-core.iife.js`}
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/frankenstyle@${version}/dist/js/ft-core.iife.js"></script>
 
     <!-- You can load Frankternity components below -->
   </body>
