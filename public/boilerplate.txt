@@ -101,7 +101,7 @@
       type="module"
     ></script>
   </head>
-  <body class="bg color" style="--bg: var(--uk-bg); --color: var(--uk-bg-f)" ,>
+  <body class="bg color" style="--bg: var(--uk-bg); --color: var(--uk-bg-f)">
     <!-- START CODING HERE -->
     <div class="uk-container mt" style="--mt: 40">
       <div class="space-y" style="--space-y: 4">
