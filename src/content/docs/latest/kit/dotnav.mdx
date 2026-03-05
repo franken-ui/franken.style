@@ -1,0 +1,34 @@
+---
+group: components
+project: kit
+text: Dotnav
+title: Dotnav
+lead: Create a dot navigation to operate slideshows or to scroll to different page sections.
+meta:
+  description: Create a dot navigation to operate slideshows or to scroll to different page sections.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+To create a navigation with dots, use the following classes. This component is built with Flexbox. So to align a dotnav, you can use utility classes from Tailwind CSS.
+
+| Class         | Description                                                                                                         |
+| ------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `.uk-dotnav`  | Add this class to a `<ul>` element to define the Dotnav component. Use `<a>` elements as nav items within the list. |
+| `.uk-active ` | Add this class to a list item to apply an active state.                                                             |
+
+<Ec project="kit" path="dotnav.1" />
+
+<Snippet project="kit" component="dotnav.basic" />
+
+## Vertical alignment
+
+The dotnav can also be displayed vertically. Just add the `.uk-dotnav-vertical` modifier.
+
+<Ec project="kit" path="dotnav.2" />
+
+<Snippet project="kit" component="dotnav.vertical" />
