@@ -1,0 +1,59 @@
+---
+group: components
+project: kit
+text: Close
+title: Close
+lead: Create a close icon that can be combined with different components.
+meta:
+  description: Create a close icon that can be combined with different components.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+To apply this component, add the `data-uk-close` attribute to an `<a>` or `<button>` element.
+
+<Ec project="kit" path="close.1" />
+
+<Snippet project="kit" component="close.basic" />
+
+## Close in alerts
+
+This is an example of how this component is used with an alert box from the [Alert component](/docs/2.1/alert).
+
+<Ec project="kit" path="close.2" />
+
+<Snippet project="kit" component="close.alert" />
+
+## Close in drops
+
+This is an example of how this component is used with the [Drop component](/docs/2.1/drop).
+
+<Ec project="kit" path="close.3" />
+
+<Snippet project="kit" component="close.drop" />
+
+## Close in modals
+
+This is an example of how this component is used with the [Modal component](/docs/2.1/modal).
+
+<Ec project="kit" path="close.4" />
+
+<Snippet project="kit" component="close.modal" />
+
+## Accessibility
+
+The Close component automatically sets the appropriate WAI-ARIA roles and properties.
+
+- The _close icon_ has the `aria-label` property, and if an `<a>` element is used, the `button` role.
+
+### Internationalization
+
+The Close component uses the following translation strings. Learn more about [translating components](/docs/2.1/accessibility).
+
+| Key     | Default | Description             |
+| ------- | ------- | ----------------------- |
+| `label` | `Close` | `aria-label` attribute. |

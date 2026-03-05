@@ -1,0 +1,30 @@
+<a class="uk-button uk-button-default" href="#modal" data-uk-toggle>
+  Open modal
+</a>
+
+<div class="uk-modal uk-flex-top" id="modal" data-uk-modal>
+  <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+    <button
+      class="uk-modal-close absolute right top"
+      style="--right: 4; --top: 4"
+      type="button"
+      aria-label="Close"
+      data-uk-close
+    ></button>
+    <h2 class="uk-modal-title">Are you absolutely sure?</h2>
+    <div class="my text-sm text-muted-foreground" style="--my: 4">
+      This action cannot be undone. This will permanently delete your account
+      and remove your data from our servers.
+    </div>
+    <div class="display-flex justify-end">
+      <button
+        class="uk-modal-close uk-button uk-button-default mr"
+        style="--mr: 2"
+        type="button"
+      >
+        Cancel
+      </button>
+      <button class="uk-button uk-button-danger" type="button">Continue</button>
+    </div>
+  </div>
+</div>
