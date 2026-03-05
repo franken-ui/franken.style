@@ -1,0 +1,50 @@
+---
+group: components
+project: kit
+text: Card
+title: Card
+lead: Create layout boxes with different styles.
+meta:
+  description: Create layout boxes with different styles.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+The Card component consists of the card itself, the card body and an optional card title. Typically, cards are arranged in grid columns.
+
+| Class            | Description                                                                    |
+| ---------------- | ------------------------------------------------------------------------------ |
+| `.uk-card`       | Add this class to a `<div>` element to define the Card component.              |
+| `.uk-card-body`  | Add this class to the card to create padding between the card and its content. |
+| `.uk-card-title` | Add this class to a heading to define a card title.                            |
+
+<Ec project="kit" path="card.1" />
+
+<Snippet project="kit" component="card.basic" />
+
+## Style modifiers
+
+There are several style modifiers available. Just add one of the following classes to apply a different look.
+
+- `.uk-card-primary`
+- `.uk-card-secondary`
+- `.uk-badge-danger`
+- `.uk-badge-warning`
+- `.uk-badge-success`
+- `.uk-badge-info`
+
+<Ec project="kit" path="card.2" />
+
+<Snippet project="kit" component="card.style" />
+
+## Header and footer
+
+You can also divide a card into header and footer — around the default body. Just add the `.uk-card-header` or `.uk-card-footer` class to a `<div>` element inside the card.
+
+<Ec project="kit" path="card.3" />
+
+<Snippet project="kit" component="card.header_footer" />
