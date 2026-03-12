@@ -1,0 +1,36 @@
+---
+project: kit
+group: components
+text: Label
+title: Label
+lead: Indicate important notes and highlight parts of your content.
+meta:
+  description: Indicate important notes and highlight parts of your content.
+---
+import Ec from 'snippets/ec.astro';
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+To create a label, just add the `.uk-label` class to an inline element like `<a>` or `<span>` element.
+
+<Ec project="kit" path="label.1" />
+
+<Snippet project="kit" component="label.basic" />
+
+## Style modifiers
+
+There are several style modifiers available. Just add one of the following classes to apply a different look.
+
+- `.uk-label-danger`
+- `.uk-label-warning`
+- `.uk-label-success`
+- `.uk-label-info`
+
+<Snippet project="kit" component="label.style" />
+
+## Customization
+
+You can use CSS variables to customize this component in any way you prefer.
+
+<Snippet project="kit" component="label.custom" />
