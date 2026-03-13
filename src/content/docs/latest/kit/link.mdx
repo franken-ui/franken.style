@@ -1,0 +1,49 @@
+---
+group: components
+project: kit
+text: Link
+title: Link
+lead: Define different styles to integrate links into specific content.
+meta:
+  description: Define different styles to integrate links into specific content.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+To apply this component, add the `.uk-link` class to an `<a>` element.
+
+<Snippet project="kit" component="link.basic" />
+
+## Muted modifier
+
+If you want the link to apply a muted style instead, just add the `.uk-link-muted` class to the anchor element. You can also add the class to a parent element, and it will be applied to all `<a>` elements inside it.
+
+<Ec project="kit" path="link.1" />
+
+<Snippet project="kit" component="link.muted" />
+
+## Text modifier
+
+To make a link appear like body text and apply a hover effect, add the `.uk-link-text` class to the anchor element. You can also add the class to a parent element, and it will be applied to all `<a>` elements inside it. This is useful for link lists in the page footer.
+
+<Ec project="kit" path="link.2" />
+
+<Snippet project="kit" component="link.text" />
+
+## Reset modifier
+
+To reset a link's color, so that it inherits the color from its parent, add the `.uk-link-reset` class. There won't be any hover effect at all. This is useful for links inside heading elements. You can also add the class to a parent element, and it will be applied to all `<a>` elements inside it.
+
+<Snippet project="kit" component="link.reset" />
+
+## Toggle
+
+To use an anchor as a parent element and apply the link style on one of its child elements, just add the `.uk-link-toggle` class to the parent element and one of the `.uk-link-*` classes to the child element. For instance, you can link the whole card and still have the hover effect on the heading.
+
+<Ec project="kit" path="link.3" />
+
+<Snippet project="kit" component="link.toggle" />
