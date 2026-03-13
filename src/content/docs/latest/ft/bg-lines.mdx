@@ -14,8 +14,6 @@ meta:
 import Snippet from "snippets/component.astro";
 import Ec from "snippets/ec.astro";
 import Installation from "components/partials/ft/installation-mdx.astro";
-import ftCore from "frankenstyle/js/ft-core.iife?url";
-import ftBgLines from "frankenstyle/js/ft/bg-lines.iife?url";
 
 <Snippet project="ft" component="bg_lines.basic" />
 
@@ -39,5 +37,5 @@ the component name.
 | `stl`        | `object` | <code class="uk-codespan">&#123;&#125;</code>               | Additional inline styles to be applied to the outer container. |
 | `svgOptions` | `object` | <code class="uk-codespan">&#123; duration: 10 &#125;</code> | Options for customizing the SVG animation.                     |
 
-<script src={ftCore}></script>
-<script src={ftBgLines}></script>
+<script src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft-core.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft/bg-lines.iife.js"></script>

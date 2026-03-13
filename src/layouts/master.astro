@@ -1,10 +1,5 @@
 ---
 import "css/app.css";
-import core from "frankenstyle/js/hwc-core.iife?url";
-import components from "frankenstyle/js/hwc-components.iife?url";
-import icon from "frankenstyle/js/hwc-icon.iife?url";
-import chart from "frankenstyle/js/hwc-chart.iife?url";
-import runtime from "frankenstyle/js/frankenstyle.iife?url";
 import { stl } from "helpers/common";
 
 const { doc } = Astro.props;
@@ -18,6 +13,15 @@ const { doc } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{doc.title}</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/css/frankenstyle-kit.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/css/chart.min.css"
+    />
 
     <!-- FF (A) -->
     <link
@@ -88,7 +92,10 @@ const { doc } = Astro.props;
     <link rel="icon" href="/images/monster.svg" />
     <link rel="apple-touch-icon" href="/images/monster.svg" />
 
-    <script is:inline src={core} type="module"></script>
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/hwc-core.iife.js"
+      type="module"></script>
   </head>
   <body
     class="bg color font-family"
@@ -96,10 +103,23 @@ const { doc } = Astro.props;
   >
     <slot />
 
-    <script is:inline src={icon} type="module"></script>
-    <script is:inline src={chart} type="module"></script>
-    <script is:inline src={components} type="module"></script>
-    <script is:inline src={runtime} type="module"></script>
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/hwc-icon.iife.js"
+      type="module"></script>
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/hwc-chart.iife.js"
+      type="module"></script>
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/hwc-components.iife.js"
+      type="module"></script>
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/frankenstyle.iife.js"
+      type="module"></script>
+
     <script is:inline src="/js/htmx@2.0.6/htmx.min.js"></script>
     <script is:inline src="/js/alpinejs@3.14.9/alpinejs.min.js"></script>
 

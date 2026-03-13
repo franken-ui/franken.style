@@ -15,14 +15,12 @@ meta:
 import Snippet from "snippets/component.astro";
 import Ec from "snippets/ec.astro";
 import Installation from "components/partials/ft/installation-mdx.astro";
-import ftCore from "frankenstyle/js/ft-core.iife?url";
-import ftTextEncrypted from "frankenstyle/js/ft/text-reveal-card.iife?url";
 
 <Snippet project="ft" component="text_reveal_card.basic" />
 
 ## Installation
 
-<Installation uid="text_reveal_card" />
+<Installation uid="text-reveal-card" />
 
 ## CSS variables
 
@@ -92,5 +90,5 @@ the component name.
 | `text`       | `string` | Piece of text that stays on the card.                  |
 | `revealText` | `string` | Text that reveals when hovered over the card.          |
 
-<script src={ftCore}></script>
-<script src={ftTextEncrypted}></script>
+<script src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft-core.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft/text-reveal-card.iife.js"></script>

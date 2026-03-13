@@ -14,14 +14,12 @@ meta:
 import Snippet from "snippets/component.astro";
 import Ec from "snippets/ec.astro";
 import Installation from "components/partials/ft/installation-mdx.astro";
-import ftCore from "frankenstyle/js/ft-core.iife?url";
-import ftTextEncrypted from "frankenstyle/js/ft/text-encrypted.iife?url";
 
 <Snippet project="ft" component="text_encrypted.basic" />
 
 ## Installation
 
-<Installation uid="text_encrypted" />
+<Installation uid="text-encrypted" />
 
 ## Props
 
@@ -44,5 +42,5 @@ the component name.
 | `encryptedClassName` | `string` | -                                                                                                                                           | CSS class for styling the encrypted/scrambled characters.               | No       |
 | `revealedClassName`  | `string` | -                                                                                                                                           | CSS class for styling the revealed characters.                          | No       |
 
-<script src={ftCore}></script>
-<script src={ftTextEncrypted}></script>
+<script src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft-core.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft/text-encrypted.iife.js"></script>

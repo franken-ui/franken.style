@@ -1,6 +1,4 @@
 ---
-import "css/app.css";
-import ftCore from "frankenstyle/js/ft-core.iife?url";
 import { stl } from "helpers/common";
 
 const { doc } = Astro.props;
@@ -14,6 +12,12 @@ const { doc } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{doc.title}</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/css/frankenstyle.min.css"
+    />
+
     <link
       rel="preload"
       href="/fonts/geist-font/fonts/GeistVariableVF.woff2"
@@ -37,7 +41,10 @@ const { doc } = Astro.props;
         ))
     }
 
-    <script is:inline src={ftCore}></script>
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft-core.iife.js"
+    ></script>
   </head>
   <body
     class="bg color font-family"

@@ -13,8 +13,6 @@ meta:
 
 import Snippet from "snippets/component.astro";
 import Installation from "components/partials/ft/installation-mdx.astro";
-import ftCore from "frankenstyle/js/ft-core.iife?url";
-import ftBgBoxes from "frankenstyle/js/ft/bg-boxes.iife?url";
 
 <Snippet project="ft" component="bg_boxes.basic" />
 
@@ -32,5 +30,5 @@ All CSS variables prefixed with `--ft-*` can be used to customize layout, spacin
 | ------------------- | ------------------------ | ------------------------ |
 | `--ft-border-color` | `var(--color-slate-700)` | Border color of the grid |
 
-<script src={ftCore}></script>
-<script src={ftBgBoxes}></script>
+<script src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft-core.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft/bg-boxes.iife.js"></script>

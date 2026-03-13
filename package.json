@@ -4,16 +4,14 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && npm run boilerplate",
+    "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "boilerplate": "VERSION=$(grep -o '\"frankenstyle\"[[:space:]]*:[[:space:]]*\"[^\"]*\"' package.json | head -1 | sed -E 's/.*\"([^\"]+)\"/\\1/' | sed -E 's/^[^0-9]*//') && cp boilerplate.txt public/boilerplate.txt && sed -i.bak \"s/\\${version}/${VERSION}/g\" public/boilerplate.txt && rm public/boilerplate.txt.bak"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
     "astro": "^5.17.1",
     "astro-expressive-code": "^0.41.3",
-    "frankenstyle": "^0.3.3",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "unist-util-visit": "^5.0.0"

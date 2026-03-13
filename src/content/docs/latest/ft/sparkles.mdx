@@ -14,8 +14,6 @@ meta:
 import Snippet from "snippets/component.astro";
 import Ec from "snippets/ec.astro";
 import Installation from "components/partials/ft/installation-mdx.astro";
-import ftCore from "frankenstyle/js/ft-core.iife?url";
-import ftSparkles from "frankenstyle/js/ft/sparkles.iife?url";
 
 <Snippet project="ft" component="sparkles.basic" />
 
@@ -46,5 +44,5 @@ the component name.
 | `particleColor`   | `string` | The color of the particles                                        |
 | `particleDensity` | `number` | The density of the particles                                      |
 
-<script src={ftCore}></script>
-<script src={ftSparkles}></script>
+<script src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft-core.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft/sparkles.iife.js"></script>

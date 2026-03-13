@@ -3,16 +3,6 @@ import type { GetStaticPaths } from "astro";
 import { getSnippetPaths } from "data/snippets/base";
 import Ft from "layouts/ft.astro";
 
-import animated_testimonials from "frankenstyle/js/ft/animated-testimonials.iife?url";
-import bg_beams from "frankenstyle/js/ft/bg-beams.iife?url";
-import bg_boxes from "frankenstyle/js/ft/bg-boxes.iife?url";
-import bg_lines from "frankenstyle/js/ft/bg-lines.iife?url";
-import sparkles from "frankenstyle/js/ft/sparkles.iife?url";
-import text_encrypted from "frankenstyle/js/ft/text-encrypted.iife?url";
-import text_hover_effect from "frankenstyle/js/ft/text-hover-effect.iife?url";
-import text_reveal_card from "frankenstyle/js/ft/text-reveal-card.iife?url";
-import bg_ripple_effect from "frankenstyle/js/ft/bg-ripple-effect.iife?url";
-
 export const getStaticPaths = (async () =>
   getSnippetPaths({
     version: "latest",
@@ -22,15 +12,24 @@ export const getStaticPaths = (async () =>
 const { content, category } = Astro.props;
 
 const urls: { [key: string]: any } = {
-  animated_testimonials,
-  bg_beams,
-  bg_boxes,
-  bg_lines,
-  sparkles,
-  text_encrypted,
-  text_hover_effect,
-  text_reveal_card,
-  bg_ripple_effect,
+  animated_testimonials:
+    "https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft/animated-testimonials.iife.js",
+  bg_beams:
+    "https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft/bg-beams.iife.js",
+  bg_boxes:
+    "https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft/bg-boxes.iife.js",
+  bg_lines:
+    "https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft/bg-lines.iife.js",
+  sparkles:
+    "https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft/sparkles.iife.js",
+  text_encrypted:
+    "https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft/text-encrypted.iife.js",
+  text_hover_effect:
+    "https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft/text-hover-effect.iife.js",
+  text_reveal_card:
+    "https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft/text-reveal-card.iife.js",
+  bg_ripple_effect:
+    "https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft/bg-ripple-effect.iife.js",
 };
 ---
 

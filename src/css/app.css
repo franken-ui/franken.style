@@ -1,6 +1,3 @@
-@import "frankenstyle/css/frankenstyle-kit.css";
-@import "frankenstyle/css/chart.css";
-
 @layer base {
   ::selection {
     background-color: oklch(54.6% 0.245 262.881);
@@ -105,147 +102,11 @@
     z-index: 1;
   }
 
-  /* --- THE FIX IS HERE --- */
-  /* This specific rule prevents the overlay image from shrinking */
   .comparison-image.overlay-source {
     width: auto; /* Allow width to be calculated by aspect ratio */
     height: 100%; /* Match the height of the container */
     max-width: none; /* Override Astro's default responsive max-width */
     object-fit: cover; /* Ensure it covers the space */
-  }
-
-  .slider {
-    position: absolute;
-    top: 0;
-    left: 50%; /* Initial position */
-    width: 2px;
-    height: 100%;
-    background: white;
-    transform: translateX(-50%);
-    cursor: ew-resize;
-    z-index: 10;
-  }
-
-  /* Expand hit area for easier grabbing */
-  .slider::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 100%;
-  }
-
-  .slider-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    background: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    z-index: 11;
-  }
-
-  .slider-button svg {
-    width: 16px;
-    height: 16px;
-    color: #333;
-  }
-
-  /* examples */
-
-  .slideshow-container {
-    position: relative;
-    overflow: hidden;
-    transition: height 0.5s ease-in-out;
-  }
-
-  .slideshow-wrapper {
-    position: relative;
-    width: 100%;
-  }
-
-  .slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    pointer-events: none;
-  }
-
-  .slide.active {
-    position: relative;
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .slide-image {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  /* default: light mode */
-  .dark-only {
-    display: none;
-  }
-
-  html.dark .light-only {
-    display: none;
-  }
-
-  html.dark .dark-only {
-    display: block;
-  }
-
-  .divider-pattern {
-    border-inline-style: var(--tw-border-style);
-    border-inline-width: 1px;
-    border-inline-color: var(--divider-pattern);
-    background-image: repeating-linear-gradient(
-      315deg,
-      var(--divider-pattern) 0,
-      var(--divider-pattern) 1px,
-      transparent 0,
-      transparent 50%
-    );
-    background-size: 10px 10px;
-    background-attachment: fixed;
-  }
-
-  .divider-line {
-    position: relative;
-  }
-
-  .divider-line::before {
-    content: "";
-    opacity: 70%;
-    position: absolute;
-    top: 0;
-    left: -100vw;
-    height: 1px;
-    width: 200vw;
-    background-color: var(--divider-pattern);
-  }
-
-  .divider-line::after {
-    content: "";
-    opacity: 70%;
-    position: absolute;
-    bottom: 0;
-    left: -100vw;
-    height: 1px;
-    width: 200vw;
-    background-color: var(--divider-pattern);
   }
 
   .chart-card {
@@ -342,20 +203,6 @@
   #fs-colors.user-selecting .color-cell:hover {
     opacity: 1;
   }
-}
-
-@layer utilities {
-  .dark\:display-hidden:where(.dark, .dark *) {
-    display: none;
-  }
-
-  .dark\:display-inline-block:where(.dark, .dark *) {
-    display: inline-block;
-  }
-
-  .dark\:display-block:where(.dark, .dark *) {
-    display: block;
-  }
 
   .dark-slide-icon {
     transition:
@@ -393,5 +240,19 @@
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+  }
+}
+
+@layer utilities {
+  .dark\:display-hidden:where(.dark, .dark *) {
+    display: none;
+  }
+
+  .dark\:display-inline-block:where(.dark, .dark *) {
+    display: inline-block;
+  }
+
+  .dark\:display-block:where(.dark, .dark *) {
+    display: block;
   }
 }

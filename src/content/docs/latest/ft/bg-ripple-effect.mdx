@@ -14,8 +14,6 @@ meta:
 import Snippet from "snippets/component.astro";
 import Ec from "snippets/ec.astro";
 import Installation from "components/partials/ft/installation-mdx.astro";
-import ftCore from "frankenstyle/js/ft-core.iife?url";
-import ftBgRippleEffect from "frankenstyle/js/ft/bg-ripple-effect.iife?url";
 
 <Snippet project="ft" component="bg_ripple_effect.basic" />
 
@@ -39,5 +37,5 @@ the component name.
 | `cols`     | `number` | `27`    | Number of columns in the grid.      | No       |
 | `cellSize` | `number` | `56`    | Size of each square cell in pixels. | No       |
 
-<script src={ftCore}></script>
-<script src={ftBgRippleEffect}></script>
+<script src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft-core.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft/bg-ripple-effect.iife.js"></script>

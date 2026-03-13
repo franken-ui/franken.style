@@ -1,8 +1,5 @@
 ---
 import Master from "layouts/master.astro";
-import ftCore from "frankenstyle/js/ft-core.iife?url";
-import ftBgRippleEffect from "frankenstyle/js/ft/bg-ripple-effect.iife?url";
-import ftTextEncrypted from "frankenstyle/js/ft/text-encrypted.iife?url";
 import { stl } from "helpers/common";
 
 const { doc } = Astro.props;
@@ -58,7 +55,16 @@ const { doc } = Astro.props;
     </div>
   </div>
 
-  <script is:inline src={ftCore}></script>
-  <script is:inline src={ftBgRippleEffect}></script>
-  <script is:inline src={ftTextEncrypted}></script>
+  <script
+    is:inline
+    src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft-core.iife.js"
+  ></script>
+  <script
+    is:inline
+    src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft/bg-ripple-effect.iife.js"
+  ></script>
+  <script
+    is:inline
+    src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.3/dist/js/ft/text-encrypted.iife.js"
+  ></script>
 </Master>
