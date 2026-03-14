@@ -1,0 +1,61 @@
+---
+group: components
+project: kit
+text: List
+title: List
+lead: Easily create nice looking lists, which come in different styles.
+meta:
+  description: Easily create nice looking lists, which come in different styles.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+To apply this component, add the `.uk-list` class to an unordered or ordered list. The list will now display without any spacing or list-style.
+
+<Ec project="kit" path="list.1" />
+
+<Snippet project="kit" component="list.basic" />
+
+## Style type modifiers
+
+Add one of the following classes to set the marker of a list item.
+
+| Class              | Description                                      |
+| ------------------ | ------------------------------------------------ |
+| `.uk-list-disc`    | Use a filled circle as a marker.                 |
+| `.uk-list-circle`  | Use a hollow circle as marker.                   |
+| `.uk-list-square`  | Use a filled square as marker                    |
+| `.uk-list-decimal` | Use decimal numbers as marker. Beginning with 1. |
+| `.uk-list-hyphen`  | Use a hyphen as marker                           |
+
+<Ec project="kit" path="list.2" />
+
+<Snippet project="kit" component="list.style" />
+
+## Divider modifier
+
+Add the `.uk-list-divider` class to separate list items with lines.
+
+<Ec project="kit" path="list.5" />
+
+<Snippet project="kit" component="list.divider" />
+
+## Striped modifier
+
+Add zebra-striping to a list using the `.uk-list-striped` class.
+
+<Ec project="kit" path="list.6" />
+
+<Snippet project="kit" component="list.striped" />
+
+## Accessibility
+
+Set the appropriate WAI-ARIA roles, states and properties to the List component.
+
+- If a `<div>` element is used, set the `list` role to the list, and the `listitem` role to the list items.
+
+<Ec project="kit" path="list.7" />
