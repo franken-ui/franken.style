@@ -10,45 +10,45 @@ import { stl } from "helpers/common";
 import data from "data/examples";
 ---
 
-<style is:inline>
-  :root {
-    --ft-cell-border-color: var(--color-neutral-300);
-    --ft-cell-fill-color: var(--color-neutral-100);
-    --ft-cell-shadow-color: var(--color-neutral-500);
-  }
-
-  .dark {
-    --ft-cell-border-color: var(--color-neutral-700);
-    --ft-cell-fill-color: var(--color-neutral-900);
-    --ft-cell-shadow-color: var(--color-neutral-800);
-  }
-
-  .dark .ft-cell {
-    box-shadow: inset 0px 0px 40px 1px var(--ft-cell-shadow-color);
-  }
-
-  .ft-cell:hover {
-    opacity: 0.8;
-  }
-
-  @keyframes ft-cell-ripple {
-    0% {
-      opacity: 0.4;
-    }
-    50% {
-      opacity: 0.8;
-    }
-    100% {
-      opacity: 0.4;
-    }
-  }
-</style>
-
 <Home
   doc={{
     title: "The Frankenstyle Project - A painless frontend system.",
   }}
 >
+  <style is:inline>
+    :root {
+      --ft-cell-border-color: var(--color-neutral-300);
+      --ft-cell-fill-color: var(--color-neutral-100);
+      --ft-cell-shadow-color: var(--color-neutral-500);
+    }
+
+    .dark {
+      --ft-cell-border-color: var(--color-neutral-700);
+      --ft-cell-fill-color: var(--color-neutral-900);
+      --ft-cell-shadow-color: var(--color-neutral-800);
+    }
+
+    .dark .ft-cell {
+      box-shadow: inset 0px 0px 40px 1px var(--ft-cell-shadow-color);
+    }
+
+    .ft-cell:hover {
+      opacity: 0.8;
+    }
+
+    @keyframes ft-cell-ripple {
+      0% {
+        opacity: 0.4;
+      }
+      50% {
+        opacity: 0.8;
+      }
+      100% {
+        opacity: 0.4;
+      }
+    }
+  </style>
+
   <div
     class="display-flex relative min-h-screen w-full flex-col items-start justify-start overflow-hidden"
   >
