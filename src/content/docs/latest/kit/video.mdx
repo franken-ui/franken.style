@@ -1,0 +1,67 @@
+---
+group: components
+project: kit
+text: Video
+title: Video
+lead: Start playing videos as they are shown or enter the viewport.
+meta:
+  description: Start playing videos as they are shown or enter the viewport.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+The Video component offers two advanced functions for videos. First, it allows you to pause a video whenever it's hidden with CSS and resume playing once it becomes visible again. In addition, the video can pause when it's outside the viewport and start playing when entering it.
+
+Secondly, it allows you to mute YouTube and Vimeo videos, which is often needed if they are used as the background of a section.
+
+For example, the [Slideshow](/docs/2.1/slideshow#videos), [Lightbox](/docs/2.1/lightbox#content-sources) and [Cover](/docs/2.1/cover#video) components inherit and make use of both functions.
+
+## Usage
+
+To apply this component, add the `data-uk-video` attribute to a `<video>` element. The video will be paused whenever it's hidden with CSS and resume once it becomes visible again.
+
+<Ec project="kit" path="video.1" />
+
+<Snippet project="kit" component="video.basic" />
+
+## Autoplay
+
+There are two autoplay options to play the video. Just add the `autoplay` option to the `data-uk-video` attribute and apply one of these values.
+
+| Values   | Description                                                                                    |
+| -------- | ---------------------------------------------------------------------------------------------- |
+| `inview` | Play video when it enters the viewport and pause it again when it leaves the viewport.         |
+| `hover`  | Play video when the mouse hovers the video and pause it again when the mouse leaves the hover. |
+
+<Ec project="kit" path="video.2" />
+
+<Snippet project="kit" component="video.autoplay" />
+
+## Automute YouTube or Vimeo
+
+To mute YouTube or Vimeo videos by default, add the `data-uk-video="automute: true"` attribute to the `<iframe>` element.
+
+<Ec project="kit" path="video.3" />
+
+<Snippet project="kit" component="video.automute" />
+
+## Component options
+
+Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/2.1/javascript#component-configuration)
+
+| Option     | Value           | Default | Description                                                                                                                                                                       |
+| ---------- | --------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `autoplay` | Boolean, String | `true`  | The video automatically plays/pauses as it's visible/hidden on the page. Additionally, the video can play when its in the viewport or hovered with the mouse (`inview`, `hover`). |
+| `automute` | Boolean         | `false` | Automatically mute YouTube or Vimeo videos.                                                                                                                                       |
+
+`autoplay` is the _Primary_ option, and its key may be omitted if it's the only option in the attribute value.
+
+## JavaScript
+
+Learn more about [JavaScript components](/docs/2.1/javascript#programmatic-use).
+
+### Initialization
+
+<Ec project="kit" path="video.4" />
