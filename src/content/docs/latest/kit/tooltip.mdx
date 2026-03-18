@@ -1,0 +1,119 @@
+---
+group: components
+project: kit
+text: Tooltip
+title: Tooltip
+lead: Easily create a nice looking tooltip.
+meta:
+  description: Easily create a nice looking tooltip.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+To apply this component, add the `data-uk-tooltip` attribute to an element. You also need to add the `title: TEXT` option to the attribute, whose value will represent your tooltip's text.
+
+<Ec project="kit" path="tooltip.1" />
+
+If `title` is the only option in the attribute value, you can also use `uk-tooltip="TEXT"`
+
+<Ec project="kit" path="tooltip.2" />
+
+<Snippet project="kit" component="tooltip.basic" />
+
+## Alignment
+
+Add one of the following options to the `data-uk-tooltip` attribute to adjust the tooltip's alignment.
+
+<Ec project="kit" path="tooltip.3" />
+
+| Attribute           | Description                             |
+| ------------------- | --------------------------------------- |
+| `pos: top`          | Aligns the tooltip to the top.          |
+| `pos: top-left`     | Aligns the tooltip to the top left.     |
+| `pos: top-right`    | Aligns the tooltip to the top right.    |
+| `pos: bottom`       | Aligns the tooltip to the bottom.       |
+| `pos: bottom-left`  | Aligns the tooltip to the bottom left.  |
+| `pos: bottom-right` | Aligns the tooltip to the bottom right. |
+| `pos: left`         | Aligns the tooltip to the left.         |
+| `pos: right`        | Aligns the tooltip to the right.        |
+
+<Snippet project="kit" component="tooltip.alignment" />
+
+## Delay
+
+If you want the tooltip to appear with a little delay, just add the `delay` option to the `data-uk-tooltip` attribute with your value in milliseconds.
+
+<Ec project="kit" path="tooltip.4" />
+
+<Snippet project="kit" component="tooltip.delay" />
+
+## Component options
+
+Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/2.1/javascript#component-configuration)
+
+| Option      | Value  | Default            | Description                                                                                          |
+| ----------- | ------ | ------------------ | ---------------------------------------------------------------------------------------------------- |
+| `title`     | String |                    | Tooltip text.                                                                                        |
+| `pos`       | String | `top-center`       | Tooltip position.                                                                                    |
+| `offset`    | Number | `false`            | Tooltip offset.                                                                                      |
+| `animation` | String | `uk-anmt-scale-up` | Space-separated names of [animations](/docs/2.1/animation). Comma-separated for animation out.           |
+| `duration`  | Number | `100`              | The animation duration.                                                                              |
+| `delay`     | Number | `0`                | The show delay.                                                                                      |
+| `cls`       | String | `uk-active`        | The active class.                                                                                    |
+| `container` | String | `body`             | Define a target container via a selector to specify where the tooltip should be appended in the DOM. |
+
+`title` is the _Primary_ option and its key may be omitted, if it's the only option in the attribute value.
+
+<Ec project="kit" path="tooltip.5" />
+
+## JavaScript
+
+Learn more about [JavaScript components](/docs/2.1/javascript#programmatic-use).
+
+### Initialization
+
+<Ec project="kit" path="tooltip.6" />
+
+### Events
+
+The following events will be triggered on elements, which are injected by this component:
+
+| Name         | Description                                                                                    |
+| ------------ | ---------------------------------------------------------------------------------------------- |
+| `beforeshow` | Fires before an item is shown. Can prevent showing by calling `preventDefault()` on the event. |
+| `show`       | Fires after an item is shown.                                                                  |
+| `shown`      | Fires after the item's show animation has completed.                                           |
+| `beforehide` | Fires before an item is hidden. Can prevent hiding by calling `preventDefault()` on the event. |
+| `hide`       | Fires after an item's hide animation has started.                                              |
+| `hidden`     | Fires after an item is hidden.                                                                 |
+
+#### Example
+
+<Ec project="kit" path="tooltip.7" />
+
+### Methods
+
+The following methods are available for the component:
+
+#### Show
+
+<Ec project="kit" path="tooltip.8" />
+
+Shows the Tooltip.
+
+#### Hide
+
+<Ec project="kit" path="tooltip.9" />
+
+Hides the Tooltip.
+
+## Accessibility
+
+The Tooltip component adheres to the [Tooltip Widget WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/) and automatically sets the appropriate WAI-ARIA roles, states and properties.
+
+- The _element with the tooltip_ has an ID.
+- The _tooltip_ has the `tooltip` role and the `aria-describedby` property set to the ID of the element with the tooltip.
