@@ -16,13 +16,13 @@ import Snippet from "snippets/component.astro";
 
 The Scrollspy component listens to page scrolling and triggers events based on the scroll position. For example, if you scroll down a page, and an element appears in the viewport for the first time, you can trigger a smooth animation to fade in the element. Just add the `data-uk-scrollspy` attribute which takes the following options.
 
-Typically, classes from the [Animation component](/docs/2.1/animation) are used together with the Scrollspy component.
+Typically, classes from the [Animation component](/docs/latest/kit/animation) are used together with the Scrollspy component.
 
 <Ec project="kit" path="scrollspy.1" />
 
 <Snippet project="kit" component="scrollspy.basic" />
 
-This example uses the `repeat: true` option. Scroll up and down to see the triggered animations. The layout is made with the [Card component](/docs/2.1/card).
+This example uses the `repeat: true` option. Scroll up and down to see the triggered animations. The layout is made with the [Card component](/docs/latest/kit/card).
 
 ## Groups
 
@@ -42,7 +42,7 @@ You can also give each target a separate `cls` option. Just add the `data-uk-scr
 
 ## Component options
 
-Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/2.1/javascript#component-configuration)
+Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/latest/kit/javascript#component-configuration)
 
 | Option   | Value                 | Default | Description                                                                                                                                |
 | -------- | --------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -59,7 +59,7 @@ Any of these options can be applied to the component attribute. Separate multipl
 
 ## JavaScript
 
-Learn more about [JavaScript components](/docs/2.1/javascript#programmatic-use).
+Learn more about [JavaScript components](/docs/latest/kit/javascript#programmatic-use).
 
 ### Initialization
 
@@ -84,19 +84,19 @@ For an example of the scrollspy nav, just check out the fixed nav on the right s
 
 ### Scrollspy nav options
 
-Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/2.1/javascript#component-configuration)
+Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/latest/kit/javascript#component-configuration)
 
 | Option    | Value                 | Default     | Description                                                   |
 | --------- | --------------------- | ----------- | ------------------------------------------------------------- |
 | `cls`     | String                | `uk-active` | Class to add to the active links.                             |
 | `closest` | Boolean, CSS selector | `false`     | Target to apply the class to. Defaults to the element itself. |
-| `scroll`  | Boolean               | `false`     | Adds the [Scroll component](/docs/2.1/scroll) to its links.       |
+| `scroll`  | Boolean               | `false`     | Adds the [Scroll component](/docs/latest/kit/scroll) to its links.       |
 | `target`  | CSS selector          | `a[href]`   | Targets the anchor elements that should be used.              |
 | `offset`  | Number                | `0`         | Offset added to scroll top.                                   |
 
 ### Scrollspy nav JavaScript
 
-Learn more about [JavaScript components](/docs/2.1/javascript#programmatic-use).
+Learn more about [JavaScript components](/docs/latest/kit/javascript#programmatic-use).
 
 ### Scrollspy nav initialization
 
