@@ -1,0 +1,86 @@
+---
+group: components
+project: kit
+text: Scroll
+title: Scroll
+lead: Scroll smoothly when jumping to different sections on a page.
+meta:
+  description: Scroll smoothly when jumping to different sections on a page.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+Simply add the `data-uk-scroll` attribute to any page-internal link that contains a URL fragment to add the smooth scrolling behavior.
+
+<Ec project="kit" path="scroll.1" />
+
+<Snippet project="kit" component="scroll.basic" />
+
+The height of a sticky element, for example the sticky navbar, is automatically added as offset to the scroll target so it is not covered by the sticky element.
+
+## Offset
+
+To define a general offset when linking directly to a specific section on a page, add the `offset` option.
+
+<Ec project="kit" path="scroll.2" />
+
+If there is already an offset for a sticky element, the `offset` option is added up.
+
+## Callback after scroll
+
+To receive a callback when scrolling has completed, you can listen to the `scrolled` event on the link element that triggered the scrolling.
+
+<Ec project="kit" path="scroll.3" />
+
+<Ec project="kit" path="scroll.4" />
+
+<Snippet project="kit" component="scroll.callback" />
+
+## Component options
+
+Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/2.1/javascript#component-configuration)
+
+| Option   | Value  | Default | Description                 |
+| -------- | ------ | ------- | --------------------------- |
+| `offset` | Number | `0`     | Offset added to scroll top. |
+
+## JavaScript
+
+Learn more about [JavaScript components](/docs/2.1/javascript#programmatic-use).
+
+### Initialization
+
+<Ec project="kit" path="scroll.5" />
+
+### Events
+
+The following events will be triggered on elements with this component attached:
+
+| Name           | Description                                                                                   |
+| -------------- | --------------------------------------------------------------------------------------------- |
+| `beforescroll` | Fires before scroll begins. Can prevent scrolling by calling `preventDefault()` on the event. |
+| `scrolled`     | Fires after scrolling is finished.                                                            |
+
+### Methods
+
+The following methods are available for the component:
+
+#### ScrollTo
+
+<Ec project="kit" path="scroll.6" />
+
+Scroll to the given element.
+
+| Name | Type           | Default   | Description               |
+| ---- | -------------- | --------- | ------------------------- |
+| `el` | Node, Selector | undefined | The element to scroll to. |
+
+<div style="height: 2000px;"></div>
+
+<a id="target" class="uk-button uk-button-primary" href="#" data-uk-scroll>
+  Scroll up
+</a>

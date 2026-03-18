@@ -1,0 +1,16 @@
+<a
+  id="js-scroll-trigger"
+  class="uk-button uk-button-primary"
+  href="#target"
+  data-uk-scroll
+>
+  Down with callback
+</a>
+
+<script>
+  document.addEventListener("uikit:init", () => {
+    UIkit.util.on("#js-scroll-trigger", "scrolled", function () {
+      UIkit.modal.dialog('<p class="uk-modal-body">Done</p>');
+    });
+  });
+</script>
