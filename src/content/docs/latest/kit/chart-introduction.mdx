@@ -14,7 +14,7 @@ import Ec from "snippets/ec.astro";
 import Installation from "components/partials/kit/installation.astro";
 import Snippet from "snippets/component.astro";
 import Charts from "components/partials/kit/charts.astro";
-import WizardChart from 'components/partials/kit/wizard_chart/latest.astro';
+import WizardChart from "components/partials/kit/wizard_chart/latest.astro";
 
 ## Installation
 
@@ -40,8 +40,10 @@ To enable reactivity, simply add the `reactive` attribute to the `<script data-f
 
 ## Attributes
 
-| Name                     | Type    | Default | Description                                                                                                                                                |
-| ------------------------ | ------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `force-prevent-rerender` | Boolean | false   | Forcefully prevents component rerendering.                                                                                                                 |
-| `cls-custom`             | String  |         | Allows you to add custom CSS classes, which will be attached to the `<div>` tag.                                                                           |
-| `reactive`               | Boolean | false   | Enables reactivity by using `MutationObserver` to monitor the referenced `<script>` element for changes, triggering updates to the `<uk-chart>` component. |
+| Name                     | Type    | Default  | Description                                                                                                     |
+| ------------------------ | ------- | -------- | --------------------------------------------------------------------------------------------------------------- |
+| `force-prevent-rerender` | Boolean | `false`  | Forcefully prevents component rerendering.                                                                      |
+| `cls`                    | String  |          | Allows you to add custom CSS classes, which will be attached to the `<div>` tag.                                |
+| `loading`                | Boolean | `false`  | Displays a loading state before the chart is rendered. Useful when chart data is being fetched asynchronously.  |
+| `width`                  | String  | `"100%"` | Sets the width of the chart container. Accepts a pixel value or any valid CSS unit (e.g. `"500px"`, `"100%"`).  |
+| `height`                 | String  | `"auto"` | Sets the height of the chart container. Accepts a pixel value or any valid CSS unit (e.g. `"400px"`, `"50vh"`). |
