@@ -72,7 +72,7 @@
 
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.5/dist/css/frankenstyle-kit.min.css"
+      href="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.6/dist/css/frankenstyle-kit.min.css"
     />
 
     <script>
@@ -97,7 +97,7 @@
 
     <!-- Load the core file in the <head> -->
     <script
-      src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.5/dist/js/hwc-core.iife.js"
+      src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.6/dist/js/hwc-core.iife.js"
       type="module"
     ></script>
   </head>
@@ -140,30 +140,30 @@
 
     <!-- Optional: Runtime -->
     <script
-      src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.5/dist/js/frankenstyle.iife.js"
+      src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.6/dist/js/frankenstyle.iife.js"
       type="module"
     ></script>
 
     <!-- Optional: Icons -->
     <script
-      src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.5/dist/js/hwc-icon.iife.js"
+      src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.6/dist/js/hwc-icon.iife.js"
       type="module"
     ></script>
 
     <!-- Optional: Charts -->
     <script
-      src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.5/dist/js/hwc-chart.iife.js"
+      src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.6/dist/js/hwc-chart.iife.js"
       type="module"
     ></script>
 
     <!-- Load components last -->
     <script
-      src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.5/dist/js/hwc-components.iife.js"
+      src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.6/dist/js/hwc-components.iife.js"
       type="module"
     ></script>
 
     <!-- Optional: Frankternity core file -->
-    <script src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.5/dist/js/ft-core.iife.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.6/dist/js/ft-core.iife.js"></script>
 
     <!-- You can load Frankternity components below -->
   </body>
