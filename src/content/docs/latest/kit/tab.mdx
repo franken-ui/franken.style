@@ -14,7 +14,7 @@ import Snippet from "snippets/component.astro";
 
 ## Usage
 
-The Tab component consists of clickable tabs, that are aligned side by side in a list. Its JavaScript functionality extends the [Switcher component](/docs/2.1/switcher) and is necessary to dynamically transition through different contents using the tabbed navigation.
+The Tab component consists of clickable tabs, that are aligned side by side in a list. Its JavaScript functionality extends the [Switcher component](/docs/latest/kit/switcher) and is necessary to dynamically transition through different contents using the tabbed navigation.
 
 | Class/Attribute | Description                                                                                                                                                    |
 | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -44,7 +44,7 @@ Add the `.uk-tab-bottom` class to flip tab items to the bottom.
 
 Add the `.uk-tab-left` or `.uk-tab-right` class to align tabs vertically to the left or right side. To save space, the alignment automatically switches back to horizontal when the viewport width goes below 960px.
 
-When using the vertical alignment, you will usually create a grid to apply the layout as seen in the [Switcher example](/docs/2.1/switcher#vertical-tabs).
+When using the vertical alignment, you will usually create a grid to apply the layout as seen in the [Switcher example](/docs/latest/kit/switcher#vertical-tabs).
 
 <Ec project="kit" path="tab.3" />
 
@@ -66,7 +66,7 @@ You can combine tabs with the utility classes from Tailwind CSS to modify the al
 
 ## Tabs and Dropdown
 
-Tabs can be used to trigger a dropdown menu from the [Dropdown component](/docs/2.1/dropdown).
+Tabs can be used to trigger a dropdown menu from the [Dropdown component](/docs/latest/kit/dropdown).
 
 <Ec project="kit" path="tab.6" />
 
@@ -74,21 +74,21 @@ Tabs can be used to trigger a dropdown menu from the [Dropdown component](/docs/
 
 ## Component options
 
-Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/2.1/javascript#component-configuration)
+Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/latest/kit/javascript#component-configuration)
 
 | Option      | Value          | Default | Description                                                                                                                                                  |
 | ----------- | -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `connect`   | CSS selector   | `false` | Related item's container. By default, this is the next element with the 'uk-switcher' class.                                                                 |
 | `toggle `   | CSS selector   | `> *`   | The toggle selector, which triggers content switching on click.                                                                                              |
 | `active `   | Number         | `0`     | Active index on init. Providing a negative number indicates a position starting from the end of the set.                                                     |
-| `animation` | String         | `false` | Space-separated names of [animations](/docs/2.1/animation). Comma-separated for animation out.                                                                   |
+| `animation` | String         | `false` | Space-separated names of [animations](/docs/latest/kit/animation). Comma-separated for animation out.                                                                   |
 | `duration`  | Number         | `200`   | The animation duration.                                                                                                                                      |
 | `swiping`   | Boolean        | `true`  | Use swiping.                                                                                                                                                 |
 | `media`     | Number, String | `960`   | When to switch to horizontal mode - a width as integer (e.g. 640) or a breakpoint (e.g. @s, @m, @l, @xl) or any valid media query (e.g. (min-width: 900px)). |
 
 ## JavaScript
 
-Learn more about [JavaScript components](/docs/2.1/javascript#programmatic-use).
+Learn more about [JavaScript components](/docs/latest/kit/javascript#programmatic-use).
 
 ### Initialization
 
@@ -125,7 +125,7 @@ Shows the Tab item with given index.
 
 The Tab component adheres to the [Tab WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/) and automatically sets the appropriate WAI-ARIA roles, states and properties.
 
-- The _tab navigation_ has the `tablist` role, and if it is a [Nav component](/docs/2.1/nav), the `aria-orientation` state set to `vertical`.
+- The _tab navigation_ has the `tablist` role, and if it is a [Nav component](/docs/latest/kit/nav), the `aria-orientation` state set to `vertical`.
 - The _tab navigation items_ have the `presentation` role.
 - The _tab navigation links_ have an ID, the `tab` role, the `aria-selected` state and the `aria-controls` property set to the ID of the respective content item.
 - The _content list_ has the `presentation` role.
