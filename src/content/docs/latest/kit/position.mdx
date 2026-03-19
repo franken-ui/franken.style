@@ -1,0 +1,123 @@
+---
+group: components
+project: kit
+text: Position
+title: Position
+lead: A collection of utility classes to position content.
+meta:
+  description: A collection of utility classes to position content.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+To apply this component, add one of the `.uk-position-*` classes to a block element. When using this component to place content on top of an image, add the `.uk-inline` class to a container element around the image and the element to create a position context.
+
+| Class                 | Description                          |
+| --------------------- | ------------------------------------ |
+| `.uk-position-top`    | Positions the element at the top.    |
+| `.uk-position-left`   | Positions the element at the left.   |
+| `.uk-position-right`  | Positions the element at the right.  |
+| `.uk-position-bottom` | Positions the element at the bottom. |
+
+<Ec project="kit" path="position.1" />
+
+<Snippet project="kit" component="position.basic" />
+
+### X and Y directions
+
+You can also apply more specific positions that won't spread over one side of the parent container by adding one of the following classes.
+
+| Class                        | Description                                              |
+| ---------------------------- | -------------------------------------------------------- |
+| `.uk-position-top-left`      | Positions the element at the top left.                   |
+| `.uk-position-top-center`    | Positions the element at the top center.                 |
+| `.uk-position-top-right`     | Positions the element at the top right.                  |
+| `.uk-position-center`        | Positions the element vertically centered in the middle. |
+| `.uk-position-center-left`   | Positions the element vertically centered on the left.   |
+| `.uk-position-center-right`  | Positions the element vertically centered on the right.  |
+| `.uk-position-bottom-left`   | Positions the element at the bottom left.                |
+| `.uk-position-bottom-center` | Positions the element at the bottom center.              |
+| `.uk-position-bottom-right`  | Positions the element at the bottom right.               |
+
+<Ec project="kit" path="position.2" />
+
+<Snippet project="kit" component="position.xy_directions" />
+
+### Center
+
+You can also apply more specific positions that won't spread over one side of the parent container by adding one of the following classes.
+
+| Class                            | Description                                             |
+| -------------------------------- | ------------------------------------------------------- |
+| `.uk-position-center-horizontal` | Positions the element at the center from top to bottom. |
+| `.uk-position-center-vertical`   | Positions the element at the center from left to right. |
+
+<Ec project="kit" path="position.3" />
+
+<Snippet project="kit" component="position.center" />
+
+### Cover
+
+If you want a position element to cover its container, just add the `.uk-position-cover` class.
+
+<Ec project="kit" path="position.4" />
+
+<Snippet project="kit" component="position.cover" />
+
+### Outside
+
+There are two classes to center elements outside on the left and right of the parent container. This is useful to position the [Slidenav component](/docs/2.1/slidenav) outside of a [Slideshow](/docs/2.1/slideshow) or [Slider](/docs/2.1/slider) component.
+
+| Class                           | Description                                                     |
+| ------------------------------- | --------------------------------------------------------------- |
+| `.uk-position-center-left-out`  | Positions the element vertically centered outside on the left.  |
+| `.uk-position-center-right-out` | Positions the element vertically centered outside on the right. |
+
+<span class="uk-label uk-label-primary">Note</span> Once the outside positioned
+element sticks out of the viewport to the right, it will cause a horizontal
+scrollbar. You can use the visibility utility classes to hide the outside
+positioned element on a smaller viewports and show an inside positioned element
+instead.
+
+<Ec project="kit" path="position.5" />
+
+<Snippet project="kit" component="position.outside" />
+
+## Small modifier
+
+To apply a small margin to positioned elements, add the `.uk-position-sm` class.
+
+<Ec project="kit" path="position.6" />
+
+<Snippet project="kit" component="position.small" />
+
+## Medium modifier
+
+To apply a medium margin to positioned elements, add the `.uk-position-md` class.
+
+<Ec project="kit" path="position.7" />
+
+<Snippet project="kit" component="position.medium" />
+
+## Large modifier
+
+To apply a large margin to positioned elements, add the `.uk-position-lg` class.
+
+<Ec project="kit" path="position.8" />
+
+<Snippet project="kit" component="position.large" />
+
+## Utility classes
+
+This component features a number of general position utility classes:
+
+| Class                   | Description                                   |
+| ----------------------- | --------------------------------------------- |
+| `.uk-position-relative` | Add this class to apply relative positioning. |
+| `.uk-position-absolute` | Add this class to apply absolute positioning. |
+| `.uk-position-fixed`    | Add this class to apply fixed positioning.    |
+| `.uk-position-z-index`  | Add this class to apply a z-index of 1.       |

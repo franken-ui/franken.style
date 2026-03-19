@@ -1,0 +1,111 @@
+---
+group: components
+project: kit
+text: Notification
+title: Notification
+lead: Create toggleable notifications that fade out automatically.
+meta:
+  description: Create toggleable notifications that fade out automatically.
+keywords: "toast,sonner"
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+The notification will not fade out but remain visible when you hover the message until you stop hovering. You can also close the notification by clicking it. To show notifications, the component provides a simple JavaScript API. The following code snippet gets you started.
+
+### JavaScript
+
+<Ec project="kit" path="notification.1" />
+
+<Snippet project="kit" component="notification.basic" />
+
+## HTML message
+
+You can use HTML inside your notification message, like an icon from the Icon component.
+
+<Ec project="kit" path="notification.2" />
+
+<Snippet project="kit" component="notification.html_message" />
+
+## Position
+
+Add one of the following parameters to adjust the notification's position to different corners.
+
+<Ec project="kit" path="notification.3" />
+
+| Position        | Code                                                |
+| --------------- | --------------------------------------------------- |
+| `top-left`      | `UIkit.notification("...", {pos: 'top-left'})`      |
+| `top-center`    | `UIkit.notification("...", {pos: 'top-center'})`    |
+| `top-right`     | `UIkit.notification("...", {pos: 'top-right'})`     |
+| `bottom-left`   | `UIkit.notification("...", {pos: 'bottom-left'})`   |
+| `bottom-center` | `UIkit.notification("...", {pos: 'bottom-center'})` |
+| `bottom-right`  | `UIkit.notification("...", {pos: 'bottom-right'})`  |
+
+<Snippet project="kit" component="notification.position" />
+
+## Status
+
+<Ec project="kit" path="notification.4" />
+
+<Snippet project="kit" component="notification.status" />
+
+## Close all
+
+You can close all open notifications by calling `UIkit.notification.closeAll()`.
+
+<Snippet project="kit" component="notification.close_all" />
+
+## Component options
+
+Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/2.1/javascript#component-configuration)
+
+| Option     | Value  | Default      | Description                                                                                                   |
+| ---------- | ------ | ------------ | ------------------------------------------------------------------------------------------------------------- |
+| `message ` | String | `false`      | Notification message to show.                                                                                 |
+| `status`   | String | `null`       | Notification status color.                                                                                    |
+| `timeout`  | Number | `5000`       | Visibility duration until a notification disappears. If set to `0`, notification will not hide automatically. |
+| `group`    | String |              | Useful, if you want to close all notifications in a specific group.                                           |
+| `pos`      | String | `top-center` | Display corner.                                                                                               |
+
+## JavaScript
+
+Learn more about [JavaScript components](/docs/2.1/javascript#programmatic-use).
+
+### Initialization
+
+This is a `Functional Component` and may omit the element argument.
+
+<Ec project="kit" path="notification.5" />
+
+### Events
+
+The following events will be triggered on elements with this component attached:
+
+| Name    | Description                                   |
+| ------- | --------------------------------------------- |
+| `close` | Fires after the notification has been closed. |
+
+### Methods
+
+The following methods are available for the component:
+
+#### Close
+
+<Ec project="kit" path="notification.6" />
+
+Closes the notification.
+
+| Name        | Type    | Default | Description                      |
+| ----------- | ------- | ------- | -------------------------------- |
+| `immediate` | Boolean | true    | Transition the notification out. |
+
+## Accessibility
+
+The Notification component automatically sets the appropriate WAI-ARIA role, states and properties.
+
+- The _notification_ has the `alert` role.

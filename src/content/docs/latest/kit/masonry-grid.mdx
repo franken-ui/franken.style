@@ -1,0 +1,67 @@
+---
+group: components
+project: kit
+text: Masonry Grid
+title: Masonry Grid
+lead: Learn how to easily create responsive and visually stunning grids.
+meta:
+  description: Learn how to easily create responsive and visually stunning grids.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+To create the masonry grid, add the `uk-grid="masonry: true"` attribute to a `<div>` element with either `.flex` and `.flex-wrap` or with `.grid` class to create a layout free of gaps.
+
+<Snippet project="kit" component="masonry_grid.basic" />
+
+## Masonry pack
+
+To sort items into columns with the most room to make column heights as equal as possible, you can use the `uk-grid="masonry: pack"` attribute.
+
+<Snippet project="kit" component="masonry_grid.pack" />
+
+## Masonry next
+
+To sort items with their natural order, simply use the `uk-grid="masonry: next"` attribute.
+
+<Snippet project="kit" component="masonry_grid.next" />
+
+## With parallax
+
+To move single columns of a grid at different speeds while scrolling, just add `parallax: NUMBER` to the `uk-grid` attribute. The number sets the parallax translation in pixels.
+
+<Snippet project="kit" component="masonry_grid.parallax" />
+
+To adjust the grid parallax duration, set the `parallax-start` and `parallax-end` options. The `parallax-start` option defines when the animation starts. The default value of `0` means that the grid's top border and the viewport's bottom border intersect. The `end` option defines when the animation ends. The default value of `0` means that the grid's bottom border and the viewport's top border intersect. Values can be set in any dimension units, namely `vh`, `%` and `px`. The `%` unit relates to the grid's height. Both options allow basic mathematics operands, `+` and `-`.
+
+<Ec project="kit" path="masonry_grid.1" />
+
+To justify the grid parallax if columns have different heights, for example in masonry grids, set the `parallax-justify: true` option so all grid columns reach the bottom at the same time. Set `parallax: 0` to only move the columns by their height until they justify. But of course an additional parallax translation value can be set as well.
+
+<Ec project="kit" path="masonry_grid.2" />
+
+## Component options
+
+Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/2.1/javascript#component-configuration)
+
+| Option             | Value           | Default                 | Description                                                                                                                                                                                         |
+| ------------------ | --------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `margin `          | String          | `uk-grid-margin`        | This class is added to items that break into the next row, typically to create margin to the previous row.                                                                                          |
+| `first-column`     | String          | `uk-first-column`       | This class is added to the first element in each row.                                                                                                                                               |
+| `masonry`          | String, Boolean | `false`, `pack`, `next` | Enables masonry layout for this grid.                                                                                                                                                               |
+| `parallax`         | Number          | `0`                     | Parallax translation value. The value can be in vh, % and px. Falsy disables the parallax effect (default).                                                                                         |
+| `parallax-start`   | Length          | `0`                     | Start offset. The value can be in vh, % and px. It supports basic mathematics operands + and -. The default value of `0` means that the grid's top border and viewport's bottom border intersect.   |
+| `parallax-end`     | Length          | `0`                     | End offset. The value can be in vh, % and px. It supports basic mathematics operands + and -. The default value of `0` means that the grid's bottom border and the viewport's top border intersect. |
+| `parallax-justify` | Boolean         | `false`                 | With parallax enabled, all columns will reach the bottom at the same time.                                                                                                                          |
+
+## JavaScript
+
+Learn more about [JavaScript components](/docs/2.1/javascript#programmatic-use).
+
+### Initialization
+
+<Ec project="kit" path="masonry_grid.3" />

@@ -1,0 +1,131 @@
+---
+group: components
+project: kit
+text: Sticky
+title: Sticky
+lead: Make elements remain at the top of the viewport, like a sticky navigation.
+meta:
+  description: Make elements remain at the top of the viewport, like a sticky navigation.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+To create an element that remains at the top of the viewport when scrolling down the site, add the `data-uk-sticky` attribute to that element.
+
+<Ec project="kit" path="sticky.1" />
+
+<Snippet project="kit" component="sticky.basic" />
+
+<span class="uk-label uk-label-primary">Note</span> Example elements on this
+page are only sticky until you scroll down to the next heading and disappear
+afterwards. This was done so as not to clutter your screen with all variations
+of sticky containers.
+
+## Position
+
+By default, the element sticks to the top of the viewport. You can set the `position: bottom` option to stick it to the bottom of the viewport.
+
+<Ec project="kit" path="sticky.2" />
+
+<Snippet project="kit" component="sticky.position" />
+
+## Start
+
+To apply an offset to when the element should start being sticky, add the `start` option. The value can be in vh, % and px. It supports basic mathematics operands + and -. The default value of `0` means that the element's top border and viewport's top border intersect. A CSS Selector will set start to the selected element's bottom border and the element's top border.
+
+<Ec project="kit" path="sticky.3" />
+
+<Snippet project="kit" component="sticky.start" />
+
+## End
+
+To apply an offset to when the element should stop being sticky, add the `stop` option. The value can be in vh, % and px. It supports basic mathematics operands + and -. A value of `0` means that the element's top border and viewport's top border intersect, which would cause the element not to be sticky at all if start is also set to `0`. A CSS Selector will set the end to the selected element's bottom border and the element's bottom border. `false` will make the element stick until the end of the page. `true` selects the parent element.
+
+<Ec project="kit" path="sticky.4" />
+
+<Snippet project="kit" component="sticky.end" />
+
+## Offset
+
+To set an offset to the viewport's edge when the element is sticky, add the `offset` option. The value can be in vh, % and px. It supports basic mathematics operands + and -.
+
+<Ec project="kit" path="sticky.5" />
+
+<Snippet project="kit" component="sticky.offset" />
+
+## Animation
+
+Add an animation from the [Animation component](/docs/2.1/animation) in order to have the sticky element reappear smoothly if a start offset is set.
+
+<Ec project="kit" path="sticky.6" />
+
+<Snippet project="kit" component="sticky.animation" />
+
+## Show On Up
+
+You can make the sticky element show only when scrolling up to save space. Together with an animation, this makes for a very smooth experience.
+
+<Ec project="kit" path="sticky.7" />
+
+<Snippet project="kit" component="sticky.show_on_up" />
+
+## Responsive
+
+It's possible to disable the sticky behavior for different device widths by applying the `media` option to the attribute and adding the appropriate viewport width. Add a number in pixel, for example `media: 640`, or a breakpoint, for example `media: @m`. The element will be sticky from the specified viewport width and upwards, but not below.
+
+<Ec project="kit" path="sticky.8" />
+
+<Snippet project="kit" component="sticky.responsive" />
+
+## Oversized Content
+
+Sticky content that is larger than the viewport will scroll down and stick to the bottom of the viewport. Changing the scroll direction will immediately scroll the sticky content up and change the sticky behavior to stick to the top of the viewport. Scrolling down will change the behavior again.
+
+<Snippet project="kit" component="sticky.oversized_content" />
+
+## Overflow Flip
+
+The `overflow-flip` option disables the sticky behavior for oversized content. Instead, it only flips the sticky position if the element is larger than the viewport. Changing the scroll direction will not affect the sticky position. Together with the `start` and `end` options, two nice sticky effects can be achieved. Cover an element by following content or reveal it by previous content.
+
+<Ec project="kit" path="sticky.9" />
+
+<Snippet project="kit" component="sticky.overflow_flip" />
+
+## Component options
+
+Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/2.1/javascript#component-configuration)
+
+| Option           | Value                         | Default     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ---------------- | ----------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `position`       | `top`, `bottom`               | `top`       | The position the element should be stuck to.                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `start`          | Length, CSS Selector          | `0`         | Start offset. The value can be in vh, % and px. It supports basic mathematics operands + and -. The default value of `0` means that the element's top border and viewport's top border intersect. A CSS Selector will set start to the selected element's bottom border and the element's top border.                                                                                                                                                                        |
+| `end `           | Length, CSS Selector, Boolean | `false`     | End offset. The value can be in vh, % and px. It supports basic mathematics operands + and -. A value of `0` means that the element's top border and viewport's top border intersect, which would cause the element not to be sticky at all if start is also set to `0`. A CSS Selector will set the end to the selected element's bottom and the element's bottom border. `false` will make the element stick until the end of the page. `true` selects the parent element. |
+| `offset `        | Length                        | `0`         | The offset the Sticky should be fixed to. The value can be in vh, % and px. It supports basic mathematics operands + and -.                                                                                                                                                                                                                                                                                                                                                  |
+| `overflow-flip ` | Boolean                       | `false`     | Flip the Sticky's position option if the element overflows the viewport and disable overflow scrolling.                                                                                                                                                                                                                                                                                                                                                                      |
+| `animation `     | String                        | `false`     | The animation to use when the element becomes sticky.                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `cls-active`     | String                        | `uk-active` | The active class.                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `cls-inactive`   | String                        |             | The inactive class.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `show-on-up`     | Boolean                       | `false`     | Only show sticky element when scrolling up.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `media `         | Number, String                | `false`     | Condition for the active status - a width as integer (e.g. 640) or a breakpoint (e.g. @s, @m, @l, @xl) or any valid media query (e.g. (min-width: 900px)).                                                                                                                                                                                                                                                                                                                   |
+| `target-offset ` | `false`, Length               | `false`     | Initially make sure that the Sticky element is not over a referenced element via the page's location hash. The offset defines by how far the element will be above the referenced element. `false` will disable this behavior.                                                                                                                                                                                                                                               |
+
+## JavaScript
+
+Learn more about [JavaScript components](/docs/2.1/javascript#programmatic-use).
+
+### Initialization
+
+<Ec project="kit" path="sticky.10" />
+
+### Events
+
+The following events will be triggered on elements with this component attached:
+
+| Name       | Description                                  |
+| ---------- | -------------------------------------------- |
+| `active`   | Fires after the element becomes sticky.      |
+| `inactive` | Fires after the element is no longer sticky. |

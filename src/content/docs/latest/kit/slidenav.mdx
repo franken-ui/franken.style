@@ -1,0 +1,37 @@
+---
+group: components
+project: kit
+text: Slidenav
+title: Slidenav
+lead: Defines a navigation with previous and next buttons to flip through slideshows.
+meta:
+  description: Defines navigation with previous and next buttons to flip through slideshows.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+To create a navigation with previous and next buttons, just add the `data-uk-slidenav` attribute to `<a>` elements. Add the `previous` or `next` parameter to the attribute to style the nav items as previous or next buttons.
+
+<Ec project="kit" path="slidenav.1" />
+
+<Snippet project="kit" component="slidenav.basic" />
+
+## Slidenav container
+
+To display a conjoint slidenav, wrap the slidenav items inside a `<div>` element and add the `.uk-slidenav-container` class, as well as one of the `.uk-position-*` classes.
+
+<Ec project="kit" path="slidenav.2" />
+
+<Snippet project="kit" component="slidenav.container" />
+
+## Position as overlay
+
+To position the slidenav on top of an element or the [Slideshow component](/docs/2.1/slideshow) for example, just add one of the `.uk-position-*` classes from the [Position component](/docs/2.1/position). To create a position context on the container, add the `.uk-position-relative` class.
+
+<Ec project="kit" path="slidenav.3" />
+
+<Snippet project="kit" component="slidenav.overlay" />

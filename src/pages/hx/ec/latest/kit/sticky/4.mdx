@@ -1,0 +1,21 @@
+export const partial = true;
+
+```html
+<!-- Sticks until 200px scrolling -->
+<div data-uk-sticky="end: 200"></div>
+
+<!-- Sticks until scrolling the elements height -->
+<div data-uk-sticky="end: 100%"></div>
+
+<!-- Sticks until 20vh scrolling -->
+<div data-uk-sticky="end: 20vh"></div>
+
+<!-- Sticks until the bottom of the selected element -->
+<div data-uk-sticky="end: #my-id"></div>
+<div id="my-id"></div>
+
+<!-- Sticks until the bottom of its parent container -->
+<div>
+  <div data-uk-sticky="end: true"></div>
+</div>
+```

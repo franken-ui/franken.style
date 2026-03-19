@@ -1,0 +1,151 @@
+---
+group: components
+project: kit
+text: Toggle
+title: Toggle
+lead: Hide, switch or change the appearance of different contents through a toggle.
+meta:
+  description: Hide, switch or change the appearance of different contents through a toggle.
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+To apply this component, just add the `data-uk-toggle="target: #ID"` attribute to a `<button>` or `<a>` element. You can use any selector with the toggle attribute.
+
+The toggle can be used to add or remove a class or attribute from the item. By default, it adds the `hidden` attribute to hide the element.
+
+<Ec project="kit" path="toggle.1" />
+
+<Snippet project="kit" component="toggle.basic" />
+
+## Multiple items
+
+You can also toggle multiple items at the same time. Just add the `target: SELECTOR` option to the `data-uk-toggle` attribute and use a selector that applies to all items.
+
+<Ec project="kit" path="toggle.2" />
+
+<Snippet project="kit" component="toggle.multiple_items" />
+
+<span class="uk-label uk-label-primary">Note</span> In this example we added the
+`hidden` attribute to one of the items, so that only the other item will be
+shown. The toggle will switch visible states between both elements.
+
+## Custom class
+
+If you don't want to toggle the `hidden` attribute, you can also toggle a custom class. Just add the `cls: CLASS` option to the `data-uk-toggle` attribute. In this example we used the `.uk-card-primary` class to switch between different card styles.
+
+<Ec project="kit" path="toggle.3" />
+
+<Snippet project="kit" component="toggle.custom_class" />
+
+## Animations
+
+The Toggle component allows you to add animations to items when toggling between them. Just add one of the `.uk-animation-*` classes from the [Animation component](/docs/2.1/animation) to the animation parameter. The class will be applied to the in as well as the out animation. If you prefer a different animation, just add another class.
+
+<Ec project="kit" path="toggle.4" />
+
+<Snippet project="kit" component="toggle.animations" />
+
+### Multiple animations
+
+You can also apply multiple animations from the [Animation component](/docs/2.1/animation). That way you can add different in and out animations.
+
+<Ec project="kit" path="toggle.5" />
+
+<Snippet project="kit" component="toggle.multiple_animations" />
+
+### Queued animations
+
+When toggling multiple items with an animation, you might want to wait until the first animation has run through before animating the second item. To do so, just add the `queued: true` option to the `data-uk-toggle` attribute.
+
+<Ec project="kit" path="toggle.6" />
+
+<Snippet project="kit" component="toggle.queued_animations" />
+
+## Modes
+
+A toggle can be triggered in different ways. Just add the `mode` option to the `data-uk-toggle` attribute and apply one of these values.
+
+| Value          | Description                                                                      |
+| -------------- | -------------------------------------------------------------------------------- |
+| `hover`        | The toggle will be triggered on hover.                                           |
+| `click `       | The toggle will be triggered on click. This is the default value.                |
+| `click, hover` | The toggle will be triggered on click and hover.                                 |
+| `media`        | The toggling behavior depends on the viewport width. [More information](#media). |
+
+<Ec project="kit" path="toggle.7" />
+
+<Snippet project="kit" component="toggle.modes" />
+
+### Media
+
+When using the `media` mode, the `media` option with one of possible values has to be added as well. For example, add a number in pixels, e.g. `640`, or a breakpoint, e.g. `@s`, `@m`, `@l` or `@xl`. Without the `target` option, the toggle applies the toggled state to itself. This means it will switch between the different states that are defined in the `cls` option depending on the viewport width that it is displayed on.
+
+<Ec project="kit" path="toggle.8" />
+
+<Snippet project="kit" component="toggle.media" />
+
+<span class="uk-label uk-label-primary">Note</span> The initial toggle state
+depends on the `cls` option. It is either the first given class in the space
+separated list or if set to `false`, the `hidden` attribute. If more than one
+class is given, the other classes are simply being toggled on state change.
+
+## Component options
+
+Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/2.1/javascript#component-configuration)
+
+| Option      | Value          | Default | Description                                                                                                                                                                       |
+| ----------- | -------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `target`    | String         | `false` | CSS selector of the element(s) to toggle.                                                                                                                                         |
+| `mode`      | String         | `click` | Comma-separated list of trigger behaviour modes. (`hover`, `click`, `media`)                                                                                                      |
+| `cls`       | String         | `false` | The class that is being toggled. Defaults to the `hidden` attribute.                                                                                                              |
+| `media`     | Number, String | `false` | In media mode, the breakpoint that triggers the toggle - a width as integer (e.g. 640) or a breakpoint (e.g. @s, @m, @l, @xl) or any valid media query (e.g. (min-width: 900px)). |
+| `animation` | String         | `false` | Space-separated names of [animations](/docs/2.1/animation). Comma-separated for animation out.                                                                                        |
+| `duration`  | Number         | `200`   | Animation duration in milliseconds.                                                                                                                                               |
+| `queued`    | Boolean        | `true`  | Toggle the targets successively.                                                                                                                                                  |
+
+`target` is the _Primary_ option and its key may be omitted, if it's the only option in the attribute value.
+
+<Ec project="kit" path="toggle.9" />
+
+## JavaScript
+
+Learn more about [JavaScript components](/docs/2.1/javascript#programmatic-use).
+
+### Initialization
+
+<Ec project="kit" path="toggle.10" />
+
+### Events
+
+The following events will be triggered on elements with this component attached:
+
+| Name         | Description                                                                                    |
+| ------------ | ---------------------------------------------------------------------------------------------- |
+| `beforeshow` | Fires before an item is shown. Can prevent showing by calling `preventDefault()` on the event. |
+| `show`       | Fires after an item is shown.                                                                  |
+| `shown`      | Fires after the item's show animation has completed.                                           |
+| `beforehide` | Fires before an item is hidden. Can prevent hiding by calling `preventDefault()` on the event. |
+| `hide`       | Fires after an item's hide animation has started.                                              |
+| `hidden`     | Fires after an item is hidden.                                                                 |
+
+### Methods
+
+The following methods are available for the component:
+
+#### Toggle
+
+<Ec project="kit" path="toggle.11" />
+
+Toggles the Toggle's target.
+
+## Accessibility
+
+The Toggle component automatically sets the appropriate WAI-ARIA roles, states and properties.
+
+- The _toggle_ element has the `button` role if an `<a>` element is used.
+- To implement the [Disclosure (Show/Hide) design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/), manually set an `aria-expanded` attribute. It will automatically update when toggling.
