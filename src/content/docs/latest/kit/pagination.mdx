@@ -7,8 +7,8 @@ lead: Easily create a nice looking pagination to navigate through pages.
 meta:
   description: Easily create a nice looking pagination to navigate through pages.
 ---
-import Ec from 'snippets/ec.astro';
 
+import Ec from "snippets/ec.astro";
 
 import Snippet from "snippets/component.astro";
 
@@ -16,13 +16,13 @@ import Snippet from "snippets/component.astro";
 
 The Pagination component consists of button-like styled links, that are aligned side by side in a horizontal list.
 
-| Class          | Description                                                                                                                    |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| `.uk-pgn`      | Add this class to a `<ul>` element to define the Pagination component. Use `<a>` elements as pagination items within the list. |
-| `.uk-active`   | Add this class to a list item to apply an active state and use a `<span>` instead of an `<a>` element.                         |
-| `.uk-disabled` | Add this class to a list item to apply a disabled state and use a `<span>` instead of an `<a>` element.                        |
+| Class            | Description                                                                                                                    |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `.uk-pagination` | Add this class to a `<ul>` element to define the Pagination component. Use `<a>` elements as pagination items within the list. |
+| `.uk-active`     | Add this class to a list item to apply an active state and use a `<span>` instead of an `<a>` element.                         |
+| `.uk-disabled`   | Add this class to a list item to apply a disabled state and use a `<span>` instead of an `<a>` element.                        |
 
-To add an icon, just add the `data-uk-pgn-previous` or `data-uk-pgn-next` attribute to a `<span>` element inside a pagination item.
+To add an icon, just add the `data-uk-pagination-previous` or `data-uk-pagination-next` attribute to a `<span>` element inside a pagination item.
 
 <Snippet project="kit" component="pagination.basic" />
 
@@ -30,28 +30,28 @@ To add an icon, just add the `data-uk-pgn-previous` or `data-uk-pgn-next` attrib
 
 There are several style modifiers available. Just add one of the following classes to apply a different look.
 
-| Class                 | Description               |
-| --------------------- | ------------------------- |
-| `.uk-pgn-default`     | Adds the default style.   |
-| `.uk-pgn-primary`     | Adds a primary style.     |
-| `.uk-pgn-secondary`   | Adds a secondary style.   |
-| `.uk-pgn-destructive` | Adds a destructive style. |
-| `.uk-pgn-ghost`       | Adds a ghost style.       |
+| Class                        | Description               |
+| ---------------------------- | ------------------------- |
+| `.uk-pagination-default`     | Adds the default style.   |
+| `.uk-pagination-primary`     | Adds a primary style.     |
+| `.uk-pagination-secondary`   | Adds a secondary style.   |
+| `.uk-pagination-destructive` | Adds a destructive style. |
+| `.uk-pagination-ghost`       | Adds a ghost style.       |
 
 <Snippet project="kit" component="pagination.style" />
 
-## Size modifiers
+{/* ## Size modifiers
 
 There are several size modifiers available. Just add one of the following classes to make the pagination smaller or larger.
 
-| Class        | Description               |
-| ------------ | ------------------------- |
-| `.uk-pgn-xs` | Applies extra small size. |
-| `.uk-pgn-sm` | Applies small size.       |
-| `.uk-pgn-md` | Applies medium size.      |
-| `.uk-pgn-lg` | Applies large size.       |
+| Class                   | Description               |
+| ----------------------- | ------------------------- |
+| `.uk-pagination-xsmall` | Applies extra small size. |
+| `.uk-pagination-small`  | Applies small size.       |
+| `.uk-pagination-medium` | Applies medium size.      |
+| `.uk-pagination-large`  | Applies large size.       |
 
-<Snippet project="kit" component="pagination.size" />
+<Snippet project="kit" component="pagination.size" /> */}
 
 ## Alignment
 

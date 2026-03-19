@@ -87,30 +87,11 @@ const { project = "style", projectSwitcher = true, menu = true } = Astro.props;
           })}
         >
           <button
-            class="uk-button uk-button-primary uk-button-xsmall"
-            data-uk-toggle="#consult"
+            class="uk-button uk-button-default uk-button-xsmall"
+            data-uk-toggle="#search"
           >
-            <span
-              class="relative display-flex size flex-none"
-              style="--size: 2;"
-            >
-              <span
-                class="bg/o dark:bg/o absolute display-inline-flex h-full w-full animate-ping rounded-full"
-                style={stl({
-                  "--bg": "var(--color-lime-500)",
-                  "--bg-o": "75%",
-                  "--dark-bg": "var(--color-blue-600)",
-                  "--dark-bg-o": "75%",
-                })}></span>
-              <span
-                class="bg dark:bg relative display-inline-flex size rounded-full"
-                style={stl({
-                  "--bg": "var(--color-lime-500)",
-                  "--dark-bg": "var(--color-blue-600)",
-                  "--size": "2",
-                })}></span>
-            </span>
-            <span class="">Consult a Human</span>
+            <uk-icon class="size" style="--size: 4" icon="search"></uk-icon>
+            <span class="">Search</span>
           </button>
           <uk-lsh
             class="size"
@@ -232,82 +213,3 @@ const { project = "style", projectSwitcher = true, menu = true } = Astro.props;
     </div>
   </div>
 </div>
-
-<div class="uk-modal" id="consult" data-uk-modal>
-  <div class="uk-modal-dialog">
-    <div class="uk-modal-body">
-      <button
-        class="uk-modal-close absolute right top"
-        style={stl({ "--right": "4", "--top": "4" })}
-        type="button"
-        data-uk-close></button>
-
-      <p class="font-bold">Human,</p>
-
-      <p class="mt" style={stl({ "--mt": "6" })}>
-        Hello human. Definitely not AI here. You clicked — wow. Proof of life on
-        both sides.
-      </p>
-
-      <p class="mt" style={stl({ "--mt": "2" })}>
-        About the project: everything here is a free buffet. No paid components,
-        no gated features, no “enterprise tier.” Forever.
-      </p>
-
-      <p class="mt" style={stl({ "--mt": "2" })}>
-        That said, codes don't maintain themselves on good intentions alone.
-      </p>
-      <p class="mt" style={stl({ "--mt": "2" })}>
-        This project is funded the old-fashioned way: by hiring the human(s)
-        behind it. We're a very small team of developers breathing real oxygen
-        somewhere in Southeast Asia (most days, it's just one).
-      </p>
-
-      <p class="mt" style={stl({ "--mt": "2" })}>
-        If you want help, advice, migrations, custom components — or just
-        someone who actually knows this code inside out — click the button. It
-        sends us an email. A real one. Read by real humans.
-      </p>
-
-      <p class="mt" style={stl({ "--mt": "2" })}>
-        Or, if consulting isn't your thing, you can donate to the project.
-        You'll find the link in the sidebar (desktop humans only).
-      </p>
-
-      <p class="mt font-bold" style={stl({ "--mt": "6" })}>Regards,</p>
-      <p class="pb" style={stl({ "--pb": "2" })}>
-        Definitely not AI — statistically normal em dash usage.
-      </p>
-    </div>
-    <div class="uk-modal-footer">
-      <a
-        id="get-in-touch"
-        href="mailto:reden@franken-ui.dev"
-        class="uk-button uk-button-primary"
-        type="button"
-      >
-        Consult Now
-      </a>
-    </div>
-  </div>
-</div>
-
-<script is:inline>
-  document.addEventListener("uikit:init", () => {
-    UIkit.util.on("#consult", "shown", function () {
-      if (window.zaraz) {
-        window.zaraz.track("consultation_shown");
-      }
-    });
-  });
-
-  const getInTouch = document.getElementById("get-in-touch");
-
-  if (getInTouch) {
-    getInTouch.addEventListener("click", () => {
-      if (window.zaraz) {
-        window.zaraz.track("docs_get_in_touch_clicked");
-      }
-    });
-  }
-</script>
