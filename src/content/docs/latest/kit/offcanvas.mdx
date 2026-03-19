@@ -1,0 +1,138 @@
+---
+group: components
+project: kit
+text: Offcanvas
+title: Offcanvas
+lead: Create an offcanvas sidebar that slides in and out of the page, which is perfect for creating mobile navigations.
+meta:
+  description: Create an off-canvas sidebar that slides in and out of the page, which is perfect for creating mobile navigations.
+keywords: "sheet,drawer"
+---
+import Ec from 'snippets/ec.astro';
+
+
+import Snippet from "snippets/component.astro";
+
+## Usage
+
+To apply this component, add the `data-uk-offcanvas` attribute to a parent `<div>` element and use the following classes.
+
+| Class                 | Description                                                                                                                               |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `.uk-offcanvas-bar`   | Add this class to a child `<div>` element.                                                                                                |
+| `.uk-offcanvas-close` | Add this class and the `data-uk-close` attribute to an `<a>` or `<button>` element to create a close button and enable its functionality. |
+
+You can use any element to toggle an offcanvas sidebar. To enable the necessary JavaScript, add the `data-uk-toggle` attribute. An `<a>` element needs to be linked to the id of the offcanvas container. If you are using another element, like a button, just add the `data-uk-toggle="target: #ID"` attribute to target the id of the offcanvas container.
+
+<Ec project="kit" path="offcanvas.1" />
+
+<Snippet project="kit" component="offcanvas.basic" />
+
+### Overlay
+
+To add an overlay, blanking out the page, add the `overlay: true` parameter to the `data-uk-offcanvas` attribute.
+
+<Ec project="kit" path="offcanvas.2" />
+
+<Snippet project="kit" component="offcanvas.overlay" />
+
+## Flip modifier
+
+Add the `flip: true` parameter to the `data-uk-offcanvas` attribute to adjust its alignment, so that it slides in from the right.
+
+<Ec project="kit" path="offcanvas.3" />
+
+<Snippet project="kit" component="offcanvas.flip" />
+
+## Animation modes
+
+By default, the offcanvas slides in. But you can actually choose between different animation modes for the offcanvas's entrance. Just add one of the following attributes.
+
+| Parameter      | Description                                                                  |
+| -------------- | ---------------------------------------------------------------------------- |
+| `mode: slide`  | The offcanvas slides out and overlays the content. This is the default mode. |
+| `mode: push`   | The offcanvas slides out and pushes the site.                                |
+| `mode: reveal` | The offcanvas slides out and reveals its content while pushing the site.     |
+| `mode: none`   | The offcanvas appears and overlays the content without an animation.         |
+
+<Ec project="kit" path="offcanvas.4" />
+
+<Snippet project="kit" component="offcanvas.animations" />
+
+## Nav in Offcanvas
+
+You can use the [Nav component](/docs/2.1/nav) inside an offcanvas to create a mobile navigation.
+
+<Ec project="kit" path="offcanvas.5" />
+
+<Snippet project="kit" component="offcanvas.nav" />
+
+## Component options
+
+Any of these options can be applied to the component attribute. Separate multiple options with a semicolon. [Learn more](/docs/2.1/javascript#component-configuration)
+
+| Option      | Value   | Default | Description                                                                                                                                              |
+| ----------- | ------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `mode`      | String  | `slide` | Offcanvas animation mode (`slide`, `reveal`, `push` or `none`).                                                                                          |
+| `flip`      | Boolean | `false` | Flip offcanvas to the right side.                                                                                                                        |
+| `overlay`   | Boolean | `false` | Display the offcanvas together with an overlay.                                                                                                          |
+| `esc-close` | Boolean | `true`  | Close the offcanvas when the _Esc_ key is pressed.                                                                                                       |
+| `bg-close`  | Boolean | `true`  | Close the offcanvas when the background is clicked.                                                                                                      |
+| `container` | String  | `false` | Define a target container via a selector to specify where the offcanvas should be appended in the DOM. Setting it to `false` will prevent this behavior. |
+
+`mode` is the _Primary_ option and its key may be omitted, if it's the only option in the attribute value.
+
+<Ec project="kit" path="offcanvas.6" />
+
+## JavaScript
+
+Learn more about [JavaScript components](/docs/2.1/javascript#programmatic-use).
+
+### Initialization
+
+<Ec project="kit" path="offcanvas.7" />
+
+### Events
+
+The following events will be triggered on elements with this component attached:
+
+| Name         | Description                                          |
+| ------------ | ---------------------------------------------------- |
+| `beforeshow` | Fires before an item is shown.                       |
+| `show`       | Fires after an item is shown.                        |
+| `shown`      | Fires after the item's show animation has completed. |
+| `beforehide` | Fires before an item is hidden.                      |
+| `hide`       | Fires after an item's hide animation has started.    |
+| `hidden`     | Fires after an item is hidden.                       |
+
+### Methods
+
+The following methods are available for the component:
+
+#### Show
+
+<Ec project="kit" path="offcanvas.8" />
+
+Shows the Offcanvas.
+
+#### Hide
+
+<Ec project="kit" path="offcanvas.9" />
+
+Hides the Offcanvas.
+
+## Accessibility
+
+The Offcanvas component adheres to the [Dialog (Modal) WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/) and automatically sets the appropriate WAI-ARIA roles, states and properties.
+
+- The _offcanvas bar_ has the `dialog` role, and if the offcanvas has an overlay, the `aria-modal` property.
+
+The Close component automatically sets the appropriate WAI-ARIA roles and properties.
+
+- The _close icon_ has the `aria-label` property, and if an `<a>` element is used, the `button` role.
+
+### Keyboard interaction
+
+The Offcanvas component can be accessed through keyboard using the following keys.
+
+- The <kbd>esc</kbd> key closes the offcanvas. This behaviour is disabled if the `bg-close: false` option is set.

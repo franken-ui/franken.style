@@ -1,0 +1,35 @@
+<button
+  class="uk-button uk-button-default"
+  type="button"
+  data-uk-toggle="target: #offcanvas-nav"
+>
+  Open
+</button>
+
+<div id="offcanvas-nav" data-uk-offcanvas="overlay: true">
+  <div class="uk-offcanvas-bar p" style="--p: 4">
+    <ul class="uk-nav-default" data-uk-nav>
+      <li class="uk-active"><a href="#">Active</a></li>
+      <li class="uk-parent">
+        <a href="#">Parent <span data-uk-nav-parent-icon></span></a>
+        <ul class="uk-nav-sub">
+          <li><a href="#">Sub item</a></li>
+          <li>
+            <a href="#">Sub item</a>
+            <ul>
+              <li><a href="#">Sub item</a></li>
+              <li><a href="#">Sub item</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="uk-parent">
+        <a href="#">Parent <span data-uk-nav-parent-icon></span></a>
+        <ul class="uk-nav-sub">
+          <li><a href="#">Sub item</a></li>
+          <li><a href="#">Sub item</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
