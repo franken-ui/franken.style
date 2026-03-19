@@ -72,7 +72,7 @@
 
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.4/dist/css/frankenstyle-kit.min.css"
+      href="https://cdn.jsdelivr.net/npm/frankenstyle@0.3.5/dist/css/frankenstyle-kit.min.css"
     />
 
     <script>
