@@ -1,0 +1,51 @@
+---
+group: getting-started
+project: kit
+order: 0
+text: Release Notes
+title: Release Notes
+meta:
+  robots: noindex
+tbc: false
+ping: true
+---
+
+import Ec from "snippets/ec.astro";
+
+## March 27, 2026
+
+### Version
+
+**v0.3.7**
+
+Welcome to the first stable release of The Frankenstyle Project. Yes, Franken UI has been split and expanded into several mini projects. While there are no substantial, noticeable updates, every change revolves under the hood, mainly accessibility and building a dedicated ecosystem.
+
+**Frankenstyle (FS)** - A fully responsive, utility-first CSS framework. An `~80k` alternative to Tailwind CSS with almost all the utilities needed from Tailwind CSS. Think of it as a devalued Tailwind CSS where values are defined inline. This is also its caveat, since removing the build-step friction makes inline styles look busier. But also, fun fact: it is not meant for direct use anyway. It is meant for LLM companions. Learn more in its documentation.
+
+**Headless Web Components (HWC)** - In-house components such as select, input range, datepicker, basically all advanced components, have been fully detached from the project. These can now be fully "skinned" via `cls` and `stl` attributes. More details are available in the components documentation. Along with this, the API received a major overhaul, including improved i18n, better screen reader support, customizable icons, and more.
+
+**Frankternity (FT)** - Eye-candy components primarily for marketing and landing pages. This is a port of Aceternity UI. Each component has its own documentation, so feel free to explore. And finally:
+
+**FrankenstyleKit (FSK)** - The continuation, or next major version (3.0), of Franken UI. Since every API has changed, a full rebrand makes more sense. One thing that has not changed is its **principle and promise**. It can still be used with Tailwind CSS via the standalone build, or with Frankenstyle for those not a fan of build processes. Moving forward, the project leans toward no-build steps, CDN-first. Tailwind CSS is still fully supported in this release.
+
+### Changes
+
+- Leveraging `color-mix` - because Tailwind CSS was reverse-engineered to work without a build step, this becomes possible
+- Theme tokens have been renamed - a new naming convention is implemented, but proxy CSS variables can still be created to match the previous convention. See theming documentation for more details
+- Better API for advanced components - introduces `data-fn-*` such as `<select data-fn="data-source" hidden>` or `<template data-fn="template">` to clearly signal functionality and allow better data extraction and templating
+- Better `i18n` for advanced components - all components are now fully translatable globally or locally. See documentation for more details
+- Better accessibility, keyboard navigation, and improved screen reader support
+
+And many more. Seriously, the list just keeps going and becomes hard to track. Hence, a major release and the rebrand.
+
+### Should we upgrade
+
+Because almost everything has changed, honestly, if Franken UI already works, there is no real need to upgrade. As mentioned earlier, there are no noticeable or performance improvements to gain from doing so. However, keep in mind that Franken UI is planned to be sunset later this year.
+
+For future projects, it is recommended to start with FrankenstyleKit instead. Migration is still very possible since both share the same base and principles, although it can be a bit tedious. In fact, most examples and documentation were carried over from the previous version.
+
+If upgrading is still preferred and help is needed, feel free to [reach out](mailto:reden@franken-ui.dev) and see what can be done. Support like this also helps keep the project going.
+
+---
+
+**PS:** Moved to Codeberg because Microslop's platform has become increasingly annoying with its AI. A GitHub mirror will still be provided.

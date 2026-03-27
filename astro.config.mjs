@@ -13,7 +13,7 @@ function plugin() {
     p: "uk-paragraph",
     table: "uk-table uk-table-divider uk-table-responsive mt",
     ul: "uk-list uk-list-hyphen mt",
-    hr: "uk-divider-icon mt",
+    hr: "uk-hr mt",
   };
 
   const stylesMap = {
