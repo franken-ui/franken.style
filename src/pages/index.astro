@@ -549,16 +549,4 @@ import data from "data/examples";
       </span>
     </div>
   </div>
-
-  <script is:inline>
-    const getInTouch = document.getElementById("get-in-touch");
-
-    if (getInTouch) {
-      getInTouch.addEventListener("click", () => {
-        if (window.zaraz) {
-          window.zaraz.track("home_get_in_touch_clicked");
-        }
-      });
-    }
-  </script>
 </Home>
