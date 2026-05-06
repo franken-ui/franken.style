@@ -1,0 +1,23 @@
+export const partial = true;
+
+```html
+<div class="card group">
+  <div
+    data-fs
+    class="opacity:group-hover opacity"
+    style="--opacity-group-hover: 100%; --opacity: 0"
+  >
+    → Read More
+  </div>
+</div>
+
+<script>
+  window.FS = window.FS || {};
+
+  // Pre-generate classes for dynamic elements
+  FS.safelist = ['opacity:hover'];
+
+  // Enable during development only
+  FS.debug = true;
+</script>
+```

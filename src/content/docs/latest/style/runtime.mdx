@@ -1,0 +1,300 @@
+---
+group: getting-started
+order: 3
+text: Runtime
+title: Using the Runtime
+lead: Lightweight, on-demand CSS engine. It reads your class names directly from the DOM, builds scoped CSS rules, and injects them into the page.
+meta:
+  description: "Complete reference for the FS runtime: data-fs, safelist, custom rules, debug mode, responsive prefixes, dark mode, CSS layers, and the full FS API."
+ping: true
+---
+import Ec from 'snippets/ec.astro';
+
+The runtime scans elements you explicitly mark, parses their class names, and generates exactly the CSS you need — nothing more. It supports responsive breakpoints, dark mode, group states, CSS cascade layers, a safelist for dynamic classes, and a full API for programmatic control.
+
+This page covers every runtime feature, including several that aren't documented elsewhere.
+
+## How Style Generation Works
+
+Mark any element with `data-fs` to include it in the runtime scan:
+
+<Ec path="runtime.0" />
+
+The runtime queries `[data-fs]`, parses every class on each match, and generates scoped CSS. Without `data-fs`, classes are invisible to the runtime — no error, no CSS, no effect.
+
+### Ignored vs. processed
+
+<Ec path="runtime.1" />
+
+Only the second element produces CSS. The first is left entirely untouched.
+
+### Real-world example
+
+<Ec path="runtime.2" />
+
+Only the inner `div` is scanned. The outer `.card` is a plain layout container — the runtime doesn't touch it.
+
+## Supported States
+
+Append any of these suffixes to a base class name to generate a state-scoped rule:
+
+| State | CSS produced |
+| --- | --- |
+| `:hover` | `.class:hover { … }` |
+| `:active` | `.class:active { … }` |
+| `:focus` | `.class:focus { … }` |
+| `:focus-within` | `.class:focus-within { … }` |
+| `:target` | `.class:target { … }` |
+| `:checked` | `.class:checked { … }` |
+| `:disabled` | `.class:disabled { … }` |
+| `:group-hover` | `.group:hover .class { … }` |
+
+`opacity:hover`, `bg:focus`, `color:group-hover` — the pattern is always `base:state`.
+
+## Responsive Prefixes
+
+Prefix any class with a breakpoint name to wrap it in a `@media (min-width: …)` block:
+
+| Prefix | Min-width |
+| --- | --- |
+| `sm:` | `40rem` |
+| `md:` | `48rem` |
+| `lg:` | `64rem` |
+| `xl:` | `80rem` |
+| `2xl:` | `96rem` |
+
+<Ec path="runtime.3" />
+
+Breakpoint rules are placed inside the same CSS layer as their base rule, just wrapped in the appropriate media query.
+
+## Dark Mode
+
+Prefix with `dark:` to scope a rule to a `.dark` ancestor:
+
+<Ec path="runtime.4" />
+
+Dark mode can be combined with responsive prefixes and states:
+
+<Ec path="runtime.5" />
+
+The generated selector becomes `.dark .lg\:dark\:opacity\:hover` — applied only when `.dark` wraps the element and the viewport is at least `64rem`.
+
+## Safelist
+
+The safelist generates CSS for classes that aren't present in the DOM at scan time — essential for dynamically injected elements, server-rendered HTML, or classes set via JavaScript after load.
+
+Set `FS.safelist` before the runtime initializes:
+
+<Ec path="runtime.6" />
+
+### String form
+
+Each string is a full class name, parsed exactly like a DOM class:
+
+<Ec path="runtime.7" />
+
+### Object form
+
+Use the object form to generate every combination of states, breakpoint prefixes, and dark/light variants from a single base class:
+
+<Ec path="runtime.8" />
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `class` | `string` | Base class name (e.g. `opacity`) |
+| `states` | `string[]` | States to generate (e.g. `[':hover', ':focus']`) |
+| `prefixes` | `string[]` | Breakpoint prefixes (e.g. `['md', 'lg']`). Omit for no prefix. |
+| `dark` | `boolean` | If `true`, also generates all dark-mode variants |
+
+The object form builds the full matrix: every prefix × every state × dark and light.
+
+### Inspecting the safelist
+
+<Ec path="runtime.9" />
+
+Returns the parsed list of class objects that will be included in the next style generation pass.
+
+## Custom Rules
+
+`FS.customRules` lets you extend or replace built-in rule definitions. Each rule maps a base class name to one or more CSS properties and their values.
+
+Set `FS.customRules` before the runtime initializes:
+
+<Ec path="runtime.10" />
+
+If your `selector` matches an existing built-in rule, your entry **replaces** it entirely.
+
+### Rule shape
+
+| Field | Required | Description |
+| --- | --- | --- |
+| `selector` | Yes | Base class name this rule matches (e.g. `opacity`) |
+| `properties` | Yes | CSS property or array of properties |
+| `values` | Yes (unless `arbitrary`) | Values mapped to each property |
+| `arbitrary` | No | If `true`, value is read from a CSS variable — no `values` needed |
+| `placeholders` | No | Template substitution: parts of `values` replaced by CSS vars |
+| `layer` | No | Cascade layer: `components`, `styles` (default), or `utilities` |
+
+### Arbitrary rules
+
+When `arbitrary: true`, the CSS value is always a variable derived from the class name, state, prefix, and dark flag — you define it per element in `style`:
+
+<Ec path="runtime.11" />
+
+Variable naming convention: `--[dark-][prefix-]baseClass-state`.
+
+### Placeholder rules
+
+Placeholders let you template values where specific parts are replaced by CSS variables:
+
+<Ec path="runtime.12" />
+
+Each key in `placeholders` is a substring in `values` that gets replaced by the computed CSS variable name for the given state.
+
+### Inspecting merged rules
+
+<Ec path="runtime.13" />
+
+Returns the complete merged rule set (built-ins + your custom rules) that the runtime is currently using.
+
+## Debug Mode
+
+Enable debug mode during development to surface silent failures:
+
+<Ec path="runtime.14" />
+
+Debug scans every `[class]` and `[cls]` element in the document and runs two checks:
+
+1. **Missing `data-fs`** — warns if an element has interactive state classes but no `data-fs` attribute, meaning those classes will silently do nothing.
+2. **Missing CSS variables** — warns if a variable required by a class isn't set on the element.
+
+### Debug output
+
+<Ec path="runtime.15" />
+
+Each warning includes the count of missing items, the variable names, and the actual DOM node so you can jump straight to it in DevTools.
+
+### What debug catches
+
+**State classes without `data-fs`:**
+
+<Ec path="runtime.16" />
+
+**Incorrect variable name (camelCase vs. kebab-case):**
+
+<Ec path="runtime.17" />
+
+**Partial state coverage — one variable present, one missing:**
+
+<Ec path="runtime.18" />
+
+**`cls` attribute is also validated:**
+
+<Ec path="runtime.19" />
+
+### Debug does not generate styles
+
+`FS.debug` is validation-only. CSS generation still requires `data-fs`.
+
+| | Scope | Generates CSS |
+| --- | --- | --- |
+| `data-fs` | That element only | Yes |
+| `FS.debug` | Entire document | No |
+
+## The FS API
+
+The runtime exposes these methods on the global `FS` object after initialization.
+
+### `FS.refresh()`
+
+Clears the rule cache and re-runs style generation from scratch. Use this after dynamically adding `data-fs` elements or changing `FS.safelist` at runtime:
+
+<Ec path="runtime.20" />
+
+### `FS.regenerate()`
+
+Re-runs style generation without clearing the cache. Faster than `refresh()` when the rule definitions haven't changed:
+
+<Ec path="runtime.21" />
+
+### `FS.getCache()`
+
+Returns the internal `Map` of generated rules, keyed by a string combining class + state + dark + prefix:
+
+<Ec path="runtime.22" />
+
+Useful for inspecting what the runtime has already compiled, or checking whether a specific class has been processed.
+
+### `FS.getRules()`
+
+Returns the complete merged rule array — built-ins plus any custom rules — currently active:
+
+<Ec path="runtime.23" />
+
+### `FS.getSafelist()`
+
+Returns the parsed safelist entries that will be included in the next generation pass:
+
+<Ec path="runtime.24" />
+
+## CSS Cascade Layers
+
+All generated CSS lives inside `@layer` blocks. The layer is controlled per rule via the `layer` field (default: `styles`):
+
+<Ec path="runtime.25" />
+
+This means component styles always yield to utility overrides, and utilities always win — without `!important`. Use the `layer` field in `FS.customRules` to place your rules in the right tier.
+
+## Performance
+
+| Operation | DOM query |
+| --- | --- |
+| Style generation | `document.querySelectorAll('[data-fs]')` |
+| Debug validation | `document.querySelectorAll('[class], [cls]')` |
+
+The runtime is fast by default because it only touches elements you've opted in. Debug mode scans the entire document and should be disabled in production.
+
+## Recommended Workflow
+
+1. Build your UI with static classes as normal.
+2. Add `data-fs` to any element using an interactive state class.
+3. Set inline CSS variables for each state:
+
+<Ec path="runtime.26" />
+
+4. Enable debug to catch missing variables:
+
+<Ec path="runtime.27" />
+
+5. Fix every warning in the console.
+6. Remove or gate `FS.debug = true` before shipping.
+
+## Common Pitfalls
+
+### Forgetting `data-fs`
+
+<Ec path="runtime.28" />
+
+No CSS is generated. No error is thrown. The class silently does nothing — exactly what makes this hard to spot. Enable debug mode; it will warn you.
+
+### Using camelCase variable names
+
+<Ec path="runtime.29" />
+
+The runtime derives variable names by replacing separators with hyphens. camelCase will never match. Always use `--base-state` form.
+
+### Assuming debug generates styles
+
+<Ec path="runtime.30" />
+
+Debug validates. It never generates. You still need `data-fs` on the element for CSS output.
+
+### Dynamically added elements
+
+If you inject `data-fs` elements after the page has loaded, the runtime won't see them until you explicitly trigger a refresh:
+
+<Ec path="runtime.31" />
+
+## Minimal Setup
+
+<Ec path="runtime.32" />

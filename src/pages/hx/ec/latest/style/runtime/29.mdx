@@ -1,0 +1,9 @@
+export const partial = true;
+
+```html
+<!-- ❌ camelCase — will never match -->
+<div data-fs class="opacity:hover" style="--opacityHover: 100%"></div>
+
+<!-- ✅ kebab-case — matches -->
+<div data-fs class="opacity:hover" style="--opacity-hover: 100%"></div>
+```

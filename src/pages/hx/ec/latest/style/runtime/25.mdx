@@ -1,0 +1,20 @@
+export const partial = true;
+
+```css
+@layer components {
+  /* rules with layer: 'components' */
+}
+
+@layer styles {
+  /* default layer */
+  .opacity\:hover:hover { opacity: var(--opacity-hover); }
+
+  @media (min-width: 48rem) {
+    .md\:opacity\:hover:hover { opacity: var(--opacity-hover); }
+  }
+}
+
+@layer utilities {
+  /* rules with layer: 'utilities' */
+}
+```

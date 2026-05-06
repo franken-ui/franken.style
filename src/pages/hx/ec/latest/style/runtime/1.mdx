@@ -1,0 +1,13 @@
+export const partial = true;
+
+```html
+<!-- ignored — no data-fs -->
+<div class="opacity:hover"></div>
+
+<!-- processed — CSS is generated -->
+<div
+  data-fs
+  class="opacity:hover"
+  style="--opacity-hover: 100%"
+></div>
+```

@@ -1,0 +1,21 @@
+export const partial = true;
+
+```html
+<script>
+  window.FS = window.FS || {};
+  FS.customRules = [
+    {
+      selector: 'scale',
+      properties: 'transform',
+      arbitrary: true,      // value comes from --scale-hover, --scale-focus, etc.
+      layer: 'utilities',
+    },
+  ];
+</script>
+
+<div
+  data-fs
+  class="scale:hover"
+  style="--scale-hover: scale(1.05)"
+></div>
+```

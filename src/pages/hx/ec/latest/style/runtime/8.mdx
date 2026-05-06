@@ -1,0 +1,20 @@
+export const partial = true;
+
+```js
+FS.safelist = [
+  {
+    class: 'opacity',
+    states: [':hover', ':focus'],
+    prefixes: ['md', 'lg'],
+    dark: true,
+  },
+];
+
+// Generates all 12 combinations:
+//   opacity:hover          opacity:focus
+//   md:opacity:hover       md:opacity:focus
+//   lg:opacity:hover       lg:opacity:focus
+//   dark:opacity:hover     dark:opacity:focus
+//   dark:md:opacity:hover  dark:md:opacity:focus
+//   dark:lg:opacity:hover  dark:lg:opacity:focus
+```

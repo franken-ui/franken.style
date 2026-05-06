@@ -1,0 +1,15 @@
+export const partial = true;
+
+```js
+FS.customRules = [
+  {
+    selector: 'shadow',
+    properties: 'box-shadow',
+    values: ['0 0 0 __size__ __color__'],
+    placeholders: {
+      '__size__': 'shadow-size',   // replaced by --shadow-size-hover, etc.
+      '__color__': 'shadow-color', // replaced by --shadow-color-hover, etc.
+    },
+  },
+];
+```

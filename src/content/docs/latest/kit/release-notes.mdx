@@ -12,6 +12,38 @@ ping: true
 
 import Ec from "snippets/ec.astro";
 
+## May 6, 2026
+
+### v0.3.8
+
+**1.** Added `FS.debug` mode. Set `FS.debug = true` and the runtime scans your entire document — flagging elements with state classes that are missing `data-fs`, and logging every undefined CSS variable by name. Silent failures are silent no more.
+
+**2.** Added `FS.safelist` object form. You could already pass strings to the safelist. Now you can pass objects: give it a base `class`, a list of `states`, breakpoint `prefixes`, and a `dark` flag, and the runtime generates every combination for you. One entry instead of a dozen strings. Previously undocumented.
+
+**3.** Added `FS.customRules`. Define your own rules at runtime — arbitrary values, placeholder substitution, custom cascade layers. Override any built-in rule by matching its selector.
+
+**4.** Added runtime API: `FS.refresh()`, `FS.regenerate()`, `FS.getCache()`, `FS.getRules()`, `FS.getSafelist()`.
+
+Learn more in our extensive [runtime documentation](/docs/latest/style/runtime).
+
+---
+
+### Frankenstyle Studio
+
+We've been building something.
+
+<div class="mt" style="--mt: 6">
+  <div data-uk-lightbox>
+    <a class="" href="/images/studio/0.png">
+      <img src="/images/studio/0.png" />
+    </a>
+  </div>
+</div>
+
+Frankenstyle Studio is a visual tool designed specifically for Frankenstyle and FrankenstyleKit — and it has just cleared proof-of-concept. Not a page-builder. Not another drag-and-drop canvas. Studio is a focused, opinionated environment for configuring and composing Frankenstyle utilities the way they were meant to be used: fast, explicit, and without the guesswork.
+
+Early access spots are open. If you build with Frankenstyle and want in before the public launch, [reach out now →](mailto:reden@franken-ui.dev)
+
 ## March 27, 2026
 
 ### Version
